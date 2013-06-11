@@ -1,0 +1,175 @@
+<section id="lab-debugging"><title>Laboratory: Debugging</title>
+
+<para>
+  <emphasis>Summary:</emphasis>
+  In this laboratory, you will get more experience using the Debugger.
+</para>
+
+<section id="debugging-exercises"> <title>Exercises</title>
+
+<section id="debugging-0"> <title>Exercise 0: Preparation</title>
+
+<para>
+  a. Let’s get the first piece of code you’ll be working with.
+</para>
+
+<para>
+  b. Go to -link forthcoming- and fork the repository so that it now appears in your repositories.
+</para>
+
+<para>
+  c. Follow the instructions for importing the repository into Eclipse as a Git      Repository and a Project in the Package Explorer.
+</para>
+
+<para>
+  d. This code seems just a little bit broken. Can you figure out how to fix it?
+The instructions should be in the class BrokenCode before every method. Use your knowledge of C, common sense and Eclipse’s helpful hints to figure out what is wrong with the code, but don’t start fixing it quite yet.
+</para>
+
+<para>
+  e. When you look at the code you can see that some parts are in green. These are   the comments that don’t affect the code, but usually provide explanations regarding methods, fields, variables...
+</para>
+
+<para>
+  f. You can make one-line comments in Java by prefixing a line with <code>//</code>
+</para>
+
+<para>
+  g. You can make longer comments by putting <code>/*</code> at the start of the comment, and <code>*/</code> at the end.
+</para>
+
+<para>
+  h. In the exercises below identify where using the debugger would be useful.
+</para>
+
+<para>
+  i. How did using the debugger help with those exercises?
+</para>
+
+</section> <!-- Exercise 0 -->
+
+<section id="debugging-2"> <title>Exercise 2: sumUp()</title>
+
+<para>
+  This method should print out every odd numbered index in an array (0 is considered an even number). Unfortunately it doesn’t do that.
+</para>
+
+<para>
+  a. Run the code to verify this and explain what it actually does.
+</para>
+
+<para>
+  b. Fix the code and explain why it wasn’t working.
+</para>
+
+</section> <!-- Exercise 2 --> 
+
+<section id="debugging-3"> <title>Exercise 3: removeAs()</title>
+
+<para>
+  This method is supposed to remove all the a’s in a String. For some Strings it works and for others it doesn’t.
+</para>
+
+<para>
+  a. Run the code to verify this and explain what it actually does.
+</para>
+
+<para>
+  b. Fix the code and explain why it wasn’t working for every String.
+</para>
+
+</section> <!-- Exercise 3 --> 
+
+<section id="debugging-4"> <title>Exercise 4: helloYou()</title>
+
+<para>
+  This method is supposed to greet the user, but for some reason it’s not working. Eclipse might give you a helpful hint as to why it’s not working in this case. Whenever you see a squiggly red line underneath a piece of code, hover over it to see what Eclipse suggests to do. Sometimes it might be misleading, but it usually gets the right point across.
+</para>
+
+<para>
+  a. Run the code to verify this and explain what it actually does.
+</para>
+
+<para>
+  b. Fix the code and explain why it wasn’t working.
+</para>
+
+</section> <!-- Exercise 4 --> 
+
+<section id="debugging-5"> <title>Exercise 5: floats()</title>
+
+<para>
+  This method is supposed to print out the declared number that is a double. As far as I can remember we did that with %f in C, so why doesn’t it work here? How do we print out variables in Java?
+</para>
+
+<para>
+  a. Run the code to verify this and explain what it actually does.
+</para>
+
+<para>
+  b. Fix the code and explain why it wasn’t working.
+</para>
+
+</section> <!-- Exercise 5 --> 
+
+<section id="debugging-6"> <title>Exercise 6: convertTemp()</title>
+
+<para>
+  This is a temperature converter from Celsius to Fahrenheit. Unfortunately it doesn’t work. What could be the problem?
+</para>
+
+<para>
+  a. Run the code to verify this and explain what it actually does.
+</para>
+
+<para>
+  b. Fix the code and explain why it wasn’t working.
+</para>
+
+</section> <!-- Exercise 6 --> 
+
+<section id="debugging-7"> <title>Exercise 7: convertTemp()</title>
+
+<para>
+  This method is supposed to compute the number we get if we raise the first parameter to the power of the second parameter. Because we didn’t want to have an inefficient method with a for-loop, we decided to implement it with recursion. But something went wrong.
+</para>
+
+<para>
+  a. Run the code to verify this and explain what it actually does.
+</para>
+
+<para>
+  b. Fix the code and explain why it wasn’t working.
+</para>
+
+</section> <!-- Exercise 7 --> 
+
+<section id="debugging-8"> <title>Exercise 8: underscore()</title>
+
+<para>
+  Given a string, this method should replace all instances of ‘-’ with ‘_’ and return the number of characters replaced. Unfortunately, that’s not what it does.
+</para>
+
+<para>
+  a. Run the code to verify this and explain what it actually does.
+</para>
+
+<para>
+  b. Fix the code and explain why it wasn’t working.
+</para>
+
+</section> <!-- Exercise 8 --> 
+
+<section id="debugging-9"> <title>Exercise 9: Commit and Push</title>
+
+<para>
+  Push the fixed code to your repository.
+</para>
+
+</section> <!-- Exercise 9 --> 
+
+</section> <!-- Exercises --> 
+
+</section> <!-- lab-debugging --> 
+
+

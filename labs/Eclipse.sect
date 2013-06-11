@@ -1,0 +1,81 @@
+<section id="eclipse-lab"> <title>Laboratory: Create a Project</title>
+
+<para>
+<emphasis>Summary</emphasis>: In this laboratory, you will create your first project in Eclipse
+</para>
+
+<section id="eclipse-exercises"> <title>Exercises</title>
+
+<section id="eclipse-0"> <title>Exercise 0: Prerequisites</title>
+Make sure you’ve completed and understood the reading <ulink url="LINK FOR THE READING">Introducing the IDE</ulink> before starting this lab.
+</section> <!-- Exercise 0 -->
+
+<section id="eclipse-1"> <title>Exercise 1: Your First Program</title>
+
+<para>
+a. Make a new project in Eclipse and call it HelloEclipse
+	(File > New > Project)
+</para>
+
+<para>
+b. Create a package in the class that will hold your class files
+   	(File > New > Package)
+</para>
+
+<para>
+c. Create a class in the package called HelloJava
+   	(File > New > Class)
+</para>
+
+<para>
+d. Copy and paste this code into your class to see it come to life (make sure you change the package name to what you’ve named yours)
+</para>
+
+<programlisting>
+package first;
+
+public class HelloJava {
+
+   public static void main(String[] args) {
+       System.out.print("I am the 1337 h4x0r. Phear me!");
+   } // main(String[] args)
+} // class HelloJava
+</programlisting>
+
+<para>
+e. Run the program and marvel at the words that appear in the console!
+</para>
+</section> <!-- Exercise 1 -->
+
+<section id="eclipse-2"> <title>Exercise 2: Your Second Program</title>
+
+<para>
+a. Make another class in your package and call it SimpleMath
+</para>
+
+<para>
+b. Using the skeleton from above write a program that prints out the result of two integers and tells you which integers it print. An example output could be:
+<code>Adding 3 and 4 gives us 7.</code>
+</para>
+
+<para>
+c. Java’s <code>System.out.println()</code> method will add them for you if you don’t put the numbers in the parenthesis as strings.
+</para>
+
+<para>
+d. In Java you can concatenate string by putting a + sign between them like so:
+<code>“Java” + “ ” + “is” + “ “ + “awesome”</code>
+</para>
+
+<para>
+e. Can you predict what happens when you put this in the print statement and run it?
+</para>
+
+<para>
+f. There’s many more ways to print in Java, but a similar to the one you’ve already seen is System.out.print(). What’s the difference between the two? To make sure that you’ve got the answer create several print statements. Some with <code>System.out.print()</code> and some with <code>System.out.println()</code>
+</para>
+</section> <!-- Exercise 3 -->
+
+</section> <!-- Exercises -->
+
+</section> <!-- Eclipse Lab -->
