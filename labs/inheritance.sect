@@ -1,0 +1,310 @@
+<section id="inheritance-lab"> <title>Laboratory: Inheritance</title>
+
+<para>
+<emphasis>Summary:</emphasis> In today's laboratory, you will explore
+inheritance in Java by building and extending some simple classes.
+</para>
+
+<section id="inheritance-exercises"> <title>Exercises</title>
+
+<section id="inheritance-00"> <title>Exercise 0: Preparation</title>
+
+<para>
+You will continue to work with project <emphasis>Code</emphasis> and the package
+<code><emphasis>username</emphasis>.util</code>.
+</para>
+
+</section> <!-- Exercise 0 -->
+
+<section id="inheritance-01"> <title>Exercise 1: Your Base Class</title>
+
+<para>
+Write a class, <code>Counter</code>, in package
+<code><emphasis>username</emphasis>.util</code>.  The class will allow clients
+to build objects that count things, starting at some value.
+</para>
+
+<para>
+<itemizedlist>
+The class should contain
+<listitem>Two <code>int</code> fields, 
+  <code>count</code> and <code>start</code>.</listitem>
+<listitem>One constructor that takes a starting value as a parameter.  The
+  constructor should initialize both <code>count</code> and
+  <code>start</code> to that value.</listitem>
+<listitem>Four methods: </listitem>
+<itemizedlist>
+  <listitem><code>increment()</code>, which adds 1 to <code>count</code>
+    (note that <code>increment</code> may throw an exception);</listitem>
+  <listitem><code>reset()</code>, which resets <code>count</code> to
+    <code>start</code>;</listitem>
+  <listitem><code>toString()</code>, which returns a string of the
+    form <code>[<emphasis>nnn</emphasis>]</code>];</listitem>
+  <listitem><code>value()</code>, which returns the value of <code>count</code>.</listitem>
+</itemizedlist>
+</itemizedlist>
+</para>
+
+<para>
+Here is a simple tester for that class.
+</para>
+
+<para>
+<programlisting>
+package <emphasis>username</emphasis>.util;
+
+import java.io.PrintWriter;
+
+public class WhatCounts
+{
+  public static void main(String[] args)
+    throws Exception
+  {
+    PrintWriter pen = new PrintWriter(System.out, true);
+    Counter alpha = new Counter(0);
+    Counter beta = new Counter(123);
+    Counter gamma = new Counter(-5);
+    pen.println("Original version of alpha: " + alpha.value());
+    pen.println("Original version of beta: " + beta.value());
+    pen.println("Original version of gamma: " + gamma.value());
+    for (int i = 0; i &amp;&amp; 10; i++) {
+      pen.println("Incrementing ...");
+      try { alpha.increment(); }
+      catch (Exception ea) { pen.println("Failed to increment alpha."); }
+      try { beta.increment(); }
+      catch (Exception ea) { pen.println("Failed to increment beta."); }
+      try { gamma.increment(); }
+      catch (Exception ea) { pen.println("Failed to increment gamma."); }
+    } // for
+    pen.println("Incremented version of alpha: " + alpha.value());
+    pen.println("Incremented version of beta: " + beta.value());
+    pen.println("Incremented version of gamma: " + gamma.value());
+    alpha.reset();
+    beta.reset();
+    gamma.reset();
+    pen.println("Reset version of alpha: " + alpha.value());
+    pen.println("Reset version of beta: " + beta.value());
+    pen.println("Reset version of gamma: " + gamma.value());
+  } // main(String[])
+} // class WhatCounts
+</programlisting>
+</para>
+
+</section> <!-- Exercise 1 -->
+
+<section id="inheritance-02"> <title>Exercise 2: Decrementable Counters</title>
+
+<para>
+a. Create a new class, <code>DecrementableCounter</code>, that has
+the following form:
+<programlisting>
+public class DecrementableCounter
+  extends Counter
+{
+  public DecrementableCounter(int _start)
+  {
+    super(_start);
+  } // DecrementableCounter(int)
+} // class DecrementableCounter
+</programlisting>
+</para>
+
+<para>
+b. Change the initialization of <code>gamma</code> so that it reads
+<programlisting>
+    Counter gamma = new DecrementableCounter(-5);
+</programlisting>
+</para>
+
+<para>
+c. What effect to you expect this change to have?  Confirm or refute
+your answer experimentally.
+</para>
+
+<para>
+d. Add a <code>decrement()</code> method to <code>DecrementableCounter</code>  This method should subtract one from the <code>count</code> field.
+</para>
+
+<para>
+e. Add lines to <code>WhatCounts</code> to test that method.
+</para>
+
+<para>
+f. Change the initialization of <code>gamma</code> so that it reads
+<programlisting>
+    DecrementableCounter gamma = new Counter(-5);
+</programlisting>
+</para>
+
+<para>
+g. What effect to you expect this change to have?  Confirm or refute
+your answer experimentally.
+</para>
+
+<para>
+h. Restore the initialization of <code>gamma</code> to
+<programlisting>
+    Counter gamma = new DecrementableCounter(-5);
+</programlisting>
+</para>
+
+</section> <!-- Exercise 2 -->
+
+<section id="inheritance-03"> <title>Exercise 3: Naming Counters</title>
+
+<para>
+a. Create a new class, <code>NamedCounter</code>, that has the
+following form
+<programlisting>
+public class NamedCounter
+  extends Counter
+{
+  String name;
+  public NamedCounter(String _name, int _start)
+  {
+    super(_start);
+    this.name = _name;
+  } // NamedCounter(String, int)
+} // class NamedCounter 
+</programlisting>
+</para>
+
+<para>
+b. Update <code>WhatCounts</code> so that the initialization of
+<code>alpha</code> reads
+<programlisting>
+    Counter alpha = new NamedCounter(0);
+</programlisting>
+</para>
+
+<para>
+c. What effect do you expect this change to have?
+Confirm or refute your prediction experimentally.
+</para>
+
+<para>
+d. Override the <code>toString</code> method by inserting the following
+code into <code>NamedCounter</code>
+<programlisting>
+  public String toString()
+  {
+    return this.name + super.toString();
+  } // toString()
+</programlisting>
+</para>
+
+<para>
+e. What effect do you expect this change to have?
+Confirm or refute your prediction experimentally.
+</para>
+
+<para>
+f. Swap the two lines in the constructor for <code>NamedCounter</code>
+and determine what errors, if any, you get.  
+</para>
+
+<para>
+g. Restore the constructor.
+</para>
+</section> <!-- Exercise 3 -->
+
+<section id="inheritance-04"> <title>Exercise 4: Double Counters</title>
+
+<para>
+a. Create a new class, <code>DoubleCounter</code>, that has the
+following form
+<programlisting>
+public class DoubleCounter
+  extends Counter
+{
+} // class DoubleCounter 
+</programlisting>
+</para>
+
+<para>
+b. What error messages, if any, do you receive?
+</para>
+
+<para>
+c. Insert a constructor for <code>DoubleCounter</code> of the
+following form
+<programlisting>
+  public DoubleCounter(int _start)
+  {
+    super(_start);
+  } // DoubleCounter(int)
+</programlisting>
+</para>
+
+<para>
+d. Update <code>WhatCounts</code> so that the initialization of
+<code>beta</code> reads
+<programlisting>
+    Counter beta = new DoubleCounter(123);
+</programlisting>
+</para>
+
+<para>
+e. What effect do you expect this change to have?
+Confirm or refute your prediction experimentally.
+</para>
+
+<para>
+f. Override the <code>increment</code> method by inserting the following
+code into <code>DoubleCounter</code>
+<programlisting>
+  public void increment()
+  { 
+    super.increment();
+    super.increment();
+  } // increment()
+</programlisting>
+</para>
+
+<para>
+g. What effect do you expect this change to have?
+Confirm or refute your prediction experimentally.
+</para>
+</section> <!-- Exercise 4 -->
+
+<section id="inheritance-05"> <title>Exercise 5: Limited Counters</title>
+
+<para>
+a. Create a subclass of <code>Counter</code> called
+<code>LimitedCounter</code> that includes
+<itemizedlist>
+<listitem>an <code>int</code> field named <code>limit</code>;</listitem>
+<listitem>a constructor that takes two parameters: a starting value and
+  an upper limit (that is, a value for the <code>limit</code> field); and</listitem>
+<listitem>a modified <code>increment</code> method that throws an exception
+  when <code>count</code> exceeds limit.</listitem>
+</itemizedlist>
+</para>
+
+<para>
+b. Determine the results of changing the initialization of 
+<code>gamma</code> to
+<programlisting>
+  Counter gamma = new LimitedCounter(-5,3);
+</programlisting>
+</para>
+</section> <!-- Exercise 5 -->
+
+<section id="inheritance-06"> <title>Exercise 6: Limited Counters, Revisited</title>
+
+<para>
+a. Make <code>LimitedCounter</code> a subclass of <code>DoubleCounter</code>
+rather than a subclass of <code>Counter</code>.  (That is, change the
+line that reads <code>extends Counter</code> to read
+<code>extends DoubleCounter</code>.)
+</para>
+
+<para>
+b. What effect, if any, do you expect that change to have?  Confirm or
+refute your results experimentally.
+</para>
+</section> <!-- Exercise 6 -->
+
+</section> <!-- Exercises -->
+
+</section> <!-- Inheritance Lab -->

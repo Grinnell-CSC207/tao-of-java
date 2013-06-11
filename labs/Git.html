@@ -1,0 +1,120 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Laboratory: Intro to Git
+  (COURSE ID)
+</title><link rel="stylesheet" href="../resources/stylesheet.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"></head><body style="background-image:url(../Images/logo.png);"><p xmlns="http://www.w3.org/TR/xhtml1/transitional" class="course">
+  The New Tao of Java
+<br></br><a name="body"></a></p><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="NOPRINT"><p class="links">
+[<a href="#body">Skip to Body</a>]
+</p><p class="links"><b>Sections:</b> [<a href="../assignments/">Assignments</a>] [<a href="../examples/">Examples</a>] [<a href="../handouts/">Handouts</a>] [<a href="../readings/">Readings</a>]
+</p><p class="links"><b>Reference:</b> [<a href="http://docs.oracle.com/javase/7/docs/api/">Java 7 API</a>]
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h1 xmlns="http://www.w3.org/TR/xhtml1/transitional">Laboratory: Intro to Git</h1></div></div><hr></div><p>
+<span class="emphasis"><em>Summary</em></span>: In this laboratory, you will be practicing using git.
+You can either use the command line (helpful commands above) to manage your git repositories or we can do it straight from Eclipse. Eclipse has a plugin, EGit that makes it easier to interact with GitHub straight from Eclipse instead of using the command line which can sometimes get messy and confusing. 
+If you do though opt to go the command line route in the future, here's a list of commands you might find useful:
+</p><code class="code">
+git config --global user.name <span class="emphasis"><em>&#8220;Your Name&#8221;</em></span>
+git config --global user.email <span class="emphasis"><em>your_email@example.com</em></span>
+git config --global core.editor <span class="emphasis"><em>editor</em></span>
+
+git help
+git clone
+git add
+git commit
+git pull
+git push
+</code><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercises</h2></div></div></div><p>
+<span class="emphasis"><em>Setting Up</em></span>
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 0: Preparation</h2></div></div></div><p>
+Make sure you&#8217;ve read the Intro to Git reading. 
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 1: Make an Account</h2></div></div></div><p>
+Make a github account at <a class="ulink" href="https://github.com/" target="_top">https://github.com/</a>
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 2: Create a Workspace</h2></div></div></div><p>
+Create a folder on your computer where you&#8217;ll store all your course files that you want to upload to git. Name it &#8220;Workspace&#8221; for example.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 3: Putting your files in one place</h2></div></div></div><p>
+Go into Eclipse <span class="guimenu">Window</span> &gt; <span class="guimenuitem">Preferences</span>. This opens a new window, go to <span class="guimenuitem">Team</span>, click the open button to its left, and click <span class="guimenuitem">Git</span>. Change the default repository folder to the folder you just created. Click <span class="guibutton">Apply</span>.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 4: Configuring Git</h2></div></div></div><p>
+Now click the open button for <span class="guimenuitem">Git</span> and go to <span class="guimenuitem">Configurations</span> and make sure that under user it says
+
+    <code class="code">email    youremail@grinnell.edu</code>
+
+    <code class="code">name    your_name</code>
+</p><p>
+If it doesn&#8217;t you should add new entries for both those values.
+Click on <span class="guibutton">Add Entry</span> and put user.name as the <span class="emphasis"><em>Key</em></span> and your username on GitHub as the <span class="emphasis"><em>Value</em></span>. Click on <span class="guibutton">Add Entry</span> again and put user.email as the <span class="emphasis"><em>Key</em></span> and the email you used for GitHub as the <span class="emphasis"><em>Value</em></span>.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 5: Connecting Eclipse to GitHub</h2></div></div></div><p>
+Stay in Preferences and open <span class="guimenuitem">General</span>, open <span class="guimenuitem">Network Connections</span> and go to SSH2
+Click the <span class="guimenuitem">Key Management</span> then <span class="guibutton">Generate RSA Key</span>. Copy the key to your clipboard. Click <span class="guibutton">Save Private Key</span> to save the key and click <span class="guibutton">Apply</span>. Exit the preferences.
+</p></div><span class="emphasis"><em>Creating Your First Repository</em></span><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 6: Connecting Eclipse to GitHub</h2></div></div></div><p>
+Go to the your <span class="guibutton">Account Settings</span> on the GitHub website. Under <span class="guibutton">SSH Keys</span> click <span class="guibutton">Add SSH key</span>. Give it a descriptive name (EGit), and paste the key you just copied from Git.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 7: Creating a New Repo</h2></div></div></div><p>
+Create a new repository. You do this by clicking the <span class="guibutton">Create a new repo</span> button located next to you username on top of the GitHub website. Make it public and check <span class="emphasis"><em>Initialize this repository with a README</em></span>. 
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 8: Grabbing Your Repo&#8217;s Link</h2></div></div></div><p>
+Copy the <span class="emphasis"><em>SSH URI</em></span> located on the top next to the HTTP | SSH | Git Read-Only tabs. Make sure you&#8217;ve selected the <span class="guibutton">SSH tab</span>.
+</p><p>
+<code class="code">Example: git@github.com:username/RepoName.git</code>
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 9: Getting the Repo to Show up in Eclipse</h2></div></div></div><p>
+Go into Eclipse &gt; <span class="guimenu">File</span> &gt; <span class="guimenuitem">Import</span> ang click <span class="guimenuitem">Git</span> then go to <span class="guimenuitem">Projects from Git</span> then <span class="guimenuitem">URI</span> and paste the URI you just copied from GitHub, make sure the Host is github.com and the Repository path is username/RepoName.git. Under <span class="emphasis"><em>Authentication</em></span> the <span class="emphasis"><em>User</em></span> should be set to &#8220;git&#8221; and not your actual username and password. Make sure the <span class="emphasis"><em>protocol</em></span> is set to blank. Click <span class="guibutton">Next</span>.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 10: Getting the Repo to Show up in Eclipse</h2></div></div></div><p>
+Make sure that master is checked and click <span class="guibutton">Next</span>. Make sure the Directory the file&#8217;s going into is the folder you created at the beginning. Leave the Initial branch as master and the Remote name as origin. Click <span class="guibutton">Next</span>. 
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 11: Syncing it with the Package Explorer</h2></div></div></div><p>
+You&#8217;ve added the repository to Eclipse. Now we want to make an accompanying project in the Package Explorer. You should be presented with a wizard to create a project in your Package Explorer. Choose <span class="guimenuitem">Use the New Project Wizard</span>. To view all your Git repositories go to <span class="guimenu">Window</span> &gt; <span class="guimenuitem">Show View</span> &gt; <span class="guimenuitem">Other</span>. Open <span class="emphasis"><em>Git</em></span> and click on <span class="emphasis"><em>Git Repositories</em></span>. You should now be able to view your newly added repository.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 12: Syncing it with the Package Explorer</h2></div></div></div><p>
+Select the new project to be a Java Project. Open <span class="guimenuitem">Java</span>, choose <span class="guimenuitem">Java Project</span> and click <span class="guibutton">Next</span>. 
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 13: Naming the Project</h2></div></div></div><p>
+Give it an appropriate name (you should probably name it the same as you named your repo, just to avoid confusion in the future). 
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 14: Finishing it up</h2></div></div></div><p>
+Untick  <span class="emphasis"><em>Use default location</em></span> and click <span class="guibutton">Browse</span>. Now navigate to your new repository. Click <span class="guibutton">Finish</span>.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 15: Marvel at how Long It Took to Get That Set up</h2></div></div></div><p>
+The new project should now appear in the Package Explorer. It is connected to the git repository and you can add new files, delete them, and modify them as you please.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 16: Getting Changes to Appear on GitHub</h2></div></div></div><p>
+We need to commit these changes to the repo. Right click on your new project in the Package Explorer. Go to <span class="guimenuitem">Team</span> &gt; <span class="guimenuitem">Commit</span>
+Select all the files that have been changed and type in a Commit message (for example: setting up) and click <span class="guibutton">Commit and Push</span>.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 17: FIN!</h2></div></div></div><p>
+You&#8217;re done. You should now be able to view your modified project in your GitHub repo.
+</p></div><p>
+<span class="emphasis"><em>Getting an Already Existing Repository</em></span>
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Getting an Already Existing Repository</h2></div></div></div><p>
+When you want to work in a group or contribute to someone else&#8217;s repository, you might not be the one to create it. There are two ways of getting an already existing repository. You can either:
+</p><div class="itemizedlist"><ul type="disc"><li>Fork it from someone else&#8217;s repository and follow the steps above</li><li>Import their project directly</li></ul></div><p>
+</p></div><p>
+<span class="emphasis"><em>Forking a Repository</em></span>
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 18: Intro to Forking</h2></div></div></div><p>
+To fork someone else&#8217;s repository start by going to <a class="ulink" href="https://github.com" target="_top">https://github.com</a> 
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 19: More Forking</h2></div></div></div><p>
+On the website navigate to the repository that you want to work on.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 20: Still More Forking</h2></div></div></div><p>
+In the upper right corner there&#8217;s a button <span class="guibutton">Fork</span>. Click it and fork it to your account. As GitHub processes the Fork request, there will be a picture of a book being scanned with a fork stuck in it.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 21: Your First Fork</h2></div></div></div><p>
+In the upper right corner there&#8217;s a button <span class="guibutton">Fork</span>. Click it and fork it to your account. As GitHub processes the Fork request, there will be a picture of a book being scanned with a fork stuck in it.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 22: Getting it on Eclipse</h2></div></div></div><p>
+Follow step 9 through 11 of section Creating Your First Repository.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 23: Getting it on Eclipse</h2></div></div></div><p>
+For step 12, choose <span class="guimenuitem">Import from Existing Project</span> instead of choosing <span class="guimenuitem">Use the New Project Wizard</span>.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 24: Getting it on Eclipse</h2></div></div></div><p>
+Follow steps 13 through 18 to get it in Eclipse and start contributing.
+</p></div><p>
+<span class="emphasis"><em>Importing Directly</em></span>
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Importing Directly</h2></div></div></div><p>
+When you import directly from someone else&#8217;s repository you might not be able to push to that repository unless they&#8217;ve given you special permission. In that case you can either send the person a request for them to accept your push or just fork the repository and work on it yourself (giving them proper credit, of course).
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 26: Importing directly</h2></div></div></div><p>
+You need to go to the repository you want to grab on GitHub and copy the SSH URI link.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 27: Getting it in Eclipse</h2></div></div></div><p>
+In Eclipse you need to go to <span class="guimenu">File</span> &gt; <span class="guimenuitem">Import</span> and open Git. Choose <span class="guimenuitem">Projects from Git</span> and click <span class="guibutton">Next</span>. Choose <span class="guimenuitem">URI</span> and click <span class="guibutton">Next</span>. Enter the URI you just copied and click <span class="guibutton">Next</span> and <span class="guibutton">Next</span> again. Make sure the it goes into the folder (directory) that you&#8217;ve designated for the class and click <span class="guibutton">Next</span>. Choose <span class="guimenuitem">Import Existing Project</span>.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 28: Showing the Project in the Package Explorer</h2></div></div></div><p>
+You should be able to see the repository in the Git Repositories view as well as the Package Explorer.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 29: Changing the Project</h2></div></div></div><p>
+You can edit it freely from the Package Explorer.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 30: Pushing the Changes</h2></div></div></div><p>
+After you&#8217;re done you need to commit the changes: right click on the project, go to <span class="guimenuitem">Team</span> and select <span class="guimenuitem">Commit</span>. Type in your commit message and choose <span class="guibutton">Commit and Push</span>.
+</p></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="foot"><div class="NOPRINT"><hr></hr><div class="NOPRINT"><p class="links">
+[<a href="#body">Skip to Body</a>]
+</p><p class="links"><b>Sections:</b> [<a href="../assignments/">Assignments</a>] [<a href="../examples/">Examples</a>] [<a href="../handouts/">Handouts</a>] [<a href="../readings/">Readings</a>]
+</p><p class="links"><b>Reference:</b> [<a href="http://docs.oracle.com/javase/7/docs/api/">Java 7 API</a>]
+</p></div><div class="pagenotes"><p><a rel="license" href="http://creativecommons.org/licenses/by-nc/2.5/"><img alt="Creative Commons License" style="border-width: 0" src="http://creativecommons.org/images/public/somerights20.png"></img></a></p></div></div><div class="pagenotes"><p>
+Copyright (c) 2013 Samuel A. Rebelsky and the Glimmer '13 team.
+</p><p>
+This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/2.5/">Creative Commons
+Attribution-NonCommercial 2.5  License</a>.  To view a copy of this
+license, visit <a href="http://creativecommons.org/licenses/by-nc/2.5/"><code>http://creativecommons.org/licenses/by-nc/2.5/</code></a> 
+or send a letter to Creative Commons, 543 Howard Street, 5th Floor, 
+San Francisco, California, 94105, USA.
+</p></div></div></body></html>
