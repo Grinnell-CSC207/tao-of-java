@@ -1,16 +1,27 @@
-default: assignments labs readings
+# +-----------------+-------------------------------------------------
+# | Standard Targets|
+# +-----------------+
 
-assignments: assignments/*
-	$(MAKE) -C assignments
+default: 
+	cd assignments; make default
+	cd handouts; make default
+	cd labs; make default
+	cd misc; make default
+	cd readings; make default
+	cd sandbox; make default
 
-labs: labs/*
-	$(MAKE) -C labs
+clean:
+	cd assignments; make clean
+	cd handouts; make clean
+	cd labs; make clean
+	cd misc; make clean
+	cd readings; make clean
+	cd resources; make clean
+	cd sandbox; make clean
 
-readings: readings/*
-	$(MAKE) -C readings
-
-update:
-	svn update
+# +--------------+----------------------------------------------------
+# | Fun with git |
+# +--------------+
 
 # Get the status of files without worrying about the typical locally
 # generated files.
@@ -21,3 +32,6 @@ status:
 	| grep -v 'ps$$' \
 	| grep -v 'pdf$$'
 
+# Update the repository.  (Yeah, I still think in terms of Subversion)
+update:
+	git pull 

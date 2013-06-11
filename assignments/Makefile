@@ -46,7 +46,6 @@ clean:
 # +---------------+
 
 sect := $(shell ls *.sect) 	        # Lists all files matching *.sect
-docbook := $(shell ls *.docbook)     
 sect-html := $(sect:%.sect=%.html)      # Converts .sect to .html
 sect-docbook := $(sect:%.sect=%.docbook)
 
