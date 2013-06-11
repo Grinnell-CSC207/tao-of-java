@@ -1,0 +1,66 @@
+<section id="lab-javadoc"> <title>Laboratory: Javadoc &amp; Unit Testing</title>
+
+<para>
+<emphasis>Summary</emphasis>: In this laboratory, you will have the chance to improve your skills regarding code documentation and testing.
+</para>
+
+<section id="javadoc-exercises"> <title>Exercises</title>
+
+<para>
+<emphasis>Javadoc</emphasis>
+</para>
+
+<section id="javadoc-0"> <title>Exercise 0: Preparation</title>
+
+<para>
+Make sure you’ve read the related reading. It might be useful to refer to it by opening it up in a separate tab.
+</para>
+</section> <!-- Exercise 0 -->
+
+<section id="javadoc-1"> <title>Exercise 1: Make your own</title>
+
+<para>
+Now it’s time for you to write some comments and generate Javadocs. In the previous lab you had to fix some broken code. Hopefully you’re done fixing it by now and you know how everything works. Your task for today is to thoroughly document every method and generate the Javadoc HTML. Attach those HTML files to the project and push it to your repository.
+</para>
+
+<para>
+* Hint: When you generate Javadoc, the HTML files will automatically be added to your project under the <emphasis>doc</emphasis> (documentation) folder.
+</para>
+</section> <!-- Exercise 1 -->
+
+<para>
+<emphasis>Unit Testing</emphasis>
+</para>
+
+<section id="javadoc-2"> <title>Exercise 2: Setting up</title>
+
+<para>
+Create a JUnit Test Case for your FixedCode class, by right clicking it going to <emphasis>New > JUnit Test Case</emphasis>. Remember that Eclipse will automatically name the class for you so all you have to do is hit next so that you can move onto the Test Methods screen. When you choose the methods you want to test select <code>sumUp()</code>, <code>removeAs()</code>, <code>convertToFahrenheit()</code>, and <code>powerOf()</code>.
+</para>
+
+</section> <!-- Exercise 2 -->
+
+<section id="javadoc-3"> <title>Exercise 3: Creating Test Cases</title>
+
+<para>
+For each test method you must use at least two of the tests provided in the reading, however you must:
+
+<itemizedlist>
+<listitem>Utilize an <code>assertEquals</code> test for the methods <code>sumUp()</code>, <code>convertToFahrenheit()</code>, and <code>powerOf()</code>.</listitem>
+<listitem>Utilize an <code>assertNotSame</code> test for <code>removeAs()</code></listitem>
+</itemizedlist>
+</para>
+
+<para>
+After you have written your test cases hit run and check to see if all of your methods pass.
+If any methods fail, make note of which ones and rewrite the test so that they pass. 
+* Hint: This may include utilizing tests like <code>assertTrue</code> or <code>assertFalse</code>.
+</para>
+
+</section> <!-- Exercise 3 -->
+
+</section> <!-- Exercises -->
+
+</section> <!-- Lab Javadoc & Unit Testing -->
+
+

@@ -1,0 +1,226 @@
+<section id="io"> <title>Laboratory: Simple Input and Output</title> 
+
+<emphasis>Summary</emphasis>: In this laboratory, you will explore the basics of input and output in Java.
+
+<emphasis>Classes Used</emphasis>:
+<itemizedlist>
+<listitem><ulink url="{$javaapi}java/io/BufferedReader.html"><code>java.io.BufferedReader</code></ulink></listitem>
+<listitem><ulink url="{$javaapi}java/io/FileReader.html"><code>java.io.FileReader</code></ulink></listitem>
+<listitem><ulink url="{$javaapi}java/io/File.html"><code>java.io.File</code></ulink></listitem>
+<listitem><ulink url="{$javaapi}java/io/InputStreamReader.html"><code>java.io.InputStreamReader</code></ulink></listitem>
+<listitem><ulink url="{$javaapi}java/io/PrintWriter.html"><code>java.io.PrintWriter</code></ulink></listitem>
+</itemizedlist>
+
+<section id="exercises"> <title>Exercises</title>
+
+<section id="io-0"> <title>Exercise 0: Preparation</title>
+
+<para>
+a. Review <ulink url="../Readings/io.html">Simple Input and Output</ulink>.
+</para>
+
+<para>
+b. Create a new directory for this lab, called <code>/home/<emphasis>username</emphasis>/CSC152/IO</code>.  
+</para>
+
+<para>
+c. Within that directory, create the directories for the package <code><emphasis>username</emphasis>.io</code>.  
+</para>
+
+<para>
+d. Start Eclipse and tell it to load the project from the IO directory.
+</para>
+
+</section> <!-- Exercise 0 -->
+
+<section id="io-1"> <title>Exercise 1: Basic Interaction</title>
+
+<para>
+Write and test a main class called <code>Greet</code> that prompts the
+user for a name, reads a name from the keyboard, and prints a greeting
+to the screen.  Your output should resemble the following:
+</para>
+
+<para>
+<programlisting>
+What is your name? Sam
+Have a nice day Sam!
+</programlisting>
+</para>
+
+<para>
+To create a new class, select <emphasis>New</emphasis> and then <emphasis>Class</emphasis> from the 
+<emphasis>File</emphasis> menu.  Make sure to indicate that the class belongs in
+package <code><emphasis>username</emphasis>.io</code>.
+</para>
+
+<para>
+To type a response, you may need to click in the console area of the
+Eclipse window.
+</para>
+</section> <!-- Exercise 1 -->
+
+<section id="io-2"> <title>Exercise 2: Creating a File</title>
+
+<para>
+a. Write and test a main class called <code>DumpInfo</code> that 
+prints the following three lines to the screen.
+<itemizedlist>
+<listitem>Your name</listitem>
+<listitem>Your email address</listitem>
+<listitem>Your favorite color</listitem>
+</itemizedlist>
+</para>
+
+<para>
+b. Update <code>DumpInfo</code> so that it instead creates a file
+and dumps the information to that file.
+</para>
+
+<para>
+c. Predict what will happen when you have <code>DumpInfo.java</code>
+write to a file that already exists.  (For example, if you run it a
+second time.)
+</para>
+
+<para>
+d. Verify your prediction experimentally.
+</para>
+
+<para>
+e. Predict what will happen when you modify <code>DumpInfo.java</code>
+to write to a file in a classmate's directory.
+</para>
+
+<para>
+f. Verify your prediction experimentally.
+</para>
+</section> <!-- Exercise 2 -->
+
+<section id="io-3"> <title>Exercise 3: Reading a File</title>
+
+<para>
+a. Write and test a main class called <code>ShowInfo</code> that reads a file
+of three lines named <code>info</code> and prints each line preceeded
+by a category prompt (Name, Email, Color).  For example, if the file contains
+<programlisting>
+J. Doe
+doej@gmail.com
+plaid
+</programlisting>
+the output on the screen should be
+<programlisting>
+Name: J. Doe
+Email: doej@gmail.com
+Fave Color: plaid
+</programlisting>
+</para>
+
+<para>
+b. Modify <code>info</code> using gedit and verify that
+<code>ShowInfo</code> continues to work correctly.
+</para>
+</section> <!-- Exercise 3 -->
+
+<section id="io-4"> <title>Exercise 4: Insufficient Input</title>
+
+<para>
+a. What do you expect to happen when you run <code>ShowInfo</code> 
+if <code>info</code> contains only two lines (e.g., doesn't contain a color)?
+</para>
+
+<para>
+b. Verify your answer experimentally.
+</para>
+
+<para>
+c. What do you expect to happen when you run <code>ShowInfo</code>
+if <code>info</code> does not exist?
+</para>
+
+<para>
+d. Verify your answer experimentally.
+</para>
+
+<para>
+e. What do you expect to happen when you run <code>ShowInfo</code>
+using a file in a classmate's directory?
+</para>
+
+<para>
+f. Verify your answer experimentally.
+</para>
+</section> <!-- Exercise 4 -->
+
+<section id="io-5"> <title>Exercise 5: Copying Parts of a File</title>
+
+<para>
+Write and test a main class, <code>CopyTwoLines</code>, that copies
+the first two lines from a file named <code>source</code> and places
+them in a file named <code>destination</code>.
+</para>
+
+</section> <!-- Exercise 5 -->
+
+<section id="io-6"> <title>Exercise 6: Copying Parts of a File, Revisited</title>
+
+<para>
+Write a test a main class, <code>NewCopier</code>, that prompts the
+user for the name of two files and copies the first two lines from the
+first file to the second file.
+</para>
+
+</section> <!-- Exercise 6 -->
+
+<section id="io-7"> <title>Exercise 7: Rewinding a File"</title>
+
+<para>
+Write a short main class, <code>ReadTwice</code>, that prompts
+the user for a file, builds a <code>BufferedReader</code> for the
+file, sets a mark, reads the first line from the file, resets the
+<code>BufferedReader</code>, and reads again.
+</para>
+
+</section> <!-- Exercise 7 -->
+
+</section> <!-- Exercises -->
+
+<section id="extra"> <title>Extra Work</title>
+
+<para>
+If you finish the lab early, you may want to try some or all of the following.
+</para>
+
+<section id="extra-1"> <title>Extra 1: Marks and Keyboard Input</title>
+
+<para>
+Determine whether you can use <code>mark</code> and <code>reset</code>
+for input taken from the keyboard in addition to input taken from a
+file.
+</para>
+
+</section> <!-- Extra 1 -->
+
+<section id="extra-2"> <title>Extra 2: Multiple Marks</title>
+
+<para>
+Determine whether you can place more than one mark in a file.
+</para>
+
+</section> <!-- Extra 2 -->
+
+<section id="extra-3"> <title>Extra 3: Reading Ahead</title>
+
+<para>
+Determine what happens if you read more than <code>readAheadLimit</code>
+characters between calls to <code>mark</code> and <code>reset</code>.  Does
+the size of <code>readAheadLimit</code> make a difference (e.g., do you
+get the same behavior for small and large <code>readAheadLimit</code> if
+you read only two characters beyond that limit)?
+</para>
+</section> <!-- Extra 3 -->
+
+</section> <!-- Extras -->
+
+</section> <!-- IO Lab -->
+

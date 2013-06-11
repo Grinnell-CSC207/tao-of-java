@@ -1,0 +1,126 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Laboratory: Simple Input and Output
+  (COURSE ID)
+</title><link rel="stylesheet" href="../resources/stylesheet.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"></head><body style="background-image:url(../Images/logo.png);"><p xmlns="http://www.w3.org/TR/xhtml1/transitional" class="course">
+  The New Tao of Java
+<br></br><a name="body"></a></p><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="NOPRINT"><p class="links">
+[<a href="#body">Skip to Body</a>]
+</p><p class="links"><b>Sections:</b> [<a href="../assignments/">Assignments</a>] [<a href="../examples/">Examples</a>] [<a href="../handouts/">Handouts</a>] [<a href="../readings/">Readings</a>]
+</p><p class="links"><b>Reference:</b> [<a href="http://docs.oracle.com/javase/7/docs/api/">Java 7 API</a>]
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h1 xmlns="http://www.w3.org/TR/xhtml1/transitional">Laboratory: Simple Input and Output</h1></div></div><hr></div><span class="emphasis"><em>Summary</em></span>: In this laboratory, you will explore the basics of input and output in Java.
+
+<span class="emphasis"><em>Classes Used</em></span>:
+<div class="itemizedlist"><ul type="disc"><li><a class="ulink" href="%7B%24javaapi%7Djava/io/BufferedReader.html" target="_top"><code class="code">java.io.BufferedReader</code></a></li><li><a class="ulink" href="%7B%24javaapi%7Djava/io/FileReader.html" target="_top"><code class="code">java.io.FileReader</code></a></li><li><a class="ulink" href="%7B%24javaapi%7Djava/io/File.html" target="_top"><code class="code">java.io.File</code></a></li><li><a class="ulink" href="%7B%24javaapi%7Djava/io/InputStreamReader.html" target="_top"><code class="code">java.io.InputStreamReader</code></a></li><li><a class="ulink" href="%7B%24javaapi%7Djava/io/PrintWriter.html" target="_top"><code class="code">java.io.PrintWriter</code></a></li></ul></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercises</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 0: Preparation</h3></div></div></div><p>
+a. Review <a class="ulink" href="../Readings/io.html" target="_top">Simple Input and Output</a>.
+</p><p>
+b. Create a new directory for this lab, called <code class="code">/home/<span class="emphasis"><em>username</em></span>/CSC152/IO</code>.  
+</p><p>
+c. Within that directory, create the directories for the package <code class="code"><span class="emphasis"><em>username</em></span>.io</code>.  
+</p><p>
+d. Start Eclipse and tell it to load the project from the IO directory.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 1: Basic Interaction</h3></div></div></div><p>
+Write and test a main class called <code class="code">Greet</code> that prompts the
+user for a name, reads a name from the keyboard, and prints a greeting
+to the screen.  Your output should resemble the following:
+</p><p>
+</p><pre class="programlisting">
+What is your name? Sam
+Have a nice day Sam!
+</pre><p>
+</p><p>
+To create a new class, select <span class="emphasis"><em>New</em></span> and then <span class="emphasis"><em>Class</em></span> from the 
+<span class="emphasis"><em>File</em></span> menu.  Make sure to indicate that the class belongs in
+package <code class="code"><span class="emphasis"><em>username</em></span>.io</code>.
+</p><p>
+To type a response, you may need to click in the console area of the
+Eclipse window.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 2: Creating a File</h3></div></div></div><p>
+a. Write and test a main class called <code class="code">DumpInfo</code> that 
+prints the following three lines to the screen.
+</p><div class="itemizedlist"><ul type="disc"><li>Your name</li><li>Your email address</li><li>Your favorite color</li></ul></div><p>
+</p><p>
+b. Update <code class="code">DumpInfo</code> so that it instead creates a file
+and dumps the information to that file.
+</p><p>
+c. Predict what will happen when you have <code class="code">DumpInfo.java</code>
+write to a file that already exists.  (For example, if you run it a
+second time.)
+</p><p>
+d. Verify your prediction experimentally.
+</p><p>
+e. Predict what will happen when you modify <code class="code">DumpInfo.java</code>
+to write to a file in a classmate's directory.
+</p><p>
+f. Verify your prediction experimentally.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 3: Reading a File</h3></div></div></div><p>
+a. Write and test a main class called <code class="code">ShowInfo</code> that reads a file
+of three lines named <code class="code">info</code> and prints each line preceeded
+by a category prompt (Name, Email, Color).  For example, if the file contains
+</p><pre class="programlisting">
+J. Doe
+doej@gmail.com
+plaid
+</pre><p>
+the output on the screen should be
+</p><pre class="programlisting">
+Name: J. Doe
+Email: doej@gmail.com
+Fave Color: plaid
+</pre><p>
+</p><p>
+b. Modify <code class="code">info</code> using gedit and verify that
+<code class="code">ShowInfo</code> continues to work correctly.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 4: Insufficient Input</h3></div></div></div><p>
+a. What do you expect to happen when you run <code class="code">ShowInfo</code> 
+if <code class="code">info</code> contains only two lines (e.g., doesn't contain a color)?
+</p><p>
+b. Verify your answer experimentally.
+</p><p>
+c. What do you expect to happen when you run <code class="code">ShowInfo</code>
+if <code class="code">info</code> does not exist?
+</p><p>
+d. Verify your answer experimentally.
+</p><p>
+e. What do you expect to happen when you run <code class="code">ShowInfo</code>
+using a file in a classmate's directory?
+</p><p>
+f. Verify your answer experimentally.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 5: Copying Parts of a File</h3></div></div></div><p>
+Write and test a main class, <code class="code">CopyTwoLines</code>, that copies
+the first two lines from a file named <code class="code">source</code> and places
+them in a file named <code class="code">destination</code>.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 6: Copying Parts of a File, Revisited</h3></div></div></div><p>
+Write a test a main class, <code class="code">NewCopier</code>, that prompts the
+user for the name of two files and copies the first two lines from the
+first file to the second file.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 7: Rewinding a File"</h3></div></div></div><p>
+Write a short main class, <code class="code">ReadTwice</code>, that prompts
+the user for a file, builds a <code class="code">BufferedReader</code> for the
+file, sets a mark, reads the first line from the file, resets the
+<code class="code">BufferedReader</code>, and reads again.
+</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Extra Work</h2></div></div></div><p>
+If you finish the lab early, you may want to try some or all of the following.
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 xmlns="http://www.w3.org/TR/xhtml1/transitional">Extra 1: Marks and Keyboard Input</h3></div></div></div><p>
+Determine whether you can use <code class="code">mark</code> and <code class="code">reset</code>
+for input taken from the keyboard in addition to input taken from a
+file.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 xmlns="http://www.w3.org/TR/xhtml1/transitional">Extra 2: Multiple Marks</h3></div></div></div><p>
+Determine whether you can place more than one mark in a file.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 xmlns="http://www.w3.org/TR/xhtml1/transitional">Extra 3: Reading Ahead</h3></div></div></div><p>
+Determine what happens if you read more than <code class="code">readAheadLimit</code>
+characters between calls to <code class="code">mark</code> and <code class="code">reset</code>.  Does
+the size of <code class="code">readAheadLimit</code> make a difference (e.g., do you
+get the same behavior for small and large <code class="code">readAheadLimit</code> if
+you read only two characters beyond that limit)?
+</p></div></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="foot"><div class="NOPRINT"><hr></hr><div class="NOPRINT"><p class="links">
+[<a href="#body">Skip to Body</a>]
+</p><p class="links"><b>Sections:</b> [<a href="../assignments/">Assignments</a>] [<a href="../examples/">Examples</a>] [<a href="../handouts/">Handouts</a>] [<a href="../readings/">Readings</a>]
+</p><p class="links"><b>Reference:</b> [<a href="http://docs.oracle.com/javase/7/docs/api/">Java 7 API</a>]
+</p></div><div class="pagenotes"><p><a rel="license" href="http://creativecommons.org/licenses/by-nc/2.5/"><img alt="Creative Commons License" style="border-width: 0" src="http://creativecommons.org/images/public/somerights20.png"></img></a></p></div></div><div class="pagenotes"><p>
+Copyright (c) 2013 Samuel A. Rebelsky and the Glimmer '13 team.
+</p><p>
+This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/2.5/">Creative Commons
+Attribution-NonCommercial 2.5  License</a>.  To view a copy of this
+license, visit <a href="http://creativecommons.org/licenses/by-nc/2.5/"><code>http://creativecommons.org/licenses/by-nc/2.5/</code></a> 
+or send a letter to Creative Commons, 543 Howard Street, 5th Floor, 
+San Francisco, California, 94105, USA.
+</p></div></div></body></html>

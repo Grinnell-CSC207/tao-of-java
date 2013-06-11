@@ -1,0 +1,52 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Implementing Linked Lists
+  (COURSE ID)
+</title><link rel="stylesheet" href="../resources/stylesheet.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"></head><body style="background-image:url(../Images/logo.png);"><p xmlns="http://www.w3.org/TR/xhtml1/transitional" class="course">
+  The New Tao of Java
+<br></br><a name="body"></a></p><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="NOPRINT"><p class="links">
+[<a href="#body">Skip to Body</a>]
+</p><p class="links"><b>Sections:</b> [<a href="../assignments/">Assignments</a>] [<a href="../examples/">Examples</a>] [<a href="../handouts/">Handouts</a>] [<a href="../readings/">Readings</a>]
+</p><p class="links"><b>Reference:</b> [<a href="http://docs.oracle.com/javase/7/docs/api/">Java 7 API</a>]
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h1 xmlns="http://www.w3.org/TR/xhtml1/transitional">Implementing Linked Lists</h1></div></div><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Introduction</h2></div></div></div><p>
+	In this lab, you will implement a singly-linked list of strings, and later, a doubly-linked list of strings. You will also implement iterators for both of them. Linked lists are described in great detail in the reading. 
+
+	The official Java specifications for the list class can be found at the following link. You are NOT required to include all of these methods in your implementation.
+<a class="ulink" href="http://docs.oracle.com/javase/6/docs/api/java/util/List.html" target="_top">http://docs.oracle.com/javase/6/docs/api/java/util/List.html</a>
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 xmlns="http://www.w3.org/TR/xhtml1/transitional">Procedure</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 xmlns="http://www.w3.org/TR/xhtml1/transitional">Singly-Linked List</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 0</h4></div></div></div><p>
+ 	 Clone the repository from Git. 
+ 	 <a class="ulink" href="https://github.com/spencerbliberto/linkedList207" target="_top"> code</a>
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 1</h4></div></div></div><p>
+	Write a test suite for the SinglyLinkedList class, which will evaluate the correctness of its methods.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 2</h4></div></div></div><p>
+	Implement the SinglyLinkedList class. Hint: Think critically about the special cases for adding and removing. As per the reading, algorithms for manipulating lists alter between empty lists and non-empty lists.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 3</h4></div></div></div><p>
+	Use the test suite you wrote for step 2 to check the correctness of your SinglyLinkedList class implementation.
+</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 xmlns="http://www.w3.org/TR/xhtml1/transitional">Iterators</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 0</h4></div></div></div><p>
+	Write a test suite for the SinglyLinkedListIterator class, which will evaluate the correctness of its methods.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 1</h4></div></div></div><p>
+	Implement the SinglyLinkedListIterator class.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 2</h4></div></div></div><p>
+	Why was remove() included in the SinglyLinkedIterator class, if you aren&#8217;t meant to implement it?
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 3</h4></div></div></div><p>
+	Use the test suite you wrote for step 5 to check the correctness of your SinglyLinkedListIterator class implementation.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 4</h4></div></div></div><p>
+	<span class="emphasis"><em>Doubly Linked-List</em></span>
+	Implement the DoublyLinkedList class. Hint: This class is very much like the SinglyLinkedList class, to the point that the Javadocs are nearly identical. Moving from singly-linked list nodes to doubly-linked list nodes is supposed to simplify the methods of the class.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 5</h4></div></div></div><p>
+	Use the test suite you wrote for step 2 to check the correctness of your DoublyLinkedList class. 
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 6</h4></div></div></div><p>
+	Implement the DoublyLinkedListIterator class.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 xmlns="http://www.w3.org/TR/xhtml1/transitional">Exercise 7</h4></div></div></div><p>
+	12. Use the test suite you wrote for step 5 to check the correctness of your DoublyLinkedListIterator class implementation.
+</p></div></div></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="foot"><div class="NOPRINT"><hr></hr><div class="NOPRINT"><p class="links">
+[<a href="#body">Skip to Body</a>]
+</p><p class="links"><b>Sections:</b> [<a href="../assignments/">Assignments</a>] [<a href="../examples/">Examples</a>] [<a href="../handouts/">Handouts</a>] [<a href="../readings/">Readings</a>]
+</p><p class="links"><b>Reference:</b> [<a href="http://docs.oracle.com/javase/7/docs/api/">Java 7 API</a>]
+</p></div><div class="pagenotes"><p><a rel="license" href="http://creativecommons.org/licenses/by-nc/2.5/"><img alt="Creative Commons License" style="border-width: 0" src="http://creativecommons.org/images/public/somerights20.png"></img></a></p></div></div><div class="pagenotes"><p>
+Copyright (c) 2013 Samuel A. Rebelsky and the Glimmer '13 team.
+</p><p>
+This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/2.5/">Creative Commons
+Attribution-NonCommercial 2.5  License</a>.  To view a copy of this
+license, visit <a href="http://creativecommons.org/licenses/by-nc/2.5/"><code>http://creativecommons.org/licenses/by-nc/2.5/</code></a> 
+or send a letter to Creative Commons, 543 Howard Street, 5th Floor, 
+San Francisco, California, 94105, USA.
+</p></div></div></body></html>
