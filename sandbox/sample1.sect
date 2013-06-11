@@ -1,0 +1,12 @@
+<section id="sample1"><title>A Sample Document</title>
+
+<para>
+  This document is intended to be a very simple sample as we start
+  to figure out DocBook.
+</para>
+
+<para>
+<imagedata fileref="../images/MediaScript-Console.png" format="PNG"/>
+</para>
+
+</section> <!-- sample1 -->
