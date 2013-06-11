@@ -1,0 +1,263 @@
+<section id="polymorphism-lab"> <title>Laboratory: Polymorphism in Java</title>
+
+<para>
+<emphasis>Summary:</emphasis> In today's laboratory, you will explore 
+issues of polymorphism in Java.
+</para>
+
+<para>
+<emphasis>Equipment</emphasis>
+<itemizedlist>
+<listitem><ulink url="../Examples/username/math/Mathematician.java">Mathematician.java</ulink> </listitem>
+<listitem><ulink url="../Examples/username/math/TestMath.java">TestMath.java</ulink></listitem>
+<listitem><ulink url="../Examples/username/layout/TextBlock.java">TextBlock.java</ulink></listitem>
+<listitem><ulink url="../Examples/username/layout/TBUtils.java">TBUtils.java</ulink></listitem>
+<listitem><ulink url="../Examples/username/layout/Tester.java">Tester.java</ulink></listitem>
+<listitem><ulink url="../Examples/username/layout/TextLine.java">TextLine.java</ulink></listitem>
+<listitem><ulink url="../Examples/username/layout/BoxedBlock.java">BoxedBlock.java</ulink></listitem>
+<listitem><ulink url="../Examples/username/layout/HCompose.java">HCompose.java</ulink></listitem>
+<listitem><ulink url="../Examples/username/layout/VCompose.java">VCompose.java</ulink></listitem>
+</itemizedlist>
+</para>
+<section id="exercises"> <title>Exercises</title>
+
+<section id="polymorphism-00"> <title>Exercise 0: Preparation</title>
+
+<para>
+In this laboratory, you will use two new packages entitled
+<code><emphasis>username</emphasis>.math</code> and 
+<code><emphasis>username</emphasis>.layout</code>.
+</para>
+
+<para>
+a. In a terminal window, type
+<programlisting>
+/home/rebelsky/bin/espresso math
+/home/rebelsky/bin/espresso layout
+</programlisting>
+You should see messages about files being copied to a temporary
+directory.
+</para>
+
+<para>
+b. Start Eclipse.
+</para>
+
+<para>
+c. In Eclipse, build a project named <emphasis>Temp</emphasis> from
+<code>/home/<emphasis>username</emphasis>/CSC152/Temp</code>.
+</para>
+
+<para>
+d. In the <emphasis>Temp</emphasis> project, you should see packages named
+<code><emphasis>username</emphasis>.math</code> and
+<code><emphasis>username</emphasis>layout</code>.  Drag those packages to your
+<emphasis>Code</emphasis> project.
+</para>
+
+<para>
+e. Delete the <emphasis>Temp</emphasis> project.
+</para>
+
+<para>
+You can now work with the new packages.
+</para>
+
+</section> <!-- Exercise 0 -->
+
+<section id="polymorphism-01"> <title>Exercise 1: Square Roots</title>
+
+<para>
+a. Scan through <code>Mathematician.java</code> and verify that it has the form
+described in <ulink url="../Readings/polymorphism.html">the reading</ulink>.
+</para>
+
+<para>
+b. Extend the <code>main</code> method of <code>TestMath</code> so that
+it computes the square root of 
+an <code>Integer</code>, 
+a <code>Float</code>, 
+a <code>Double</code>, 
+a <code>BigInteger</code>, and 
+a <code>BigDecimal</code>.
+</para>
+
+<para>
+c. Verify that the square roots are correct by printing out the squares
+of the computed roots.
+</para>
+</section> <!-- Exercise 1 -->
+
+<section id="polymorphism-02"> <title>Exercise 2: Simple Lines</title>
+
+<para>
+As a first step in understanding the layout methods, extend the
+<code>main</code> method of <code><emphasis>username</emphasis>.layout.Tester</code> so that it 
+uses <code>TBUtils.print</code> to print a simple block.   I
+would suggest something like
+<programlisting>
+    TextBlock block = new TextLine("This is a test.");
+    TBUtils.print(pen,block);
+</programlisting>
+</para>
+
+</section> <!-- Exercise 2 -->
+
+<section id="polymorphism-03"> <title>Exercise 3: Boxed Text</title>
+
+<para>
+In <ulink url="../Readings/polymorphism.html">the reading</ulink>, I claimed
+that it was possible to combine text blocks together.  Try creating
+a boxed phrase and a boxed boxed phrase.
+</para>
+</section> <!-- Exercise 3 -->
+
+<section id="polymorphism-04"> <title>Exercise 4: Composing Text</title>
+
+<para>
+The classes <code>HCompose</code> and <code>VCompose</code> permit you
+to compose pairs of text blocks horizontally and vertically.  For
+example, <code>new HCompose(tb1,tb2)</code> makes a text block by
+putting <code>tb1</code> and <code>tb2</code> side-by-side, and
+<code>new VCompose(tb1,tb2)</code> makes a text block by putting
+<code>tb1</code> on top of <code>tb2</code>.
+</para>
+
+<para>
+a. Using <code>VCompose</code>, <code>TextLine</code>, and
+<code>BoxedBlock</code>, build the following text block:
+<programlisting>
++-------+
+|Hello  |
+|Goodbye|
++-------+
+</programlisting>
+</para>
+
+<para>
+b. Using <code>VCompose</code>, <code>TextLine</code>, and
+<code>BoxedBlock</code>, build the following text block:
+<programlisting>
++-----+
+|Hello|
++-----+
++-------+
+|Goodbye|
++-------+
+</programlisting>
+</para>
+
+<para>
+c. Using <code>HCompose</code>, <code>TextLine</code>, and
+<code>BoxedBlock</code>, build the following block:
+<programlisting>
++-----+Goodbye
+|Hello|
++-----+
+</programlisting>
+</para>
+
+<para>
+d. Using <code>HCompose</code>, <code>TextLine</code>, and
+<code>BoxedBlock</code>, build the following block:
+<programlisting>
+Goodbye+-----+
+       |Hello|
+       +-----+
+</programlisting>
+</para>
+</section> <!-- Exercise 4 -->
+
+<section id="polymorphism-05"> <title>Exercise 5: Other Compositions</title>
+
+<para>
+Use the various implementations of TextBlock to make an <quote>interesting</quote>
+textual composition.
+</para>
+</section> <!-- Exercise 5 -->
+
+<section id="polymorphism-06"> <title>Exercise 6: Writing HCompose</title>
+
+<para>
+Assume that <code>HCompose</code> has two fields, 
+<programlisting>
+  TextBlock left;
+  TextBlock right;
+</programlisting>
+</para>
+
+<para>
+a. Sketch how you might write 
+<itemizedlist>
+<listitem><code>String row(int rownum)</code>, </listitem>
+<listitem><code>int width()</code>, and </listitem>
+<listitem><code>int height()</code>.  </listitem>
+</itemizedlist>
+</para>
+
+<para>
+You can look at the source code of <code>BoxedBlock</code> for ideas,
+but please do not look at the source code of <code>HCompose</code>.
+</para>
+
+<para>
+b. Compare your answer to the source code of <code>HCompose</code>.
+</para>
+</section> <!-- Exercise 6 -->
+
+<section id="polymorphism-07"> <title>Exercise 7: Writing VCompose</title>
+
+<para>
+Assume that <code>VCompose</code> has two fields, 
+<programlisting>
+  TextBlock top;
+  TextBlock bottom;
+</programlisting>
+</para>
+
+<para>
+a. Sketch how you might write 
+<itemizedlist>
+<listitem><code>String row(int rownum)</code>, </listitem>
+<listitem><code>int width()</code>, and </listitem>
+</itemizedlist>
+</para>
+
+<para>
+You can look at the source code of <code>BoxedBlock</code> and
+<code>HCompose</code> for ideas, but please do not look at the source
+code of <code>VCompose</code>.
+</para>
+
+<para>
+b. Compare your answer to the source code of <code>VCompose</code>.
+</para>
+</section> <!-- Exercise 7 -->
+
+<section id="polymorphism-08"> <title>Exercise 8: Other Composition Classes</title>
+
+<para>
+Pick one of the following composition mechanisms and implement it as a
+class.
+</para>
+
+<para>
+a. <code>Truncate</code>, which, given a textblock and a maximum width,
+truncates the block to that width.
+</para>
+
+<para>
+b. <code>Center</code>, which, given a textblock and a width, centers
+the block within that width.
+</para>
+
+<para>
+c. <code>RightJustify</code>, which, given a textblock and a width,
+right-justifies the block within that width.
+</para>
+</section> <!-- Exercise 8 -->
+
+</section> <!-- Exercises -->
+
+</section> <!-- POlymorphism -->
+
