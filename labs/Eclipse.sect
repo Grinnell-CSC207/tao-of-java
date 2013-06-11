@@ -13,7 +13,7 @@ Make sure you’ve completed and understood the reading <ulink url="LINK FOR THE
 <section id="eclipse-1"> <title>Exercise 1: Your First Program</title>
 
 <para>
-a. Make a new project in Eclipse and call it HelloEclipse
+a. Make a new project in Eclipse and call it <code>HelloEclipse</code>
 	(<guimenu>File</guimenu> > <guimenuitem>New</guimenuitem> > <guimenuitem>Project</guimenuitem>)
 </para>
 

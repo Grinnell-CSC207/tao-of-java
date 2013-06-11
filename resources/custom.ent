@@ -1,0 +1,10 @@
+<!ENTITY courseid "COURSE ID">
+<!ENTITY section "#">
+<!ENTITY profname "PROFESSOR NAME">
+<!ENTITY proffirstname "FIRST">
+<!ENTITY proflastname "LAST">
+<!ENTITY profemail "NAME@SCHOOL.edu">
+<!ENTITY profofficephone "555-555-5555">
+<!ENTITY profhomephone "555-555-5555">
+<!ENTITY profcontacttimes "NEVER">
+<!ENTITY school "SCHOOL">
