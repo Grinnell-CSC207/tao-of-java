@@ -213,9 +213,10 @@ span.guilabel {
   font-weight: bold;
 }
 span.guimenu {
-  font-weight: bold;
+  font-family: Helvetica, sans-serif;
 }
 span.guimenuitem {
+  font-family: Helvetica, sans-serif;
   font-weight: bold;
 }
 
