@@ -14,17 +14,17 @@ Make sure you’ve completed and understood the reading <ulink url="LINK FOR THE
 
 <para>
 a. Make a new project in Eclipse and call it HelloEclipse
-	(File > New > Project)
+	(<guimenu>File</guimenu> > <guimenuitem>New</guimenuitem> > <guimenuitem>Project</guimenuitem>)
 </para>
 
 <para>
 b. Create a package in the class that will hold your class files
-   	(File > New > Package)
+   	(<guimenu>File</guimenu> > <guimenuitem>New</guimenuitem> > <guimenuitem>Package</guimenuitem>)
 </para>
 
 <para>
 c. Create a class in the package called HelloJava
-   	(File > New > Class)
+   	(<guimenu>File</guimenu> > <guimenuitem>New</guimenuitem> > <guimenuitem>Class</guimenuitem>)
 </para>
 
 <para>
@@ -50,7 +50,7 @@ e. Run the program and marvel at the words that appear in the console!
 <section id="eclipse-2"> <title>Exercise 2: Your Second Program</title>
 
 <para>
-a. Make another class in your package and call it SimpleMath
+a. Make another class in your package and call it <code>SimpleMath</code>
 </para>
 
 <para>
