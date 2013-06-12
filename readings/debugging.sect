@@ -86,12 +86,18 @@ Let’s take a look at Task1. We want it to print every String at an odd index i
 <para>
 We can check what’s happening to every variable each time the loop executes by entering the Debug mode.
 </para>
-<!-- ******************************INSERT PICTURE HERE******************************* -->
 
 <para>
-To enter Debug mode, either click on the Debug button in the top right corner, or if that’s hidden from view click the box on its left and click Debug. You will be presented with this interface:
+  <emphasis><imagedata fileref="../images/debug0.png" format="PNG"/></emphasis> 
 </para>
-<!-- ******************************INSERT PICTURE HERE******************************* -->
+
+<para>
+To enter Debug mode, either click on the Debug button in the top right corner or, if that’s hidden from view, click the box on its left and click Debug. You will be presented with this interface:
+</para>
+
+<para>
+  <emphasis><imagedata fileref="../images/debug1.png" format="PNG"/></emphasis> 
+</para>
 
 <para>
 Here you can choose the class you want to debug and you run that class in Debug mode by going to <guimenu>Run</guimenu> > <guimenuitem>Debug</guimenuitem>.
@@ -104,12 +110,18 @@ We want to check the line in our class that we think is messing up our program a
 <para>
 We set a breakpoint by right clicking or double clicking on the right of the class window. In the example the area is separated by a thin line (highlighted yellow in the example below).
 </para>
-<!--******************************INSERT PICTURE HERE*******************************-->
+
+<para>
+  <emphasis><imagedata fileref="../images/debug2.png" format="PNG"/></emphasis> 
+</para>
 
 <para>
 We select Toggle Breakpoint.
 </para>
-<!--******************************INSERT PICTURE HERE*******************************-->
+
+<para>
+  <emphasis><imagedata fileref="../images/debug3.png" format="PNG"/></emphasis> 
+</para>
 
 <para>
 And now we’ve set our breakpoint at the for loop. There’s a little blue dot at it. You can also see that the area that will be getting evaluated by the debugger is denoted by a blue line spanning from the method’s beginning to the end.
@@ -118,7 +130,10 @@ And now we’ve set our breakpoint at the for loop. There’s a little blue dot 
 <para>
 Now we can finally run the code in debugging mode. 
 </para>
-<!--******************************INSERT PICTURE HERE*******************************-->
+
+<para>
+  <emphasis><imagedata fileref="../images/debug4.png" format="PNG"/></emphasis> 
+</para>
 
 <para>
 A bunch of things happen at once here. The Debug window shows us that it’s running the code in this class, and that it starts at line 9 and ends at line 22. The main window with our class code shows the line we’re evaluating by highlighting it green. The window in the top right corner (Variables) shows us what’ happening to our variables when we run the method with the input we set in main:
@@ -132,7 +147,10 @@ oddPrint(numbers);
 <para>
 The Variables window is the one that we actually want to watch. We want to see how x and i change with each loop. I Right now it only shows us that x = 0, because we haven’t executed a loop yet. We can do that by “Stepping into” the method. 
 </para>
-<!--******************************INSERT PICTURE HERE*******************************-->
+
+<para>
+  <emphasis><imagedata fileref="../images/debug5.png" format="PNG"/></emphasis> 
+</para>
 
 <para>
 Stepping over the method moves the debugger down one line - the if statement. We can see the variable i appeared under the Variables tab. Stepping into the method we can track what’s happening to both variables. So let’s do that a few more times to see what’ actually happening and why the method isn’t working. You can go to <emphasis>Step Over</emphasis> by clicking the button show above or going to <guimenu>Run</guimenu> > <guimenuitem>Step Over</guimenuitem>.
@@ -147,17 +165,26 @@ There’s other ways you could debug the code, like:
 <listitem><emphasis>Step Over</emphasis>: If the method you’re looking into is a loop, it will execute according to your input in the use of that method in main</listitem>
 </itemizedlist>
 </para>
-<!--******************************INSERT PICTURE HERE*******************************-->
+
+<para>
+  <emphasis><imagedata fileref="../images/debug6.png" format="PNG"/></emphasis> 
+</para>
 
 <para>
 You can see that the variables get highlighted yellow as we go through each line of the loop. This means the variable just changed. We keep stepping over the method and we notice a pattern.
 </para>
-<!--******************************INSERT PICTURE HERE*******************************-->
+
+<para>
+  <emphasis><imagedata fileref="../images/debug7.png" format="PNG"/></emphasis> 
+</para>
 
 <para>
 We notice that x is one more than i when we enter the for loop.
 </para>
-<!--******************************INSERT PICTURE HERE*******************************-->
+
+<para>
+  <emphasis><imagedata fileref="../images/debug8.png" format="PNG"/></emphasis> 
+</para>
 
 <para>
 When we enter the if statement, x == i. Clearly the method should be implemented in a way where when i is odd, i gets printed. Or in other words, when x is odd, i gets printed.
