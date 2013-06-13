@@ -20,13 +20,14 @@ If someone other than the owner or official contributors of a project wants to a
 <para>
 There’s a few jargon words here you should definitely remember, because you’ll be using them a lot.
 
-<itermizedlist>
-        <listitem><strong>clone</strong>: get a certain repository from Git to you computer</listitem>
-        <listitem<strong>>commit</strong>: make changes in your cloned version, decide they’re good and save them</listitem>
-        <listitem<strong>>push</strong>: upload the changes you’ve committed to the master branch</listitem>
-        <listitem><strong>pull</strong>: get the newest version of the repository (you want to do this every time before you start working on the project again,
+<itemizedlist>
+        <listitem><emphasis>clone</emphasis>: get a certain repository from Git to you computer</listitem>
+        <listitem><emphasis>commit</emphasis>: make changes in your cloned version, decide they’re good and save them</listitem>
+        <listitem><emphasis>push</emphasis>: upload the changes you’ve committed to the master branch</listitem>
+        <listitem><emphasis>pull</emphasis>: get the newest version of the repository (you want to do this every time before you start working on the project again,
         provided there are new commits/pushes)</listitem>
-</itermizedlist>
+</itemizedlist>
+</para>
 
 </section> <!-- scm-and-git -->
 
@@ -68,7 +69,7 @@ using the editor Vim. You can change it to emacs, for example. If you want to ch
 Now that you have an account and you have set up your name and username in git, let’s make a main repository on GitHub. There are two things that can only be done through GitHub: putting your project up on GitHub (making a repository on the website to house the project) and making a copy of someone else’s project (forking someone else’s repository).
 </para>
 
-<section id="make-setup-repo"><title>Making & Setting Up A Repository</title>
+<section id="make-setup-repo"><title>Making And Setting Up A Repository</title>
 
 <para>
 After logging into GitHub, there should be a green button labelled “new repository” in the lower right-hand side. Click it. Give your repository a name, a brief description, and then click “create repository.” You have now made a repository that other can see on github (if you made the repository public)! This repository is the main repository.
@@ -175,6 +176,7 @@ Typing in: <code>git diff</code>.
 Will show you the section of the file that was changed (in your working
 directory).
 </para>
+</section> <!-- adding-changes -->
 
 <section id="adding-files"><title>Adding Files</title>
 
@@ -192,8 +194,8 @@ This will create a file named README without any text in it. If you want to
 make the file and push text in it at the same time, create the file using a
 text editor (either gedit or emacs) and type the description into the file
 and save. If not, just use touch; you can go back later using gedit, emacs,
-etc to put the explanation into README. <code>gedit README &</code> or
-<code>emacs README &</code>.
+etc to put the explanation into README. <code>gedit README and</code> or
+<code>emacs README and</code>.
 </para>
 
 </section> <!-- adding-files -->
@@ -333,17 +335,18 @@ report back telling you that everything is up-to-date.
 
 <section id="review-questions"><title>Review Questions</title>
 
-<orderedlist>
+<itemizedlist>
 <listitem>Why is git useful?</listitem>
 <listitem>What is forking and when would you use it?</listitem>
 <listitem>What is cloning and when would you use it?</listitem>
-</orderedlist>
+</itemizedlist>
 </section><!-- review-questions -->
 
 <section id="sources"><title>Sources</title>
 <itemizedlist>
 <listitem><ulink url="http://www.cs.grinnell.edu/~rebelsky/Courses/CSC195/2013S/Outlines/outline.02.html">http://www.cs.grinnell.edu/~rebelsky/Courses/CSC195/2013S/Outlines/outline.02.html</ulink></listitem>
-<listitem><ulink url=http://git-scm.com/book/en/Getting-Started-Git-Basics"">http://git-scm.com/book/en/Getting-Started-Git-Basics</ulink></listitem>
+<listitem><ulink url="http://git-scm.com/book/en/Getting-Started-Git-Basics">http://git-scm.com/book/en/Getting-Started-Git-Basics</ulink></listitem>
 <listitem><ulink url="http://hoth.entp.com/output/git_for_designers.html">http://hoth.entp.com/output/git_for_designers.html</ulink></listitem>
 </itemizedlist>
 </section><!-- sources -->
+</section> <!-- getting started with git -->

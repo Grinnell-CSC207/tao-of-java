@@ -1,6 +1,6 @@
 <section id="intro-IDE"><title>Introducing the IDE</title>
 
-<section name="what-IDE" title="What is an IDE?">
+<section id ="what-IDE" title="What is an IDE?">
 <para>
 An IDE, or an integrated development environment, is an application in which programmers can develop, debug, and test their code. We could write our Java code in eMacs and compile it using the command line, but that process is somewhat tedious, and an IDE will give you a better view of how software development works in the industry. 
 </para>
@@ -17,10 +17,10 @@ Eclipse is an open source IDE originally created by IBM in November 2001. There 
 
 <para>
 To start Eclipse, either go to the terminal and type in 
-<boxcode>$ eclipse &</boxcode>
+<programlisting>eclipse &amp;</programlisting>
 
 or alternatively
-<boxcode>Main Menu > Programming > Eclipse</boxcode>
+<programlisting>Main Menu > Programming > Eclipse</programlisting>
 </para>
 
 </section><!-- what-eclipse -->
@@ -87,8 +87,8 @@ or elaborate program.
 <para>
 To create a package that will hold your classes, you can:
 
-open the <emphasis>src<emphasis> folder <programlisting>src > File > New > Package</programlisting>
-or alternatively, right click on the <emphasis>src<emphasis> folder <programlisting> src > New > Package</programlisting>
+open the <emphasis>src</emphasis> folder <programlisting>src > File > New > Package</programlisting>
+or alternatively, right click on the <emphasis>src</emphasis> folder <programlisting> src > New > Package</programlisting>
 </para>
 
 <emphasis>IT'S A PICTURE</emphasis>
@@ -154,7 +154,7 @@ You can probably all figure out what this little piece of code does. It looks ve
 <para>
 Press the Green circular button with the “play” symbol on it
 or alternatively
-<programlisting<emphasis>>Run > Run</emphasis></programlisting>
+<programlisting><emphasis>Run > Run</emphasis></programlisting>
 
 <emphasis>ONE MORE 1337 PIX</emphasis>
 </para>
@@ -167,7 +167,7 @@ Congratulations, you’ve successfully created and run your first Java program. 
 
 <section id="important-terms"><title>Important Terms</title>
 
-<itermizedlist>
+<itemizedlist>
         <listitem>IDE</listitem>
         <listitem>Java Project</listitem>
         <listitem>Package</listitem>
@@ -178,14 +178,14 @@ Congratulations, you’ve successfully created and run your first Java program. 
 
 <section id="review-questions"><title>Review Questions</title>
 
-<orderedlist>
+<itemizedlist>
         <listitem>What is the hierarchy of making a new project?</listitem>
         <listitem>What is an IDE?</listitem>
         <listitem>What goes in the SRC folder?</listitem>
         <listitem>Why does the other icon, "JRE System Library" mean? Why
         is it in every project></listitem>
         <listitem>What other kind of projects can we make besides the Java project?</listitem>
-</orderedlist>
+</itemizedlist>
 
 </section><!-- review-questions -->
 </section><!-- intro-IDE -->

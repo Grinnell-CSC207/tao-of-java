@@ -290,11 +290,11 @@ header, as in the following.
 
 <para>
 <programlisting>
-public class <i>NewClass</i>
-  extends <i>OldClass</i>
+public class <emphasis>NewClass</emphasis>
+  extends <emphasis>OldClass</emphasis>
 {
   ...
-} // class <i>NewClass</i>
+} // class <emphasis>NewClass</emphasis>
 </programlisting>
 </para>
 
@@ -456,7 +456,7 @@ method.
 
 <para>
 For example, the following code prints <code>Maybe.</code>, then
-a long-winded quote, and then <q>Ummm ... I'm not sure.</q>
+a long-winded quote, and then <quote>Ummm ... I'm not sure.</quote>
 </para>
 
 <para>

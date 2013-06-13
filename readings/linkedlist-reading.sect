@@ -1,0 +1,135 @@
+<section id="linkedlist"> <title>Introduction to Linked List</title>
+
+<para>
+	Say we want to keep track of the animals currently at an animal shelter and, to keep things simple, we only need to store their names. We could store the names in an array, like so: 
+
+	<code>String[] names = new String[] {“Sir Rexington”, “Mittens”, “Chaos”, “Lady”}</code>
+
+	However, what happens if another animal comes in to the shelter or if an animal besides Lady is adopted? 
+
+	Arrays do not expand efficiently, so in order to make space for a new animal, we would have to:
+<itemizedlist>
+	<listitem>make a new array that was larger than our current one</listitem>
+	<listitem>copy all of the items in the previous array into our new array</listitem>
+	<listitem>insert the new animal’s name in the array</listitem>
+</itemizedlist>
+
+	Another problem that arises is when, for example, “Mittens”, gets adopted. There is no easy or efficient way to remove an item from the middle. We would have to either:
+<itemizedlist>
+	<listitem>set the value for “Mittens” to null and ignore it in the future</listitem>
+	<listitem>move all the animals after “Mittens” one space back</listitem>
+</itemizedlist>
+
+To avoid the complications and inefficiency of using an array, we could think about using another data structure - one where we could easily add and remove items and not worry about declaring an initial size of the list, because we never know how many animals we’ll have at the shelter. We have to have a data structure that’s easily modifiable.
+</para>
+
+<section id = "basics"> <title>The Basics of Linked List:</title>
+
+<para>
+	A linked list is a structure composed of objects, called nodes, that are connected to form a list. A linked list storing the names for our shelter could be drawn as follows: 
+</para>
+
+<!-- We need a picture of a linked list here!!!!!!!!!!!!!!!!!!! -->
+
+ <para>
+ 	The figure above shows a list structure above the nodes keeping track of the first and last nodes, otherwise known as the head and tail nodes. This structure is what we are referencing when we call on the list.  In addition, the figure shows that each node in the list contains a value field, which stores the data (like “Sir Rexingtong) and a next field, which stores a pointer to the next node in the list. In this case, the value field contains a string representing a name, and the next field stores a pointer to the next node object. This type of linked list, where each node only points to the next node in the list, is called a singly-linked list. Any value in the list can be reached by calling the head, and then calling a series of successive nexts.
+ </para>
+</section> <!-- basics -->
+
+<section id = "addingitems"> <title>Adding items to a Linked List:</title>
+
+<para>
+	Unlike arrays, there is no limit to the number of nodes that a list can contain. Therefore, it is better to use a linked list for the above example since we cannot be sure how many animals will come into the shelter.
+
+When adding items to a list, we must consider the possibility that the list is empty. In this case, the head will be null.
+
+Adding the first item to a list simply involves replacing the null data in the node with actual data. We make no change to the pointer of the node as there are no other nodes to point to. Adding “Lady” to the list would result in a one-element list. In this case, the head and the tail nodes are the same, as there is only one node in the list.
+</para>
+
+<!-- We need a picture of a One-element list here!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+<para>
+	When adding to a non-empty list, we must choose where each item will be added. Linked lists can be implemented such that new items are added to the front of the list, the end of the list, at an index between other nodes, or some combination of these options. When an item is added to the front of the list, the “next” field of the new node points to the list’s current head, and then the list’s head field is changed so that it points to the new node. The result of adding “Chaos” to our list is the following structure.
+</para>
+
+<!-- We need a before picture of Adding at the front of the non-empty list here!!!!!!!!!!!!!! -->
+
+<!-- We need an after picture of Adding at the front of the non-empty list here!!!!!!!!!!!!!! -->
+
+<para>
+	When the item is added to the end of the list, the procedure must travel through the list until it finds a node with a null next field, then change that field so that it points to the new node. Because this is inefficient, the list implementation might also have a field to store the location of the tail. In this case, the node that used to be referred to as the tail is modified to point to the new node, and the new node becomes the tail of the list.
+</para>
+
+<!-- We need a before picture of Adding at the end of a non-empty list here!!!!!!!!!!!!!!!!!!!! -->
+
+<!-- We need an after picture of Adding at the end of a non-empty list here!!!!!!!!!!!!!!!!!!!! -->
+
+<para>
+	Adding an item at an index is the most inefficient way to add a node to a list because the procedure always has to travel through the nodes to reach the desired index. Once at the desired index, the next field of the new node is changed to point to the current node, and the next field of the node before the item we just inserted is changed to point to that node. We forgot to add “Strudel” to our database of abandoned animals. The kitten was actually brought to the shelter before “Sir Rexington”.
+</para>
+
+<!-- We need a before picture of Adding at index 1, using 0-based indexing -->
+
+<!-- We need an after picture of Adding at index 1, using 0-based indexing -->
+
+<para>
+	If a linked list implementation allows items to be added at an index, it may include a size field. Being able to check the given index against the length of the list would prevent the procedure from iterating through every node if the index is invalid.
+</para>
+</section> <!-- addingitems -->
+
+<section id = "removingitems"> <title>Removing Items from a Linked List:</title>
+
+<para>
+	When we remove items from an array we have to decide between two approaches: 
+	<itemizedlist><listitem>Make the item in the appropriate index null or 0 (Whichever is appropriate) and leave that index as a blank space in our array. “Strudel” just got adopted.</listitem>
+
+<!-- We need a picture of the original array here !!!!!!!!!!!! -->
+
+<!-- We need a picture of the array after removal, leaving a null space, here!!!!!!!!!!! -->
+
+	<listitem>Shift all of the items that follow the removed item, so that there are no nodes with null data in the list.</listitem> </itemizedlist>
+</para>	
+
+<!-- We need a picture of the original array here !!!!!!!!!!!! -->
+
+<!-- We need a picture of the array after removal, filling in the null space, here!!!!!!!!!!! -->
+
+<para>
+	When we remove items from a linked list, this problem does not exist! Instead of setting the items to null, we actually remove them completely from the chain of nodes. Say Chaos gets adopted. 
+</para>
+
+<!-- We need a picture of the list of pets at the shelter -->
+
+<!-- We need a before picture of the list when Chaos gets adopted -->
+
+<para>
+	The node storing Mittens’ name would be modified so that its next field points to the node storing Lady’s name. The list is no longer aware of Chaos’s location, so his node has been effectively removed.
+</para>
+
+<!-- We need a after picture of the list when Chaos gets adopted, leaving a gap in the list -->
+
+<!-- We need a after picture of the list when Chaos gets adopted, filling in that gap -->
+
+<para>
+	If Lady were to be adopted instead, Chaos’s next field would be set to null, and if the 
+	implementation keeps track of the list’s tail, it would be set to point to Chaos’s node.
+</para>
+
+<!-- We need a picture of The list of animals at our shelter -->
+
+<!-- We need a picture of Lady getting adopted, leaving Chaos’s pointer is set to nothing -->
+
+<!-- We need a picture of Chaos’s pointer being set to null -->
+
+<para>
+	Similarly, if Sir Rexington is adopted, the list’s head field would simply be set to point to 
+	Strudels’ node.
+</para>
+
+<!-- We need a picture of The list of animals at our shelter -->
+
+<!-- We need a picture of Sir Rexington gets adopted, Strudel is the new “head” of the list -->
+
+</section> <!-- removingitems -->
+
+</section> <!-- linkedlist -->
