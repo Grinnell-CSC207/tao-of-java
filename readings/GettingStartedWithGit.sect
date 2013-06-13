@@ -2,19 +2,11 @@
 
 <section id="scm-and-git"><title>SCM's and Git</title>
 <para>
-<<<<<<< HEAD
 In large projects, there are lots of files, people, and updates. Source code management (SCM) systems, or version control systems, were created to tame the chaos that usually ensues. CVS, Subversion and Git are some examples of widely used version control systems. For this course, we’ve opted to choose Git because it’s very versatile and one of the most popular tools software developers use. Git is also relatively easy to use.
 </para>
 
 <para>
 In Git, there is a main repository where all of the official files for a project are stored, similar to a headquarters. One person controls the main repository, unless they specify collaborators. In this case, a group of people control the main repository and have the power to change it directly. That means that when they make changes, they can “push” it back to the main repository without needing to ask for permission from the project’s owners/official contributors.
-=======
-In large projects, there are lots of files, people, and updates. Source code management (SCM) systems, or version control systems, were created to tame the chaos that usually ensues. CVS, Subversion and Git are some examples of widely used version control systems. For this course we’ve opted to choose Git, because it’s very versatile and one of the most popular tools software developers use. Git is also relatively easy to use.
-</para>
-
-<para>
-In Git, there is a main repository where all of the official files for a project are stored, similar to a headquarters. One person controls the main repository, unless they specify collaborators, in which case a group of people control the main repository and have the power to change it directly. That means that when they make changes, they can “push” it back to the main repository without needing to ask for permission from the project’s owners/official contributors.
->>>>>>> 90bad11234f146a5bfbe048a8d05097f89dfc22b
 </para>
 
 <para>
@@ -22,32 +14,24 @@ Everyone working in the project can “clone” the latest copy of files from th
 </para>
 
 <para>
-<<<<<<< HEAD
-If someone other than the owner or official contributors of a project wants to add to the project, then they must “fork” the main repository. Forking gives them a copy repository of the main repository, and they can push all of the changes that they want to the copied repository. Should they want to affect the main project, however, they will need to send a “pull request,” It is up to the main repository’s owner whether or not to accept the changes that they made, which is also known as “merging the pull request” into the main repository.
-=======
-If someone other than the owner or official contributors of a project wants to add to the project, then they must “fork” the main repository. Forking gives them a copy repository of the main repository, and they can push all of the changes that they want to the copied repository. Should they want to affect the main project however, they will need to send a “pull request”, and it is up to the main repository’s owner whether or not to accept the changes that they made, also known as “merging the pull request” into the main repository.
->>>>>>> 90bad11234f146a5bfbe048a8d05097f89dfc22b
+
+If someone other than the owner or official contributors of a project wants to add to the project, then they must “fork” the main repository. Forking gives them a copy repository of the main repository, and they can push all of the changes that they want to the copied repository. Should they want to affect the main project, however, they will need to send a “pull request.” It is up to the main repository’s owner whether or not to accept the changes that they made, which is also known as “merging the pull request” into the main repository.
 </para>
+
 
 <para>
 There’s a few jargon words here you should definitely remember, because you’ll be using them a lot.
 
-<<<<<<< HEAD
-<itermizedlist>
-=======
+</para>
+
 <itemizedlist>
->>>>>>> 90bad11234f146a5bfbe048a8d05097f89dfc22b
         <listitem><emphasis>clone</emphasis>: get a certain repository from Git to you computer</listitem>
         <listitem><emphasis>commit</emphasis>: make changes in your cloned version, decide they’re good and save them</listitem>
         <listitem><emphasis>push</emphasis>: upload the changes you’ve committed to the master branch</listitem>
         <listitem><emphasis>pull</emphasis>: get the newest version of the repository (you want to do this every time before you start working on the project again,
         provided there are new commits/pushes)</listitem>
-<<<<<<< HEAD
-</itermizedlist>
-=======
 </itemizedlist>
-</para>
->>>>>>> 90bad11234f146a5bfbe048a8d05097f89dfc22b
+
 
 </section> <!-- scm-and-git -->
 
@@ -58,16 +42,16 @@ Go to: <ulink url="https://github.com/">https://github.com/</ulink>
 Sign up for an account on the right hand side. Pick a username, email, and password then click the green “Sign up for free” button. Now you have an account on GitHub! GitHub hosts git projects and gives you a chance to look at other people’s projects. You can collaborate with them or participate in challenges, or simply just put your own projects up on display.
 </para>
 
+<para>
+  <emphasis><imagedata fileref="../images/git1.png" format="PNG"/></emphasis> 
+</para>
+
 </section> <!-- make-account -->
 
 <section id="setup-account"><title>Setting Up a GitHub Account</title>
 
 <para>
-<<<<<<< HEAD
 We are going to set up your name and email in git (accessible via terminal). You will only need to do this once, and we will have you do this in the upcoming lab.
-=======
-We are going to set up your name and email in git (accessible via terminal). You will only need to do this once, and we will have you do this in the outcoming lab.
->>>>>>> 90bad11234f146a5bfbe048a8d05097f89dfc22b
 </para>
 
 <orderedlist>
@@ -93,17 +77,14 @@ using the editor Vim. You can change it to emacs, for example. If you want to ch
 Now that you have an account and you have set up your name and username in git, let’s make a main repository on GitHub. There are two things that can only be done through GitHub: putting your project up on GitHub (making a repository on the website to house the project) and making a copy of someone else’s project (forking someone else’s repository).
 </para>
 
-<<<<<<< HEAD
-<section id="make-setup-repo"><title>Making & Setting Up A Repository</title>
+<section id="make-setup-repo"><title>Making and Setting Up A Repository</title>
 
 <para>
 After logging into GitHub, there should be a green button labelled “new repository” in the lower right-hand side. Click it. Give your repository a name, a brief description, and then click “create repository.” You have now made a repository that others can see on github (if you made the repository public)! This repository is the main repository.
-=======
-<section id="make-setup-repo"><title>Making And Setting Up A Repository</title>
+</para>
 
 <para>
-After logging into GitHub, there should be a green button labelled “new repository” in the lower right-hand side. Click it. Give your repository a name, a brief description, and then click “create repository.” You have now made a repository that other can see on github (if you made the repository public)! This repository is the main repository.
->>>>>>> 90bad11234f146a5bfbe048a8d05097f89dfc22b
+  <emphasis><imagedata fileref="../images/git2.png" format="PNG"/></emphasis> 
 </para>
 
 <para>
@@ -115,23 +96,19 @@ You now have a repository, lets clone it into your machine so that you can add f
 <section id="clone-repo"><title>Cloning A Repository</title>
 
 <para>
-<emphasize>Quick note!
-<<<<<<< HEAD
+<emphasis>Quick note!
 Typing git help into the terminal will bring up a list of the most common git commands and a brief description of what they do. When calling git commands, remember to precede them with git! For example:
-=======
-Typing git help into the terminal will bring up a list of the most common git commands and a brief description of what they do. Remember when calling git commands to precede it with git! For example:
->>>>>>> 90bad11234f146a5bfbe048a8d05097f89dfc22b
    <code>git add</code>
-is valid while just “add” would be invalid.</emphasize>
+is valid while just “add” would be invalid.</emphasis>
 </para>
 
 <orderedlist>
 <listitem>Get the HTTP URI of the repository you just created on GitHub:
-<<<<<<< HEAD
+<para>
+  <emphasis><imagedata fileref="../images/git3.png" format="PNG"/></emphasis> 
+</para>
 Just copy the URI given there, and make sure HTTP is shaded.</listitem>
-=======
-Just copy the URI given there, make sure HTTP is shaded.</listitem>
->>>>>>> 90bad11234f146a5bfbe048a8d05097f89dfc22b
+
 <listitem>Type in: <code>git clone uri</code>. Example: <code>git clone https://github.com/tranchri/Tutorial.git</code></listitem>
 </orderedlist>
 
@@ -147,11 +124,8 @@ Now the directory will have the name GitStuff instead of Tutorial.
 </para>
 
 <para>
-<<<<<<< HEAD
+
 When you clone a repository, you can only contribute to it if you are the creator or have been declared as one of the contributors. Otherwise, the code is just there for you to play around with and not upload. 
-=======
-When you clone a repository, you can only contribute to it if you are the creator or have been declared as one of the contributors, otherwise the code is just there for you to play around with and not upload. 
->>>>>>> 90bad11234f146a5bfbe048a8d05097f89dfc22b
 </para>
 
 </section> <!-- clone-repo -->
@@ -160,11 +134,9 @@ When you clone a repository, you can only contribute to it if you are the creato
 <section id="fork-clone-repo"><title>Forking and Cloning A Repository</title>
 
 <para>
-<<<<<<< HEAD
+
 If you want to make changes to a repository that is not your own, you should “fork” the repository. When we fork a repository, we essentially make a copy repository that we have control over. We can ask the original creator to accept changes in our forked version via a “pull request,” and it’s up to their discretion whether or not to accept it. Therefore, the fork is a copy of the repository you want to work with/on, and is tracked by GitHub to prevent code stealing. It is not the actual repository that is owned by someone else. 
-=======
-If you want to make changes to a repository that is not your own, you should “fork” the repository. When we fork a repository, we essentially make a copy repository that we have control over. We can ask the original creator to accept changes in our forked version via a “pull request,” and it’s up to their discretion whether or not to accept it. Therefore the fork is a copy of the repository you want to work with/on, and is tracked by GitHub to prevent code stealing. It is not the actual repository that is owned by someone else. 
->>>>>>> 90bad11234f146a5bfbe048a8d05097f89dfc22b
+
 </para>
 
 <section id="fork-repo"><title>Forking A Repository on GitHub</title>
@@ -173,6 +145,11 @@ If you want to make changes to a repository that is not your own, you should “
 <listitem>Find a project you would like to contribute to on GitHub.</listitem>
 <listitem>Go to the repository that holds the project.</listitem>
 <listitem>There is a button in the upper right-hand corner that says “fork,” click it.</listitem>
+
+<para>
+  <emphasis><imagedata fileref="../images/git4.png" format="PNG"/></emphasis> 
+</para>
+
 <listitem>GitHub will fork the repository for you.</listitem>
 <listitem>Now, you have a copy repository that will show up as under your repositories on GitHub. Follow the steps in the section above and clone the forked repository into your machine so that you can work on it.</listitem>
 </orderedlist>
@@ -185,28 +162,23 @@ made to the main repository:
 <para>
     <code>git remote add name uri</code>
 </para>
+
 <para>
-<<<<<<< HEAD
 You can name the remote whatever makes sense to you, but it is convention to call
 it “upstream”. Grab the HTTP uri of the repository that you forked.
-=======
-Name the remote whatever makes sense to you, but it is convention to call
-it “upstream” and grab the HTTP uri of the repository that you forked.
->>>>>>> 90bad11234f146a5bfbe048a8d05097f89dfc22b
 </para>
+
 <para>
     Example:<code>git remote add upstream
 https://github.com/lewismar/FakeName.git</code>
 </para>
+
 <para>
 The username should be the owner’s and not yours.
 </para>
+
 <para>
-<<<<<<< HEAD
 Now the main repository will be referred to as main, and you can pull
-=======
-Now the main repository will be referred to as main and you can pull
->>>>>>> 90bad11234f146a5bfbe048a8d05097f89dfc22b
 updates from it to your local repository.
 </para>
 
@@ -232,10 +204,9 @@ Typing in: <code>git diff</code>.
 Will show you the section of the file that was changed (in your working
 directory).
 </para>
-<<<<<<< HEAD
-=======
+
 </section> <!-- adding-changes -->
->>>>>>> 90bad11234f146a5bfbe048a8d05097f89dfc22b
+
 
 <section id="adding-files"><title>Adding Files</title>
 
@@ -253,13 +224,10 @@ This will create a file named README without any text in it. If you want to
 make the file and push text in it at the same time, create the file using a
 text editor (either gedit or emacs) and type the description into the file
 and save. If not, just use touch; you can go back later using gedit, emacs,
-<<<<<<< HEAD
-etc to put the explanation into README. <code>gedit README &</code> or
-<code>emacs README &</code>.
-=======
+
 etc to put the explanation into README. <code>gedit README and</code> or
-<code>emacs README and</code>.
->>>>>>> 90bad11234f146a5bfbe048a8d05097f89dfc22b
+<code>emacs README &amp;</code>.
+
 </para>
 
 </section> <!-- adding-files -->
@@ -399,33 +367,21 @@ report back telling you that everything is up-to-date.
 
 <section id="review-questions"><title>Review Questions</title>
 
-<<<<<<< HEAD
 <orderedlist>
 <listitem>Why is git useful?</listitem>
 <listitem>What is forking and when would you use it?</listitem>
 <listitem>What is cloning and when would you use it?</listitem>
 </orderedlist>
-=======
-<itemizedlist>
-<listitem>Why is git useful?</listitem>
-<listitem>What is forking and when would you use it?</listitem>
-<listitem>What is cloning and when would you use it?</listitem>
-</itemizedlist>
->>>>>>> 90bad11234f146a5bfbe048a8d05097f89dfc22b
+
 </section><!-- review-questions -->
 
 <section id="sources"><title>Sources</title>
 <itemizedlist>
 <listitem><ulink url="http://www.cs.grinnell.edu/~rebelsky/Courses/CSC195/2013S/Outlines/outline.02.html">http://www.cs.grinnell.edu/~rebelsky/Courses/CSC195/2013S/Outlines/outline.02.html</ulink></listitem>
-<<<<<<< HEAD
-<listitem><ulink url=http://git-scm.com/book/en/Getting-Started-Git-Basics"">http://git-scm.com/book/en/Getting-Started-Git-Basics</ulink></listitem>
-<listitem><ulink url="http://hoth.entp.com/output/git_for_designers.html">http://hoth.entp.com/output/git_for_designers.html</ulink></listitem>
-</itemizedlist>
-</section><!-- sources -->
-=======
+
 <listitem><ulink url="http://git-scm.com/book/en/Getting-Started-Git-Basics">http://git-scm.com/book/en/Getting-Started-Git-Basics</ulink></listitem>
 <listitem><ulink url="http://hoth.entp.com/output/git_for_designers.html">http://hoth.entp.com/output/git_for_designers.html</ulink></listitem>
 </itemizedlist>
 </section><!-- sources -->
+
 </section> <!-- getting started with git -->
->>>>>>> 90bad11234f146a5bfbe048a8d05097f89dfc22b
