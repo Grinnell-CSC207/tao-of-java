@@ -1,0 +1,190 @@
+<section id="intro-IDE"><title>Introducing the IDE</title>
+
+<section id="what-IDE"> <title>What is an IDE?</title>
+<para>
+An IDE, or an integrated development environment, is an application in which programmers can develop, debug, and test their code. We could write our Java code in eMacs and compile it using the command line, but that process is somewhat tedious, and an IDE will give you a better view of how software development works in the industry. 
+</para>
+<para>
+For this course we’ll use Eclipse as our IDE.
+</para>
+
+</section> <!-- what-IDE -->
+
+<section id="what-eclipse"><title>What is Eclipse?</title>
+<para>
+Eclipse is an open source IDE originally created by IBM in November 2001. There are many version of Eclipse that each cater to certain needs. In this course we’ll be using Eclipse Galileo. Eclipse will store all of your files in a folder in your home directory called workspace. From there you can access the actual source files as well as their Javadocs (we’ll talk more about those in the next few days).
+</para>
+
+<para>
+To start Eclipse, either go to the terminal and type in 
+<code>eclipse &amp;</code>
+
+or alternatively
+<guimenu>Main Menu</guimenu> > <guimenuitem>Programming</guimenuitem> > <guimenuitem>Eclipse</guimenuitem>
+</para>
+
+</section> <!-- what-eclipse -->
+
+<section id="how-to-use"><title>How To Use Eclipse?</title>
+
+<para>
+When you first open up Eclipse, you will be presented the Welcome
+screen. Go ahead and close the Welcome tab to enter the regular Eclipse
+interface. You’ll be presented with four main perspectives. Each of those
+perspectives has certain views that can go in it. The left perspective will
+be set to show the <emphasis>Package Explorer</emphasis> tab by default. 
+</para>
+
+<para>
+The <emphasis>Package Explorer</emphasis> view shows the Java element hierarchy
+of the Java projects in your workspace. 
+</para>
+
+<emphasis>A PICTURE</emphasis>
+
+<para>
+Here you can create, delete and modify new projects. 
+</para>
+
+<para>
+A <emphasis>project</emphasis> contains source code and related files for building a program.
+</para>
+
+<para>
+Right now, your package explorer should be empty. To create a new project, you can either go to
+<guimenu>File</guimenu> > <guimenuitem>New</guimenuitem> <guimenuitem>Project</guimenuitem>
+ 
+or alternatively, right click somewhere in the Package explorer view and select <guimenuitem>New</guimenuitem> > <guimenuitem>Project</guimenuitem>
+</para>
+
+<para>
+Many projects that you’ll be creating in this class will be Java Projects, so let’s select a <emphasis>Java Project</emphasis> from the <emphasis>New Project</emphasis> window that pops up. 
+</para>
+
+<para>
+A <emphasis>Java Project</emphasis> has an associated Java builder that can incrementally compile Java source files as they are changed. 
+</para>
+
+<para>
+Following convention, the name of the project should be capitalized.
+</para>
+
+<emphasis>ANOTHER PICTURE</emphasis>
+
+<para>
+Let’s make a project and call it HelloEclipse. Leave everything checked as is and click Finish. Now you should be able to see a new folder in the Package Explorer called HelloEclipse. You can expand it by clicking the arrow on its left to see what it contains. Currently it only has a folder named src (source) and a list of libraries.
+</para>
+
+<emphasis>MORE PICTURE</emphasis>
+
+<para>
+You can divide every new project into <emphasis>Packages</emphasis>. In each
+package you can then begin creating a number of <emphasis>Classes</emphasis>
+that will work together in an object-oriented fashion to produce a simple
+or elaborate program.
+</para>
+
+<para>
+To create a package that will hold your classes, you can:
+
+open the <emphasis>src</emphasis> folder <guimenubutton>src</guimenubutton> > <guimenuitem>File</guimenuitem> > <guimenuitem>New</guimenuitem> > <guimenuitem>Package</guimenuitem>
+or alternatively, right click on the <emphasis>src</emphasis> folder <guimenubutton>src</guimenubutton> > <guimenuitem>New</guimenuitem> > <guimenuitem>Package</guimenuitem>
+</para>
+
+<emphasis>IT'S A PICTURE</emphasis>
+
+<para>
+By convention, package names start with a lowercase letter. Let’s call our first package <emphasis>edu.grinnell.CS207.name.first</emphasis> When you’re working in a team, name the <emphasis>package edu.grinnell.CS207.teamname.name.first</emphasis>.
+</para>
+
+<emphasis>A POOPTURE</emphasis>
+
+<para>
+Now we can finally create our first class. 
+</para>
+
+<para>
+Click on <guimenubutton>first</guimenubutton> > <guimenuitem>File</guimenuitem> > <guimenuitem>New</guimenuitem> > <guimenuitem>Class</guimenuitem>
+or alternatively
+right click on <guimenubutton>first</guimenubutton> > <guimenuitem>New</guimenuitem> > <guimenuitem>Class</guimenuitem>
+</para>
+
+<emphasis>I AM SO TIRED AND HERE IS A PICTURE</emphasis>
+
+<para>
+Let’s name our new class, <emphasis>FirstClass</emphasis> - by convention Class
+names usually start with an uppercase letter. Click Finish and you’re
+done. You’ve created your first Java Class. Under <emphasis>Which method
+stubs would you like to create?</emphasis> check <emphasis>public static void
+main(String[] args)</emphasis>. Under <emphasis>Do you want to add
+comments?</emphasis> Check <emphasis>Generate comments</emphasis>.
+</para>
+
+<emphasis>ERUTCIP</emphasis>
+
+<para>
+There’s already some auto generated code in our class. You can see that FirstClass.java belongs to the package first, and that the class itself is called FirstClass.
+</para>
+
+<para>
+The perspective in which the code for this class shows up is your “main” perspective. Here you’ll do all the programming that your heart desires. 
+</para>
+
+<para>
+Go ahead and copy and paste the code below to see how we can get our program to run.
+</para>
+
+<programlisting>
+package first;
+
+public class FirstClass {
+   
+   public static void main (String[] args) {
+       System.out.print("I am the 1337 h4x0r. Phear me!");
+   } // main(String[] args)
+} // class FirstClass
+</programlisting>
+
+<emphasis>PICTURE BE HERE</emphasis>
+
+<para>
+You can probably all figure out what this little piece of code does. It looks very much like C, except that instead of <programlisting>printf</programlisting> we use<programlisting> System.out.print</programlisting> To see what it outputs, all we need to do is save the file as it currently is, and 
+</para>
+
+<para>
+Press the Green circular button with the “play” symbol on it
+or alternatively
+<guimenu>Run</guimenu> > <guimenuitem>Run</guimenuitem>.
+</para>
+
+<emphasis>ONE MORE 1337 PIX</emphasis>
+
+<para>
+Congratulations, you’ve successfully created and run your first Java program. Good job :)
+</para>
+
+</section> <!-- how-to-use -->
+
+<section id="important-terms"><title>Important Terms</title>
+
+<itemizedlist>
+        <listitem>IDE</listitem>
+        <listitem>Java Project</listitem>
+        <listitem>Package</listitem>
+        <listitem>Class</listitem>
+</itemizedlist> 
+
+</section> <!-- important-terms -->
+
+<section id="review-questions"><title>Review Questions</title>
+
+<itemizedlist>
+        <listitem>What is the hierarchy of making a new project?</listitem>
+        <listitem>What is an IDE?</listitem>
+        <listitem>What goes in the SRC folder?</listitem>
+        <listitem>Why does the other icon, "JRE System Library" mean? Why is it in every project></listitem>
+        <listitem>What other kind of projects can we make besides the Java project?</listitem>
+</itemizedlist>
+
+</section> <!-- review-questions -->
+</section> <!-- intro-IDE -->

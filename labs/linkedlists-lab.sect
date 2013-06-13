@@ -1,0 +1,97 @@
+
+<section id = "linked list"><title>Implementing Linked Lists</title>
+
+<section id="introduction"><title>Introduction</title>
+
+<para>
+	In this lab, you will implement a singly-linked list of strings, and later, a doubly-linked list of strings. You will also implement iterators for both of them. Linked lists are described in great detail in the reading. 
+
+	The official Java specifications for the list class can be found at the following link. You are NOT required to include all of these methods in your implementation.
+<ulink url = "http://docs.oracle.com/javase/6/docs/api/java/util/List.html">http://docs.oracle.com/javase/6/docs/api/java/util/List.html</ulink>
+</para>
+</section> 
+
+<section id = "procedure"><title>Procedure</title>
+
+<section id = "singlylinkedlist"><title>Singly-Linked List</title>
+	<section id = "singly0"><title>Exercise 0</title>
+<para>
+ 	 Clone the repository from Git. 
+ 	 <ulink url = "https://github.com/spencerbliberto/linkedList207"> code</ulink>
+</para>
+</section>
+
+<section id = "singly1"><title>Exercise 1</title>
+<para>
+	Write a test suite for the SinglyLinkedList class, which will evaluate the correctness of its methods.
+</para>
+</section>
+
+<section id = "singly2"><title>Exercise 2</title>
+<para>
+	Implement the SinglyLinkedList class. Hint: Think critically about the special cases for adding and removing. As per the reading, algorithms for manipulating lists alter between empty lists and non-empty lists.
+</para>
+</section>
+
+<section id = "singly3"><title>Exercise 3</title>
+<para>
+	Use the test suite you wrote for step 2 to check the correctness of your SinglyLinkedList class implementation.
+</para>
+</section>
+</section>
+
+<section id = "iterators"><title>Iterators</title>
+<section id = "iterator0"><title>Exercise 0</title>
+<para>
+	Write a test suite for the SinglyLinkedListIterator class, which will evaluate the correctness of its methods.
+</para>
+</section>
+
+<section id = "iterator1"><title>Exercise 1</title>
+<para>
+	Implement the SinglyLinkedListIterator class.
+</para>
+</section>
+
+<section id = "iterator2"><title>Exercise 2</title>
+<para>
+	Why was remove() included in the SinglyLinkedIterator class, if you aren’t meant to implement it?
+</para>
+</section>
+
+<section id = "iterator3"><title>Exercise 3</title>
+<para>
+	Use the test suite you wrote for step 5 to check the correctness of your SinglyLinkedListIterator class implementation.
+</para>
+</section>
+
+<section id = "iterator4"><title>Exercise 4</title>
+<para>
+	<emphasis>Doubly Linked-List</emphasis>
+	Implement the DoublyLinkedList class. Hint: This class is very much like the SinglyLinkedList class, to the point that the Javadocs are nearly identical. Moving from singly-linked list nodes to doubly-linked list nodes is supposed to simplify the methods of the class.
+</para>
+</section>
+
+<section id = "iterator5"><title>Exercise 5</title>
+<para>
+	Use the test suite you wrote for step 2 to check the correctness of your DoublyLinkedList class. 
+</para>
+</section>
+
+<section id = "iterator6"><title>Exercise 6</title>
+<para>
+	Implement the DoublyLinkedListIterator class.
+</para>
+</section>
+
+
+<section id = "iterator7"><title>Exercise 7</title>
+<para>
+	12. Use the test suite you wrote for step 5 to check the correctness of your DoublyLinkedListIterator class implementation.
+</para>
+</section>
+</section>
+</section> 
+</section>
+
+
