@@ -1,6 +1,6 @@
 <section id="intro-IDE"><title>Introducing the IDE</title>
 
-<section name="what-IDE" title="What is an IDE?">
+<section id="what-IDE"> <title>What is an IDE?</title>
 <para>
 An IDE, or an integrated development environment, is an application in which programmers can develop, debug, and test their code. We could write our Java code in eMacs and compile it using the command line, but that process is somewhat tedious, and an IDE will give you a better view of how software development works in the industry. 
 </para>
@@ -8,7 +8,7 @@ An IDE, or an integrated development environment, is an application in which pro
 For this course we’ll use Eclipse as our IDE.
 </para>
 
-</section><!-- what-IDE -->
+</section> <!-- what-IDE -->
 
 <section id="what-eclipse"><title>What is Eclipse?</title>
 <para>
@@ -17,13 +17,13 @@ Eclipse is an open source IDE originally created by IBM in November 2001. There 
 
 <para>
 To start Eclipse, either go to the terminal and type in 
-<code>$ eclipse &</code>
+<code>eclipse &amp;</code>
 
 or alternatively
 <guimenu>Main Menu</guimenu> > <guimenuitem>Programming</guimenuitem> > <guimenuitem>Eclipse</guimenuitem>
 </para>
 
-</section><!-- what-eclipse -->
+</section> <!-- what-eclipse -->
 
 <section id="how-to-use"><title>How To Use Eclipse?</title>
 
@@ -52,9 +52,9 @@ A <emphasis>project</emphasis> contains source code and related files for buildi
 
 <para>
 Right now, your package explorer should be empty. To create a new project, you can either go to
-<guitmenu>File</guimenu> > <guimenuitem>New</guimenuitem > <guimenuitem>Project</guimenuitem>
+<guimenu>File</guimenu> > <guimenuitem>New</guimenuitem> <guimenuitem>Project</guimenuitem>
  
-or alternatively, right click somewhere in the Package explorer view and select <guimenu>New</guimenu> > <guimenuitem>Project</guimenuitem>
+or alternatively, right click somewhere in the Package explorer view and select <guimenuitem>New</guimenuitem> > <guimenuitem>Project</guimenuitem>
 </para>
 
 <para>
@@ -87,8 +87,8 @@ or elaborate program.
 <para>
 To create a package that will hold your classes, you can:
 
-open the <emphasis>src<emphasis> folder <guimenu>src</guimenu> > <guimenuitem>File</guimenuitem> > <guimenuitem>New</guimenuitem> > <guimenuitem>Package</guimenuitem>
-or alternatively, right click on the <emphasis>src<emphasis> folder <guimenu>src</guimenu> > <guimenuitem>New</guimenuitem> > <guimenuitem>Package</guimenuitem>
+open the <emphasis>src</emphasis> folder <guimenubutton>src</guimenubutton> > <guimenuitem>File</guimenuitem> > <guimenuitem>New</guimenuitem> > <guimenuitem>Package</guimenuitem>
+or alternatively, right click on the <emphasis>src</emphasis> folder <guimenubutton>src</guimenubutton> > <guimenuitem>New</guimenuitem> > <guimenuitem>Package</guimenuitem>
 </para>
 
 <emphasis>IT'S A PICTURE</emphasis>
@@ -104,9 +104,9 @@ Now we can finally create our first class.
 </para>
 
 <para>
-Click on <guimenu>edu.grinnell.CS207.name.first</guimenu> > <guimenuitem>File</guimenuitem> > <guimenuitem>New</guimenuitem> > <guimenuitem>Class</guimenuitem>
+Click on <guimenubutton>first</guimenubutton> > <guimenuitem>File</guimenuitem> > <guimenuitem>New</guimenuitem> > <guimenuitem>Class</guimenuitem>
 or alternatively
-right click on <guimenu>edu.grinnell.CS207.name.first</guimenu> > <guimenuitem>New</guimenuitem> > <guimenuitem>Class</guimenuitem>
+right click on <guimenubutton>first</guimenubutton> > <guimenuitem>New</guimenuitem> > <guimenuitem>Class</guimenuitem>
 </para>
 
 <emphasis>I AM SO TIRED AND HERE IS A PICTURE</emphasis>
@@ -148,7 +148,7 @@ public class FirstClass {
 <emphasis>PICTURE BE HERE</emphasis>
 
 <para>
-You can probably all figure out what this little piece of code does. It looks very much like C, except that instead of <programlisting>printf</programlisting> we use<programlisting> System.out.prin</programlisting>t. To see what it outputs, all we need to do is save the file as it currently is, and 
+You can probably all figure out what this little piece of code does. It looks very much like C, except that instead of <programlisting>printf</programlisting> we use<programlisting> System.out.print</programlisting> To see what it outputs, all we need to do is save the file as it currently is, and 
 </para>
 
 <para>
@@ -163,29 +163,28 @@ or alternatively
 Congratulations, you’ve successfully created and run your first Java program. Good job :)
 </para>
 
-</section><!-- how-to-use -->
+</section> <!-- how-to-use -->
 
 <section id="important-terms"><title>Important Terms</title>
 
-<itermizedlist>
+<itemizedlist>
         <listitem>IDE</listitem>
         <listitem>Java Project</listitem>
         <listitem>Package</listitem>
         <listitem>Class</listitem>
-</itemizedlist>
+</itemizedlist> 
 
-</section><!-- important-terms -->
+</section> <!-- important-terms -->
 
 <section id="review-questions"><title>Review Questions</title>
 
-<orderedlist>
+<itemizedlist>
         <listitem>What is the hierarchy of making a new project?</listitem>
         <listitem>What is an IDE?</listitem>
         <listitem>What goes in the SRC folder?</listitem>
-        <listitem>Why does the other icon, "JRE System Library" mean? Why
-        is it in every project></listitem>
+        <listitem>Why does the other icon, "JRE System Library" mean? Why is it in every project></listitem>
         <listitem>What other kind of projects can we make besides the Java project?</listitem>
-</orderedlist>
+</itemizedlist>
 
-</section><!-- review-questions -->
-</section><!-- intro-IDE -->
+</section> <!-- review-questions -->
+</section> <!-- intro-IDE -->
