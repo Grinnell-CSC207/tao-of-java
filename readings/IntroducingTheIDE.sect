@@ -1,6 +1,6 @@
 <section id="intro-IDE"><title>Introducing the IDE</title>
 
-<section id ="what-IDE" title="What is an IDE?">
+<section name="what-IDE" title="What is an IDE?">
 <para>
 An IDE, or an integrated development environment, is an application in which programmers can develop, debug, and test their code. We could write our Java code in eMacs and compile it using the command line, but that process is somewhat tedious, and an IDE will give you a better view of how software development works in the industry. 
 </para>
@@ -17,10 +17,10 @@ Eclipse is an open source IDE originally created by IBM in November 2001. There 
 
 <para>
 To start Eclipse, either go to the terminal and type in 
-<programlisting>eclipse &amp;</programlisting>
+<code>$ eclipse &</code>
 
 or alternatively
-<programlisting>Main Menu > Programming > Eclipse</programlisting>
+<guimenu>Main Menu</guimenu> > <guimenuitem>Programming</guimenuitem> > <guimenuitem>Eclipse</guimenuitem>
 </para>
 
 </section><!-- what-eclipse -->
@@ -52,9 +52,9 @@ A <emphasis>project</emphasis> contains source code and related files for buildi
 
 <para>
 Right now, your package explorer should be empty. To create a new project, you can either go to
-<programlisting><emphasis>File > New > Project</emphasis></programlisting>
+<guitmenu>File</guimenu> > <guimenuitem>New</guimenuitem > <guimenuitem>Project</guimenuitem>
  
-or alternatively, right click somewhere in the Package explorer view and select <programlisting>New > Project</programlisting>
+or alternatively, right click somewhere in the Package explorer view and select <guimenu>New</guimenu> > <guimenuitem>Project</guimenuitem>
 </para>
 
 <para>
@@ -87,8 +87,8 @@ or elaborate program.
 <para>
 To create a package that will hold your classes, you can:
 
-open the <emphasis>src</emphasis> folder <programlisting>src > File > New > Package</programlisting>
-or alternatively, right click on the <emphasis>src</emphasis> folder <programlisting> src > New > Package</programlisting>
+open the <emphasis>src<emphasis> folder <guimenu>src</guimenu> > <guimenuitem>File</guimenuitem> > <guimenuitem>New</guimenuitem> > <guimenuitem>Package</guimenuitem>
+or alternatively, right click on the <emphasis>src<emphasis> folder <guimenu>src</guimenu> > <guimenuitem>New</guimenuitem> > <guimenuitem>Package</guimenuitem>
 </para>
 
 <emphasis>IT'S A PICTURE</emphasis>
@@ -104,9 +104,9 @@ Now we can finally create our first class.
 </para>
 
 <para>
-Click on <emphasis>edu.grinnell.CS207.name.first > File > New > Class</emphasis>
+Click on <guimenu>edu.grinnell.CS207.name.first</guimenu> > <guimenuitem>File</guimenuitem> > <guimenuitem>New</guimenuitem> > <guimenuitem>Class</guimenuitem>
 or alternatively
-right click on <emphasis>edu.grinnell.CS207.name.first > New > Class</emphasis>
+right click on <guimenu>edu.grinnell.CS207.name.first</guimenu> > <guimenuitem>New</guimenuitem> > <guimenuitem>Class</guimenuitem>
 </para>
 
 <emphasis>I AM SO TIRED AND HERE IS A PICTURE</emphasis>
@@ -154,10 +154,10 @@ You can probably all figure out what this little piece of code does. It looks ve
 <para>
 Press the Green circular button with the “play” symbol on it
 or alternatively
-<programlisting><emphasis>Run > Run</emphasis></programlisting>
+<guimenu>Run</guimenu> > <guimenuitem>Run</guimenuitem>.
+</para>
 
 <emphasis>ONE MORE 1337 PIX</emphasis>
-</para>
 
 <para>
 Congratulations, you’ve successfully created and run your first Java program. Good job :)
@@ -167,7 +167,7 @@ Congratulations, you’ve successfully created and run your first Java program. 
 
 <section id="important-terms"><title>Important Terms</title>
 
-<itemizedlist>
+<itermizedlist>
         <listitem>IDE</listitem>
         <listitem>Java Project</listitem>
         <listitem>Package</listitem>
@@ -178,14 +178,14 @@ Congratulations, you’ve successfully created and run your first Java program. 
 
 <section id="review-questions"><title>Review Questions</title>
 
-<itemizedlist>
+<orderedlist>
         <listitem>What is the hierarchy of making a new project?</listitem>
         <listitem>What is an IDE?</listitem>
         <listitem>What goes in the SRC folder?</listitem>
         <listitem>Why does the other icon, "JRE System Library" mean? Why
         is it in every project></listitem>
         <listitem>What other kind of projects can we make besides the Java project?</listitem>
-</itemizedlist>
+</orderedlist>
 
 </section><!-- review-questions -->
 </section><!-- intro-IDE -->
