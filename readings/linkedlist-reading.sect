@@ -29,7 +29,9 @@ To avoid the complications and inefficiency of using an array, we could think ab
 	A linked list is a structure composed of objects, called nodes, that are connected to form a list. A linked list storing the names for our shelter could be drawn as follows: 
 </para>
 
-<!-- We need a picture of a linked list here!!!!!!!!!!!!!!!!!!! -->
+<para>
+  <emphasis><imagedata fileref="../images/List1.jpg" format="JPG" align="center" contentwidth="600"/></emphasis> 
+</para>
 
  <para>
  	The figure above shows a list structure above the nodes keeping track of the first and last nodes, otherwise known as the head and tail nodes. This structure is what we are referencing when we call on the list.  In addition, the figure shows that each node in the list contains a value field, which stores the data (like “Sir Rexingtong) and a next field, which stores a pointer to the next node in the list. In this case, the value field contains a string representing a name, and the next field stores a pointer to the next node object. This type of linked list, where each node only points to the next node in the list, is called a singly-linked list. Any value in the list can be reached by calling the head, and then calling a series of successive nexts.
@@ -46,31 +48,45 @@ When adding items to a list, we must consider the possibility that the list is e
 Adding the first item to a list simply involves replacing the null data in the node with actual data. We make no change to the pointer of the node as there are no other nodes to point to. Adding “Lady” to the list would result in a one-element list. In this case, the head and the tail nodes are the same, as there is only one node in the list.
 </para>
 
-<!-- We need a picture of a One-element list here!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<para>
+  <emphasis><imagedata fileref="../images/List2.jpg" format="JPG" align="center" contentwidth="175"/></emphasis> 
+</para>
 
 <para>
 	When adding to a non-empty list, we must choose where each item will be added. Linked lists can be implemented such that new items are added to the front of the list, the end of the list, at an index between other nodes, or some combination of these options. When an item is added to the front of the list, the “next” field of the new node points to the list’s current head, and then the list’s head field is changed so that it points to the new node. The result of adding “Chaos” to our list is the following structure.
 </para>
 
-<!-- We need a before picture of Adding at the front of the non-empty list here!!!!!!!!!!!!!! -->
+<para>
+  <emphasis><imagedata fileref="../images/List3.jpg" format="JPG" align="center" contentwidth="175"/></emphasis> 
+</para>
 
-<!-- We need an after picture of Adding at the front of the non-empty list here!!!!!!!!!!!!!! -->
+<para>
+  <emphasis><imagedata fileref="../images/List4.jpg" format="JPG" align="center" contentwidth="300"/></emphasis> 
+</para>
 
 <para>
 	When the item is added to the end of the list, the procedure must travel through the list until it finds a node with a null next field, then change that field so that it points to the new node. Because this is inefficient, the list implementation might also have a field to store the location of the tail. In this case, the node that used to be referred to as the tail is modified to point to the new node, and the new node becomes the tail of the list.
 </para>
 
-<!-- We need a before picture of Adding at the end of a non-empty list here!!!!!!!!!!!!!!!!!!!! -->
+<para>
+  <emphasis><imagedata fileref="../images/List5.jpg" format="JPG" align="center" contentwidth="175"/></emphasis> 
+</para>
 
-<!-- We need an after picture of Adding at the end of a non-empty list here!!!!!!!!!!!!!!!!!!!! -->
+<para>
+  <emphasis><imagedata fileref="../images/List6.jpg" format="JPG" align="center" contentwidth="300"/></emphasis> 
+</para>
 
 <para>
 	Adding an item at an index is the most inefficient way to add a node to a list because the procedure always has to travel through the nodes to reach the desired index. Once at the desired index, the next field of the new node is changed to point to the current node, and the next field of the node before the item we just inserted is changed to point to that node. We forgot to add “Strudel” to our database of abandoned animals. The kitten was actually brought to the shelter before “Sir Rexington”.
 </para>
 
-<!-- We need a before picture of Adding at index 1, using 0-based indexing -->
+<para>
+  <emphasis><imagedata fileref="../images/List7.jpg" format="JPG" align="center" contentwidth="600"/></emphasis> 
+</para>
 
-<!-- We need an after picture of Adding at index 1, using 0-based indexing -->
+<para>
+  <emphasis><imagedata fileref="../images/List8.jpg" format="JPG" align="center" contentwidth="750"/></emphasis> 
+</para>
 
 <para>
 	If a linked list implementation allows items to be added at an index, it may include a size field. Being able to check the given index against the length of the list would prevent the procedure from iterating through every node if the index is invalid.
@@ -81,54 +97,87 @@ Adding the first item to a list simply involves replacing the null data in the n
 
 <para>
 	When we remove items from an array we have to decide between two approaches: 
-	<itemizedlist><listitem>Make the item in the appropriate index null or 0 (Whichever is appropriate) and leave that index as a blank space in our array. “Strudel” just got adopted.</listitem>
+	<itemizedlist>
+           <listitem>Make the item in the appropriate index null or 0 (Whichever is appropriate) and leave that index as a blank space in our array. “Strudel” just got adopted.
+           </listitem>
+	</itemizedlist>
 
-<!-- We need a picture of the original array here !!!!!!!!!!!! -->
+<para>
+  <emphasis><imagedata fileref="../images/List9.jpg" format="JPG" align="center" contentwidth="400"/></emphasis> 
+</para>
 
-<!-- We need a picture of the array after removal, leaving a null space, here!!!!!!!!!!! -->
+<para>
+  <emphasis><imagedata fileref="../images/List10.jpg" format="JPG" align="center" contentwidth="400"/></emphasis> 
+</para>
 
-	<listitem>Shift all of the items that follow the removed item, so that there are no nodes with null data in the list.</listitem> </itemizedlist>
+<itemizedlist>
+	<listitem>Shift all of the items that follow the removed item, so that there are no nodes with null 			data in the list.
+	</listitem> 
+</itemizedlist>
+
 </para>	
 
-<!-- We need a picture of the original array here !!!!!!!!!!!! -->
+<para>
+  <emphasis><imagedata fileref="../images/List11.jpg" format="JPG" align="center" contentwidth="400"/></emphasis> 
+</para>
 
-<!-- We need a picture of the array after removal, filling in the null space, here!!!!!!!!!!! -->
+<para>
+  <emphasis><imagedata fileref="../images/List12.jpg" format="JPG" align="center" contentwidth="310"/></emphasis> 
+</para>
 
 <para>
 	When we remove items from a linked list, this problem does not exist! Instead of setting the items to null, we actually remove them completely from the chain of nodes. Say Chaos gets adopted. 
 </para>
 
-<!-- We need a picture of the list of pets at the shelter -->
+<para>
+  <emphasis><imagedata fileref="../images/List13.jpg" format="JPG" align="center" contentwidth="750"/></emphasis> 
+</para>
 
-<!-- We need a before picture of the list when Chaos gets adopted -->
+<para>
+  <emphasis><imagedata fileref="../images/List14.jpg" format="JPG" contentwidth="600"/></emphasis> 
+</para>
 
 <para>
 	The node storing Mittens’ name would be modified so that its next field points to the node storing Lady’s name. The list is no longer aware of Chaos’s location, so his node has been effectively removed.
 </para>
 
-<!-- We need a after picture of the list when Chaos gets adopted, leaving a gap in the list -->
+<para>
+  <emphasis><imagedata fileref="../images/List15.jpg" format="JPG" align="center" contentwidth="750"/></emphasis> 
+</para>
 
-<!-- We need a after picture of the list when Chaos gets adopted, filling in that gap -->
+<para>
+  <emphasis><imagedata fileref="../images/List16.jpg" format="JPG" align="center" contentwidth="750"/></emphasis> 
+</para>
 
 <para>
 	If Lady were to be adopted instead, Chaos’s next field would be set to null, and if the 
 	implementation keeps track of the list’s tail, it would be set to point to Chaos’s node.
 </para>
 
-<!-- We need a picture of The list of animals at our shelter -->
+<para>
+  <emphasis><imagedata fileref="../images/List17.jpg" format="JPG" align="center" contentwidth="600"/></emphasis> 
+</para>
 
-<!-- We need a picture of Lady getting adopted, leaving Chaos’s pointer is set to nothing -->
+<para>
+  <emphasis><imagedata fileref="../images/List18.jpg" format="JPG" align="center" contentwidth="700"/></emphasis> 
+</para>
 
-<!-- We need a picture of Chaos’s pointer being set to null -->
+<para>
+  <emphasis><imagedata fileref="../images/List19.jpg" format="JPG" align="center" contentwidth="600"/></emphasis> 
+</para>
 
 <para>
 	Similarly, if Sir Rexington is adopted, the list’s head field would simply be set to point to 
 	Strudels’ node.
 </para>
 
-<!-- We need a picture of The list of animals at our shelter -->
+<para>
+  <emphasis><imagedata fileref="../images/List20.jpg" format="JPG" align="center" contentwidth="700"/></emphasis> 
+</para>
 
-<!-- We need a picture of Sir Rexington gets adopted, Strudel is the new “head” of the list -->
+<para>
+  <emphasis><imagedata fileref="../images/List21.jpg" format="JPG" align="center" contentwidth="600"/></emphasis> 
+</para>
 
 </section> <!-- removingitems -->
 
