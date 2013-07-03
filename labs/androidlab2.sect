@@ -1,0 +1,98 @@
+<section id="androidlab2"><title>Laboratory: Making a cat go meow!</title>
+
+<para>
+In this laboratory you will practice adding and using resources, and giving your app a very simple functionality.
+</para>
+
+<section id="exercise0"><title>Exercise 0: Prerequisite </title>
+<para>
+a) Make sure you've completed and understood the reading, Making Our Apps Do Things
+</para>
+</section> <!-- exercise0 -->
+
+<section id="exercise1"><title>Exercise 1: Create a new Android Project</title>
+
+<para>
+a) Name it Meowing Kitty, and make sure you follow the package naming conventions we've discussed in previous readings
+</para>
+</section> <!-- exercise1 -->
+
+<section id="exercise2"><title>Exercise 2: Gathering resources</title>
+
+<para>
+a) Grab a picture of your favourite kitten
+</para>
+
+<para>
+b) Download your favourite meowing noise here: <ulink url="http://soundbible.com/tags-kitten.html">http://soundbible.com/tags-kitten.html</ulink>
+* Download the mp3 version
+</para>
+</section> <!-- exercise2 -->
+<section id="exercise3"><title>Exercise 3: Importing resources</title>
+
+<para>
+a) You should already know where to put your image file, but make sure to rename it if it uses capital letters or special characters
+</para>
+
+<para>
+b) To add a sound to your resources, you have to make a new folder called &quot;raw&quot;
+</para>
+
+<para>
+c) Now drag your sound file to the folder, and rename it if neccessary
+</para>
+</section> <!-- exercise3 -->
+<section id="exercise4"><title>Exercise 4: Using resources</title>
+
+<para>
+a) Add your picture and a button to your application
+</para>
+
+<para>
+b) Feel free to use whatever layout you prefer, but give your layout elements the appropriate attributes and make sure you create the neccessary Strings to accompany them
+</para>
+
+<para>
+c) Using the second method we discussed in the reading for adding functionality to a layout element, connect you button to a method that displays a simple &quot;Meow&quot; message to the user when clicked
+</para>
+</section> <!-- exercise4 -->
+
+<section id="exercise5"><title>Exercise 5: Dealing with sound files</title>
+
+<para>
+a) As you did with the button, add an attribute to your ImageView that defines what happens when it's clicked 		
+</para>
+
+<para>
+b) The process of having a method play a sound, is very similar to the one of creating our simple message
+</para>
+
+<para>
+c) Replace the Toast object with a MediaPlayer (you'll need to import that class, or Eclipse will be upset)
+</para>
+
+<para>
+d) The method to call instead of makeText() is create(), and its parameters are Context and the resource ID of the sound file
+</para>
+
+<para>
+e) If you've forgotten how to get the resource ID of a file in the res folder, remember the R class (you need to omit the .mp3 part when refering to the file's name)
+</para>
+
+<para>
+f) We can't really &quot;show()&quot; a MediaPlayer, but we can &quot;start()&quot; it
+</para>
+</section> <!-- exercise5 -->
+
+<section id="exercise6"><title>Exercise 6: See your app in action</title>
+
+<para>
+a) Save all the files, compile and run the app
+</para>
+
+<para>
+b) If it fails, talk to your mentor or instructor
+</para>
+
+</section> <!-- exercise6 -->
+</section> <!-- androidlab2 -->
