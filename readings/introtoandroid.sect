@@ -1,0 +1,438 @@
+<section id="introtoandroid"><title>INTRODUCTION TO ANDROID</title>
+
+<section id="settingup"><title>1. Setting up your first Android Application Project</title>
+
+<para>
+a) Getting the tools
+Before we even begin wrapping our heads around the jungle that is app development for the Android platform, we have to get some new tools for our Eclipse IDE. We can get all the resources (both the tools, and helpful advice) we need from the Android developers at developer.android.com .  There's a very straightforward process for installing the Android SDK (Software Development Kit) whether you already have Eclipse or not. Navigate to: http://developer.android.com/sdk/index.html , choose the appropriate installation, download the the ADT Bundle or the SDK Tools, follow the instructions, and you're ready to go. 
+</para>
+ 
+<para>
+b) Creating an Android Application Project
+Making an Android application project is very different from creating a normal Java project. Fortunately for us, the plugin generates all the necessary files we need, and the difference is abysmal. Creating a Java project, you omit certain configurations, and you don't generate template or dummy files at all. You also only link against the Java language jar and not the Android + Support Library jars. Android's ant configuration file does quite a bit under the hood.
+</para>
+
+<para>
+To create a new project you go to... 
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image1.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+<guimenu>File</guimenu> > <guimenuitem>New</guimenuitem> > <guimenuitem>Other</guimenuitem>...
+and choose
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image1.5.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+Android Application Project
+</para>
+
+<para>
+c) <emphasis>Setting up</emphasis>
+In this reading we'll make a simple About Me application that displays someone's username and a bit of textual information about them on the screen.
+</para>
+
+<para>
+We need to give the application an appropriate name. We're simply calling it &quot;About maroltso&quot;. As you can see the Project Name already gets filled out as you type. It omits spaces between words, and capitalizes new words.  A generic Package Name gets generated as well, but we want to change that. If we were ever to submit our app to the Play Store, the Package Name would have to be unique. For that reason, it's good practice to give packages descriptive names, that quickly convey a lot of information about the project. In this class we'll stick to the convention of naming our package by saying the name of the class and the school it belongs to:
+</para>
+
+<emphasis>edu.grinnell.CSC207</emphasis>
+
+<para>
+If you are part of an organization and that the application belongs to, you name the give the package your domain's (that is also unique) address backwards. In our example this would be edu before grinnell for grinnell.edu.
+</para>
+
+<para>
+We continue with the year and semester the course was taught:
+</para>
+
+<emphasis>F2013</emphasis>
+
+<para>
+Then the username of the student creating the app:
+</para>
+
+<emphasis>maroltso</emphasis>
+
+<para>
+And finally the project name:
+</para>
+
+<emphasis>AboutMaroltso</emphasis>
+
+<imagedata fileref="../images/Android1/Lab1Image2.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+The Minimum Required SDK is the lowest version of Android that your project will support. In the future try making this as low as possible (for it to still work, though), so your app is backwards compatible.
+</para>
+
+<para>
+The Target SDK is specifically the version you're working with. 
+</para>
+
+<para>
+Compile With means the platform version againt which you will compile your project.
+</para>
+
+<para>
+Theme is the Android UI(user interface) style you want your project to have.
+</para>
+
+<para>
+For now we won't worry about providing the images ourselves from the get go, so we'll just click <guimenuitem>Next</guimenuitem> in the next two windows. We can always change the images programatically, anyway.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image3.png" format="JPG" align="center" contentwidth="400"/>
+
+<imagedata fileref="../images/Android1/Lab1Image4.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+On the Create Activity window, we want to make sure <guimenuitem>Create Activity</guimenuitem> is selected, select <guimenuitem>Blank Activity</guimenuitem>, and click <guimenuitem>Next</guimenuitem>.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image5.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+We'll name our main activity AboutMaroltsoActivity and click <guimenuitem>Finish</guimenuitem>.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image6.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+And this is all it takes to create and start building Android Application projects in Eclipse.
+</para>
+</section> <!-- settingup -->
+
+<section id="briefoverview"><title>2. A brief overview of auto-generated files</title>
+
+<para>
+By default Eclipse brings us to the Graphical Layout view of the app. Here you can see how your app is supposed to look on a device. The application name we specified before is on top, and below it on the screen is a generic "Hello world!" message. 
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image7.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+Expanding the project we've just created should show us that the Android SDK has just generated a bunch of files for us to use and modify.
+</para>
+
+<para>
+The parts of the project that we deal with the most (at least for now) is the src and the res folder.
+The src folder (as per usual) holds the java code that we want executed. So similar to how the java code in our src folders usually gets executed in the console, this java code will get executed on Android's Dalvik virtual machine.
+The res folder on the other hand, pertains more to static content. It holds all the resources that will be used in the app (and little to none of the logic). These are mostly images and xml files where we define where to place certain objects (like buttons and text areas) and their visual properties.
+</para>
+
+<para>
+a) The visual design of an app lies in the xml files
+We can see how our app will look like by going to: 
+<guimenuitem>res</guimenuitem> &lt; <guimenuitem>layout</guimenuitem> 
+and double clicking the .xml file.
+</para>
+
+<para>
+There are two ways to view (and modify) the layout. One is through the Graphical Layout interface (that we've already seen), and the other is through plain xml.
+</para>
+
+<para>
+XML (eXtensible Markup Language) is a markup language that defines a set of rules for encoding documents in a format that is both human and machine readable. RSS feeds, such as the one used by our school newspaper, the S and B (<ulink url="http://www.thesandb.com/feed">http://www.thesandb.com/feed</ulink>), use XML syntax.
+</para>
+
+<para>
+The xml files mostly affect the visual part of our application. You declare the objects you want to appear on your app in either the graphical interface (where they get translated into xml) or you can create them directly in the xml file. The xml view and the Graphical Layout view are intertwined, so when you add or modify an object in one (and save it), the changes will immediately be apparent in the other.
+</para>
+
+<para>
+We can see that the xml files currently declares the general layout of the app, the RelativeLayout.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image8.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+The RelativeLayout is a view group that displays child views in positions specified relative to other objects also in the view hierarchy (specifically other parent and sibling views).
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image8.5.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+There's currently a single object on the layout, a TextView.
+</para>
+
+<para>
+xml elements are declared with tags. Every element has an opening tag &quot;&lt;Tag&gt;&quot; and a closing tag &lt;/Tag&gt;. If the element contains no other elements or data in the element, there's a shortcut to omit the closing tag by ending the element with &quot;/&gt;&quot;.
+In Eclipse, the name of an object goes inside a tag (for example TextView, Button or ListView...). After that we declare attributes that affect the object's specifics - for example the TextView object's size, the text it contains, the text's font face, the color...
+</para>
+
+<para>
+Here's the general pattern for creating objects in xml:
+</para>
+
+<para>
+For putting an object inside another object:
+</para>
+<programlisting> <!-- xml code -->
+&lt;Object
+	attribute= &quot;parameter&quot; 
+	... /&gt;
+</programlisting>
+
+<para>
+For an object that can hold other objects:
+</para>
+<programlisting> <!-- xml code -->
+&lt;Object
+	attribute= &quot;parameter&quot;
+	... &gt;
+	// other objects go here
+	&lt;/Object&gt;
+</programlisting>
+
+<para>
+If we switch over to the Graphic Layout interface, we can see that the right sidebar of the main window has a structure outline that corresponds to our xml. The RelativeLayout object holds the TextView object, and those are currently the only things our app has.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image9.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+Android doesn't allow us to simply place text on a TextView as a string though, that's one of the reasons why we have the attributes. They refer to predefined pieces of values or code that we've built somewhere else, so that the activity's xml file is clear and concise. For example the text displayed in the TextView is defined by the android:text attribute that refers to the hello_world String in the strings.xml file located in the values folder.  
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image12.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+If we click on the String, change it's value and save the file, the resulting TextView will immediately be updated in the Graphical Layout view of our xml.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image13.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+Going to the strings.xml file, we can see it again has two ways of viewing and creating our String objects. We can do it in the more graphical interface (called Resources), or as raw xml. Both ways work the same and update each other accordingly, so there's no "right" way of doing it, it's a matter of personal preference.
+</para>
+
+<para>
+* Make sure to save the strings.xml file, before trying to look at the app's Graphical Layout, though, or else the changes won't be apparent yet
+</para>
+
+<para>
+This is how we create textual data for Android applications. We create a new String in the resource file strings.xml, and refer to it from the layout xml. 
+</para>
+
+<para>
+To add a new string, go to strings.xml, Add..., choose String, and press OK. We give it a name (for example new_string). This defines how you can refer to it from other parts of the project. We also need to specify the String's value, the actual text that it contains.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image14.png" format="JPG" align="center" contentwidth="400"/>
+
+<imagedata fileref="../images/Android1/Lab1Image15.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+We can also build new Strings by writing declaring a string object in raw xml. To do this we simply go to the strings.xml file and add a new string child to the resources parent.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image18.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+We can now use this String in our layout's xml file. Instead of text refering the hello_world String, we can change it to refer to our new_string.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image16.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+* Make sure to save after making a change, or the files we're trying to update won't seem any different
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image17.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+To summarize, the xml files design the visual presentation of the app, while the Java code defines its functionality.
+</para>
+
+<para>
+b) The functional part comes from Java
+What controls the behaviour of an Android app is the Java code located in the src folder.
+</para>
+
+<para>
+Android applications are conventionally built with Java classes called activities. Each activity is a different view of the app. For example, a basic game app will have a Splash Screen (the image you see when you open the app, while the rest of it's loading), a Main Activity (the screen that lets you enter different parts of the game like settings, high score, and actually playing the game), a Play Activity, a Settings Activity and a HighScores activity - in total 5 activities, or Java classes.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image19.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+Currently, our app only has one activity that already has some pre-generated methods 
+</para>
+
+<para>
+One method is onCreate(), which is a necessary method in every Android activity. It's called immediately when the activity starts (in other words, on create) and its contents tell the machine what it needs to set up for the activity to run.  After that we can declare other methods that perform different actions, but it's up to the user's discretion to direct in what order they'll be executed. It's like a caterer that cooks all the food, prepares all the decorations and sets it up neatly for an event. Then it's up to the guests to do what they please with it.
+</para>
+
+<para>
+The other method is onCreateOptionsMenu(), which builds the menu bar on top of an application screen comes with the default three-squares button that allows you to access certain parts of an app. When you first make a project, the method only has one option a user can select - Settings. It's an auto-generated stub that currently does nothing. Later on we can establish its functionality, modify it and even add more options within this method.
+</para>
+
+<para>
+Some methods that are always called in the life cycle of an Android app don't necessarily need to be overriden and are therefore not present in your generated activity classes. These methods include onStart, onResume, onPause, onStop, and onDestroy. They are always called, whether in the superclass or our derived class.You can probably imagine what each of those methods is responsible for. In android 3.0+ onPrepareOptionsMenu is always called as well.
+</para>
+
+<para>
+The onCreateOptionsMenu() method is responsible for the top black bar above the thin blue line. All the buttons you see in this example are added through the <guimenu>res</guimenu> > <guimenuitem>menu</guimenuitem> > <guimenuitem>xml</guimenuitem> file, and all the functionalities are added to those via this method.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image19.5.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+Currently, your method only adds a stub that displays the menu, an icon, and the three-square button you can click on. It brings down a menu, which only contains the option "Settings", but currently doesn't actually do anything.
+</para>
+
+<para>
+Both methods are connected to xml files. With these we set how they'll look like and what kind of objects they can have. In Java code, we connect xml files by calling them through the R class. The R class is an auto-generated class located in your gen folder. It contains resource IDs for all the resources in your res folder. For each type of resource there in an R inner class (for example R.layout for all resources in the layout) and for each resource of that type, there is a static integer. This integer is the resource ID that we use to retrieve a specific resource.
+</para>
+
+<para>
+We call another method in onCreate() called setContentView(), where we tell the onCreate() method that what it should do is display what we put in the setContentView() method. We want the visual of our activity_about_maroltso.xml file to be what's first seen when we create the method, so we call 
+R.layout.activity_about_maroltso.
+</para>
+
+<para>
+In the onCreateMenuOptions() method, we call the inflate() method of the MenuInflater object (returned from the getManuInflater() method) on the about_maroltso.xml file located in the menu folder under res. We do this by saying R.menu.about_maroltso.xml. As before, you can access and modify the xml by simply going to the appropriate folder in your resources.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image19.6.png" format="JPG" align="center" contentwidth="400"/>
+
+<imagedata fileref="../images/Android1/Lab1Image19.7.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+c) <emphasis>The Manifest file</emphasis>
+</para>
+
+<para>
+Another important xml file in your application is the AndroidManifest.xml.  The manifest holds the essential information about the app for the Android system, in order for it to properly run the code.  Double click the AndroidManifest.xml file and go to it's raw xml file. Having already been introduced to xml objects, we can now tell that the &lt;manifest&gt; object encapuslates &lt;uses-sdk&gt; and &lt;application&gt;. &lt;application&gt; itself has an object called &lt;activity&gt; that in turn has three objects inside it - &lt;intent-filter&gt;, &lt;action&gt; and &lt;category&gt;.
+</para>
+
+<para>
+The manifest file exists to tell the system about our app. While the system needs to know specifics of our app, this is also useful when you're looking at apps that are not your own, and you want to quickly find out some basic information about them.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image20.png" format="JPG" align="center" contentwidth="400"/>
+
+<imagedata fileref="../images/Android1/Lab1Image21.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+d) <emphasis>The properties file</emphasis>
+</para>
+
+<para>
+The project.properties file is another auto-generated file that you shouldn't change. It's there to tell you what the target version of android is for this application. The only reason why you would want to change ths file is if you're trying to compile an older app on a newer machine. The target declared in the properties would in that case probably be less than the version of your machine. in that case, you should just change the target number to the version your machine is using. The app might not act the way it's supposed to though, but this way you'll at least know which parts of it need to be updated. The file is auto-generated from the contents of the manifest.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image21.5.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+e) <emphasis>R</emphasis>
+</para>
+
+<para>
+Another file that always needs to be present in your application is the auto-generated R.java file located in the gen folder. This class represents all the resources (xml objects, graphics...) that can be instantiated/used in your code. In more cases than it's desirable, there is a problem with the R class not getting generated for some reason or other. If the class is not present, there is no way to make your application run. If you're downloading the Android SDK Tools on your own computer, make sure that R generates when you create an app. If it doesn't, troubleshooting will probably be very difficult.
+</para>
+
+<para>
+Some general steps you migt take are cleaning the project (to check for any xml syntax errors), by going to
+</para>
+
+<para>
+<guimenu>Project</guimenu> > <guimenuitem>Clean</guimenuitem>
+</para>
+
+<para>
+You can restart Eclipse, because sometimes the auto build system stops working
+</para>
+
+<para>
+And if all else fails, you should re-install everything you've just downloaded.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image21.6.png" format="JPG" align="center" contentwidth="400"/>
+</section> <!-- briefoverview -->
+
+<section id="runningyourapp"><title>3. Running your app</title>
+
+<para>
+It's finally time to see this app in action. There's two ways to run the application. We can either use an emulator that we set up with the AVD (Android Virtual Device) Manager, or you can run it on a real Android machine.
+</para>
+
+<para>a) <emphasis>Setting up an emulator</emphasis></para>
+
+<para>
+To set up an AVD, we first launch the AVD Manager. In Eclipse go to <guimenu>Window</guimenu> > <guimenuitem>Android Virtual Device Manager</guimenuitem>. 
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image22.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+Click <guimenuitem>New</guimenuitem> in the window that pops up.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image23.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+We give it a name and select what device it should emulate. Under Target select Android instead of Google, and make sure the API level matches the one we're trying to target your app for. Select either option for CPU/ABI, and we should be able to press OK and create our emulator.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image25.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+Now we should be able to see our emulator.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image26.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+To run the app now, we click <guimenuitem>Run</guimenuitem> (the Play Button) in the toolbar. A new window should pop up. Select <guimenuitem>Android Application</guimenuitem> and click <guimenuitem>OK</guimenuitem>.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image25.5.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+It takes a pretty long time for the emulator to start up and run our app, so in the future, it's much faster and better to test apps on an actual device, but if a device is not available, the emulator is still an option.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image27.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+After the emulator boots, unlock the screen, by dragging the lock icon upwards with our mouse.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image27.5.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+The first time running a new emulator, we need to press <guimenuitem>OK</guimenuitem> on the next screen. This screen shouldn't appear again.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image28.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+Click the circle in the middle of the bottom bar to access all our apps.
+On the next screen, we locate our app and click it to run it.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image28.7.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+And here's our app in action. Pretty nifty.
+</para>
+
+<imagedata fileref="../images/Android1/Lab1Image29.png" format="JPG" align="center" contentwidth="400"/>
+
+<para>
+b) <emphasis>Running on an actual device</emphasis>
+</para>
+
+<para>
+Running the app on an actual device is actually much easier than running it on an emulator. Just plug the device in with the USB cable and when prompted (on the device), choose to enable debugging.	
+</para>
+
+<para>
+To run the app, click <guimenuitem>Run</guimenuitem> on the toolbar,select Android Application in the windows that pops up, and click <guimenuitem>OK</guimenuitem>.
+</para>
+</section> <!-- runningyourapp -->
+</section> <!-- introtoandroid -->
