@@ -7,7 +7,6 @@ package ushahidi;
 import java.io.*;
 
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -16,7 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class API {
-	ArrayList<Incident> incidentsList = new ArrayList<Incident>();
+	private ArrayList<Incident> incidentsList = new ArrayList<Incident>();
 	private int index;
 	private String server;
 	private int maxId = 0;
@@ -49,7 +48,8 @@ public class API {
 	 * 	In the case that the server is not given a valid URL the method will throw an exception.
 	 * @pre 
 	 *  update() can be called if the field server has be initialized with a valid URL that contains JSON text. 
-	 *  This JSON text must be obtained by using the Ushahidi web API.
+	 *  This JSON text must be obtained by using the Ushahidi web API. In addition to that, this method expects
+	 *  that all of the Incidents are complete, that all of their fields have valid values.
 	 * @post
 	 * 	This method will end with the array list, called incidentsList, containing a number of 
 	 * 	incident objects equals to the number of the incidents the given source has. This number is not limited
@@ -66,20 +66,30 @@ public class API {
 		do {
 			URL serverURL;
 			
-	
 			// Test to see if maxId is 0, which would mean this is the first time this method has been ran.
 			if (this.maxId == 0) 
 				serverURL = new URL(this.server + "/api?task=incidents&by=all&limit=5000");
 			// If maxId is not 0, then this must have been called before.
 			else
-				serverURL = new URL(this.server + "/api?task=incidents&by=sinceid&id=" + this.maxId);	
-	
-		    HttpsURLConnection connection = (HttpsURLConnection)serverURL.openConnection();
-			// Read in all of the data from the  server.
+				serverURL = new URL(this.server + "/api?task=incidents&by=sinceid&id=" + this.maxId);
+			
+			BufferedReader incidentParser;
 			String data = "";
-			BufferedReader incidentParser = 
-					new BufferedReader(
-							new InputStreamReader(connection.getInputStream()));
+
+			if (0 == this.server.substring(0, 4).compareTo("https")) {
+				HttpsURLConnection connection = (HttpsURLConnection)serverURL.openConnection();
+			
+				// Read in all of the data from the  server.
+				incidentParser = 
+						new BufferedReader(
+								new InputStreamReader(connection.getInputStream()));
+			} // if (0 == this.server.substring(0, 4).compareTo("https"))
+			else{
+				incidentParser = 
+						new BufferedReader(
+								new InputStreamReader(
+										serverURL.openStream()));
+			} // else
 			
 			String inputLine;
 			while ((inputLine  = incidentParser.readLine()) != null) {
@@ -98,8 +108,8 @@ public class API {
 					this.incidentsList.add(newIncident);
 					if(newIncident.getIncidentId() > this.maxId)
 						this.maxId = newIncident.getIncidentId();
-				}
-			} // if	
+				} // for (int i = 0; i< array.length(); i++)
+			} // if	(!errorNumber.contentEquals("007"))
 		}
 		while(!errorNumber.contentEquals("007"));
 	} // update()
@@ -211,8 +221,9 @@ public class API {
 			throws Exception {
 		update();
 		if (index >= 0 && this.incidentsList.size() > index){
-			Incident temp = this.incidentsList.get(0);
-			for(int i = 0; i < this.incidentsList.size(); i++) { 
+			Incident temp;
+			for(int i = 0; i < this.incidentsList.size(); i++) {
+				temp = this.incidentsList.get(i);
 				if (id == temp.getIncidentId()) {
 					this.incidentsList.remove(i);
 					return temp;
@@ -244,9 +255,10 @@ public class API {
 			throws Exception {
 		update();
 		if (index >= 0 && this.incidentsList.size() > index){
-			Incident temp = this.incidentsList.get(0);
+			Incident temp;
 			for(int i = 0; i < this.incidentsList.size(); i++) { 
-				if (title == temp.getIncidentTitle()) {
+				temp = this.incidentsList.get(i);
+				if (0 == title.compareTo(temp.getIncidentTitle())) {
 					this.incidentsList.remove(i);
 					return temp;
 				} // if (id == temp.getIncidentId())
@@ -300,5 +312,10 @@ public class API {
 		
 		return pendingIncidents;
 	} // getPending()
+	
+	
+	public ArrayList<Incident> getIncidentsList() {
+		return this.incidentsList;
+	}// getIncidentsList()
 } // Ushahidi   
 

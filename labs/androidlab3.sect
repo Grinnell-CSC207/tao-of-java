@@ -1,0 +1,72 @@
+<section id="expandingyourapp"><title>Laboratory: Expanding Your App</title>
+
+<para>
+In this laboratory you will learn how to create more activities, and link them together in a cohesive app. 
+</para>
+
+<section id="exercise0"><title>Exercise 0: Prerequisite </title>
+<para>
+a) Make sure you've completed and understood the reading, Making Your App Do Things II.
+</para>
+</section> <!-- exercise0 -->
+
+<section id="exercise1"><title>Exercise 1: Add a new activity</title>
+
+<para>
+a) Add a new activity to the Android project you've created in the previous lab
+</para>
+
+<para>
+b) With the tools you already have, make the Activity look and do something interesting 
+* For example you can find more meowing sounds that the cat makes on different occasions (for example if it's hungry, mad, or sleepy). If you're feeling creative, you can add some information about it, and display it as a list. 
+</para>
+</section> <!-- exercise1 -->
+
+<section id="exercise2"><title>Exercise 2: Accessing our new activity</title>
+
+<para>
+a) Add a Button to our main activity 
+</para>
+
+<para>
+b) Add the onClick qualifier to your new button, and decide on a method name that links lets the Button go to our other activity
+</para>
+
+<para>
+c) Implement the method you've given to your Button with a new Intent
+</para>
+</section> <!-- exercise2 -->
+
+<section id="exercise3"><title>Exercise 3: Getting back to our home screen</title>
+
+<para>
+a) Enable the Action Bar to display the back arrow
+</para>
+
+<para>
+b) Override the onCreateItemSelected() method, by giving it a new Intent that takes us back to our main activity
+</para>
+</section> <!-- exercise3 -->
+
+<section id="exercise4"><title>Exercise 4: Copmpile and Run</title>
+
+<para>
+a) Run the app on your device to make sure everything is working correctly
+</para>
+</section> <!-- exercise4 -->
+
+<section id="extra1"><title>Extra 1:</title>
+
+<para>
+a) Add a ListView to your activity
+</para>
+
+<para>
+b) Create a new xml file that defines the rows' TextView
+</para>
+
+<para>
+c) Create a list of possible pet names for your cat and feed it to the ListView via the Adapter
+</para>
+</section> <!-- extra1 -->
+</section> <!-- expandingyourapp -->

@@ -19,12 +19,15 @@ public class Incident {
 	private String locationName = ""; //The name of the location.
 	private double locationLatitude; // Latitude of the report's location.
 	private double locationLongitude; //Longitude of the report's location.
-	private JSONArray categories;//The category id (or list of category i.ds) under which the report should be filed.
+	private JSONArray categories = null;//The category id (or list of category i.ds) under which the report should be filed.
 	private JSONArray media = null; //A collection of media.
 	private JSONArray comments = null; //Additional comments on the incident.
 	private JSONArray error = null; //Is there an error involving this incident.
 	private JSONArray customFields = null; //Any additional fields the client wishes to add.
-
+	
+	
+	private double invalidLatitude = 191919;
+	private double invalidLongitude = 191919;
 	public Incident() {
 		
 	} // Incident()
@@ -35,31 +38,29 @@ public class Incident {
 	} // Incident(int, String)
 	
 	public Incident(JSONObject input) {
-		incidentId = Integer.parseInt((String) input.getJSONObject("incident").get("incidentid"));
-		incidentTitle = (String) input.getJSONObject("incident").get("incidenttitle");
-		incidentDescription = (String) input.getJSONObject("incident").get("incidentdescription");
-		incidentDate = (String) input.getJSONObject("incident").get("incidentdate");
-		incidentMode = (String) input.getJSONObject("incident").get("incidentmode");
-		incidentActive = (String) input.getJSONObject("incident").get("incidentactive");
-		incidentVerified = (String) input.getJSONObject("incident").get("incidentverified");
-		locationId = Integer.parseInt((String) input.getJSONObject("incident").get("locationid"));
-		try {locationName = (String) input.getJSONObject("incident").get("locationname");
-		} // try{locationName = (String) input.getJSONObject("incident").get("locationname");}
-		catch(JSONException e){
-			locationName = null;
-		} // catch(JSONException e)
+		incidentId = Integer.parseInt(input.getJSONObject("incident").get("incidentid").toString());
+		incidentTitle = input.getJSONObject("incident").get("incidenttitle").toString();
+		incidentDescription = input.getJSONObject("incident").get("incidentdescription").toString();
+		incidentDate = input.getJSONObject("incident").get("incidentdate").toString();
+		incidentMode = input.getJSONObject("incident").get("incidentmode").toString();
+		incidentActive = input.getJSONObject("incident").get("incidentactive").toString();
+		incidentVerified = input.getJSONObject("incident").get("incidentverified").toString();
+		locationId = Integer.parseInt(input.getJSONObject("incident").get("locationid").toString());
+		locationName = input.getJSONObject("incident").get("locationname").toString();
 		
-		locationLatitude = Double.parseDouble((String) input.getJSONObject("incident").get("locationlatitude"));
-		locationLongitude = Double.parseDouble((String) input.getJSONObject("incident").get("locationlongitude"));
+		//COmpensate for null fields on latitude longitude location id
+		locationLatitude = Double.parseDouble(input.getJSONObject("incident").get("locationlatitude").toString());
+		locationLongitude = Double.parseDouble(input.getJSONObject("incident").get("locationlongitude").toString());
 		categories = input.getJSONArray("categories");
 		media = input.getJSONArray("media");
 		comments = input.getJSONArray("comments");
+		
 		try {error = input.getJSONArray("error");
 		} // try{error = input.getJSONArray("error")}
 		catch(JSONException e) {
 			error = null;
 		} // catch(JSONException e)
-
+		
 		try {customFields = input.getJSONArray("customfields");
 		} // try{customFields = input.getJSONArray("customfields")}
 		catch(JSONException e){
@@ -73,8 +74,7 @@ public class Incident {
 				+ "\nLocation Longitude: " + this.locationLongitude + "]\n";
 	} // toString()
 
-	//Getters and Setters
-
+	//Get methods for the fields within the Incident class
 	public int getIncidentId() throws Exception{
 		if (incidentId == -1)
 			throw new Exception("IncidentID is unknown");
@@ -103,106 +103,57 @@ public class Incident {
 		if (incidentMode == "")
 			throw new Exception("IncidentMode is unknown");
 		return incidentMode;
-	}
-
-	public void setIncidentMode(String incidentMode) {
-		this.incidentMode = incidentMode;
-	}
-
+	} // getIncidentMode()
+	
 	public String getIncidentActive() throws Exception{
 		if (incidentActive == "")
 			throw new Exception("Incident Activity is unknown");
 		return incidentActive;
-	}
-
-	public void setIncidentActive(String incidentActive) {
-		this.incidentActive = incidentActive;
-	}
+	} // getIncidentActive()
 
 	public String getIncidentVerified() throws Exception{
 		if (incidentVerified == "")
 			throw new Exception("Verification is unknown");
 		return incidentVerified;
-	}
-
-	public void setIncidentVerified(String incidentVerified) {
-		this.incidentVerified = incidentVerified;
-	}
+	} // getIncidentVerified()
 
 	public int getLocationId() throws Exception{
 		if (locationId == -1)
 			throw new Exception("Location ID is unknown");
 		return locationId;
-	}
-
-	public void setLocationId(int locationId) {
-		this.locationId = locationId;
-	}
+	} // getLocationId()
 
 	public String getLocationName() throws Exception{
 		if (locationName == "")
 			throw new Exception("Location name is unknown");
 		return locationName;
-	}
-
-	public void setLocationName(String locationName) {
-		this.locationName = locationName;
-	}
+	} // getLocationName()
 
 	public double getLocationLatitude() throws Exception{
 		return locationLatitude;
-	}
-
-	public void setLocationLatitude(double locationLatitude) {
-		this.locationLatitude = locationLatitude;
-	}
+	} // getLocationLatitude()
 
 	public double getLocationLongitude() throws Exception{
 		return locationLongitude;
-	}
-
-	public void setLocationLongitude(double locationLongitude) {
-		this.locationLongitude = locationLongitude;
-	}
+	} // getLocationLongitude()
 
 	public JSONArray getCategories() {
 		return categories;
-	}
-
-	public void setCategories(JSONArray categories) {
-		this.categories = categories;
-	}
+	} // getCategories()
 
 	public JSONArray getError() {
 		return error;
-	}
-
-	public void setError(JSONArray error) {
-		this.error = error;
-	}
+	} // getError()
 	
 	public JSONArray getComments() {
 		return comments;
-	}
-
-	public void setComments(JSONArray comments) {
-		this.comments = comments;
-	}		
+	} // getComments()
 	
 	public JSONArray getMedia() {
 		return media;
-	}
-
-	public void setMedia(JSONArray media) {
-		this.media = media;
-	}
+	} // getMedia()
 
 	public JSONArray getCustomFields() {
 		return customFields;
-	}
-
-	public void setCustomFields(JSONArray customFields) {
-		this.customFields = customFields;
-	}
-
+	} // getCustomFields()
 } // Incident
