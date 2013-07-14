@@ -95,7 +95,45 @@ We can leave the layout kind to be a RelativeLayout. There's no reason to change
 <!-- WE NEED PICTURE HERE: LABIMAGE 9 -->
 
 <para>
-Besides that, ListViews in Android get information via an Adapter that we declare in our Activity class. Because our Info object is a cluster of Strings, a good way to proceed here, is to make of nicely formatted Strings, and feed them to the Adapter. Because we're giving the Adapter an Array, we'll use the ArrayAdapter that takes Strings as arguments.
+To define how a single row looks like, we need to create a new xml file that will containt only the information about that row. To keep it simple, we'll make our rows be TextViews. In that case, our ListView will contain multiple, vertically stacked TextViews. To do this, we simly add a new file to our layout folder, we can call it simple_row.
+</para>
+
+<!-- WE NEED PICTURE HERE: LABIMAGE EXTRA 1 -->
+
+<!-- WE NEED PICTURE HERE: LABIMAGE EXTRA 2 -->
+
+<!-- WE NEED PICTURE HERE: LABIMAGE EXTRA 3 -->
+
+<para>
+By default, the xml file will have a LinearLayout, like this:
+</para>
+
+<!-- WE NEED PICTURE HERE: LABIMAGE EXTRA 4 -->
+
+<para>
+For it to just have TextView, we can replace the whole xml file with something like this:
+</para>
+
+<programlisting>
+
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp" 
+    android:id="@+id/rowTextView"    
+    android:textSize="16sp" >
+    
+</TextView>
+
+</programlisting>
+
+<para>
+ListViews in Android get information via an Adapter that we declare in our Activity class. Because our Info object is a cluster of Strings, a good way to proceed here, is to make of nicely formatted Strings, and feed them to the Adapter. Because we're giving the Adapter an Array, we'll use the ArrayAdapter that takes Strings as arguments.
+</para>
+
+<para>
+We then set up the adapter with the list we want it to get information from, and the row xml file, to tell it how to display it.
 </para>
 
 <para>
@@ -115,6 +153,11 @@ As you can see there's a pattern to creating and filling a list in Android devel
 <listitem>
 <para>
 	Put the ListView element on your activity via the graphical layout
+</para>
+</listitem>
+<listitem>
+<para>
+	Create a new xml file that will deal with how each row of the listView looks like.
 </para>
 </listitem>
 <listitem>
