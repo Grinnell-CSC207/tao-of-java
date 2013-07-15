@@ -19,7 +19,7 @@ Say we wanted to make our app about an inquisitive baby chameleon called Percy S
 </para>
 
 <para>
-<imagedata fileref="../images/Android2/Lab2Image1.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Lab2Image1.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -35,7 +35,7 @@ Because we're using a Nexus 10 device for developing, we want to put our image i
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image2.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image2.png" align="center" contentwidth="400"/>
 </para>
 
 </section> <!-- section1 -->
@@ -50,7 +50,7 @@ We want our product to end up looking somewhere along these lines.
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image3.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image3.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -69,7 +69,7 @@ The first thing to do is choose the layout your objects will be put on. You can 
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image3.5.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image3.5.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -88,7 +88,7 @@ We need to identify what the part of our app are. Looking at the screen, it seem
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image4.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image4.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -96,7 +96,7 @@ First, we change the RelativeLayout tag in the raw xml to LinearLayout. If we lo
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image5.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image5.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -104,11 +104,11 @@ We can now add our image beneath it, by opening the Images &amp; Media folder (i
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image6.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image6.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image7.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image7.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -116,7 +116,7 @@ Next let's drag a Button Widget beneath the ImageView.
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image8.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image8.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -126,7 +126,7 @@ Add android:orientation="vertical" in the opening LinearLayout tag.
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image9.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image9.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -134,7 +134,7 @@ It's starting to look better.
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image10.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image10.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -142,7 +142,7 @@ But how did that Button end up on top of the ImageView? We need to change that. 
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image11.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image11.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -150,7 +150,7 @@ We just need to adjust and add some attributes and strings to match it exactly t
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image13.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image13.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -188,7 +188,7 @@ Now our product looks just the way we imagined.
 </section> <!-- section4 -->
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image14.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image14.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -196,7 +196,7 @@ And this is how our strings file currently looks like with all the added strings
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image15.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image15.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -275,7 +275,7 @@ Eclipse has underlined the setOnClickListener(this), though, and it's not giving
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image16.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image16.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -342,7 +342,7 @@ If we run our app now, we can see our button in action.
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image17.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image17.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -366,7 +366,7 @@ With this implemented, we can scratch all we did in our activity class, until it
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image18.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image18.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -389,7 +389,7 @@ The only change we've made here is the duration in the makeText() method. Runnin
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image19.png" format="JPG" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android1/Lab2Image19.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
