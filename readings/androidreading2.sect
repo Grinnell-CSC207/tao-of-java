@@ -18,7 +18,9 @@ Yes, we can modify our apps by adding objects in the xml files, but we can also 
 Say we wanted to make our app about an inquisitive baby chameleon called Percy Shabunkins. This guy, right here.
 </para>
 
+<para>
 <imagedata fileref="../images/Android2/Lab2Image1.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
 <para>
 When we have an appropriate picture, we open the res folder to store it in. We can see that there's alredy a bunch of folders created for us to store our images in. Because Android machines come in many different shapes and sizes, its good practice to make our resources in different resolutions. If we have an image that corresponds to the three pre-made drawable folders - drawable hdpi (high density), drawable mdpi (medium density), and drawable ldpi (low density), we can be more confident that the screen will show up the way we intended it to on any machine. The platform will pick the image that best matches the device's density.
@@ -32,7 +34,10 @@ We don't need to worry about that now, since this app won't actually be released
 Because we're using a Nexus 10 device for developing, we want to put our image in the drawable hdpi folder. To do this, we expand the res folder and drag our picture from the it's current location to the drawable-hdpi folder. When prompted, we select to copy the files, instead of just linking to them. This puts the resource in the actual app, so if we were to publish it, the resource would stay there. In the other case, we would only be able to successfully compile the app on our own computer, where the resources are located.
 </para>
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image2.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
 </section> <!-- section1 -->
 <section id="section2"><title>2. Design is important</title>
 
@@ -44,7 +49,9 @@ Before we actually use our image, though, we need to decide what we want our app
 We want our product to end up looking somewhere along these lines.
 </para>
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image3.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
 <para>
 We can now begin to build our app.
@@ -61,7 +68,9 @@ Bearing our design idea in mind, we want to be able to create an app whose prese
 The first thing to do is choose the layout your objects will be put on. You can see there are many different layout types in the Graphical Layout tab. Each of the layouts is useful for a specific type of an app. Feel free to explore all the different layouts on your own, because unfortunately this is out of the scope of this course. 
 </para>
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image3.5.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
 <para>
 For our app, the default layout is the relative layout. It's useful when you want to manage your objects (children) relative to one another or the layout(parent) itself. For this project a simple Linear Layout will do the trick. 
@@ -78,27 +87,37 @@ In a Linear Layout your objects are positioned in a line, one after another, eit
 We need to identify what the part of our app are. Looking at the screen, it seems like we want a TextView on top, on ImageView beneath it, and a Button Widget on the bottom.
 </para>
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image4.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
 <para>
 First, we change the RelativeLayout tag in the raw xml to LinearLayout. If we look at our Graphical Layout now, there's nothing really changed. Our string is still the same, and positioned in the upper left corner.
 </para>
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image5.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
 <para>
 We can now add our image beneath it, by opening the Images &amp; Media folder (in the Palette window in the Graphical Layout interface), and dragging the ImageView on our screen. 
 </para>
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image6.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image7.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
 <para>
 Next let's drag a Button Widget beneath the ImageView.
 </para>
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image8.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
 <para>
 The resulting screen is not quite what we wanted. This is because we haven't set the orientation in our LinearLayout. To do this we have to add a new attribute to our LinearLayout object. 
@@ -106,25 +125,33 @@ The resulting screen is not quite what we wanted. This is because we haven't set
 Add android:orientation="vertical" in the opening LinearLayout tag.
 </para>
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image9.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
 <para>
 It's starting to look better.
 </para>
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image10.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
 <para>
 But how did that Button end up on top of the ImageView? We need to change that. We can either drag the Button underneath the ImageView in the Graphical Layout, or change the order in which the objects are declared in the raw xml file, so we end up with a screen that' pretty close to what we've envisioned.
 </para>
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image11.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
 <para>
 We just need to adjust and add some attributes and strings to match it exactly to our original plan. Our layout's raw xml should look like this. 
 </para>
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image13.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
 <para>
 android:gravity sets where the children of the parent with that atribute will gravitate towards
@@ -160,13 +187,17 @@ Now our product looks just the way we imagined.
 </para>
 </section> <!-- section4 -->
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image14.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
 <para>
 And this is how our strings file currently looks like with all the added strings.
 </para>
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image15.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
 <para>
 Of course we could have done this another way, by simply declaring our xml objects in the raw xml file and giving them their appropriate attributes immediately, instead of changing them later. Feel free to use whichever method you'd like when creating your Android application.
@@ -243,7 +274,9 @@ We declared the button outside a method, but we set it up in the onCreate() meth
 Eclipse has underlined the setOnClickListener(this), though, and it's not giving us a good reason why. It suggests changing the method to another one, or casting (OnClickListner) before this. 
 </para>
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image16.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
 <para>
 Neither of these suggestions is valid. The correct answer is that our Activity class has to implement the OnClickListener interface. You'll learn more about implementing interfaces, and interfaces themselves and in the future, but for now, just now that this make our activity both an Activity and takes on the behavious of an OnClickListener, so we can pass &quot;this&quot; as a parameter when calling methods from both the Activity class and the OnClickListener interface.
@@ -308,7 +341,9 @@ public void onClick(View v) {
 If we run our app now, we can see our button in action.
 </para>
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image17.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
 <para>
 Because we've called our method onClick(), while implementing the OnClickListener, we've implemented an OnClickListener method that connects to the element we've set the listener for (in this case our button). Buttons have an onClick attribute in the xml, that we've now set up for the button via the Java file, instead of setting it through the xml.
@@ -330,7 +365,9 @@ Here we basically tell the onClick() method that it should do whatever we say it
 With this implemented, we can scratch all we did in our activity class, until it looks as it did before.
 </para>
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image18.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
 <para>
 In this case we don't need to create a button that refers to the button we already have in the xml and add to it, because it's all done in the xml. We don't need to implement the interface, and the only thing we need to do is create a new method clickThis().
@@ -351,7 +388,9 @@ public void clickThis(View v) {
 The only change we've made here is the duration in the makeText() method. Running our app now, makes the Toast message appear on the screen for longer, but the general effect is the same.
 </para>
 
+<para>
 <imagedata fileref="../images/Android1/Lab2Image19.png" format="JPG" align="center" contentwidth="400"/>
+</para>
 
 <para>
 And we've succeeded adding a bit of functionality to our app. That wasn't that hard, was it?

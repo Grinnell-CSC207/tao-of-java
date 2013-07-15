@@ -17,22 +17,30 @@ To add an activity we click on the package in our src folder and go to
 </para>
 
 <para>
-<guimenu>File<guimenu/> > <guimenuitem>New</guimenuitem> > <guimenuitem>Other...</guimenuitem>
-<para>
+<guimenu>File</guimenu> > <guimenuitem>New</guimenuitem> > <guimenuitem>Other...</guimenuitem>
+</para>
 
-<!-- NEED PICTURE HERE: LABIMAGE 1 -->
+<imagedata fileref="../images/Android3/Lab3Image1.png" align="center" contentwidth="400"/>
 
 <para>
 We want our activity to be a simple Blank Activity, so we press <guimenuitem>Next</guimenuitem>.
 </para>
 
-<!-- WE NEED PICTURE HERE: LABIMAGE 2 -->
+<para>
+<imagedata fileref="../images/Android3/Lab3Iamge2.png" align="center" contentwidth="400"/>
+</para>
+
+<para>
+  <emphasis><imagedata fileref="../images/List3.jpg" align="center" contentwidth="175"/></emphasis> 
+</para>
 
 <para>
 Now we give it a descriptive name, like ShabunkInfoActivity
 </para>
 
-<!-- WE NEED PICTURE HERE: LABIMAGE 3 -->
+<para>
+<imagedata fileref="../images/Android3/Lab3Image3.png" align="center" contentwidth="400"/>
+</para>
 
 <para>
 and click <guimenuitem>Finish</guimenuitem>.
@@ -42,16 +50,22 @@ and click <guimenuitem>Finish</guimenuitem>.
 Adding a new activity, auto-generates some files. As you might have expected, a layout xml file for the new activity is created, as well as a new String value for the activity's name.
 </para>
 
-<!-- WE NEED PICTURE HERE: LABIMAGE 4 -->
+<para>
+<imagedata fileref="../images/Android3/Lab3Image4.png" align="center" contentwidth="400"/>
+</para>
 
-<!-- WE NEED PICTURE HERE: LABIMAGE 5 -->
+<para>
+<imagedata fileref="../images/Android3/Lab3Image5.png" align="center" contentwidth="400"/>
+</para>
 
 <para>
 Besides that, the manifest file was updated to say that our app now has two activities instead of one.
 </para>
 
-<!-- WE NEED PICTURE HERE: LABIMAGE 7 -->
-</section><!-- newactivity -->
+<para>
+<imagedata fileref="../images/Android3/Lab3Image7.png" align="center" contentwidth="400"/>
+</para>
+</section> <!-- newactivity -->
 
 <section id="addingtonewactivity"><title>2. Adding to our new activity</title>
 <para>
@@ -77,7 +91,9 @@ Personal Blurb
 Now we can create a simple Java class, called Info, that creates objects with the fields we defined above, to create Percy-specific data in our activity.
 </para>
 
-<!-- WE NEED PICTURE HERE: LABIMAGE 8 -->
+<para>
+<imagedata fileref="../images/Android3/Lab3Image8.png" align="center" contentwidth="400"/>
+</para>
 
 <para>
 We can use regular Java classes in Android specific activity classes, just as we would normally. We can access all the methods and fields we have permission to (public/protected/private) and use them in any of our activities.
@@ -92,23 +108,29 @@ To make a listView in Android, we simply just drag it onto the layout screen
 We can leave the layout kind to be a RelativeLayout. There's no reason to change it since it only has one element. ListView's are scrollable by default, so we don't have t worry about having too much information that won't fit in the screen.
 </para>
 
-<!-- WE NEED PICTURE HERE: LABIMAGE 9 -->
-
 <para>
-To define how a single row looks like, we need to create a new xml file that will containt only the information about that row. To keep it simple, we'll make our rows be TextViews. In that case, our ListView will contain multiple, vertically stacked TextViews. To do this, we simly add a new file to our layout folder, we can call it simple_row.
+To define how a single row looks like, we need to create a new xml file that will contain only the information about that row. To keep it simple, we'll make our rows be TextViews. In that case, our ListView will contain multiple, vertically stacked TextViews. To do this, we simly add a new file to our layout folder, we can call it simple_row.
 </para>
 
-<!-- WE NEED PICTURE HERE: LABIMAGE EXTRA 1 -->
+<para>
+<imagedata fileref="../images/Android3/Lab3ImageExtra1.png" align="center" contentwidth="400"/>
+</para>
 
-<!-- WE NEED PICTURE HERE: LABIMAGE EXTRA 2 -->
+<para>
+<imagedata fileref="../images/Android3/Lab3ImageExtra2.png" align="center" contentwidth="400"/>
+</para>
 
-<!-- WE NEED PICTURE HERE: LABIMAGE EXTRA 3 -->
+<para>
+<imagedata fileref="../images/Android3/Lab3ImageExtra3.png" align="center" contentwidth="400"/>
+</para>
 
 <para>
 By default, the xml file will have a LinearLayout, like this:
 </para>
 
-<!-- WE NEED PICTURE HERE: LABIMAGE EXTRA 4 -->
+<para>
+<imagedata fileref="../images/Android3/Lab3ImageExtra4.png" align="center" contentwidth="400"/>
+</para>
 
 <para>
 For it to just have TextView, we can replace the whole xml file with something like this:
@@ -116,24 +138,24 @@ For it to just have TextView, we can replace the whole xml file with something l
 
 <programlisting>
 
-<?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:padding="10dp" 
-    android:id="@+id/rowTextView"    
-    android:textSize="16sp" >
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8"?&gt;
+&lt;TextView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;fill_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:padding=&quot;10dp&quot;
+    android:id=&quot;@+id/rowTextView&quot;
+    android:textSize=&quot;16sp&quot; &gt;
     
-</TextView>
+&lt;&quot;TextView&gt;
 
 </programlisting>
 
 <para>
-ListViews in Android get information via an Adapter that we declare in our Activity class. Because our Info object is a cluster of Strings, a good way to proceed here, is to make of nicely formatted Strings, and feed them to the Adapter. Because we're giving the Adapter an Array, we'll use the ArrayAdapter that takes Strings as arguments.
+<imagedata fileref="../images/Android3/Lab3Image9.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
-We then set up the adapter with the list we want it to get information from, and the row xml file, to tell it how to display it.
+ListViews in Android get information via an Adapter that we declare in our Activity class. Because our Info object is a cluster of Strings, a good way to proceed here, is to make of nicely formatted Strings, and feed them to the Adapter. Because we're giving the Adapter an Array, we'll use the ArrayAdapter that takes Strings as arguments.
 </para>
 
 <para>
@@ -157,7 +179,7 @@ As you can see there's a pattern to creating and filling a list in Android devel
 </listitem>
 <listitem>
 <para>
-	Create a new xml file that will deal with how each row of the listView looks like.
+	Define how a sinlge row in the ListView looks like
 </para>
 </listitem>
 <listitem>
@@ -211,7 +233,7 @@ import android.widget.ListView;
 public class ShabunkInfoActivity extends Activity {
 
 	private ListView infoList;
-	private ArrayAdapter<String> listAdapter;
+	private ArrayAdapter&lt;String&gt; listAdapter;
 	private Info shabunk;
 	
 	@Override
@@ -229,31 +251,30 @@ public class ShabunkInfoActivity extends Activity {
 		infoList = (ListView) findViewById (R.id.listView1);
 		
 		// Create the Info object
-		shabunk = new Info("Percy Shabunkins", "11 months", "Brodypodion", 
-				"Master of disguise", "De-snake the planet", 
-				"Understanding your everchanging identity", 
-				"Hi there, my name is Percy and I am a chameleon. My story is a short one, " +
-				"but despite that an interesting one. As an egg I was stolen from my parents' " +
-				"warm and loving embrace by an evil overlord, Moldemort. I was hatched into a " +
-				"world of cruelty, despair, and bald chameleons with no noses. I was forced " +
-				"to do my master's bidding, and suffered in silence for many a month. " +
-				"My master was not your average chameleon, for he was able to befriend and" +
-				"control chameleons' natural enemies - snakes. He swore to exterminate the" +
-				"world of all chameleons with noses, so his kind could reign supreme!" +
-				"This was when I knew I had to act! Long story short, I now know how to" +
-				"kill snakes, and will proceed to do so until there are none left. The end.");
+		shabunk = new Info(&quot;Percy Shabunkins&quot;, &quot;11 months&quot;, &quot;Brodypodion&quot;, 
+				&quot;Master of disguise&quot;, &quot;De-snake the planet&quot;, 
+				&quot;Understanding your everchanging identity&quot;, 
+				&quot;Hi there, my name is Percy and I am a chameleon. My story is a short one, &quot; +
+				&quot;but despite that an interesting one. As an egg I was stolen from my parents' &quot; +
+				&quot;warm and loving embrace by an evil overlord, Moldemort. I was hatched into a &quot; +
+				&quot;world of cruelty, despair, and bald chameleons with no noses. I was forced &quot; +
+				&quot;to do my master's bidding, and suffered in silence for many a month. &quot; +
+				&quot;My master was not your average chameleon, for he was able to befriend and&quot; +
+				&quot;control chameleons' natural enemies - snakes. He swore to exterminate the&quot; +
+				&quot;world of all chameleons with noses, so his kind could reign supreme!&quot; +
+				&quot;This was when I knew I had to act! Long story short, I now know how to&quot; +
+				&quot;kill snakes, and will proceed to do so until there are none left. The end.&quot;);
 		
 		// Create the nicely formatted String
-		String[] aboutShabunk = {"Name:\n " + shabunk.name, "Age:\n " + shabunk.age, 
-				"Species:\n " + shabunk.species, "Occupation:\n " + shabunk.occupation, 
-				"Life Goal:\n " + shabunk.lifeGoal, "Favourite Book:\n " + shabunk.favoriteBook, 
-				"Personal Blurb:\n " + shabunk.personalBlurb};
+		String[] aboutShabunk = {&quot;Name:\n &quot; + shabunk.name, &quot;Age:\n &quot; + shabunk.age, 
+				&quot;Species:\n &quot; + shabunk.species, &quot;Occupation:\n &quot; + shabunk.occupation, 
+				&quot;Life Goal:\n &quot; + shabunk.lifeGoal, &quot;Favourite Book:\n &quot; + shabunk.favoriteBook, 
+				&quot;Personal Blurb:\n &quot; + shabunk.personalBlurb};
 		
 		// Fill the ArrayAdapter with our String array
-		listAdapter = new ArrayAdapter<String>(this, R.layout.simple_row, aboutShabunk);
+		listAdapter = new ArrayAdapter&lt;String&gt;(this, R.layout.simple_row, aboutShabunk);
 		
 		// Get the information from the ArrayAdapter into our list
-		infoList.setAdapter(listAdapter);
 	} // createList
 
 	@Override
@@ -314,11 +335,11 @@ There's many ways the Intent object can be created. For what we want to do, we'l
 </para>
 
 <programlisting>
-public Intent (Context packageContext, Class<?> cls)
+public Intent (Context packageContext, Class&lt;?&gt; cls)
 </programlisting>
 
 <para>
-The Context will simply be this, and the Class<?> will be the Activity we want to go to followed by ".class". After that we just need to use startActivity(), and our Button should be able to take us to our desired screen.
+The Context will simply be this, and the Class&lt;?&gt; will be the Activity we want to go to followed by ".class". After that we just need to use startActivity(), and our Button should be able to take us to our desired screen.
 </para>
 
 <programlisting>
@@ -335,10 +356,10 @@ The Context will simply be this, and the Class<?> will be the Activity we want t
 This is what the app looks like now, when we compile and run it. Pretty exciting, eh?This is what the app looks like now, when we compile and run it. Pretty exciting, eh?
 </para>
 
-<!-- WE NEED PICTURE HERE: LABIMAGE 10 -->
+<imagedata fileref="../images/Android3/Lab3Image10.png" align="center" contentwidth="400"/>
 </section> <!-- seeingitallcometogether -->
 
-<section id="linkingtomainactivity"></section><title>5. Linking back to our main activity</title>
+<section id="linkingtomainactivity"><title>5. Linking back to our main activity</title>
 
 <para>Usually, apps allow you to go back to the main (or home) activity. We could use another button, and create an Intent like we did to go from our home screen to our info screen, but that's not the conventional way.
 </para>
@@ -347,7 +368,9 @@ This is what the app looks like now, when we compile and run it. Pretty exciting
 On top of each android app we have an Action Bar.
 </para>
 
-<!-- WE NEED PICTURE HERE: LABIMAGE 11 -->
+<para>
+<imagedata fileref="../images/Android3/Lab3Image11.png" align="center" contentwidth="400"/>
+</para>
 
 <para>
 It displays the name of the Activity we're currently on, an Icon for our app (currently the default Android logo) and a clickable three-squares button that acts as a dropdown menu from which we can access certain parts of the app.
@@ -357,7 +380,9 @@ It displays the name of the Activity we're currently on, an Icon for our app (cu
 The conventional way of linking an app's activity to it's home activity, though looks like this:
 </para>
 
-<!-- WE NEED PICTURE HERE: LABIMAGE 12 -->
+<para>
+<imagedata fileref="../images/Android3/Lab3Image12.png" align="center" contentwidth="400"/>
+</para>
 
 <para>
 You can see that there's a new element on the Action Bar, the arrow that points to the left in the left corner. Clicking the arrow, or around it enables us to go back to our main Activity.
@@ -398,4 +423,3 @@ Once that's done, we save the file, and we can run our app. It now links perfect
 </para>
 </section> <!-- linkingtomainactivity -->
 </section> <!-- makingyourappdothingspart2 -->
-
