@@ -2,6 +2,10 @@
 
 package ushahidi;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -11,11 +15,11 @@ public class Incident {
 	private int incidentId = -1; //The identification number corresponding to the incident.
 	private String incidentTitle = ""; //Title of the incident.
 	private String incidentDescription = ""; //Description of the report.
-	private String incidentDate = ""; // The date format is mm/dd/yy.
-	private String incidentMode = ""; //The mode the incident is in.
-	private String incidentActive = ""; //Is the incident active.
-	private String incidentVerified = ""; //Is the incident verified.
-	private int locationId = -1; //The identification number corresponding to the location of the incident.
+	private Date incidentDate; // The date format is mm/dd/yy.
+	private int incidentMode; //The mode the incident is in.
+	private int incidentActive = 0; //Is the incident active.
+	private int incidentVerified = 0; //Is the incident verified.
+	private int locationId; //The identification number corresponding to the location of the incident.
 	private String locationName = ""; //The name of the location.
 	private double locationLatitude; // Latitude of the report's location.
 	private double locationLongitude; //Longitude of the report's location.
@@ -25,9 +29,14 @@ public class Incident {
 	private JSONArray error = null; //Is there an error involving this incident.
 	private JSONArray customFields = null; //Any additional fields the client wishes to add.
 	
-	
+	//These are default values given to fields when no value is given by the JSON Object. 
+	private int invalidLocationId = -1;
 	private double invalidLatitude = 191919;
 	private double invalidLongitude = 191919;
+	
+	SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy hh:mm:ss");
+	
+	
 	public Incident() {
 		
 	} // Incident()
@@ -37,20 +46,40 @@ public class Incident {
 		this.incidentTitle = title;
 	} // Incident(int, String)
 	
-	public Incident(JSONObject input) {
+	public Incident(JSONObject input) 
+			throws JSONException, ParseException {
 		incidentId = Integer.parseInt(input.getJSONObject("incident").get("incidentid").toString());
 		incidentTitle = input.getJSONObject("incident").get("incidenttitle").toString();
 		incidentDescription = input.getJSONObject("incident").get("incidentdescription").toString();
-		incidentDate = input.getJSONObject("incident").get("incidentdate").toString();
-		incidentMode = input.getJSONObject("incident").get("incidentmode").toString();
-		incidentActive = input.getJSONObject("incident").get("incidentactive").toString();
-		incidentVerified = input.getJSONObject("incident").get("incidentverified").toString();
-		locationId = Integer.parseInt(input.getJSONObject("incident").get("locationid").toString());
+		incidentDate = dateFormat.parse(input.getJSONObject("incident").get("incidentdate").toString());
+		incidentMode = Integer.parseInt(input.getJSONObject("incident").get("incidentmode").toString());
+		incidentActive = Integer.parseInt(input.getJSONObject("incident").get("incidentactive").toString());
+		incidentVerified = Integer.parseInt(input.getJSONObject("incident").get("incidentverified").toString());
+		
+		try{
+			if(1 == input.getJSONObject("incident").get("locationid").toString().compareTo("0"))
+				locationId = Integer.parseInt(input.getJSONObject("incident").get("locationid").toString());
+			else
+				locationId = invalidLocationId;
+		} // try{locationId = Integer.parseInt(input.getJSONObject("incident").get("locationid").toString())}
+		catch(java.lang.NumberFormatException e) {
+			locationId = invalidLocationId;
+		} // catch(java.lang.NumberFormatException e)
+		
 		locationName = input.getJSONObject("incident").get("locationname").toString();
 		
-		//COmpensate for null fields on latitude longitude location id
-		locationLatitude = Double.parseDouble(input.getJSONObject("incident").get("locationlatitude").toString());
-		locationLongitude = Double.parseDouble(input.getJSONObject("incident").get("locationlongitude").toString());
+		try{locationLatitude = Double.parseDouble(input.getJSONObject("incident").get("locationlatitude").toString());
+		} // try{locationLatitude = Double.parseDouble(input.getJSONObject("incident").get("locationlatitude").toString())}
+		catch(java.lang.NumberFormatException e) {
+			locationLatitude = invalidLatitude;
+		} // catch(java.lang.NumberFormatException e)
+		
+		try{locationLongitude = Double.parseDouble(input.getJSONObject("incident").get("locationlongitude").toString());
+		} // try{locationLongitude = Double.parseDouble(input.getJSONObject("incident").get("locationlongitude").toString())}
+		catch(java.lang.NumberFormatException e) {
+			locationLongitude = invalidLongitude;
+		} // catch(java.lang.NumberFormatException e)
+			
 		categories = input.getJSONArray("categories");
 		media = input.getJSONArray("media");
 		comments = input.getJSONArray("comments");
@@ -75,65 +104,47 @@ public class Incident {
 	} // toString()
 
 	//Get methods for the fields within the Incident class
-	public int getIncidentId() throws Exception{
-		if (incidentId == -1)
-			throw new Exception("IncidentID is unknown");
+	public int getIncidentId() {
 		return incidentId;
-	} // getIncidentId
+	} // getIncidentId()
 
-	public String getIncidentTitle() throws Exception{
-		if (incidentTitle == "")
-			throw new Exception("Incident Title is unknown");
+	public String getIncidentTitle() {
 		return incidentTitle;
-	} // getIncidentTitle
+	} // getIncidentTitle()
 
-	public String getIncidentDescription() throws Exception{
-		if (incidentDescription == "")
-			throw new Exception("Incident description is unknown");
+	public String getIncidentDescription() {
 		return incidentDescription;
-	} // getIncidentDescription
+	} // getIncidentDescription()
 
-	public String getIncidentDate() throws Exception{
-		if (incidentDate == "")
-			throw new Exception("Incident date is unknown");
+	public Date getIncidentDate() {
 		return incidentDate;
-	} // getIncidentDate
+	} // getIncidentDate()
 
-	public String getIncidentMode() throws Exception{
-		if (incidentMode == "")
-			throw new Exception("IncidentMode is unknown");
+	public int getIncidentMode() {
 		return incidentMode;
 	} // getIncidentMode()
 	
-	public String getIncidentActive() throws Exception{
-		if (incidentActive == "")
-			throw new Exception("Incident Activity is unknown");
+	public int getIncidentActive() {
 		return incidentActive;
 	} // getIncidentActive()
 
-	public String getIncidentVerified() throws Exception{
-		if (incidentVerified == "")
-			throw new Exception("Verification is unknown");
+	public int getIncidentVerified() {
 		return incidentVerified;
 	} // getIncidentVerified()
 
-	public int getLocationId() throws Exception{
-		if (locationId == -1)
-			throw new Exception("Location ID is unknown");
+	public int getLocationId() {
 		return locationId;
 	} // getLocationId()
 
-	public String getLocationName() throws Exception{
-		if (locationName == "")
-			throw new Exception("Location name is unknown");
+	public String getLocationName() {
 		return locationName;
 	} // getLocationName()
 
-	public double getLocationLatitude() throws Exception{
+	public double getLocationLatitude() {
 		return locationLatitude;
 	} // getLocationLatitude()
 
-	public double getLocationLongitude() throws Exception{
+	public double getLocationLongitude() {
 		return locationLongitude;
 	} // getLocationLongitude()
 
