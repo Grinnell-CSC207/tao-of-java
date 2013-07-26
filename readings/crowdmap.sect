@@ -1,0 +1,512 @@
+<section id="crowdmap"><title>0. What is Crowdmap and how it works.</title>
+
+<para>
+a) Crowdmap is designed and built by the people behind Ushahidi, a platform that was originally built to crowdsource crisis information. As the platform evolved, so have its uses. Crowdmap allows you to set up your own map of Ushahidi without having to install it on your own web server. You can monitor elections, map crisis information, curate local resources, or document a zombie invasion.
+</para>
+
+<section id ="section1"><title>1. Creating a Crowdmap Server
+</title>
+
+<para>
+) We start by making a new deployment. Navigate to https://crowdmap.com and click the big red button in the bottom left corner that says <guimenuitem>"Sign Up For Free"</guimenuitem>.
+
+<imagedata fileref="../images/Ushahidi/Ushahidi1.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+b) Enter your information and create a map address. Make sure the address is relevant to the issue you're addressing. Try to make it unique, though. We don't want to have repetitive maps. It's better to point all the relevant information about a map to the same server, after all.
+</para>
+
+<para>
+c) It's best if you create a new email account for your map
+</para>
+
+<para>
+d) The map name will be the title of your map that appears on top of the screen in big, bold letters. The tagline is the little blurb underneath. You can change both of those later on, so don't worry if you don't quite know what to put there yet.
+</para>
+
+<para>
+e) Agree to the Terms and Conditions and create your deployment.
+</para>
+</section> <!-- section1 -->
+
+<section id="section2"><title>2. Modifying and customizing your deployment</title>
+
+<para>
+a) If you click on the title of your deployment, it will bring you to the website you've just created. You'll be presented with a very basic Crowdmap set-up. There's not much going on there, because we haven't changed any setting to actually represent our deployment.
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi2.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi3.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+b) To do this, click on Admin Dashboard on the page where you were first presented with your created deployment. Now we can finally begin customizing. An alternative way to go there, is from your deployment's site. Click on the top right side of the top bar where you email is located, and select <guimenuitem>"Your Dashboard"</guimenuitem> from the dropdown menu.
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi4.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+</section> <!-- section2 -->
+
+<section id="section3"><title>3. Admin Dashboard</title>
+
+<para>
+a) Welcome to your admin dashboard. You can access and modify any and every setting from here. 
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi5.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+b) On the top dark grey bar you have a link to your deployment. Click on that from time to time while you're making changes to see how it actively affect the site. 
+</para>
+
+<para>
+c) Moving to the right on the same bar, we can see + Map Tags. Here you can add tags. These are usually one or two word buzzwords that are relevant to your deployment. These will help people find your deployment through search engines and aggregate information to your site.
+</para>
+
+<para>
+d) The last thing on the bar is your account. Clicking on it will open a drop down menu from which you can access various parts of your dashboard that are tied specifically to your account.
+</para>
+
+<para>
+e) You should see four big red tiles near the top. These are core things Crowdmap suggests you change within your deployment to make it unique. As we go along and set up the server, the tiles will turn green as we address the issues they pertain to.
+</para>
+</section> <!-- section3 -->
+
+<section id="section4"><title>4. Configuring the Site</title>
+
+<para>
+a) Go to Settings. The link brings you to the site settings. Feel free to change the name and the tagline if you've thought up of better ones. 
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi17.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+b) Under Site Email Address, enter the email address you created specifically for your deployment. This email account will server as an intermediate between people sending reports in (via email) and your deployment. Unfortunately, every email message the account receives will appear as a potential report, so make sure that the account is really just used for your deployment. 
+</para>
+
+<para>
+c) If you want, you can enter a site message, copyright statement and submit report message.
+</para>
+
+<para>
+d) For now, let's leave most of the drop down menus as they are, but enter the email you've made for the site in the Alerts Email Address box. That's all for now, so scroll all the way to the bottom and click Save Settings.
+</para>
+</section> <!-- section4 -->
+
+<section id="section5"><title>5. Setting Your Map</title>
+
+<para>
+a) We've set the website, now let's make sure our reports can be put on the right map. Go to the Map tab and select your default country.This is the country in which the events you're trying to report are happening. You can set it to span that one country only, or span multiple countries. 
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi5.1.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+b) Here you can choose what map provider best serves your deployment, regarding the imagery they supply. You can choose between providers such as Google, Esri, OSM and Bing.
+</para>
+
+<para>
+c) You can set the default color for categories (set to red by default) and you can choose an icon (currently just a square).
+</para>
+
+<para>
+d) You can also configure how the map will look like the first time a user comes to your site by changing the default zoom level.
+</para>
+
+<para>
+* You should now see the first red tile change to green, and the text saying Incomplete change to Complete.
+</para>
+</section> <!-- section5 -->
+
+<section id="section6"><title>6. Gathering Data From the Crowd via Email</title>
+
+<para>
+a) Now it's time to set up how our deployment can receive reports. 
+We'll skip the SMS reports for right now, because that gets a bit too involved and complicated, so click on the Email tab instead.
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi5.5.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+b) Put the email you've been using for the site as the Mail Server Username. 
+</para>
+
+<para>
+c) The password to put in is the password for the email and not the password for the deployment.
+</para>
+
+<para>
+d) If you're using gmail, enter 995 as the Mail Server Port, otherwise google what the mail server port is for your particular email provider.
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi6.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+d) If you're using gmail, enter pop.gmail.com, otherwise google what the mail server host is for your email provider.
+</para>
+
+<para>
+e) Again, if you're using gmail enter pop3 for the mail server type, otherwise google what the appropriate mail server type is for your email provider.
+</para>
+
+<para>
+f) Leave the Mail Server SSL support as enabled (Yes).
+</para>
+</section> <!-- section6 -->
+
+<section id="section7"><title>7. Gathering Data From the Crowd via Facebook</title>
+
+<para>
+a) We'll skip the API tab, because it's not really relevant right now, but feel free to explore it on your own.
+</para>
+
+<para>
+b) Let's go ahead and click the Facebook tab. This will enable users to log in to our deployment via Facebook. This will enable users to login to the deployment with their Facebook accounts.
+</para>
+
+<para>
+c) Follow the link that takes you to Facebook for developers. Click on the Apps tab in the upper blue bar. Register as a developer. This will bring up a new screen. Accept the Facebook platform and privacy policy by checking the bottom box and click continue. On the next screen choose the appropriate options and click continue and then click done.
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi8.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+d) As you can tell the button in the upper right corner changed from green to blue and it now says Create New App. Press the button. Give it a name and continue. If your account is not verified, Facebook will prompt you to verify it by entering you phone number or credit card. We're not actually making an app, we just need the Facebook ID and secret. So after your app's been made look for the App ID and App Secret, copy them and paste them into your Crowdmap Facebook settings. 
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi7.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+e) Users should now be able to login to your deployment using their Facebook accounts.
+</para>
+</section> <!-- section7 -->
+
+<section id="section8"><title>8. Gathering Data From the Crowd Twitter</title>
+
+<para>
+a) Before we click on the Twitter tab, you should create a Twitter account. Go to twitter.com and sign up for twitter. 
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi9.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+b) Now choose a username and create your account. Feel free to skip the recommendations and close that tab. You'll get an email for confirming you account in a matter of minutes. Open the email and click the link provided to start using your account to its full potential.
+</para>
+
+<para>
+c) Go back to your Crowdmap, and choose the Twitter tab. Click the first link provided to make set up your deployment as a new Twitter application. 
+</para>
+
+<para>
+d) This will bring you back to twitter. Click Register a new application. 
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi10.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+e) Sign in with your newly create Twitter account.
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi11.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+f) Create a new application. Give it a name, description and website (the website being your deployment's URL). The callback URL is not needed. Agree to the terms and conditions and create your twitter application. 
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi12.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+g) In the OAuth Settings look for Consumer key, Consumer secret. Copy those over to your twitter settings in your deployment. 
+</para>
+
+<para>
+h) We're still missing the access token, so go back to Twitter and press the blue button at the bottom saying Create my access token. You need to refresh the page after that for it to show up (otherwise try creating it again). Copy the Access token and the Access token secret and paste them into your Twitter settings.
+</para>
+
+<para>
+i) Now the only thing that's left to do is decide which twitter post we want to get on our deployment. We define this by what kind of hashtags a twitter post has. Enter a search term (or more, but not too many, you don't want to clutter your feed), make sure you don't put an actual # in front of it. 
+</para>
+
+<para>
+j) Save your settings.
+</para>
+
+<para>
+k) We've played around with everything in Settings, so feel free to go back and change things to your needs.
+</para>
+</section> <!-- section8 -->
+<section id="exploring"><title>EXPLORING MANAGE</title>
+
+<section id="exploring1"><title>1. Categories</title>
+
+<para>
+When reports come in, they're usually sorted regarding what category they fall into. In the categories tab you can create new categories, and modify (rename, recolor) the ones you already have.
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi13.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+</section> <!-- exploring1 -->
+
+<section id="exploring2"><title>2. Blocks</title>
+
+<para>
+Change the order of where Reports and Main Stream News appear on your site. You can switch their positions by dragging the top one down, or the bottom one up.
+</para>
+</section> <!-- exploring2 -->
+
+<section id="exploring3"><title>3. Forms</title>
+
+<para>
+Not something you should be worried about right now. It affects what the website form for reports looks like.
+</para>
+</section> <!-- exploring3 -->
+
+<section id="exploring4"><title>4. Pages</title>
+
+<para>
+This adds a new page to your deployment. If you go to your Crowdmap's public deployment, you can see that there are some links above the map like HOME, REPORTS, SUBMIT A REPORT...
+These represent pages. If you add a new page it will be added on that bar. 
+</para>
+</section> <!-- exploring4 -->
+
+<section id="exploring5"><title>5. News Feeds</title>
+
+<para>
+Other than just reports, your deployment can also get RSS feeds from news. To add a news feed to your deployment, find a relevant news source with an RSS feed. Look for this icon,
+</para>
+
+<!-- INSERT PICTURE OF RSS ICON -->
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi15.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi16.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+You can do this as many times as you want.
+</para>
+</section> <!-- exploring5 -->
+
+<section id="exploring6"><title>6. Layers</title>
+</section> <!-- exploring6 -->
+
+<section id="exploring7"><title>7. Scheduler</title>
+
+<para>
+The scheduler lets you set how often your deployment will check if there are any new messages or reports. ALL means that it will check every time interval ALL is attached to, 0 means it won't ever check if the time interval it pertains to has passed.
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi14.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+So if you want to check for new messages and reports every minute, set all time intervals to ALL.
+</para>
+</section> <!-- exploring7 -->
+
+<section id="exploring8"><title>8. Public Listing</title>
+
+<para>
+If you want your deployment listed publicly, you can enable it from here. You can choose a category, description and some screenshots that represent your site.
+</para>
+</section> <!-- exploring8 -->
+
+<section id="exploring9"><title>9. Actions</title>
+
+<para>
+This is an experimental feature, but you can set up all sorts of actions your deployment performs and set their parameters. For example, if you want your reports to be automatically approved (and therefore added to the site), you can select the trigger Report Added, and choose Approve Report as the Response. You're free to use any Qualifiers you want to make automatic addition of reports more specific.
+</para>
+</section> <!-- exploring9 -->
+
+<section id="exploring10"><title>10. Badges</title>
+
+<para>
+If you have a bunch of users, you can award them badges regarding their report, whether it pertains its location or the number of reports a user has submitted.
+</para>
+</section> <!-- exploring10-->
+
+<section id="exploring11"><title>11. Alerts</title>
+
+<para>
+Alerts get sent here.
+</para>
+</section> <!-- exploring11 -->
+</section> <!-- exploring -->
+
+<section id="users"><title>USERS</title>
+
+<para>
+Users can login to your Ushahidi deployment to track what's going better. When a user signups to someone's deployment they create a unique username and a password. A profile is automatically created for them. 
+</para>
+
+<para>
+As an admin you have the power to view all the users, add or edit users manually, change their permissions and manage their roles.
+</para>
+
+<para>
+This can all be done via the Users tab on the right.
+</para>
+</section> <!-- users -->
+
+<section id="dashboard"><title>DASHBOARD</title>
+
+<para>
+Your dashboard will have all the data about reports you've received recently. you've got a reports timeline, a graph that tells you how many reports you've gotten in a specific time period (time interval?).
+Below it you have your recent reports. There's currently only a dummy report, because we've received no emails, website reports or app-reports. If we had, though, those would have been automatically approved. 
+</para>
+
+<para>
+On the right you've got some statistics. It tells you how many reports of each of those things you have. If you click on a specific statistic, it will take you to its respective modification place.
+</para>
+
+<para>
+On the bottom right we've got the news feeds. These are all the RSS feeds you've set up in the News Feeds tab under Settings. Yay.
+</para>
+</section> <!-- dashboard -->
+
+<section id="reports"><title>REPORTS</title>
+
+<section id="view"><title>VIEW REPORTS</title>
+<para>
+Users can send reports via email, SMS, a mobile app (iOS or Android) or submit it directly from the website.
+For a reports to show up on your website, it needs to be approved. This can either be done manually or it can be set to automatic approval (by going to Manage - Actions).
+</para>
+
+<para>
+From the Reports section on your main page, you can view all the reports on your deployment. You can filter them to all, the ones that are waiting approval, the ones that are waiting verification, and reports currently without a category.
+</para>
+
+<para>
+You can go back at any point in time and un-approve an approved report (and vice verse), un-verify a verified report (and vice versa) or delete it.
+</para>
+</section> <!-- view -->
+
+<section id="create"><title>CREATE REPORT</title>
+<para>
+Here you can create a new report by going to the Create Report tab.To create a new report, give it an appropriate title, a longer description and set its categories - viewers can select to only view a certain category on your map. If you want to have it known that you made a specific report, add your personal information, but that's not necessary. 
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi19.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+You must add a location name. You can search for the location with the google map provided on the right. Too enhance your report, you can include digital media.
+</para>
+
+<para>
+When you're creating a report in the admin panel, you can approve and verify it as soon as you create it. You post the report by clicking Save &amp; Add New.
+</para>
+</section> <!-- create -->
+
+<section id="comments"><title>COMMENTS</title>
+<para>
+Controls the comments on reports. You can filter what comments you're looking at and perform actions on them - approve/unapprove/delete. Or flag them as spam/not spam.
+</para>
+</section> <!-- comments -->
+
+<section id="downloadreports"><title>DOWNLOAD REPORTS</title>
+<para>
+Self explanatory.
+</para>
+</section> <!-- downloadreports -->
+
+<section id="messages"><title>MESSAGES</title>
+
+<para>
+Users can send messages to your deployment that can be turned into reports. Messages themselves are not reports, the admin (you) looks at the messages they get and decides which are relevant enough to be made into actual report. This is set up so not ALL emails (spam, advertising, personal emails...), tweets (rants, mistakes, silly tweets) or SMS (personal texts, autotexts) get turned into reports. Unfortunately that means that you have to manually check each message to create a report out of it.
+</para>
+</section> <!-- messages -->
+
+<section id="sms"><title>SMS</title>
+<para>
+We're not setting this one up, so no talk about that.
+</para>
+</section> <!-- sms -->
+
+<section id="email"><title>EMAIL</title>
+
+<para>
+Under the email tab you'll see all the emails that are currently in your inbox. To make sorting through report worthy messages more bearable, we're provided with a Reporters tab. Here you can tag "reporters" who have sent you emails with trusted, trusted + verify, untrusted, spam... as you start getting more emails, this will be a very useful feature to filter out the irrelevant emails. You'll be able to quickly find the messages you know are legitimate and post them online.
+</para>
+</section> <!-- email -->
+
+<section id="twitter"><title>TWITTER</title>
+
+<para>
+Like the messages you receive in your email, the Twitter tab offers the same kind of control over the tweets that include your hashtags. Here, the reporter tab will be even more useful, since people tweet more often than they email, and building up a database of trusted and untrusted reporters soon is crucial to the efficiency of your deployment.
+</para>
+</section> <!-- twitter -->
+
+<section id="stats"><title>STATS</title>
+
+<para>
+A lot of statistics about the traffic on your website. You can see how many people visited your page in one day, or a graph charting a longer time interval. You can see how many unique visitors visited your site and you can see what country the person was located in when they visited your site. You can look at the breakdown of your reports in a pie chart that shows what percentage of each category is represented on your map.
+</para>
+</section> <!-- stats -->
+
+<section id="addons"><title>ADDONS</title>
+
+<para>
+Addons are a great way to customize your deployment and truly make it your own. There's two type of addons currently offered - Plugins and Themes. To activate a plugin just click Activate on the far right of the plugin's name. All the plugins have a brief description of what they do, so it shouldn't be too hard to navigate around them. But let's try and activate one to see how it goes.
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi20.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+</section> <!-- addons --> 
+
+<para>
+Let's activate the Facebook Social plugin. this allows users to come to your website and post comments on reports via Facebook.
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi21.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi22.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+<imagedata fileref="../images/Ushahidi/Ushahidi23.png" format="JPG" align="center" contentwidth="400"/>
+</para>
+
+<para>
+Themes offer you a wide selection of different visual designs for you deployment. If you're art savvy fell free to tackle making your own theme and release it to the Ushahidi website. Otherwise, I'm sure you'll find at least one of these satisfactory. Most of the theme have demos where you can preview exactly how they look. To get a new theme for your deployment, simply click Select Theme and Save Settings.
+</para>
+</section> <!-- reports --> 
+</section> <!-- crowdmap -->
