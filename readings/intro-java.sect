@@ -1,0 +1,334 @@
+<section id="intro-java"><title>An Introduction to Java</title>
+
+<para>
+  <emphasis role="strong">Summary:</emphasis> We introduce the basics of
+  the Java programming language and walk through the first simple program.
+</para>
+
+<para>
+  <emphasis role="strong">Prerequisites:</emphasis> Basic understanding
+  of object-oriented concepts.
+</para>
+
+<section id="oop-basics"><title>Expectations of Object-Oriented Languages</title>
+
+<para>
+  Now that you know the basics of object-oriented programming, there are
+  particular characteristics you should look for in any object-oriented
+  language, including ways to define classes and objects, some protection
+  mechanisms, and support for inheritance and polymorphism.  Different
+  languages naturally take different approaches to these issues, both in
+  the <emphasis>syntax</emphasis> that describes how one writes programs
+  and in the underlying semantics of how objects and classes relate.
+</para>
+
+<para>
+  There are also some things you may not have thought about, such as the
+  way in which one invokes a <quote>program</quote> in the particular
+  language.  In some languages one simply adds new classes and objects
+  to an existing <quote>world</quote>, often through a graphical
+  user interface.  Other languages require you to type commands in a
+  textual user interface.  Still others can <quote>automatically</quote>
+  determine which objects to start (e.g., because an object is embedded
+  in a Web page).
+</para>
+
+<para>
+  Classes, object creation, inheritance, polymorphism, and program instantiation
+  are more subjects than we can cover in a short reading.  Hence, in this
+  reading we will focus on three basic issues in Java: 
+</para>
+
+<itemizedlist>
+  <listitem>
+    How to set up a basic Java program.
+  </listitem>
+
+  <listitem>
+    How to create and name objects.
+  </listitem>
+
+  <listitem>
+    How to tell objects to do things.
+  </listitem>
+</itemizedlist>
+
+</section>  <!-- oop-basics -->
+
+<section id="main"><title>Setting Up Java Programs: Your Main Class</title>
+
+<para>
+  Java provides a variety of mechanisms for indicating which objects
+  provide the main components of your program.  The simplest, and
+  the one we will use for most of this course, is what we typically
+  call a <quote>Main Class</quote>.  Such a class is a class that
+  typically contains only one method, called <code>main</code>.
+  The <code>main</code> method contains a series of instructions to
+  create objects and to tell those objects to do things.
+</para>
+
+<para>
+  That theory is fairly simple.  The syntax, however, is daunting to many
+  novice programmers.  Here is a sketch of a typical Main class.
+</para>
+
+<programlisting>
+public class <emphasis>NameOfClass</emphasis> {
+    public static void main(String[] args) throws Exception {
+        <emphasis>instructions</emphasis>;
+    } // main(String[])
+} // class NameOfClass
+</programlisting>
+
+<para>
+  It is the programmer's responsibility to choose an appropriate name for 
+  the class and the instructions for the task at hand.  Tradition suggests
+  that the name of a class begin with an upper-case letter and use mixed
+  case.
+</para>
+
+<para>
+  What else is in this sketch?  The outer braces enclose the contents
+  of this class, in this case, just the main method.  You will see braces
+  enclosing other things in future readings.  The inner braces enclose the
+  instructions for the <code>main</code> method.  
+</para>
+
+<para>
+  You'll notice two slashes and a note after the end-braces.  Text that
+  begins with two slashes is a <emphasis>comment</emphasis> for the
+  programmer or reader.  My experience suggests that you should always
+  comment your end braces to indicate what you're ending.  Such comments
+  help you make sure that your code is structured appropriately and
+  helps the reader more quickly parse your code.  You may (and should)
+  also insert comments to explain key parts of your code.
+</para>
+
+<para>
+  You can probably guess what purpose the words that preface
+  <emphasis>NameOfClass</emphasis> serve.  The <code>public</code>
+  indicates that the class can be used by any program or user (or at
+  least any program or user that has system permission to read the file
+  containing the class).  The <code>class</code> indicates that we're
+  defining a class.
+</para>
+
+<para>
+  The slew of stuff surrounding <code>main</code> is perhaps more
+  confusing.  If you are willing to live with <quote>just write what
+  you see above</quote>, you need not learn the details right now.
+  Feel free to skip ahead to the next section.  However, if you'd like
+  a quick overview, read on.
+</para>
+
+<para>
+  You might be able to guess that the <code>public</code> means that the
+  method named <code>main</code> is generally accessible (again, provided
+  the person or program attempting to access it has system permission to
+  access the associated file).  
+</para>
+
+<para>
+  The <code>static</code> indicates that the method can run without having
+  an associated object created.  You are probably used to running methods
+  (procedures) without having associated objects.  However, in Java, one
+  typically associates a method call with a particular object that is to
+  execute the method call.  Hence, we must indicate that <code>main</code>
+  is an exception to the rule.
+</para>
+
+<para>
+  In Java, all methods potentially return values.  Programmers therefore
+  have a responsibility to indicate what kind of value the methods return.
+  (The designers of Java have found that programs behave more reliably
+  if the compiler can tell the types of values and check to see that
+  the programmer is using them consistently.)  We don't want to return
+  any particular value from this method (we just want it to run), so we
+  give it return type <code>void</code>.
+</para>
+
+<para>
+  The <code>String[] args</code> in parentheses provides the one
+  parameter to the <code>main</code> method: All the strings typed
+  on the command line along with the command to execute the Java program.
+  This parameter is an artifact of Java's designers decision to emulate
+  some key aspects of the C programming language.  We will return to it
+  after we learn more about arrays.
+</para>
+
+<para>
+  Finally, the <code>throws Exception</code> is our admission that our
+  method can fail.  Java expects programmers to indicate when and how
+  their methods can fail.  As you become a more careful and responsible
+  programmer and can guarantee that your methods will not fail, you can
+  possibly remove this line.
+</para>
+
+</section>  <!-- main -->
+
+<section id="naming"><title>Naming Objects</title>
+
+<para>
+  What kinds of things belong in the body of <code>main</code> (and in any
+  other methods you decide to write)?  A few basic things.  First, you
+  often include <emphasis>declarations</emphasis> of names for objects.
+  The declaration of a name provides the type of object the name will
+  refer to and the text of the name.  The general form is
+</para>
+
+<programlisting>
+<emphasis>Type</emphasis> <emphasis>name</emphasis>;
+</programlisting>
+
+<para>
+  For example, I might say that <code>pen</code> will name objects in
+  class <code>java.io.PrintWriter</code> with
+</para>
+
+<programlisting>
+    java.io.PrintWriter pen;
+</programlisting>
+
+<para>
+  Similarly, I might say that <code>i</code> is an integer (in Java-ese, 
+  an <code>int</code>) with
+</para>
+
+<programlisting>
+    int i;
+</programlisting>
+
+<para>
+  Note that the semicolon at the end of the declaration is necessary.  
+  You will receive strange errors if you fail to include that semicolon.
+</para>
+
+<para>
+  Once you have declared the name for a kind of value, you can make that
+  name refer to a particular value using the assignment operator (an
+  equals sign).
+</para>
+
+<programlisting>
+<emphasis>name</emphasis> = <emphasis>expression</emphasis>;
+</programlisting>
+
+</section>  <!-- naming -->
+
+<section id="creating"><title>Creating New Objects</title>
+
+<para>
+  In many cases, particularly at the beginning of the <code>main</code> 
+  method, the expression at the right-hand side of the assignment 
+  creates a new object.  The form of an expression that creates a new
+  object is most typically
+</para>
+
+<programlisting>
+new <emphasis>NameOfClass</emphasis>(<emphasis>parameters</emphasis>)
+</programlisting>
+
+<para>
+  What class names can you use?  You can use any class that you've defined
+  (none, yet), any class that someone has provided for you or that you've
+  downloaded, or any class that comes as part of a standard Java installation.
+</para>
+
+<para>
+  What parameters do you give when you create a new object?  It depends
+  on the kind of object you're creating.  You will need to check
+  the documentation for the object to determine what parameters are
+  appropriate.
+</para>
+
+</section>  <!-- creating -->
+
+<section id="using"><title>Using Named Objects</title>
+
+<para>
+  You've created an object.  You've named that object.  What else can you
+  do with the object?  You can tell it to do something.  (Some programmers
+  say that this is <quote>calling a method</quote> others say it is
+  <quote>sending a message to the object</quote>.)  The typical form is
+</para>
+
+<programlisting>
+    <emphasis>name</emphasis>.<emphasis>method</emphasis>(<emphasis>parameters</emphasis>);
+</programlisting>
+
+</section>
+
+<section id="useful-classes"><title>Useful Classes</title>
+
+<para>
+For many of your programs, you will find the following classes useful:
+</para>
+
+<variablelist>
+  <varlistentry>
+    <term><code>java.lang.String</code></term>
+    <listitem>
+      Sequences of alphanumeric characters.  You can represent strings
+      explicitly by surrounding the characters with double-quote marks.
+    </listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term><code>java.io.PrintWriter</code></term>
+    <listitem>
+      The simplest mechanism for output in Java.  PrintWriters provide
+      <code>print</code> and <code>println</code> methods.  You can
+      create PrintWriters with <code>new java.io.PrintWriter(System.out,
+      true)</code>.
+      You can also create new PrintWriters with
+      <code>new java.io.PrintWriter(<emphasis>file</emphasis>)</code>.
+    </listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term><code>java.io.File</code></term>
+    <listitem>
+      Files for use in PrintWriters.  You can create a new File with
+      <code>new File(<emphasis>pathtofile</emphasis>)</code>.  For now,
+      you will not use files directly.  Instead, you will create them
+      as parameters for PrintWriters and other classes.
+    </listitem>
+  </varlistentry>
+
+</variablelist>
+
+</section>  <!-- useful-classes -->
+
+<section id="first-program"><title>Putting it All Together: Your First Program</title>
+
+<para>
+  We now know all the basic components of a Java program, so we can
+  write a typical <quote>first program</quote> which writes a greeting
+  to the screen.  (This one is slightly more complex than one you may
+  have seen previously, but it also does a better job of revealing
+  some basic Java issues.)
+</para>
+
+<programlisting>
+package edu.grinnell.csc207.username.intro;
+
+public class First
+{
+  public static void main(String[] args)
+    throws Exception
+  {
+    // Describe the two names of objects used in the program.
+    java.io.PrintWriter pen;
+    java.lang.String greeting;
+    // Create objects and associate the names with those objects.
+    pen = new java.io.PrintWriter(System.out, true);
+    greeting = "Hello";
+    // Tell one object to do something.
+    pen.println(greeting);
+  } // main(String[])
+} // class First
+</programlisting>
+
+</section>  <!-- first-program -->
+
+</section>  <!-- intro-java -->
