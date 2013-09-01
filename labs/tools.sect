@@ -1,0 +1,16 @@
+<section id="tools"><title>Laboratories: Programming Tools</title>
+
+<para>
+  First, do <ulink url="../labs/eclipse.html">Getting Started with Eclipse</ulink>.  
+</para>
+
+<para>
+  Next, do <ulink url="../labs/git.html">Getting Started with Git</ulink>.
+</para>
+
+<para>
+  If you have any time left over, do some of the problems labeled
+  <quote>For those with extra time</quote>.
+</para>
+
+</section> <!-- tools -->
