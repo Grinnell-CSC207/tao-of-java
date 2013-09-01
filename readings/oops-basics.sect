@@ -270,7 +270,7 @@
 
 </section>  <!-- polymorphism -->
 
-<section id="wrapup"><title>Wrapup: What to Look for When Learning OOP</title>
+<section id="what-to-look-for"><title>Summary: What to Look for When Learning OOP</title>
 
 <para>
   In this reading, we've considered some key aspects of object-oriented
@@ -301,7 +301,7 @@
   We will cover each of these ideas in our explorations of Java.
 </para>
 
-</section>  <!-- wrapup -->
+</section>  <!-- summary -->
 
 <section id="wrapup"><title>Wrapping Up</title>
 
