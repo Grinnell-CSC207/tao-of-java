@@ -1,0 +1,129 @@
+<section id="lab-git"><title>Laboratory: Getting Started with Git</title>
+
+<para>
+  <emphasis>Summary</emphasis>: In this laboratory, you will be
+  practicing using git.  You will use the command line 
+  to manage your git repositories.  (Eclipse has a plugin, EGit, that
+  makes it easier to interact directly with GitHub.  However, we don't
+  seem to have that plugin correctly installed or configured, so we'll
+  do it by hand.)
+</para>
+
+<para>
+  In case you've forgotten what you learned in the reading, there is
+  <link linkend="anchor-git-commands">a list of useful commands</link>
+  at the end of this lab.
+</para>
+
+<section id="git-0"> <title>Preparation</title>
+
+<para>
+  a. Make sure you’ve read <ulink url="../readings/git.html">the Introduction to Git reading</ulink>. 
+</para>
+
+<para>
+  b. Make sure that you've done <ulink url="../labs/eclipse.html">the Introduction to Eclipse lab</ulink>
+</para>
+
+<para>
+  c. Log in and open a terminal window.
+</para>
+
+<para>
+  d. Create a directory to use for this lab.  I'd suggest something like
+  <code>~/CSC207/Git</code>.
+</para>
+
+<para>
+  e. Open Eclipse.
+</para>
+
+</section> <!-- preparation -->
+
+<section id="git-exercises"> <title>Exercises</title>
+
+<section id="git-01"> <title>Exercise 1: Make an Account</title>
+
+<para>
+  Create a GitHub account at <ulink url="https://github.com/">https://github.com/</ulink>
+</para>
+
+</section> <!-- Exercise 1 -->
+
+<section id="git-02"> <title>Exercise 2: Configure Your Linux Account</title>
+
+<para>
+  As you may recall, your life is easier if you do a bit of configuration
+  before working with Git.
+</para>
+
+<para>
+  First, open a new terminal window.
+</para>
+
+<para>
+  Next, type these commands.
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>git config --global user.name "<emphasis>YourName</emphasis>"</userinput>
+<prompt>$</prompt> <userinput>git config --global user.email <emphasis>username@
+grinnell.edu</emphasis></userinput></screen>
+
+<para>
+  Finally, set your editor.
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>git config --global core.editor <emphasis>editor</emphasis></userinput></screen>
+
+<para>
+  You can use <code>emacs</code>, <code>vi</code> (or <code>vim</code>,
+  or <code>vim.basic</code>), or even <code>gedit</code>.
+</para>
+
+</section> <!-- git-02 -->
+
+<section id="git-03"> <title>Exercise 3: Create a New Repository</title>
+
+<para>
+  a. Log in to your GitHub account.
+</para>
+
+<para>
+  b. Somewhere on the page (along the right hand column, at the time
+  of this writing, but it changes), there should be a button labeled
+  <guibutton>New Repository</guibutton> (although that name changes, too).
+  Click that button.  A dialog should appear.
+</para>
+
+<para>
+  c. Name your repository (e.g., <code>git-exercise</code>).  Click
+  the buttons to make it public and to initialiez the repository
+  with a README file.  Choose the Java .gitignore file.  Choose
+  a license you like.  Finally, click <code>Create Repository</code>.
+</para>
+
+</section> <!-- Exercise git-03 -->
+
+</section> <!-- Exercises -->
+
+<anchor id="anchor-git-commands"/>
+<section id="git-commands"><title>Some Useful Git Commands</title>
+
+<programlisting>
+git config --global user.name <emphasis>"Your Name"</emphasis>
+git config --global user.email <emphasis>your_email@example.com</emphasis>
+git config --global core.editor <emphasis>editor</emphasis>
+
+git help
+git clone
+git add
+git commit
+git pull
+git push
+</programlisting>
+
+</section> <!-- git-commands -->
+
+</section> <!-- git-Lab -->
