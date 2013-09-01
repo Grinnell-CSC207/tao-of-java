@@ -1,81 +1,277 @@
-<section id="eclipse-lab"> <title>Laboratory: Create a Project</title>
+<section id="eclipse-lab"> <title>Getting Started with Eclipse</title>
 
 <para>
-<emphasis>Summary</emphasis>: In this laboratory, you will create your first project in Eclipse
+  <emphasis>Summary</emphasis>: In this laboratory, you will start using
+  Eclipse. In particular, you will ccreate your first project in Eclipse.
 </para>
+
+<section id="eclipse-preparation"><title>Preparation</title>
+
+<para>
+  a. Make sure you have completed and understood <ulink
+  url="../readings/eclipse.html">the reading on IDEs and Eclipse</ulink>.
+</para>
+
+<para>
+  b. Start Eclipse by typing the following in a terminal window.
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>eclipse &amp;</userinput> </screen>
+
+<para>
+  You may recall that the ampersand means that the program will
+  run in the background and you can continue using the terminal
+  window.
+</para>
+
+<para>
+  Alternately, you can start Eclipse by finding the appropriate
+  menu item in the <guimenu>Applications</guimenu> menu, which
+  looks like a little creature over a blue X under Xfce4.
+</para>
+
+</section> <!-- eclipse-preparation -->
 
 <section id="eclipse-exercises"> <title>Exercises</title>
 
-<section id="eclipse-0"> <title>Exercise 0: Prerequisites</title>
-Make sure you’ve completed and understood the reading <ulink url="LINK FOR THE READING">Introducing the IDE</ulink> before starting this lab.
-</section> <!-- Exercise 0 -->
-
-<section id="eclipse-1"> <title>Exercise 1: Your First Program</title>
+<section id="eclipse-01"> <title>Exercise 1: Your First Program</title>
 
 <para>
-a. Make a new project in Eclipse and call it <code>HelloEclipse</code>
-	(<guimenu>File</guimenu> > <guimenuitem>New</guimenuitem> > <guimenuitem>Project</guimenuitem>)
+  a. Make a new project in Eclipse and call it <code>HelloEclipse</code>.
+  From the <guimenu>File</guimenu> menu, select <guimenuitem>New</guimenuitem>,
+  and then <guimenuitem>Java Project</guimenuitem>.
 </para>
 
 <para>
-b. Create a package in the class that will hold your class files
-   	(<guimenu>File</guimenu> > <guimenuitem>New</guimenuitem> > <guimenuitem>Package</guimenuitem>)
+  b. Create a package in the class that will hold your class files. 
+  Name your package <code>introduction</code>.
+  If you are not sure how to create a new package, use
+  <guimenu>File</guimenu> 
+  &gt; <guimenuitem>New</guimenuitem> 
+  &gt; <guimenuitem>Package</guimenuitem>.
 </para>
 
 <para>
-c. Create a class in the package called HelloJava
-   	(<guimenu>File</guimenu> > <guimenuitem>New</guimenuitem> > <guimenuitem>Class</guimenuitem>)
+  c. Create a class in the package called <code>HelloJava</code>.  If you are
+  not sure how to create a new class, use
+  <guimenu>File</guimenu> 
+  &gt; <guimenuitem>New</guimenuitem> 
+  &gt; <guimenuitem>Class</guimenuitem>.
 </para>
 
 <para>
-d. Copy and paste this code into your class to see it come to life (make sure you change the package name to what you’ve named yours)
+  d. Copy and paste this code into your class.  Make sure that you use
+  a package that corresponds to the one you just created.
 </para>
 
 <programlisting>
-package first;
+package introduction;
 
+/**
+ * A simple introductory Java class.
+ */
 public class HelloJava {
-
+   /**
+    * Print a silly message.
+    */
    public static void main(String[] args) {
        System.out.print("I am the 1337 h4x0r. Phear me!");
-   } // main(String[] args)
+   } // main(String[])
+
 } // class HelloJava
 </programlisting>
 
 <para>
-e. Run the program and marvel at the words that appear in the console!
-</para>
-</section> <!-- Exercise 1 -->
-
-<section id="eclipse-2"> <title>Exercise 2: Your Second Program</title>
-
-<para>
-a. Make another class in your package and call it <code>SimpleMath</code>
+  e. Run the program and marvel at the words that appear in the console!
 </para>
 
-<para>
-b. Using the skeleton from above write a program that prints out the result of two integers and tells you which integers it print. An example output could be:
-<code>Adding 3 and 4 gives us 7.</code>
-</para>
+</section> <!-- eclipse-01 -->
+
+<section id="eclipse-02"><title>Exercise 2: Switching Packages</title>
 
 <para>
-c. Java’s <code>System.out.println()</code> method will add them for you if you don’t put the numbers in the parenthesis as strings.
+  a. Create a new package named
+  <code>edu.grinnell.csc207.<emphasis>username</emphasis>.intro</code>.
+  (You should be using package names like this, so you might as well
+  get used to it.)
 </para>
 
 <para>
-d. In Java you can concatenate string by putting a + sign between them like so:
-<code>“Java” + “ ” + “is” + “ “ + “awesome”</code>
+  b. Drag <code>HelloJava</code> from one package to another in the 
+  Package Explorer.
 </para>
 
 <para>
-e. Can you predict what happens when you put this in the print statement and run it?
+  c. Observe what happens.
+</para>
+
+</section> <!-- eclipse-02 -->
+
+<section id="eclipse-03"><title>Exercise 3: Experiments with Output</title>
+
+<para>
+  You've already seen that Java looks a bit like C, except that it's also
+  a bit more verbose.  For example, instead of <code>printf</code> with
+  a pattern, you use <code>System.out.println</code>.  (In a few days,
+  you will stop using <code>System.out</code> and explore other ways to
+  do output.)
 </para>
 
 <para>
-f. There’s many more ways to print in Java, but a similar to the one you’ve already seen is System.out.print(). What’s the difference between the two? To make sure that you’ve got the answer create several print statements. Some with <code>System.out.print()</code> and some with <code>System.out.println()</code>
+  a. Determine what happens if you have multiple calls to 
+  <code>System.out.println</code>.
 </para>
-</section> <!-- Exercise 3 -->
 
-</section> <!-- Exercises -->
+<para>
+  b. Determine what happens if you use <code>println</code> with an
+  integer or real number rather than a string.
+</para>
+
+<para>
+  c. Determine what happens if you use <code>System.out.print</code> rather
+  than <code>System.out.println</code>.
+</para>
+
+<para>
+  d. Determine what happens when you try to print <code>System.out</code>.
+  That is, determine the result of
+</para>
+
+<programlisting>
+        System.out.println(System.out);
+</programlisting>
+
+</section> <!-- eclipse-03 -->
+
+<section id="eclipse-04"> <title>Exercise 4: Your Second Program</title>
+
+<para>
+  a. Make another class in your package and call it <code>SimpleMath</code>
+</para>
+
+<para>
+  b. Using the skeleton from above write a program that computes and
+  prints prints out a simple sum.  For example, your output might be
+</para>
+
+<screen>
+Adding 3 and 4 gives us 7.</screen>
+
+<para>   
+  Presumably, you wrote this program using a sequence of calls to
+  <code>System.out.print</code> and <code>System.out.println</code>.  Can
+  we pack it into a single instruction?  
+</para>
+
+<para>
+  c. Java <quote>overloads</quote> the <code>+</code> operation.
+  If you combine two strings with <code>+</code>, you will get a string.
+  For example, determine the result of the following instruction.
+</para>
+
+<programlisting>
+        System.out.println("Hello" + "World");
+</programlisting>
+
+<para>
+  d. We saw earlier that <code>System.out.println</code> accepts things other
+  than strings, such as integers and reals (and even <code>System.out</code>).
+  What about <code>+</code>?  Determine what happens if you combine a string
+  and an integer with <code>+</code>.  What about combining an integer
+  and a string?
+</para>
+
+<para>
+  e. Rewrite your instructions to print a sum using just one call to
+  <code>System.out.println</code>.
+</para>
+
+</section> <!-- eclipse-04 -->
+
+<section id="eclipse-05"><title>Exercise 5: Configuring Eclipse</title>
+
+<para>
+  In this course, we will be trying to follow the standard Sun (now
+  Oracle) Java Code Conventions.  Eclipse can help if you configure it
+  correctly.
+</para>
+
+<para>
+  First, select <guimenu>Window</guimenu> &gt; <guimenuitem>Preferences</guimenuitem>.
+</para>
+
+<para>
+  Next, select <guimenu>Java</guimenu> &gt; <guimenuitem>Code Style</guimenuitem> &gt; <guimenuitem>Formatter</guimenuitem>.
+</para>
+
+<para>
+  Next, select <guimenuitem>Java Conventions [built-in]</guimenuitem> under
+  <guilabel>Active Profile</guilabel>.
+</para>
+
+<para>
+  Finally, save the new preferences.
+</para>
+
+<para>
+  Select all of your code and hit <keycap>Ctrl</keycap>-<keycap>I</keycap>
+</para>
+
+</section> <!-- eclipse-05 -->
+
+<section id="eclipse-06"><title>Exercise 6: Hovering</title>
+
+<para>
+  a. Hover the cursor over one of the instances of <code>System</code>
+  and note what happens.
+</para>
+
+<para>
+  b. Hover the cursor over one of the instances of <code>out</code> and
+  note what happens.
+</para>
+
+<para>
+  c. Hover the cursor over one of the instances of <code>print</code> or
+  <code>println</code> and observe what happens.
+</para>
+
+<para>
+  d. Hover the cursor over <code>main</code> or <code>HelloJava</code> and
+  observer what happens.
+</para>
+
+</section> <!-- eclipse-06 -->
+
+</section> <!-- eclipse-exercises -->
+
+<section id="extra"><title>For Those With Extra Time</title>
+
+<section id="eclipse-extra-01"><title>Extra 1: Code Preferences</title>
+
+<para>
+  In one of the exercises, you configured Eclipse to format code in a
+  certain way.  Eclipse is highly configurable, so you might explore other
+  preferences.  Go back to the Formatter preferences and click
+  <guibutton>New...</guibutton>.  In the dialog box that appears,
+  select <guimenuitem>Java Conventions [built-in]</guimenuitem> 
+  as the initialization profile and then name your preferences.  Click
+  <guibutton>OK</guibutton> and then explore the various preferences that
+  you can set.
+</para>
+
+</section> <!-- eclipse-extra-01 -->
+
+<section id="eclipse-extra-02"><title>Extra 2: Refactoring</title>
+
+<para>
+  You'll note that Eclipse has a <guimenu>Refactor</guimenu>.  Figure
+  out what at least one item in that menu does.
+</para>
+
+</section> <!-- eclipse-extra-02 -->
+
+</section> <!-- extra -->
 
 </section> <!-- Eclipse Lab -->
