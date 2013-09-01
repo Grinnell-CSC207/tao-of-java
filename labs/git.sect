@@ -1,13 +1,578 @@
-<section id="lab-git"> <title>Laboratory: Intro to Git</title>
+<section id="lab-git"><title>Getting Started with Git</title>
 
 <para>
-<emphasis>Summary</emphasis>: In this laboratory, you will be practicing using git.
-You can either use the command line (helpful commands above) to manage your git repositories or we can do it straight from Eclipse. Eclipse has a plugin, EGit that makes it easier to interact with GitHub straight from Eclipse instead of using the command line which can sometimes get messy and confusing. 
-If you do though opt to go the command line route in the future, here's a list of commands you might find useful:
+  <emphasis>Summary</emphasis>: In this laboratory, you will practice
+  using Git.  Although you can use the command line (see commands
+  below) to manage your GitHub repositories, we will try communicating
+  with GitHub directly from Eclipse, using the EGit plugin.  After all,
+  if we're using an IDE, we should integrate everything, including
+  our source code management system.
 </para>
 
-<code>
-git config --global user.name <emphasis>“Your Name”</emphasis>
+<para>
+  If you do though opt to go the command line route in the future,
+  you can find <link linkend="anchor-git-commands">a list of useful
+  commands</link> at the end of this lab.
+</para>
+
+<section id="git-0"> <title>Preparation</title>
+
+<para>
+  a. Make sure you have read <ulink url="../readings/git.html">the Introduction to Git reading</ulink>. 
+</para>
+
+<para>
+  b. Make sure that you have done <ulink url="../labs/eclipse.html">the Introduction to Eclipse lab</ulink>
+</para>
+
+<para>
+  c. Log in and open a terminal window.
+</para>
+
+<para>
+  d. Start Eclipse.
+</para>
+
+</section> <!-- preparation -->
+
+<section id="git-exercises"> <title>Exercises</title>
+
+<section id="git-1"> <title>Exercise 1: Create a GitHub Account</title>
+
+<para>
+  Create a GitHub account at <ulink url="https://github.com/">https://github.com/</ulink>
+</para>
+
+</section> <!-- Exercise 1 -->
+
+<section id="git-02"> <title>Exercise 2: Configure Your Linux Account</title>
+
+<para>
+  As you may recall, your life is easier if you do a bit of configuration
+  before working with Git.  You'll find it useful to configure in both
+  the terminal and Eclipse.  We'll start by working in the terminal.
+</para>
+
+<para>
+  First, open a new terminal window.
+</para>
+
+<para>
+  Next, type these commands.
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>git config --global user.name "<emphasis>YourName</emphasis>"</userinput>
+<prompt>$</prompt> <userinput>git config --global user.email <emphasis>username@grinnell.edu</emphasis></userinput></screen>
+
+<para>
+  Finally, set your editor.
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>git config --global core.editor <emphasis>editor</emphasis></userinput></screen>
+
+<para>
+  You can use <code>emacs</code>, <code>vi</code> (or <code>vim</code>,
+  or <code>vim.basic</code>), or even <code>gedit</code>.
+</para>
+
+</section> <!-- git-02 -->
+
+<section id="git-03"><title>Exercise 3: Add EGit</title>
+
+<para>
+  EGit may not be installed on your workstation, so you get to configure
+  Eclipse to use EGit.
+</para>
+
+<para>
+  a. From the <guimenu>Help</guimenu> menu, select 
+  <guimenuitem>Install New Software...</guimenuitem>.
+</para>
+
+<para>
+  b. In the dialog box that pops up, click <guibutton>Add</guibutton>.
+</para>
+
+<para>
+  c. In the next dialog box that pops up, use "EGit" as the name and
+  <code><ulink url="http://download.eclipse.org/egit/updates"/></code> 
+  as the location.  
+</para>
+
+<para>
+  d.  You should then see <guilabel>Eclipse Git Team
+  Provider</guilabel> and <guilabel>JGit</guilabel> in the middle pane.
+  Select them both.
+</para>
+
+<para>
+  e. Click the <guibutton>Next &gt;</guibutton> button.
+</para>
+
+<para>
+  f. You'll probably get an error message and a longer list of items.
+  Uncheck <guilabel>Task focused interface for Eclipse Git Team 
+  Provider</guilabel> (thanks to StackOverflow for helping me figure this out).
+</para>
+
+<para>
+  g. Click the <guibutton>Next &gt;</guibutton> button.
+</para>
+
+<para>
+  h. Eclipse will ask you to review the items to be installed.
+  Click the <guibutton>Next &gt;</guibutton> button.
+</para>
+
+<para>
+  i. Review the user license.
+</para>
+
+<para>
+  j. Click the <guibutton>Finish</guibutton> button.
+</para>
+
+<para>
+  k. After the software installs, you will probably need to restart
+  Eclipse.
+</para>
+
+</section> <!-- git-03 -->
+
+<section id="git-04"> <title>Exercise 4: Create a Workspace</title>
+
+<para>
+  Create a folder on your computer where you will store your GitHub
+  repositories.  For example, you might name it <code>CSC207</code>.
+</para>
+
+</section> <!-- git-04 -->
+
+<section id="git-05"> <title>Exercise 5: Configuring Eclipse to Use Your New Directory</title>
+
+<para>
+  Go into Eclipse <guimenu>Window</guimenu> &gt; 
+  <guimenuitem>Preferences</guimenuitem>. A preferences window should open.
+  Click the triangle next to <guimenuitem>Team</guimenuitem>.  Then, 
+  click on <guimenuitem>Git</guimenuitem>.  Change the default repository 
+  to the one you just created and click <guibutton>Apply</guibutton>.
+</para>
+
+</section> <!-- git-05 -->
+
+<section id="git-06"> <title>Exercise 6: Configuring Git</title>
+
+<para>
+  You should still be in the preferences window.  If not, reopen it.
+  Then click the triangle next to <guimenuitem>Git</guimenuitem> to
+  expand that item.  
+  Click on <guimenuitem>Configurations</guimenuitem> and make sure that 
+  under <guilabel>user</guilabel> it says something like the following.
+</para>
+
+<programlisting>
+    email    youremail@grinnell.edu
+
+    name     Your Name
+</programlisting>
+
+<para>
+  If it doesn't you should add new entries for both those values.  Click
+  on <guibutton>Add Entry</guibutton> and enter <quote>user.name</quote>
+  as the <emphasis>Key</emphasis> and your username on GitHub
+  as the <emphasis>Value</emphasis>. Click on <guibutton>Add
+  Entry</guibutton> again and enter <quote>user.email</quote> as the
+  <emphasis>Key</emphasis> and the email you used for GitHub as the
+  <emphasis>Value</emphasis>.
+</para> 
+
+</section> <!-- git-06 -->
+
+<section id="git-07"> <title>Exercise 7: Connecting Eclipse to GitHub</title>
+
+<para>
+  To help identify yourself, you will need a pair of RSA keys.
+</para>
+
+<para>
+  Once again, open the Preferences window if it's not already open.
+</para>
+
+<para>
+  a. In Eclipse, expand the <guimenuitem>General</guimenuitem>
+  preference.  Then expand <guimenuitem>Network
+  Connections</guimenuitem>. Select <guimenuitem>SSH2</guimenuitem>
+  Click the <guimenuitem>Key Management Tab</guimenuitem> then
+  <guibutton>Generate RSA Key</guibutton>. Copy the public key to
+  your clipboard. Enter a passphrase.  Click <guibutton>Save
+  Private Key</guibutton> to save your private key and click
+  <guibutton>Apply</guibutton>. Exit the preferences.
+</para>
+
+<para>
+  b. Now we have to tell GitHub about the key.  Log in to your
+  account on the GitHub Web site.  Go to the your <guibutton>Account
+  Settings</guibutton> (which may appear as a pair of tools).
+  Under <guibutton>SSH Keys</guibutton> click <guibutton>Add SSH
+  key</guibutton>. Give it a descriptive name (EGit), and paste the
+  public key you just copied from Eclipse.
+</para>
+
+</section> <!-- git-07 -->
+
+<section id="git-08"> <title>Exercise 8: Creating a New Repository</title>
+
+<para>
+  a. Log in to your GitHub account.
+</para>
+
+<para>
+  b. Somewhere on the page (along the right hand column, at the time
+  of this writing, but it changes), there should be a button labeled
+  <guibutton>New Repository</guibutton> (although that name changes, too).
+  Click that button.  A dialog should appear.
+</para>
+
+<para>
+  c. Name your repository (e.g., <code>git-exercise</code>).  Click
+  the buttons to make it public and to initialize the repository
+  with a README file.  Choose the Java .gitignore file.  Choose
+  a license you like.  Finally, click <code>Create Repository</code>.
+</para>
+
+<para>
+  d. Copy the SSH link associated with your repository.  You will need
+  to look for the Clone URL button (currently along the right-hand side
+  of the page), click on <guibutton>SSH</guibutton>, and then click on
+  <guibutton>Copy to Clipboard</guibutton>.
+</para>
+
+<para>
+  The link should look something like the following:
+</para>
+
+<para>
+<code>git@github.com:<emphasis>username</emphasis>/sample-java.git</code>
+</para>
+
+</section> <!-- git-08 -->
+
+<section id="git-09"> <title>Exercise 9: Getting the Repository into Eclipse</title>
+
+<para>
+  <emphasis>Warning!  These steps are long, tedious, and exacting.</emphasis>
+  However, they will become second nature after awhile.
+</para>
+
+<para>
+  Switch back to Eclipse.
+</para>
+
+<itemizedlist>
+  <listitem>
+    Select <guimenu>File</guimenu> &gt; <guimenuitem>Import...</guimenuitem>.  
+  </listitem>
+  
+  <listitem>
+    Expand the <guimenuitem>Git</guimenuitem> item.
+  </listitem>
+
+  <listitem>
+    Double-click on <guimenuitem>Projects from Git</guimenuitem>.
+  </listitem>
+
+  <listitem>
+    Double-click on <guimenuitem>URI</guimenuitem>.
+  </listitem>
+
+  <listitem>
+    Paste the URI you just copied from GitHub. 
+  </listitem>
+  
+  <listitem>
+    Confirm that the <emphasis>Host</emphasis> is
+    <quote>GitHub.com</quote> and that the <emphasis>Repository
+    path</emphasis> is something reasonable.
+  </listitem>
+
+  <listitem>
+    Under <emphasis>Authentication</emphasis> set the <emphasis>User</emphasis>
+    to <quote>git</quote>.
+  </listitem>
+
+  <listitem>
+    Click the <guibutton>Next</guibutton> button.
+  </listitem>
+
+  <listitem>
+    Make sure that <guilabel>master</guilabel> is checked.
+  </listitem>
+  
+  <listitem>
+    Click the <guibutton>Next</guibutton> button.
+  </listitem>
+  
+  <listitem>
+    Verify that the folder selected is the one you created a few
+    exercises ago (perhaps with a subfolder added for this project).
+  </listitem>
+
+  <listitem>
+    Leave the <emphasis>Initial branch</emphasis> as <quote>master</quote> 
+    and the <emphasis>Remote name</emphasis> as <quote>origin</quote>. 
+  </listitem>
+  
+  <listitem>
+    Click the <guibutton>Next</guibutton> button. 
+  </listitem>
+
+  <listitem>
+    We're now ready to turn the repository into a project.  Click the
+    <guibutton>Use New Project Wizard</guibutton>.  Then click the
+    <guibutton>Finish</guibutton> button.
+  </listitem>
+
+  <listitem>
+    Click <guibutton>Java Project</guibutton> and then 
+    the <guibutton>Next</guibutton> button.
+  </listitem>
+
+  <listitem>
+    We'll need to use our Git directory as the location for the project.
+    Untick <guilabel>Use default location</guilabel>.  Then click
+    <guibutton>Browse</guibutton> and select your cloned repository.
+  </listitem>
+
+  <listitem>
+    Enter a project name.  To avoid confusion, you may want to give it 
+    the same name as your repository.  (Eclipse may have done this for
+    you already.)
+  </listitem>
+
+  <listitem>
+    Click <guibutton>Finish</guibutton>.
+  </listitem>
+
+  <listitem>
+    Take a deep breath.  You've finished linking Eclipse to your Git
+    repository.
+  </listitem>
+</itemizedlist>
+
+<para>
+  You an now add, delete, and modify files as you please.  The next
+  challenge will be committing and pushing them back to the main
+  repository.
+</para>
+
+</section> <!-- git-09 -->
+
+<section id="git-10"> <title>Exercise 10: Getting Changes to Appear on GitHub</title>
+
+<para>
+  Making our repository an Eclipse project introduced some changes.  
+  For example, there's now a hidden <code>.project</code> file and
+  the <code>.gitignore</code> file has expanded a bit.  We should
+  commit these changes to the repository. 
+</para>
+
+<para>
+  Right click on your new project in the Package Explorer. 
+  Select <guimenuitem>Team</guimenuitem> &gt; <guimenuitem>Commit</guimenuitem>.
+  A window will appear.  We can select the modified and added files 
+  (<code>.gitignore</code>, <code>.classpath</code>, and
+  <code>.project</code>), enter a message (e.g., <quote>Add Eclipse
+  project files</quote>) and click <guibutton>Commit</guibutton>.
+</para>
+
+<para>
+  This commit remains local.  To get it to the main repository, we
+  right click on the project and then select <guimenuitem>Team</guimenuitem>
+  &gt; <guimenuitem>Push to Upstream</guimenuitem>.
+</para>
+
+<para>
+  Why do this now?  So that we can distinguish these changes from our
+  own.
+</para>
+
+</section> <!-- git-10 -->
+
+<section id="git-11"><title>Exercise 11: Add Some Java</title>
+
+<para>
+  In <ulink url="../labs/eclipse.html">the Eclipse lab</ulink>, you created
+  a simple <quote>Hello World</quote> Java program.  Create a similar
+  program in your new repository.  That is,
+</para>
+
+<para>
+  a. Create a new package, such as <code>edu.grinnell.csc207.<emphasis>username</emphasis>.hello</code>.
+</para>
+
+<para>
+  b. Create a new class, such as <code>HelloWorld</code>.
+</para>
+
+<para>
+  c. Add a <code>main</code> method to the class that has the following
+  form.
+</para>
+
+<programlisting>
+    public static void main(String[] args) {
+        System.out.println("Hello, GitHub!");
+    } // main(String[])
+</programlisting>
+
+<para>
+  d. Run your program to make sure that it's correct.
+</para>
+
+<para>
+  e. Save your program.
+</para>
+
+</section> <!-- git-11 -->
+
+<section id="git-12"><title>Exercise 12: Commit and Push Your Code</title>
+
+<para>
+  We've updated the repository and so should commit the code to the
+  repository.  We'll also push it back to the main repository.  But
+  instead of the two-step process, try using the <guibutton>Commit and
+  Push</guibutton> button. 
+</para>
+
+<para>
+  Note that we usually don't push immediately immediately after each commit, 
+  but it's handy to do so now.  Normally, we do a series of small commits
+  and only push once we've reached a larger goal.
+</para>
+
+<para>
+  Go to GitHub and see if the changes you have made are visible.  You may
+  need to navigate a few layers deep, since Eclipse makes a directory for
+  each portion of the package.
+</para>
+
+</section> <!-- git-12 -->
+
+<section id="git-13"><title>Exercise 13: Making Updates on GitHub</title>
+
+<para>
+  Although we normally update code in our local copy of the repository,
+  it is also possible to update code directly on GitHub.  Navigate to
+  the Java code you just wrote and click the <guibutton>Edit</guibutton>
+  button.
+</para>
+
+<para>
+  Change the output.  Then scroll to the bottom of the page, enter a
+  commit message, and click <guibutton>Commit</guibutton>.
+</para>
+
+</section> <!-- git-13 -->
+
+<section id="git-14"><title>Exercise 14: Pulling Updates from GitHub</title>
+
+<para>
+  Our primary repository is now updated.  How about our local repository?
+  Let's see.  Switch back to Eclipse.  Open the Java code you created and
+  edited.  Has it changed?
+</para>
+
+<para>
+  It is unlikely that the Java code changed.  Why?  Because you haven't
+  told Eclipse to pull the updated version.  That's a two step process.
+</para>
+
+<para>
+  First, right click on the project and select <guimenuitem>Team</guimenuitem>
+  &gt; <guimenuitem>Fetch from Upstream</guimenuitem>.  Next,
+  right click on the project and select <guimenuitem>Team</guimenuitem>
+  &gt; <guimenuitem>Merge</guimenuitem>.  
+  Cross your fingers that everything worked.
+</para>
+
+</section> <!-- git-14 -->
+
+<section id="git-15"><title>Exercise 15: Conflicting Changes</title>
+
+<para>
+  On GitHub, update the Java file by adding another print statement.
+</para>
+
+<para>
+  In Eclipse, update the Java file by changing the output.
+</para>
+
+<para>
+  Determine what happens when you try to fetch and merge.
+</para>
+
+</section> <!-- git-15 -->
+
+</section> <!-- git-exercises -->
+
+<section id="git-extra"><title>For Those With Extra Time</title>
+
+<section id="git-extra-01"><title>Extra 1: Other Local Modifications</title>
+
+<para>
+  Find out what Eclipse does if you modify one of the files in the
+  Git repository using Emacs or an editor of your choice.
+</para>
+
+</section> <!-- git-extra-01 -->
+
+<section id="git-extra-02"><title>Extra 2: Experimenting with Forks</title>
+
+<para>
+  You'll need to do this exercise with a partner.
+</para>
+
+<para>
+  Create a fork of your partner's repository.
+</para>
+
+<para>
+  Figure out how to copy your fork into Eclipse.
+</para>
+
+</section> <!-- git-extra-02 -->
+
+<section id="git-extra-03"><title>Extra 3: Shared Repositories</title>
+
+<para>
+  You'll need to do this exercise with a partner.
+</para>
+
+<para>
+  First, figure out how to give someone else administrative access to
+  your repository.
+</para>
+
+<para>
+  Next, verify that they have administrative access by having them
+  make a change and upload it to the repository.
+</para>
+
+<para>
+  Finally, figure out what happens if the two of you make changes.
+</para>
+
+</section> <!-- git-extra-03 -->
+
+</section> <!-- git-extra -->
+
+<anchor id="anchor-git-commands"/>
+<section id="git-commands"><title>Some Useful Git Commands</title>
+
+<programlisting>
+git config --global user.name <emphasis>"Your Name"</emphasis>
 git config --global user.email <emphasis>your_email@example.com</emphasis>
 git config --global core.editor <emphasis>editor</emphasis>
 
@@ -17,271 +582,8 @@ git add
 git commit
 git pull
 git push
-</code>
+</programlisting>
 
-<section id="git-exercises"> <title>Exercises</title>
+</section> <!-- git-commands -->
 
-<para>
-<emphasis>Setting Up</emphasis>
-</para>
-</section> <!-- Exercises -->
-
-<section id="git-0"> <title>Exercise 0: Preparation</title>
-
-<para>
-Make sure you’ve read the Intro to Git reading. 
-</para>
-</section> <!-- Exercise 0 -->
-
-<section id="git-1"> <title>Exercise 1: Make an Account</title>
-
-<para>
-Make a github account at <ulink url="https://github.com/">https://github.com/</ulink>
-</para>
-</section> <!-- Exercise 1 -->
-
-<section id="git-2"> <title>Exercise 2: Create a Workspace</title>
-
-<para>
-Create a folder on your computer where you’ll store all your course files that you want to upload to git. Name it “Workspace” for example.
-</para>
-</section> <!-- Exercise 2 -->
-
-<section id="git-3"> <title>Exercise 3: Putting your files in one place</title>
-
-<para>
-Go into Eclipse <guimenu>Window</guimenu> > <guimenuitem>Preferences</guimenuitem>. This opens a new window, go to <guimenuitem>Team</guimenuitem>, click the open button to its left, and click <guimenuitem>Git</guimenuitem>. Change the default repository folder to the folder you just created. Click <guibutton>Apply</guibutton>.
-</para>
-</section> <!-- Exercise 3 -->
-
-<section id="git-4"> <title>Exercise 4: Configuring Git</title>
-
-<para>
-Now click the open button for <guimenuitem>Git</guimenuitem> and go to <guimenuitem>Configurations</guimenuitem> and make sure that under user it says
-
-    <code>email    youremail@grinnell.edu</code>
-
-    <code>name    your_name</code>
-</para>
-
-<para>
-If it doesn’t you should add new entries for both those values.
-Click on <guibutton>Add Entry</guibutton> and put user.name as the <emphasis>Key</emphasis> and your username on GitHub as the <emphasis>Value</emphasis>. Click on <guibutton>Add Entry</guibutton> again and put user.email as the <emphasis>Key</emphasis> and the email you used for GitHub as the <emphasis>Value</emphasis>.
-</para>
-</section> <!-- Exercise 4 -->
-
-<section id="git-5"> <title>Exercise 5: Connecting Eclipse to GitHub</title>
-
-<para>
-Stay in Preferences and open <guimenuitem>General</guimenuitem>, open <guimenuitem>Network Connections</guimenuitem> and go to SSH2
-Click the <guimenuitem>Key Management</guimenuitem> then <guibutton>Generate RSA Key</guibutton>. Copy the key to your clipboard. Click <guibutton>Save Private Key</guibutton> to save the key and click <guibutton>Apply</guibutton>. Exit the preferences.
-</para>
-</section> <!-- Exercise 5 -->
-
-<emphasis>Creating Your First Repository</emphasis>
-
-<section id="git-6"> <title>Exercise 6: Connecting Eclipse to GitHub</title>
-
-<para>
-Go to the your <guibutton>Account Settings</guibutton> on the GitHub website. Under <guibutton>SSH Keys</guibutton> click <guibutton>Add SSH key</guibutton>. Give it a descriptive name (EGit), and paste the key you just copied from Git.
-</para>
-</section> <!-- Exercise 6 -->
-
-<section id="git-7"> <title>Exercise 7: Creating a New Repo</title>
-
-<para>
-Create a new repository. You do this by clicking the <guibutton>Create a new repo</guibutton> button located next to you username on top of the GitHub website. Make it public and check <emphasis>Initialize this repository with a README</emphasis>. 
-</para>
-</section> <!-- Exercise 7 -->
-
-<section id="git-8"> <title>Exercise 8: Grabbing Your Repo’s Link</title>
-
-<para>
-Copy the <emphasis>SSH URI</emphasis> located on the top next to the HTTP | SSH | Git Read-Only tabs. Make sure you’ve selected the <guibutton>SSH tab</guibutton>.
-</para>
-
-<para>
-<code>Example: git@github.com:username/RepoName.git</code>
-</para>
-</section> <!-- Exercise 8 -->
-
-<section id="git-9"> <title>Exercise 9: Getting the Repo to Show up in Eclipse</title>
-
-<para>
-Go into Eclipse > <guimenu>File</guimenu> > <guimenuitem>Import</guimenuitem> ang click <guimenuitem>Git</guimenuitem> then go to <guimenuitem>Projects from Git</guimenuitem> then <guimenuitem>URI</guimenuitem> and paste the URI you just copied from GitHub, make sure the Host is github.com and the Repository path is username/RepoName.git. Under <emphasis>Authentication</emphasis> the <emphasis>User</emphasis> should be set to “git” and not your actual username and password. Make sure the <emphasis>protocol</emphasis> is set to blank. Click <guibutton>Next</guibutton>.
-</para>
-</section> <!-- Exercise 9 -->
-
-<section id="git-10"> <title>Exercise 10: Getting the Repo to Show up in Eclipse</title>
-
-<para>
-Make sure that master is checked and click <guibutton>Next</guibutton>. Make sure the Directory the file’s going into is the folder you created at the beginning. Leave the Initial branch as master and the Remote name as origin. Click <guibutton>Next</guibutton>. 
-</para>
-</section> <!-- Exercise 10 -->
-
-<section id="git-11"> <title>Exercise 11: Syncing it with the Package Explorer</title>
-
-<para>
-You’ve added the repository to Eclipse. Now we want to make an accompanying project in the Package Explorer. You should be presented with a wizard to create a project in your Package Explorer. Choose <guimenuitem>Use the New Project Wizard</guimenuitem>. To view all your Git repositories go to <guimenu>Window</guimenu> > <guimenuitem>Show View</guimenuitem> > <guimenuitem>Other</guimenuitem>. Open <emphasis>Git</emphasis> and click on <emphasis>Git Repositories</emphasis>. You should now be able to view your newly added repository.
-</para>
-</section> <!-- Exercise 11 -->
-
-<section id="git-12"> <title>Exercise 12: Syncing it with the Package Explorer</title>
-
-<para>
-Select the new project to be a Java Project. Open <guimenuitem>Java</guimenuitem>, choose <guimenuitem>Java Project</guimenuitem> and click <guibutton>Next</guibutton>. 
-</para>
-</section> <!-- Exercise 12 -->
-
-<section id="git-13"> <title>Exercise 13: Naming the Project</title>
-
-<para>
-Give it an appropriate name (you should probably name it the same as you named your repo, just to avoid confusion in the future). 
-</para>
-</section> <!-- Exercise 13 -->
-
-<section id="git-14"> <title>Exercise 14: Finishing it up</title>
-
-<para>
-Untick  <emphasis>Use default location</emphasis> and click <guibutton>Browse</guibutton>. Now navigate to your new repository. Click <guibutton>Finish</guibutton>.
-</para>
-</section><!-- Exercise 14 -->
-
-<section id="git-15"> <title>Exercise 15: Marvel at how Long It Took to Get That Set up</title>
-
-<para>
-The new project should now appear in the Package Explorer. It is connected to the git repository and you can add new files, delete them, and modify them as you please.
-</para>
-</section> <!-- Exercise 15 -->
-
-<section id="git-16"> <title>Exercise 16: Getting Changes to Appear on GitHub</title>
-
-<para>
-We need to commit these changes to the repo. Right click on your new project in the Package Explorer. Go to <guimenuitem>Team</guimenuitem> > <guimenuitem>Commit</guimenuitem>
-Select all the files that have been changed and type in a Commit message (for example: setting up) and click <guibutton>Commit and Push</guibutton>.
-</para>
-</section> <!-- Exercise 16 -->
-
-<section id="git-17"> <title>Exercise 17: FIN!</title>
-
-<para>
-You’re done. You should now be able to view your modified project in your GitHub repo.
-</para>
-</section> <!-- Exercise 17 -->
-
-<para>
-<emphasis>Getting an Already Existing Repository</emphasis>
-</para>
-
-<section id="git-subtitle1"> <title>Getting an Already Existing Repository</title>
-
-<para>
-When you want to work in a group or contribute to someone else’s repository, you might not be the one to create it. There are two ways of getting an already existing repository. You can either:
-<itemizedlist>
-	<listitem>Fork it from someone else’s repository and follow the steps above</listitem>
-
-	<listitem>Import their project directly</listitem>
-</itemizedlist>
-</para>
-</section> <!-- Subtitle -->
-
-<para>
-<emphasis>Forking a Repository</emphasis>
-</para>
-
-<section id="git-18"> <title>Exercise 18: Intro to Forking</title>
-
-<para>
-To fork someone else’s repository start by going to <ulink url="https://github.com">https://github.com</ulink> 
-</para>
-</section> <!-- Exercise 18 -->
-
-<section id="git-19"> <title>Exercise 19: More Forking</title>
-
-<para>
-On the website navigate to the repository that you want to work on.
-</para>
-</section> <!-- Exercise 19 -->
-
-<section id="git-20"> <title>Exercise 20: Still More Forking</title>
-
-<para>
-In the upper right corner there’s a button <guibutton>Fork</guibutton>. Click it and fork it to your account. As GitHub processes the Fork request, there will be a picture of a book being scanned with a fork stuck in it.
-</para>
-</section> <!-- Exercise 20 -->
-
-<section id="git-21"> <title>Exercise 21: Your First Fork</title>
-
-<para>
-In the upper right corner there’s a button <guibutton>Fork</guibutton>. Click it and fork it to your account. As GitHub processes the Fork request, there will be a picture of a book being scanned with a fork stuck in it.
-</para>
-</section> <!-- Exercise 21 -->
-
-<section id="git-22"> <title>Exercise 22: Getting it on Eclipse</title>
-
-<para>
-Follow step 9 through 11 of section Creating Your First Repository.
-</para>
-</section> <!-- Exercise 22 -->
-
-<section id="git-23"> <title>Exercise 23: Getting it on Eclipse</title>
-
-<para>
-For step 12, choose <guimenuitem>Import from Existing Project</guimenuitem> instead of choosing <guimenuitem>Use the New Project Wizard</guimenuitem>.
-</para>
-</section> <!-- Exercise 23 -->
-
-<section id="git-24"> <title>Exercise 24: Getting it on Eclipse</title>
-
-<para>
-Follow steps 13 through 18 to get it in Eclipse and start contributing.
-</para>
-</section> <!-- Exercise 24 -->
-
-<para>
-<emphasis>Importing Directly</emphasis>
-</para>
-
-<section id="git-25"> <title>Importing Directly</title>
-
-<para>
-When you import directly from someone else’s repository you might not be able to push to that repository unless they’ve given you special permission. In that case you can either send the person a request for them to accept your push or just fork the repository and work on it yourself (giving them proper credit, of course).
-</para>
-</section> <!-- Exercise 25 -->
-
-<section id="git-26"> <title>Exercise 26: Importing directly</title>
-
-<para>
-You need to go to the repository you want to grab on GitHub and copy the SSH URI link.
-</para>
-</section> <!-- Exercise 26 -->
-
-<section id="git-27"> <title>Exercise 27: Getting it in Eclipse</title>
-
-<para>
-In Eclipse you need to go to <guimenu>File</guimenu> > <guimenuitem>Import</guimenuitem> and open Git. Choose <guimenuitem>Projects from Git</guimenuitem> and click <guibutton>Next</guibutton>. Choose <guimenuitem>URI</guimenuitem> and click <guibutton>Next</guibutton>. Enter the URI you just copied and click <guibutton>Next</guibutton> and <guibutton>Next</guibutton> again. Make sure the it goes into the folder (directory) that you’ve designated for the class and click <guibutton>Next</guibutton>. Choose <guimenuitem>Import Existing Project</guimenuitem>.
-</para>
-</section> <!-- Exercise 27 -->
-
-<section id="git-28"> <title>Exercise 28: Showing the Project in the Package Explorer</title>
-
-<para>
-You should be able to see the repository in the Git Repositories view as well as the Package Explorer.
-</para>
-</section> <!-- Exercise 28 -->
-
-<section id="git-29"> <title>Exercise 29: Changing the Project</title>
-
-<para>
-You can edit it freely from the Package Explorer.
-</para>
-</section> <!-- Exercise 29 -->
-
-<section id="git-30"> <title>Exercise 30: Pushing the Changes</title>
-
-<para>
-After you’re done you need to commit the changes: right click on the project, go to <guimenuitem>Team</guimenuitem> and select <guimenuitem>Commit</guimenuitem>. Type in your commit message and choose <guibutton>Commit and Push</guibutton>.
-</para>
-</section> <!-- Exercise 30 -->
-
-</section> <!-- GIt Lab -->
+</section> <!-- Git Lab -->
