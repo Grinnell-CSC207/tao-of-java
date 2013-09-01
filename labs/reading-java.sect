@@ -1,0 +1,38 @@
+<section id="reading-java"><title>Reading Java</title>
+
+<para>
+  <emphasis>Summary:</emphasis> In this laboratory, you will read,
+  attempt to understand, run, and occasionally correct some Java code.
+</para>
+
+<para>
+  <emphasis>Prerequisite Knowledge:</emphasis>
+  Using Eclipse.  Java basics.
+</para>
+
+<section id="reading-java-preparation"><title>Preparation</title>
+
+<para>
+  Start Eclipse.
+</para>
+
+<para>
+  Make a copy of the GitHub repository for this lab, available at
+  (FORTHCOMING).
+</para>
+
+</section> <!-- reading-java-preparation -->
+
+<section id="reading-java-exercises"><title>Exercises</title>
+
+<section id="reading-java-01"><title>Exercise 1: </title>
+
+</section> <!-- reading-java-01 -->
+
+</section> <!-- reading-java-exercises -->
+
+<section id="reading-java-extra"><title>For Those With Extra Time</title>
+
+</section> <!-- reading-java-extra -->
+
+</section> <!-- reading-java -->
