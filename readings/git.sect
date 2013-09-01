@@ -1,86 +1,287 @@
-<section id="starting-git"><title>Getting Started with Git</title>
+<section id="starting-git"><title>Getting Started with Git and GitHub</title>
 
-<section id="scm-and-git"><title>SCM's and Git</title>
 <para>
-In large projects, there are lots of files, people, and updates. Source code management (SCM) systems, or version control systems, were created to tame the chaos that usually ensues. CVS, Subversion and Git are some examples of widely used version control systems. For this course, we’ve opted to choose Git because it’s very versatile and one of the most popular tools software developers use. Git is also relatively easy to use.
+  <emphasis type="strong">Summary:</emphasis>
+  We explore the motivation for source code management systems, grounding
+  our understanding in the Git source code management system and the
+  GitHub repository.
+</para>
+
+<section id="source-code-management"><title>A Short Introduction to Source Code Management</title>
+
+<para>
+  Large projects involve lots of files, people, and updates. Source
+  code management (SCM) systems, or version control systems (VCS),
+  were created to tame the chaos that usually ensues.  SCM's let you
+  keep track of old versions of files and share them with others, create
+  <emphasis>branches</emphasis> where you can do experimental development,
+  keep track of issues to be dealt with, and much much more.
 </para>
 
 <para>
-In Git, there is a main repository where all of the official files for a project are stored, similar to a headquarters. One person controls the main repository, unless they specify collaborators. In this case, a group of people control the main repository and have the power to change it directly. That means that when they make changes, they can “push” it back to the main repository without needing to ask for permission from the project’s owners/official contributors.
+  There are many source code management systems.  Their capabilities and
+  approaches have varied over the years.  For example, RCS (Revision
+  Control System), the first version control system that I used, assumed
+  that only one person would work on a file at a time.  CVS (Concurrent
+  Versioning System) added capabilities for multiple people to work
+  simultaneously on the same file.  But CVS wasn't great for Web-based
+  collaboration, so Subversion (sometimes abbreviated as SVN) came along.
+  Git (no acronym, at least as far as I know), like Subversion, supports
+  simultaneous edits by people spread around the Web, but also distributes
+  the repository to multiple machines.
+</para>
+
+</section> <!-- source-code-management -->
+
+<section id="intro-git"><title>A Quick Introduction to Git</title>
+
+<para>
+  For this course, we will be using Git because I use it in my
+  day-to-day software (and course) development.  Git is powerful,
+  popular, and provides some interesting perspectives on source code
+  management.  Git is also relatively easy to use (although it may take
+  awhile to understand some of its approaches).
 </para>
 
 <para>
-Everyone working in the project can “clone” the latest copy of files from the main repository to work with, creating their own local repository. A person can open a file, edit it, and then “add” it to the staging area which holds all of the changes that person makes. Once a person made all of the changes that they wanted, they can “commit” it to their local repository. From there, if they are satisfied, they can “push” the latest version of their local repository to the main repository for everyone else in the project to see.  So, all of the changes made to the local repository are pushed back into the main repository where a new version of all of the files get created, with information about what changes were made, and who they were made by. Of course, if you are not the owner or an official contributor, then you must go through one more step to affect the main repository.
+  We will also rely on <ulink url="http://GitHub.com">GitHub.com</ulink>,
+  a popular Git hosting site, which provides a place to store our Git
+  repositories.  If you plan a career in software development, developing
+  a presence on GitHub can be an important place to start.  GitHub gives
+  folks a chance not only to look at your portfolios, but also to observe
+  your work habits.
 </para>
 
 <para>
-
-If someone other than the owner or official contributors of a project wants to add to the project, then they must “fork” the main repository. Forking gives them a copy repository of the main repository, and they can push all of the changes that they want to the copied repository. Should they want to affect the main project, however, they will need to send a “pull request.” It is up to the main repository’s owner whether or not to accept the changes that they made, which is also known as “merging the pull request” into the main repository.
+  In Git, there is a main repository where all of the official files for a
+  project are stored.  A few people (sometimes as few as one) control this
+  repository.  They are the only ones with the permission to make changes
+  to files (or to approve changes that others propose).  But anyone can
+  propose changes.
 </para>
-
 
 <para>
-There’s a few jargon words here you should definitely remember, because you’ll be using them a lot.
-
+  In most cases, if you're not happy with what changes people allow
+  in a repository, you can make your own copy of the repository on
+  GitHub (or other Git hosting site), and you then control that
+  repository, including the abillty to make changes to files that
+  can then be shared with others.
 </para>
+
+<para>
+  More frequently, though, people simply work with a copy of the main 
+  repository, proposing changes for others when appropriate.  To start,
+  anyone working in the project can <quote>clone</quote> the latest copy of
+  files from the main repository to work with, creating their own copy on
+  a local machine.  On the local machine, a person can open a file, edit
+  it, and then <quote>add</quote> it to the staging area which holds all
+  of the changes that person makes.  Once a person made a set of related
+  changes that they are comfortable with, they <quote>commit</quote>
+  it to their local repository - adding a note about the changes.
+</para>
+
+<para>
+  At some point, someone working on a project is comfortable enough
+  with their changes that they want to share them with a larger group.
+  (Note that you should generally not share with the larger group unless
+  your code compiles and, ideally, passes at least as many tests as the
+  previous version.)  Administrators can <quote>push</quote> these changes
+  back to the main repository.  Other contributors send a <quote>pull
+  request</quote> which the administrators may or may not accept.
+</para>
+
+<para>
+  Once changes have been propagated back to the main repository,
+  collaborators can <quote>pull</quote> those changes back into their
+  local copies.
+</para>
+
+<para>
+  So, a typical approach to working with a project that is under Git
+  is something like the following.  First, you clone the repository
+  onto your local machine.  You usually only need to do that once.
+</para>
+
+<para>
+  At the start of each session, you pull the latest changes from the
+  primary repository.  After all, it doesn't make much sense to work
+  with old code - you might end up redoing changes that someone else
+  made.  (Sometimes when you pull from the main repository, you'll get
+  conflicts with changes you've made but have not sent back to the
+  main repository.  In such cases, you'll need to <quote>resolve</quote>
+  the conflicts and them commit them back to your local copy.)
+</para>
+
+<para>
+  You spend some time working on the code.  At some point, you're satisfied
+  with a bit of the code.  At that point, you commit your changes to your
+  repository.  Different projects and different people seem to choose
+  different levels of commits.  In Git, commits are cheap, so I generally 
+  try to commit whenever I've made changes that fit into a single logical
+  unit.  (I also do this because, while it's easy to undo one or more 
+  commits, it's a pain to undo parts of a single commit.)
+</para>
+
+<para>
+  Finally, at some point you are ready to share your commits with the
+  rest of your group.  (Ideally, you'd have some changes to share at
+  the end of each programming session, but that's rarely the case.)  At
+  that point, you do another pull (just in case someone else has made
+  changes since your last pull), resolve any conflicts, and then send
+  the changes back to the main repository, either via a push or a pull
+  request.
+</para>
+
+<para>
+  Of course, professional programmers have a much deeper process.  Most
+  work with branches (alternate threads of development, so that folks
+  can independently try different approaches to problems or otherwise
+  attack issues that may require modifying multiple files in different
+  ways).
+</para>
+
+<para>
+  You may have noticed that we used a lot of terms here.  You may find
+  it helpful to review some of them.
+</para> 
 
 <itemizedlist>
-        <listitem><emphasis>clone</emphasis>: get a certain repository from Git to you computer</listitem>
-        <listitem><emphasis>commit</emphasis>: make changes in your cloned version, decide they’re good and save them</listitem>
-        <listitem><emphasis>push</emphasis>: upload the changes you’ve committed to the master branch</listitem>
-        <listitem><emphasis>pull</emphasis>: get the newest version of the repository (you want to do this every time before you start working on the project again,
-        provided there are new commits/pushes)</listitem>
+  <listitem>
+    <emphasis>clone</emphasis>: Copy a repository from Git to your 
+      computer.
+  </listitem>
+
+  <listitem>
+    <emphasis>add</emphasis>: Add a file to your local repository.
+    For a file already in your local repository, <code>add</code> adds
+    the file to the list of things to commit.
+  </listitem>
+
+  <listitem>
+    <emphasis>commit</emphasis>: Save and describe changes.  (These
+    changes are only saved in your local copy.)
+  </listitem>
+
+  <listitem>
+    <emphasis>pull</emphasis>: Grab the latest version of files from
+    the repository.  (In some SCM's, this is called <quote>update</quote>.)
+  </listitem>
+
+  <listitem>
+    <emphasis>merge</emphasis>: Join together two copies of a file.
+    When you merge things, you may have to resolve the differences by
+    hand.  Afterwards, you will usually need to add the updated file
+    back to the list of things to be committed.
+  </listitem>
+
+  <listitem>
+    <emphasis>push</emphasis>: Send all of your recent commits back to
+    a repository that you administer.
+  </listitem>
+
+  <listitem>
+    Send a <emphasis>pull request</emphasis>: Request that the administrator
+    accept your recent commits into the main repository.
+  </listitem>
+
 </itemizedlist>
 
+</section> <!-- intro-git -->
 
-</section> <!-- scm-and-git -->
-
-<section id="make-account"><title>Making a GitHub Account</title>
+<section id="GitHub-account"><title>Making a GitHub Account</title>
 
 <para>
-Go to: <ulink url="https://github.com/">https://github.com/</ulink>
-Sign up for an account on the right hand side. Pick a username, email, and password then click the green “Sign up for free” button. Now you have an account on GitHub! GitHub hosts git projects and gives you a chance to look at other people’s projects. You can collaborate with them or participate in challenges, or simply just put your own projects up on display.
+  We will be working with Git through GitHub.  Hence, you will need
+  your own account on GitHub.  You can do these steps while doing the
+  reading, or you can do them in class during our lab time.
 </para>
 
 <para>
-  <emphasis><imagedata fileref="../images/git1.png" format="PNG"/></emphasis> 
+  Go to <code><ulink url="https://GitHub.com/"/></code>
+  Sign up for an account on the right hand side. Pick a username, email,
+  and password then click the green “Sign up for free” button. Now
+  you have an account on GitHub! GitHub hosts Git projects and gives you
+  a chance to look at other people’s projects. You can collaborate
+  with them or participate in challenges, or simply just put your own
+  projects up on display.
+</para>
+
+<para>
+  <imagedata fileref="../images/git1.png" format="PNG"/>
 </para>
 
 </section> <!-- make-account -->
 
-<section id="setup-account"><title>Setting Up a GitHub Account</title>
+<section id="setup-mathlan"><title>Configuring Your MathLAN Account</title>
 
 <para>
-We are going to set up your name and email in git (accessible via terminal). You will only need to do this once, and we will have you do this in the upcoming lab.
+  In addition to setting up a GitHub account, it's useful to configure
+  your MathLAN account so that you can easily access Git
+  We are going to set up your name and email in Git (accessible via
+  terminal).  You will only need to do this once. Once again, you
+  will have the the opportunity to do this in the upcoming lab.  
 </para>
 
 <orderedlist>
-<listitem>Open up your terminal.</listitem>
-<listitem>Type in:
-   <code>git config --global user.name YourName</code>.
-This will set up the name that will appear every time you commit.</listitem>
-<listitem>Next, setup your email (use the same one you used to sign up):
-   <code>git config --global user.email your_email@example.com</code>
-This will link any commits and pushes that you make using git to your
-github account. </listitem>
-<listitem>When you commit changes to a repository, git will make you type
-using the editor Vim. You can change it to emacs, for example. If you want to change the editor used, then type in this:
-<code>git config --global core.editor editor</code></listitem>
+  <listitem>
+    Open a terminal window.
+  </listitem>
+
+  <listitem>
+    Type the following command.  (Don't type the prompt.)
+<screen>
+<prompt>$</prompt> <userinput>git config --global user.name <emphasis>YourName</emphasis></userinput></screen>
+    This command will set up the name that accompanies your commits.
+  </listitem>
+
+  <listitem>
+    Next, set up your email (use the same one you used to sign up).
+<screen>
+<prompt>$</prompt> <userinput>git config --global user.email <emphasis>username@grinnell.edu</emphasis></userinput></screen>
+    This command will set up the name that accompanies your commits.
+  </listitem>
+
+  <listitem>
+    Each time you commit a change, Git will ask you to enter a commit
+    message.  By default, Git uses the editor Vim.   While I like Vim,
+    I admit that I'm in the minority.  If you want to change the editor
+    you use (e.g., to Emacs), type
+<screen>
+<prompt>$</prompt> <userinput>git config --global core.editor <emphasis>editor</emphasis></userinput></screen>
+  </listitem>
 </orderedlist>
 
-</section> <!-- setup-account -->
+</section> <!-- setup-mathlan-->
+
+<section id="git-walkthrough"><title>Using Git: A Walkthrough</title>
 
 <section id="make-repo"><title>Making Your Own Repository</title>
 
-
 <para>
-Now that you have an account and you have set up your name and username in git, let’s make a main repository on GitHub. There are two things that can only be done through GitHub: putting your project up on GitHub (making a repository on the website to house the project) and making a copy of someone else’s project (forking someone else’s repository).
+  Now that you have an account and you have set up your name and username
+  in Git, let’s consider how to make a repository on GitHub. There are
+  two things that can only be done through GitHub: putting your project
+  up on GitHub (making a repository on the website to house the project)
+  and making a copy of someone else’s project (forking someone else’s
+  repository).
+
 </para>
 
-<section id="make-setup-repo"><title>Making and Setting Up A Repository</title>
+<para>
+  After you log into GitHub, you should see a green button labelled
+  <guibutton>New Repository</guibutton> toward the lower right-hand
+  side of the page.  Click that button.  Give your repository a name
+  and  a brief description.  I suggest that you also click 
+  <guibutton>Initialize this repository with a README</guibutton>,
+  that you add a Java  <code>.gitignore</code> file, and choose a
+  license for your code.  (I generally use LGPL v3.) 
+</para>
 
 <para>
-After logging into GitHub, there should be a green button labelled “new repository” in the lower right-hand side. Click it. Give your repository a name, a brief description, and then click “create repository.” You have now made a repository that others can see on github (if you made the repository public)! This repository is the main repository.
+  Once you've made your configuration decisions, click <quote>create
+  repository</quote> You have now made a repository that others can see
+  on GitHub (if you made the repository public)! This repository is the
+  main repository.
 </para>
 
 <para>
@@ -88,98 +289,148 @@ After logging into GitHub, there should be a green button labelled “new reposi
 </para>
 
 <para>
-You now have a repository, lets clone it into your machine so that you can add files.
+  You may be wondering what the <code>.gitignore</code> file is.  By
+  default, Git assumes that every file you have in your local repository
+  should eventually go back to the main repository.  The 
+  <code>.gitignore</code> file lets Git know that some files aren't
+  needed.  For example, you wouldn't want <code>.o</code> files or
+  executables in a C repository.  Similarly, you don't want
+  <code>.class</code> files in a Java repository.
 </para>
 
-</section> <!-- make-setup-repo -->
+</section> <!-- make-repo -->
 
 <section id="clone-repo"><title>Cloning A Repository</title>
 
 <para>
-<emphasis>Quick note!
-Typing git help into the terminal will bring up a list of the most common git commands and a brief description of what they do. When calling git commands, remember to precede them with git! For example:
-   <code>git add</code>
-is valid while just “add” would be invalid.</emphasis>
+  <emphasis>Quick notes!</emphasis>
+  Typing 
+<screen>
+<prompt>$</prompt> <code>git help</code></screen>
+  into the terminal will bring 
+  up a list of the most common Git commands and a brief description 
+  of what they do.  You can also get help on a particular command
+  with <code>git help <emphasis>command</emphasis></code>.  Also,
+  remember that you need to precede every Git command with <code>git</code>.
+  So, for example, to add something to a repository, you use
+  <code>git add</code>, not just <code>add</code>.
 </para>
 
 <orderedlist>
-<listitem>Get the HTTP URI of the repository you just created on GitHub:
-<para>
-  <emphasis><imagedata fileref="../images/git3.png" format="PNG"/></emphasis> 
-</para>
-Just copy the URI given there, and make sure HTTP is shaded.</listitem>
+  <listitem>
+    <para>
+      First, get the URI of the repository you just created on GitHub.
+      You can use the click the <guibutton>Copy to Clipboard</guibutton>
+      button along the right column.
+    </para>
+    <para>
+      <imagedata fileref="../images/git-repo-clipboard.png" format="PNG"/>
+    </para>
+    <para>
+      You may find it equally useful to just grab the URL from your
+      Web browser's bar.
+    </para>
+    <para>
+      <imagedata fileref="../images/git-url-bar.png" format="PNG"/>
+    </para>
+  </listitem>
 
-<listitem>Type in: <code>git clone uri</code>. Example: <code>git clone https://github.com/tranchri/Tutorial.git</code></listitem>
+  <listitem>
+    Type in
+<screen>
+<prompt>$</prompt> <userinput>git clone <emphasis>uri</emphasis></userinput></screen>
+   For example, to clone the repository with this textbook, you would type
+<screen>
+<prompt>$</prompt> <userinput>git clone https://GitHub.com/Grinnell-CSC207/tao-of-java</userinput></screen>
+  </listitem>
 </orderedlist>
 
 <para>
-Now you have a directory on your computer called Tutorial (in the case of the example). Inside the directory will be all of the files in the original repository that you cloned so that you can edit, add, and/or remove files the way you normally do. If you do not want the directory’s name to be the same as the repository that you are cloning, then type in a name for the directory after the URI:
-</para>
-<para>
-    Example: <code>git clone https://github.com/tranchri/Tutorial.git GitStuff</code>
-</para>
-
-<para>
-Now the directory will have the name GitStuff instead of Tutorial.
+  You will now have a directory on your computer whose name matches that
+  of the repository.  Inside the directory will be all of the files in
+  the original repository that you cloned so that you can edit, add,
+  and/or remove files the way you normally do.
 </para>
 
 <para>
+  Note that you do not have to have your directory name match the name
+  of the repository.  You can rename the directory.  Alternately, when
+  you clone the repository, you can add a directory name.
+</para>
 
-When you clone a repository, you can only contribute to it if you are the creator or have been declared as one of the contributors. Otherwise, the code is just there for you to play around with and not upload. 
+<screen>
+<prompt>$</prompt> <userinput>git clone <emphasis>uri</emphasis> <emphasis>directory</emphasis></userinput></screen>
+
+<para>
+  When you clone a repository, you can only contribute to it if you are
+  the creator or have been declared as one of the contributors. Otherwise,
+  the code is just there for you to play around with and not upload.
 </para>
 
 </section> <!-- clone-repo -->
-</section> <!-- make-repo -->
 
-<section id="fork-clone-repo"><title>Forking and Cloning A Repository</title>
+<section id="fork-clone-repo"><title>Forking a Repository</title>
 
 <para>
-
-If you want to make changes to a repository that is not your own, you should “fork” the repository. When we fork a repository, we essentially make a copy repository that we have control over. We can ask the original creator to accept changes in our forked version via a “pull request,” and it’s up to their discretion whether or not to accept it. Therefore, the fork is a copy of the repository you want to work with/on, and is tracked by GitHub to prevent code stealing. It is not the actual repository that is owned by someone else. 
-
+  If you want to be able to share changes to a repository that is not 
+  your own, and you don't think the owners will want your changes, you should 
+  <quote>fork</quote> the repository. When we fork a repository, we 
+  make a copy of the repository that we have control over. We can
+  ask the original creator to accept changes in our forked version via
+  a <quote>pull request</quote>, and it’s up to their discretion whether or not
+  to accept it. Therefore, the fork is a copy of the repository you want
+  to work with/on.
 </para>
-
-<section id="fork-repo"><title>Forking A Repository on GitHub</title>
 
 <orderedlist>
-<listitem>Find a project you would like to contribute to on GitHub.</listitem>
-<listitem>Go to the repository that holds the project.</listitem>
-<listitem>There is a button in the upper right-hand corner that says “fork,” click it.</listitem>
+  <listitem>
+    Find a project you would like to contribute to on GitHub.  (Alternately,
+    find a project we've told you to fork.)
+  </listitem>
 
-<para>
-  <emphasis><imagedata fileref="../images/git4.png" format="PNG"/></emphasis> 
-</para>
+  <listitem>
+    Go to the repository that holds the project.
+  </listitem>
 
-<listitem>GitHub will fork the repository for you.</listitem>
-<listitem>Now, you have a copy repository that will show up as under your repositories on GitHub. Follow the steps in the section above and clone the forked repository into your machine so that you can work on it.</listitem>
+  <listitem>
+    Click the button in the upper right-hand corner that says
+    <guibutton>fork</guibutton>.
+    <imagedata fileref="../images/git-fork.png" format="PNG"/>
+  </listitem>
+
+  <listitem>
+    GitHub will fork the repository for you.
+  </listitem>
+
+  <listitem>
+    Now, you have a copy of the repository that will show up 
+    under your repositories on GitHub.  You can follow the steps in 
+    the section above and clone the forked repository into your machine 
+    so that you can work on it.
+  </listitem>
 </orderedlist>
 
 <para>
-If you intend to interact with the main repository, you will need to create
-a remote for the main repository which will allow you to pull any updates
-made to the main repository:
-</para>
-<para>
-    <code>git remote add name uri</code>
+  If you intend to interact with the main repository, you will need to create
+  a <quote>remote</quote> connected to the main repository.  The remote will
+  let you pull updates from that repository and will also allow you to 
+  send pull requests back to that repository.
 </para>
 
-<para>
-You can name the remote whatever makes sense to you, but it is convention to call
-it “upstream”. Grab the HTTP uri of the repository that you forked.
-</para>
+<screen>
+<prompt>$</prompt> <userinput>git remote add <emphasis>name</emphasis> <emphasis>uri</emphasis></userinput></screen>
 
 <para>
-    Example:<code>git remote add upstream
-https://github.com/lewismar/FakeName.git</code>
+  You can name the remote whatever makes sense to you, but it is convention to call
+  it <quote>upstream</quote>.  Use the HTTP uri of the repository that you forked.
 </para>
 
-<para>
-The username should be the owner’s and not yours.
-</para>
+<screen>
+<prompt>$</prompt> <userinput>git remote add upstream https://GitHub.com/Grinnell-CSC207/tao-of-java</userinput></screen>
 
 <para>
-Now the main repository will be referred to as main, and you can pull
-updates from it to your local repository.
+  Now the main repository will be referred to as upstream, and you can pull
+  updates from it to your local repository.
 </para>
 
 </section> <!-- fork-repo -->
@@ -187,22 +438,59 @@ updates from it to your local repository.
 <section id="adding-changes"><title>Adding Files and Making Changes</title>
 
 <para>
-Now that you have either created your own project or joined one, lets begin editing.
+  Now that you have either created your own project or joined one,
+  lets begin editing.
 </para>
+
 <para>
-Notes:
+  Are you done yet?  Good.  Now we're ready to look at getting your
+  changes into both the local and Web repositories.
 </para>
+
 <para>
-To check if there are any changes/additions to your local repository, type
-in: <code>git status</code>
+  If you're like most programmers, you may have forgotten what files
+  you've created or changed and what changes you've made.  Fortunately,
+  Git provides tools to help you figure this out.
 </para>
+
 <para>
-This will tell you if any new files were made and added, if any of the files were modified, and/or if there were no changes made at all.
-Typing in: <code>git diff</code>.
+  To check if there are any changes/additions to your local repository, type
+  in: 
 </para>
+
+<screen>
+<prompt>$</prompt> <userinput>git status</userinput>
+</screen>
+
 <para>
-Will show you the section of the file that was changed (in your working
-directory).
+  Git will then tell you a variety of things.  It will tell you how many
+  commits are in your local repository that haven't been pushed back to
+  GitHub.  It will tell you what files are staged for commit.  It will
+  tell you which files that are already in the repository have been
+  modified but not committed.  And it will tell you which new files have
+  been created but not yet added to the repository.
+</para>
+
+<para>
+  Once in a while, it will tell you that no changes whatsoever have been
+  made.
+</para>
+
+<para>
+  So far, so good.  You have a list of general changes.  But what if you
+  want to know precisely what happened to an individual file?  Git provides
+  a way of finding that out, too.
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>git diff <emphasis>filename</emphasis></userinput>
+</screen>
+
+<para>
+  The <code>git diff</code> command will show you the portions of a file
+  that are changed.  Usually added lines are prefixed with a plus sign,
+  deleted lines a prefixed with a minus sign, and a few surrounding lines
+  appear for context.
 </para>
 
 </section> <!-- adding-changes -->
@@ -211,31 +499,22 @@ directory).
 <section id="adding-files"><title>Adding Files</title>
 
 <para>
-To add files into the local repository they must first exist in your
-working directory (the folder you made and initialized). Most repositories
-have a README file that briefly explains what the project is, so lets make
-one if you don’t already have one.
+  To add files into the local repository they must first exist in
+  your working directory (the folder you made and initialized).   Once
+  they exist, you simply use the <code>git add</code> command.
 </para>
-<para>
-First, we need to create the README file: <code>touch README</code>
-</para>
-<para>
-This will create a file named README without any text in it. If you want to
-make the file and push text in it at the same time, create the file using a
-text editor (either gedit or emacs) and type the description into the file
-and save. If not, just use touch; you can go back later using gedit, emacs,
 
-etc to put the explanation into README. <code>gedit README and</code> or
-<code>emacs README &amp;</code>.
-
-</para>
+<screen>
+<prompt>$</prompt> <userinput>git add <emphasis>filename</emphasis></userinput></screen>
 
 </section> <!-- adding-files -->
 
 <section id="editing-files"><title>Editing Files</title>
 
 <para>
-Editing files is like editing any file. Open the file using some type of editor (emacs, vim, gedit, etc) make your changes, and then save. 
+  Editing files under Git is like editing any file.  Open the file using
+  some type of editor (emacs, vim, gedit, etc) make your changes, and
+  then save.
 </para>
 
 </section> <!-- editing-files -->
@@ -243,20 +522,26 @@ Editing files is like editing any file. Open the file using some type of editor 
 <section id="adding-staging"><title>Adding/Staging Changes</title>
 
 <para>
-To add (also known as staging since it puts the file into the staging area):
-    <code>git add file(s)</code>
+  You may recall that <code>git status</code> tells you not just about
+  modified files and new files, but also files that are <quote>staged</quote>
+  for the next commit.  You know how to stage a new file: Just use
+  <code>git add</code>.  How do you stage a modified file?  Exactly the
+  same way, with <code>git add <emphasis>filename</emphasis></code>.
 </para>
+
 <para>
-Staging puts the files into the staging area, which holds all of the
-changes made in the working directory that will be committed to the local
-directory. This is important because only the files that you stage will be
-the ones that go into the local directory when you commit changes, and only
-the changes in the local directory will be added to the main repository
-when you push. It is good practice to only “add” what is necessary, nothing
-more (no temporary files, no executable files that can be generated,
-etc). If you do, the repository will only get cluttered, and if you were
-planning on sending a pull request, adding more than necessary will not be
-in your favor.
+  Staging puts the files into the staging area, which holds all of the
+  changes made in the working directory that will be committed to the
+  local repository. This distinction is important because only the files
+  that you stage will be the ones that go into the local directory when
+  you commit changes, and only the changes in the local repository will
+  be added to the main repository when you push. It is good practice to
+  only <quote>add</quote> what is necessary, nothing more (no temporary
+  files, no executable files that can be generated, etc). If you do, the
+  repository will only get cluttered, and if you were planning on sending
+  a pull request, adding more than necessary will not be in your favor.
+  (The student who wrote this paragraph discovered this after Sam criticized
+  zir repeatedly for making his life more difficult.)
 </para>
 
 </section> <!-- adding-staging -->
@@ -264,11 +549,21 @@ in your favor.
 <section id="deleting-files"><title>Deleting Files</title>
 
 <para>
-This is extremely similar to removing files in terminal normally, just add a git in the front.
-    <code>git rm file</code>
+  Deleting files from a repository is a bit like deleting files in any
+  Unix system.  The one difference is that you have to tell Git about
+  it.  So, instead of
+<screen>
+<prompt>$</prompt> <userinput>rm <emphasis>file</emphasis></userinput></screen>
+  you write
+<screen>
+<prompt>$</prompt> <userinput>git rm <emphasis>file</emphasis></userinput></screen>
 </para>
+
 <para>
-You do not need to stage a deletion, so no need to do git add.
+  Deletion is automatically staged.  (Yeah, it just seems a bit to 
+  contradictory to use <code>git add</code> to stage a deletion.)
+  But you still have to use <code>git commit</code> to confirm the
+  deletion.
 </para>
 
 </section> <!-- deleting-files -->
@@ -276,22 +571,34 @@ You do not need to stage a deletion, so no need to do git add.
 <section id="committing"><title>Committing</title>
 
 <para>
-If you finished making changes and you are ready to put them into the main repository, type in:
-    <code>git commit</code>
+  At this point, you are ready to incorporate some or all of
+  your changes into the repository.  First, make your that you
+  add the changed or new files.  Next, use Git's commit command.
 </para>
+
+<screen>
+<prompt>$</prompt> <code>git commit</code></screen>
+
 <para>
-to update your local repository with the changes/creations/deletions
-made. Emacs will pop up (if you changed your editor, if not then Vim will
-pop up). Type in a brief sentence about what changes you made so that your
-colleagues will have a sense of what you did, save, and then close. You
-have successfully committed changes to your local repository!
+  Git will open the editor you specified above and you can enter
+  information about the change.  Custom is to use present tense
+  in a somewhat imperative mode: <quote>Fix bug 23a</quote> or
+  <quote>Add capability to print</quote>.  Enter something that
+  will be useful to you and to others who may see your code, then
+  save and exit the editor.   Congratulations, you
+  have successfully committed changes to your local repository!
 </para>
+
 <para>
-Note: To avoid having any text editor pop up, use the -m flag to enter a message directly in the terminal.
-Example: <code>git commit -m ‘adding a readme file’</code>
+  Note: To avoid having any text editor pop up, use the -m flag to 
+  enter a message directly in the terminal.  For example,
 </para>
+
+<screen>
+<prompt>$</prompt> <userinput>git commit -m ‘Add readme file’</userinput></screen>
+
 <para>
-Notice the single quotes that surround the message.
+  Notice the quotation marks that surround the message.
 </para>
 
 </section> <!-- committing -->
@@ -299,89 +606,181 @@ Notice the single quotes that surround the message.
 <section id="pushing"><title>Pushing</title>
 
 <para>
-Then, to send your latest local repository to the main repository, use:
-    <code>git push repository branch</code>
+  At this point, you have changes in your local repository and you
+  want to upload them to the primary repository.  We'll start with
+  a repository you own.  The most basic command is
 </para>
+
+<screen>
+<prompt>$</prompt> <userinput>git push</userinput></screen>
+
 <para>
-Almost certainly, repository will be origin and branch will be master if this was a repository that you created. Origin is what we named the repository earlier in the tutorial under “Making Your Own Repository” and since we have not made any branches yet, the default branch is called master.
-    <code>Example: git push origin master</code>
+  Git will then prompt you for your username and password and upload
+  the files.
 </para>
+
 <para>
-You will then be prompted to type in a username and password, when you type no text will show. Type in your github username and password.
+  As you become more advanced, you may want to specify the repository
+  and branch you are using.  In that case, you write
 </para>
+
+<screen>
+<prompt>$</prompt> <userinput>git push <emphasis>repository</emphasis> <emphasis>branch</emphasis></userinput></screen>
+
+<para>
+  By default, the repository is <code>origin</code> and the branch is
+  <code>master</code>.
+</para>
+
+<para>
+  <emphasis>Warning!</emphasis> If you are working in a repository
+  that you share with others, they may have pushed to the repository
+  too.  So make sure to <quote>pull</quote> from the repository 
+  before pushing.   (Git will probably warn you if your push will
+  create problems, but it's better to be safe.)
+</para>
+
 </section> <!-- pushing -->
 
 <section id="pull-requests"><title>Pull Requests</title>
 
 <para>
-This is only necessary if you forked a repository and want to send a request to have your changes be a part of the main code. When you forked a repository, there is one more level of repository that you need to be aware of. Normally, there is the local and main repository. Committing will change the local repository while pushing will change the main repository. When you fork a repository there is also a forked repository that goes inbetween the local and main repositories. Since you are not the project owner, you need to send a request to whoever does own the project to have your changes approved and added. This is why pull requests exist. So after you committed to your local repository, pushed to the forked repository, you need to send a pull request to the main repository.
+  Pushing works fine if you own the repository.  But what if you forked
+  a repository and want to send a request to have your changes be a part
+  of the main code?  Recall that you are dealing with (at least) three
+  copies of the code: the original repository (out of your control),
+  your fork of the repository (which you control), and your clone of
+  your fork (where you do your editing).
 </para>
-
-<orderedlist>
-<listitem>Get on github, go to your forked repository and then click “pull request” which is located near the middle on the top of the page.</listitem>
-<listitem>Title it and write a brief description of what you did.</listitem>
-<listitem>Click the green button at the end, “send pull request.”</listitem>
-</orderedlist>
 
 <para>
-Then it is up to the owner of the main repository to merge your changes with the main code. 
+  To inform the owners of the primary repository that you have made
+  changes that you think they would like to include, you send what is
+  called a <quote>pull request</quote>.  It is difficult (and perhaps
+  impossible) to send a pull request from the terminal; traditionally
+  one does it through GitHub (at least for code stored on GitHub.
 </para>
+
+<para>
+  Since pull requests will be rare in this class, we'll leave it to you
+  to figure out how to send one.
+</para>
+
+<para>
+  Once you've sent a pull request, it will be up to the owner of the main
+  repository whether or not to accept the request.
+</para>
+
+<para>
+  <emphasis>Note:</emphasis> Just as you pulled from your repository
+  before pushing, so should you pull from the main repository before
+  sending a pull request.  In this case, you need to name the main
+  repository as described above (traditionally, you name it 
+  <quote>upstream</quote>) and then issue the following command:
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>git pull upstream master</userinput></screen>
 
 </section> <!-- pull-requests -->
 
-<section id="merging-requests"><title>Merging Pull Requests</title>
-
-<para>
-If you happen to be the owner of the main repository this is how you merge a pull request with the code and files in the main repository.
-You should be notified on your front page of a pull request, click on the link, scroll down and click on the green button “merge pull request,” then click on the green button that shows up after.
-</para>
-
-</section> <!-- merging-requests -->
-
 <section id="keeping-uptodate"><title>Keeping Your Local Repository up to
 Date</title>
+
 <para>
-You are going to want the latest version of the main repository in your local repository, so to do this you will need to pull. If your repository was not empty to begin with, you would have had to pull from it before pushing.
-Type in:
-    <code>git pull</code>
-to get any changes from the main repository. If none were made, it will
-report back telling you that everything is up-to-date.
+  <emphasis>We've described this step a few times, but it's useful
+  to hear it again.</emphasis>
 </para>
 
+<para>
+  You are going to want the latest version of the main repository in
+  your local repository, so to do this you will need to pull. If your
+  repository was not empty to begin with, you would have had to pull
+  from it before pushing.  Type in the following to pull your the
+  repository you cloned.
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>git pull</userinput></screen>
+
+<para>
+  If you forked your repository before cloning and want to grab updates
+  from the original repository, you need to name that original repository
+  and then pull from that repository.
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>git remote add upstream <emphasis>url</emphasis></userinput>
+<prompt>$</prompt> <userinput>git pull upstream master</userinput></screen>
+
 </section> <!-- keeping-uptodate -->
+
 </section> <!-- fork-clone-repo -->
+
+<section id="wrapup"><title>Wrapping Up</title>
 
 <section id="important-terms"><title>Important Terms</title>
 
 <itemizedlist>
-<listitem>Push/pull</listitem>
-<listitem>Commit</listitem>
-<listitem>Clone</listitem>
-<listitem>Fork</listitem>
-<listitem>Version Control</listitem>
-<listitem>GitHub</listitem>
-<listitem>Repository</listitem>
+  <listitem>Push/pull</listitem>
+  <listitem>Commit</listitem>
+  <listitem>Clone</listitem>
+  <listitem>Fork</listitem>
+  <listitem>Version Control</listitem>
+  <listitem>GitHub</listitem>
+  <listitem>Repository</listitem>
+  <listitem>Stage</listitem>
 </itemizedlist>
 
 </section><!-- important-terms -->
 
 <section id="review-questions"><title>Review Questions</title>
 
-<orderedlist>
-<listitem>Why is git useful?</listitem>
-<listitem>What is forking and when would you use it?</listitem>
-<listitem>What is cloning and when would you use it?</listitem>
-</orderedlist>
+<itemizedlist>
+  <listitem>Why is Git useful?</listitem>
+  <listitem>What is forking and when would you use it?</listitem>
+  <listitem>What is cloning and when would you use it?</listitem>
+  <listitem>What is the normal sequence of working operations a programmer should use when dealing with a Git project?</listitem>
+</itemizedlist>
 
 </section><!-- review-questions -->
 
-<section id="sources"><title>Sources</title>
-<itemizedlist>
-<listitem><ulink url="http://www.cs.grinnell.edu/~rebelsky/Courses/CSC195/2013S/Outlines/outline.02.html">http://www.cs.grinnell.edu/~rebelsky/Courses/CSC195/2013S/Outlines/outline.02.html</ulink></listitem>
+<section id="exploratory-question"><title>Exploratory Questions</title>
 
-<listitem><ulink url="http://git-scm.com/book/en/Getting-Started-Git-Basics">http://git-scm.com/book/en/Getting-Started-Git-Basics</ulink></listitem>
-<listitem><ulink url="http://hoth.entp.com/output/git_for_designers.html">http://hoth.entp.com/output/git_for_designers.html</ulink></listitem>
+<itemizedlist>
+  <listitem>
+    Git allows you to undo commits (rolling your code back to a previous
+    version).  Figure out how.
+  </listitem>
+
+  <listitem>
+    In addition to forks and clones, Git allows you to make variants of
+    a repository using <quote>branches</quote>.  Learn what a branch is,
+    how to make one, and how to use branches.
+  </listitem>
 </itemizedlist>
+
+</section> <!-- exploratory-questions -->
+
+<section id="sources"><title>Selected Sources</title>
+
+<itemizedlist>
+  <listitem>
+    <code><ulink url="http://www.cs.grinnell.edu/~rebelsky/Courses/CSC195/2013S/Outlines/outline.02.html"/></code>
+  </listitem>
+
+  <listitem>
+    <code><ulink url="http://git-scm.com/book/en/Getting-Started-Git-Basics"/></code>
+  </listitem>
+
+  <listitem>
+    <code><ulink url="http://hoth.entp.com/output/git_for_designers.html"/></code>
+  </listitem>
+
+</itemizedlist>
+
 </section><!-- sources -->
+
+</section> <!-- wrapup -->
 
 </section> <!-- getting started with git -->
