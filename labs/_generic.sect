@@ -1,7 +1,27 @@
 <section id="generic"><title>Generic</title>
 
 <para>
-  A generic document.  Intended mostly for testing.
+  <emphasis>Summary:</emphasis>
 </para>
+
+<para>
+  <emphasis>Prerequisite Knowledge:</emphasis>
+</para>
+
+<section id="generic-preparation"><title>Preparation</title>
+
+</section> <!-- generic-preparation -->
+
+<section id="generic-exercises"><title>Exercises</title>
+
+<section id="generic-01"><title>Exercise 1: </title>
+
+</section> <!-- generic-01 -->
+
+</section> <!-- generic-exercises -->
+
+<section id="generic-extra"><title>For Those With Extra Time</title>
+
+</section> <!-- generic-extra -->
 
 </section> <!-- generic -->
