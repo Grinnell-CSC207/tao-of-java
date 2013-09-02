@@ -1,0 +1,410 @@
+<section id="simple-java-c"><title>Simple Java for C Programmers</title>
+
+<para>
+  <emphasis>Summary:</emphasis>
+  We give a quick tour through some imperative parts of Java and how
+  they relate to what you may know from learning the C programming 
+  language.
+</para>
+
+<section id="simple-java-c-intro"><title>Introduction</title>
+
+<para>
+  Java is a hybrid language.  While it has significant object-oriented
+  features, it also has many imperative features.  That is, while you
+  will be building objects and taking advantage of encapsulation,
+  polymorphism, and inheritance, you will also write programs in which
+  you sequence instructions and update state through assignment.
+  You may note that Java looks a lot like C.  That's intentional.  The
+  designers of Java thought they would attract more programmers if they
+  started with a familiar basis.
+</para>
+
+<para>
+  If you're willing to ignore the object-oriented features and to 
+  put up with a bit more stuff to type, Java can be a reasonable 
+  alternative to C for imperative programming.  Why is it better?
+  You still have some opportunity for information hiding, and it
+  is much stricter about types, which helps you catch errors 
+  earlier.  For example, Java distinguishes Boolean values from integers,
+  and won't let you use one for the other.
+</para>
+
+</section> <!-- simple-java-c-intro -->
+
+<section id="classes"><title>Classes and The <methodname>main</methodname> Method</title>
+
+<para>
+  Java requires that all of your code reside in <emphasis>classes</emphasis>.
+  While classes are primarily intended as templates for making objects,
+  they also gather together related functions and variables.  Hence,
+  even if all you want is a <methodname>main</methodname> method, you will need
+  to create a class to hold it.
+</para>
+
+<programlisting>
+public class MyClass {
+  public static void main(String[] args) throws Exception {
+    <emphasis>...</emphasis>
+  } // main(String[])
+} // MyClass
+</programlisting>
+
+<para>
+  As you probably noted, the <quote>signature</quote> of
+  <methodname>main</methodname> is a bit different in Java than it is
+  in C.  As in C, Java's <methodname>main</methodname> takes an array
+  of strings as parameters.  But Java uses the <code>String</code> type
+  (or, more formally, <code>java.lang.String</code>) rather than C's
+  <code>char *</code>.  In addition, in Java you can find out the length
+  of any array, so we don't need to take the length as a parameter.
+</para>
+
+<para>
+  Since Java is designed, in part, to allow the programmer to protect
+  pieces of code from other pieces of code (that's part of encapsulation),
+  you almost always declare the protection level of a method.  If you
+  don't, Java has a default protection level of <quote>this method may
+  be called by any other method in the same package</quote>, which I will
+  refer to as <quote>package protection</quote>.  Since the operating
+  system will be starting our program by calling the 
+  <methodname>main</methodname> method, we must make
+  <methodname>main</methodname> public.
+</para>
+
+<para>
+  Java distinguishes between methods that are associated with the objects
+  in a class and the methods that are associated with the class as a
+  whole.  The designers of Java chose the keyword <code>static</code>
+  to indicate that a method (or field) is associated with the class
+  rather than with individual objects.  (The name is somewhat sensible -
+  objects live in dynamic memory, but static methods can live in static
+  memory.)
+</para>
+
+<para>
+  In C, the return type of <methodname>main</methodname> is
+  <code>int</code>.  That's because C returns information about
+  success or failure using that integer.  (If you recall, in this
+  case, 0 means <quote>success</quote> and anything else represents
+  some sort of error.)  In Java, a program signals error in a different
+  way, and so there is no need to return a value.  Hence, the
+  return type is <code>void</code>.
+</para>
+
+<para>
+  Finally, that <code>throws Exception</code> is our way of signaling
+  that the program can fail.  You'll learn about throwing exceptions
+  later.
+</para>
+
+</section> <!-- classes -->
+
+<section id="coding-conventions"><title>Coding Conventions</title>
+
+<para>
+  Programmers have strong opinions on how code should be formatted.
+  Such conventions dictate everything from capitalization and naming
+  of variables to indentation and placement of braces and parens.
+  While there are a variety of conventions in Java, almost all of them
+  share the following capitalization choices.
+</para>
+
+<itemizedlist>
+  <listitem>
+    Variable names and field names generally start with a 
+    lowercase letter and use CamelCase (mixed upper and lower, 
+    no underscores).
+  </listitem>
+
+  <listitem>
+    Function names also start with a lowercase letter and use CamelCase.
+  </listitem>
+
+  <listitem>
+    Class names start with a capital letter and use CamelCase.
+  </listitem>
+</itemizedlist>
+
+</section> <!-- coding-conventions -->
+
+<section id="types"><title>Types</title>
+
+<para>
+  Java, like C, has basic numeric types, including <code>int</code>,
+  <code>short</code>, <code>long</code>, <code>float</code>, and
+  <code>double</code>.  Unlike C, Java carefully specifies what
+  representation and ranges are used for each of these.
+</para>
+
+<para>
+  Java also has the <code>void</code> type (nothing), and
+  the <code>char</code> type (Unicode characters, I believe).
+</para>
+
+<para>
+  Java does not have pointers.  (It has references, but it does not
+  let you reference and dereference like you can in C.)
+  Java's strings are therefore their own type, <code>String</code>
+  or <code>java.lang.String</code>.
+</para>
+
+<para>
+  Java also provides a <code>boolean</code> type for truth values, 
+  along with values <code>true</code> and <code>false</code>.
+</para>
+
+</section> <!-- types -->
+
+<section id="declaring-functions"><title>Declaring Functions</title>
+
+<para>
+  As you've seen in the case of <methodname>main</methodname>, basic
+  functions (well, methods) in Java require three pieces of additional
+  information in addition to the method name, return type, and
+  parameter list you used in C.
+</para>
+
+<itemizedlist>
+  <listitem>
+    A <emphasis>protection level</emphasis>.  In addition to 
+    <code>public</code> (accessible anywhere) and 
+    nothing (accessible only via the package), you can make
+    methods <code>private</code> (only accessible from within the
+    class) and <code>protected</code> (only within the package and
+    in subclasses).
+  </listitem>
+
+  <listitem>
+    An optional <code>static</code> specification.  Until you start
+    creating you own template classes, you'll need to make all of your
+    methods static.
+  </listitem>
+
+  <listitem>
+    An optional <code>throws</code> clause to indicate possible errors.
+    Until we cover throwing and catching exceptions, you will find it
+    easiest to indicate that any method you write throws an exception.
+  </listitem>
+</itemizedlist>
+
+<para>
+  For example,
+</para>
+
+<programlisting>
+    /** 
+     * Compute the square of x.  
+     *
+     * @exception Exception 
+     *   when the square is larger than the largest int.
+     */
+    public static int square(int x) throws Exception
+</programlisting>
+
+</section> <!-- declaring-functions -->
+
+<section id="declaring-variables"><title>Declaring Variables</title>
+
+<para>
+  As you may recall, in C there are two primary kinds of variables: 
+  <emphasis>global</emphasis> variables, which are available to any
+  procedure in your program, and <emphasis>local</emphasis> variables,
+  which are only available within your procedure.
+</para>
+
+<para>
+  You will find that local variables in Java are much like local variables
+  in C.  That is, you declare them by giving the type and the name of
+  the variable.
+</para>
+
+<programlisting>
+        long result;
+</programlisting>
+
+<para>
+  Global variables are a bit more complex.  Once again, you declare them
+  by giving the type and name.  But you can also add a protection level
+  like those you use for methods - <code>public</code>, <code>protected</code>,
+  nothing (<quote>package</quote>), or <code>private</code>.
+</para>
+
+<programlisting>
+    /**
+     * A count of the number of errors encountered during testing.
+     */
+    private int errorCount = 0;
+</programlisting>
+
+</section> <!-- declaring-variables -->
+
+<section id="conditionals"><title>Conditionals</title>
+
+<para>
+  Java provides if-then-else and switch statements that essentially
+  mimic C's statements.
+</para>
+
+</section> <!-- conditionals -->
+
+<section id="loops"><title>Loops</title>
+
+<para>
+  Java provides while loops, do-while loops, and for loops that look
+  much like what you've seen in C.  One big difference with these loops
+  is that you can declare variables in the loop header.  Hence, while
+  C programmers declare their counter variables in one place and then
+  use them elsewhere, in Java, programmers tend to write things like
+  the following:
+</para>
+
+<programlisting>
+        for (int i = 0; i &lt; MAX_VALUE; i++)
+</programlisting>
+
+<para>
+  Java also provides s special loop that makes it much easier to access
+  every element in a list or array.  (More formally, to access every
+  element in a collection that supports iteration.)
+</para>
+
+<programlisting>
+        for (s : Strings) ...
+</programlisting>
+
+<para>
+  The one initial change you'll see in your programming is a tendency
+  to declare variables within the initialization segments of a for loop.
+</para>
+
+</section> <!-- loops -->
+
+<section id="library"><title>Library Code</title>
+
+<para>
+  In C, you import library code by using <code>#include</code> to tell
+  the compiler about the specifications for that code and then linking
+  to that library code.
+</para>
+
+<para>
+  In Java, you just mention the library code and the compiler automatically
+  figures out how to bring it in.  Traditionally, you give the full
+  name of the library, such as <code>java.io.PrintWriter</code>.
+</para>
+
+<para>
+  Suppose <code>Util.java</code> was declared as follows.
+</para>
+
+<programlisting>
+package edu.grinnell.csc207.utils;
+
+public class Util {
+  public static int square(int x) throws Exception {
+     ...
+  }
+} // class Util
+</programlisting>
+
+<para>
+  To call <code>square</code>, you would write
+</para>
+
+<programlisting>
+        edu.grinnell.csc.207.utils.Util.square(...)
+</programlisting>
+
+<para>
+  Note that for some library code, particularly using standard libraries,
+  you'll need to create objects.  For example, to use a 
+  <code>PrintWriter</code>, I need to write
+</para>
+
+<programlisting>
+        java.io.PrintWriter pen = new java.io.PrintWriter(System.out,true);
+</programlisting>
+
+</section> <!-- library -->
+
+<section id="io"><title>Input and Output</title>
+
+<para>
+  Java provides a host of input and output mechanisms.  I prefer that
+  you use the object-oriented ones.
+</para>
+
+<para>
+  To print output, first create an object of class
+  <code>java.io.PrintWriter</code>.
+</para>
+
+<programlisting>
+        java.io.PrintWriter pen = new java.io.PrintWriter(System.out,true);
+</programlisting>
+
+<para>
+  You can then print using that object's <code>print</code> and
+  <code>println</code> methods.  (There's also a <code>printf</code>
+  method that works much like C's <code>printf</code>.)
+</para>
+
+<programlisting>
+       pen.println("Hello");
+</programlisting>
+
+<para>
+  For input, you probably want to use a <code>java.io.BufferedReader</code>,
+  which you typically create with something like:
+</para>
+
+<programlisting>
+       java.io.BufferedReader eyes =
+           new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
+</programlisting>
+
+<para>
+  You can then use the <methodname>readLine</methodname> method to read
+  input.
+</para>
+
+</section> <!-- io -->
+
+<section id="arrays"><title>Arrays</title>
+
+<para>
+  We'll consider arrays at a later time.
+</para>
+
+</section> <!-- arrays -->
+
+<section id="wrapup"><title>Wrapping Up</title>
+
+<section id="terms"><title>Important Terms</title>
+
+<itemizedlist>
+  <listitem>Protection levels - <code>package</code>, <code>private</code>, <code>protected</code></listitem>
+</itemizedlist>
+
+</section> <!-- terms -->
+
+<section id="review-questions"><title>Review Questions</title>
+
+<para>
+  <emphasis>Forthcoming.</emphasis>
+</para>
+
+</section> <!-- review-questions -->
+
+<section id="exploratory-questions"><title>Exploratory Questions</title>
+
+<para>
+  <emphasis>Forthcoming.</emphasis>
+</para>
+
+</section> <!-- exploratory-questions -->
+
+</section> <!-- wrapup -->
+
+</section> <!-- simple-java-c -->
