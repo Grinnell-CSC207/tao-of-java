@@ -1,6 +1,23 @@
 <section id="oops-java"><title>Introducing OOD and Java</title>
 
-* Read <ulink url="../readings/oops-basics.html">An Introduction to Object-Oriented Problem Solving</ulink>.
-* Read <ulink url="../readings/intro-java.html">An Introduction to Java</ulink>.
+<para>
+  There are two readings for today.
+</para>
+
+<itemizedlist>
+  <listitem>
+    <ulink url="../readings/oops-basics.html">An Introduction to
+    Object-Oriented Problem Solving</ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="../readings/intro-java.html">An Introduction to
+    Java</ulink>
+  </listitem>
+</itemizedlist>
+
+<para>
+  Read them both.
+</para>
 
 </section> <!-- oops-java -->
