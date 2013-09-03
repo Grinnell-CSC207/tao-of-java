@@ -17,21 +17,130 @@
 </para>
 
 <para>
-  Make a copy of the GitHub repository for this lab, available at
-  (FORTHCOMING).
+  Fork the GitHub repository for this lab, available at
+  <ulink url="https://github.com/Grinnell-CSC207/lab-code-reading"/>.
+</para>
+
+<para>
+  Clone your fork to the local machine.
+</para>
+
+<para>
+  Import the clone into Eclipse.  Note: This clone is already configured
+  as an Eclipse project, so you can select <guibutton>Import Existing
+  Projects</guibutton> rather than <guibutton>Use the New Project
+  Wizard</guibutton>.
 </para>
 
 </section> <!-- reading-java-preparation -->
 
 <section id="reading-java-exercises"><title>Exercises</title>
 
-<section id="reading-java-01"><title>Exercise 1: </title>
+<section id="reading-java-01"><title>Exercise 1: A Quick Overview</title>
+
+<para>
+  Look at the <code>Main</code> class and predict what the program
+  is supposed to do.
+</para>
+
+<para>
+  Confirm your hypothesis experimentally.
+</para>
 
 </section> <!-- reading-java-01 -->
+
+<section id="reading-java-02"><title>Exercise 2: Reformatting Code</title>
+
+<para>
+  Look at the <code>MathUtils</code> class.  You may note that it's
+  badly formatted.  Find a quick way to reformat it according to the
+  Java formatting conventions.
+</para>
+
+</section> <!-- reading-java-02 -->
+
+<section id="reading-java-03"><title>Exercise 3: Squaring Doubles</title>
+
+<para>
+  Return to the <code>Main</code> class.  Insert code to print the squares
+  of the real numbers 0.1, 0.2, ...., 0.9.  When typing, type slowly and
+  take advantage of the popup menus that appear.
+</para>
+
+</section> <!-- reading-java-03 -->
+
+<section id="reading-java-04"><title>Exercise 4: Correcting Errors</title>
+
+<para>
+  There's a small error in <methodname>square</methodname><code>(double)</code>.
+  Correct that error.
+</para>
+
+</section> <!-- reading-java-04 -->
+
+<section id="reading-java-05"><title>Exercise 5: Commit and Push</title>
+
+<para>
+  Commit and push your changes.
+</para>
+
+</section> <!-- reading-java-05 -->
+
+<section id="reading-java-06"><title>Exercise 6: Introduce Errors</title>
+
+<para>
+  Introduce some syntax errors into your Java code and see how Eclipse reacts.
+  In each case, you should see a red x at the left of the pane.  Click on the
+  x to see what options are available.  Here are some suggestions:
+</para>
+
+<itemizedlist>
+  <listitem>
+    Remove the <code>int</code> from the declaration of <code>i</code>
+    in <code>main</code>.
+  </listitem>
+
+  <listitem>
+    Refer to <code>i</code> outside of the for loop.
+  </listitem>
+
+  <listitem>
+    Remove one or more right braces.
+  </listitem>
+
+  <listitem>
+    Replace one of the instances of <code>java.io.PrintWriter</code> with
+    just <code>PrintWriter</code>.
+  </listitem>
+
+  <listitem>
+    Change the name of the class (but not the file) to <code>Mine</code>.
+  </listitem>
+
+  <listitem>
+    Call <code>square</code> on a String.
+  </listitem>
+
+  <listitem>
+    Remove the keyword <code>return</code> from the body of one of the
+    versions of <code>square</code>.
+  </listitem>
+</itemizedlist>
+
+</section> <!-- reading-java-06 -->
 
 </section> <!-- reading-java-exercises -->
 
 <section id="reading-java-extra"><title>For Those With Extra Time</title>
+
+<section id="reading-java-extra-01"><title>Extra 1: Translate C</title>
+
+<para>
+  Pick a simple C program you've written previously and attempt to rewrite
+  it in Java.
+</para>
+
+</section> <!-- reading-java-extra-01 -->
 
 </section> <!-- reading-java-extra -->
 
