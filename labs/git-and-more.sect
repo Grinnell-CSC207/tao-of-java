@@ -1,0 +1,20 @@
+<section id="git-and-more"><title>Git and More</title>
+
+<para>
+  There are two labs for today's class. 
+</para>
+
+<itemizedlist>
+  <listitem>
+    <ulink url="../labs/git.html">Getting Started with Git (in Eclipse)</ulink>
+  </listitem>
+  <listitem>
+    <ulink url="../labs/reading-java.html">Reading Java</ulink>
+  </listitem>
+</itemizedlist>
+
+<para>
+  Do them both.
+</para>
+
+</section> <!-- git-and-more -->
