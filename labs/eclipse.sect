@@ -152,7 +152,7 @@ public class HelloJava {
 
 <para>
   b. Using the skeleton from above write a program that computes and
-  prints prints out a simple sum.  For example, your output might be
+  prints out a simple sum.  For example, your output might be
 </para>
 
 <screen>
@@ -239,7 +239,7 @@ Adding 3 and 4 gives us 7.</screen>
 
 <para>
   d. Hover the cursor over <code>main</code> or <code>HelloJava</code> and
-  observer what happens.
+  observe what happens.
 </para>
 
 </section> <!-- eclipse-06 -->
