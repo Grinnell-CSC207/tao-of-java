@@ -1,56 +1,68 @@
 <!--Needs an authors section-->
 <!--Would probably benefit from a Contents section, because this is long-->
-<!--Assumes pictures are named in the style "Javadoc#.png". The first image is named "Javadoc1.png", and so on-->
+<!--Assumes pictures are named in the style "Javadoc#.png". The first image is named "Javadoc1.png", and so on--> <!-- Sam hates this naming convention. -->
 <!--SamR should check to make sure Marsha is not misusing tags-->
 
-<section id="javadocs-and-testing"><title>Documentation and Testing</title>
+<section id="javadoc"><title>Documenting Java Code with Javadoc</title>
 
 <para>
   <emphasis>Summary:</emphasis>
-  We consider the various forms of documentation that programmers typically write and read and examine
-  Javadoc, Java's tool for generating documentation for client programmers.
+  We consider the various forms of documentation that programmers
+  typically write and read and examine Javadoc, Java's tool for generating
+  documentation for client programmers.
 </para>
 
 <section id="documentation">
 <section id="doc-forms"><title>Forms of Documentation</title>
 
 <para>
-  Even though you are a comparatively novice programmer, you have likely learned the importance of   
-  documenting your work (or, as importantly, of others documenting their work). When you use a program,
-  such as Emacs, it helps to have documentation that lets you quickly identify how to do particular
-  activities. When you use a Java class that comes as part of the standard installation, such as 
-  <code>java.io.PrintWriter</code>, you hope to have clear instructions on how to build and use objects
-  in that class. When you're writing a method, it helps to have a short note as to what you expect the 
-  method to do. It may also help to have some notes as to the steps in your algorithm. (As a professor,
-  I find it much easier to help my students when they have documentation that explains what they intended 
-  the method to do and how the code they've written is supposed to accomplish this task.) Finally, when you 
-  modify the code of others (Or even your own code a few months later), it helps to have similar 
-  explanations: What were you trying to do and how were you trying to do it? You can probably suggest other 
-  ways that you document your code.
+  Even though you are a comparatively novice programmer, you have likely
+  learned the importance of documenting your work (or, as importantly, of
+  others documenting their work). When you use a program, such as Emacs,
+  it helps to have documentation that lets you quickly identify how to do
+  particular activities. When you use a Java class that comes as part of
+  the standard installation, such as <code>java.io.PrintWriter</code>, you
+  hope to have clear instructions on how to build and use objects in that
+  class. When you're writing a method, it helps to have a short note as to
+  what you expect the method to do. It may also help to have some notes as
+  to the steps in your algorithm. (As a professor, I find it much easier
+  to help my students when they have documentation that explains what they
+  intended the method to do and how the code they've written is supposed
+  to accomplish this task.) Finally, when you modify the code of others
+  (Or even your own code a few months later), it helps to have similar
+  explanations: What were you trying to do and how were you trying to
+  do it? You can probably suggest other ways that you document your code.
 </para>
 
 <para>
-  It helps to classify this wide variety of kinds of documentation into three audiences:
+  It helps to classify this wide variety of kinds of documentation into
+  three audiences:
 </para>
 
 <itemizedlist>
   <listitem>
-    <emphasis>Users</emphasis>, who consult the documentation when attempting to use your program. 
-    Although in the real world, programmers are not necessarily expected to provide this kind of
-    documentation, you will often have to provide it earlier in your programming career and it helps 
-    to remember that <emphasis>someone</emphasis> has to write such documentation. 
+    <emphasis>Users</emphasis>, who consult the documentation when
+    attempting to use your program.  Although in the real world,
+    programmers are not necessarily expected to provide this kind
+    of documentation, you will often have to provide it earlier
+    in your programming career and it helps to remember that
+    <emphasis>someone</emphasis> has to write such documentation.
   </listitem>
+
   <listitem>
-    <emphasis>Client Programmers</emphasis>, who use the classes you design, often in new contexts.
+    <emphasis>Client Programmers</emphasis>, who use the classes you
+    design, often in new contexts.
   </listitem>
+
   <listitem>
     <emphasis>Colleagues</emphasis>, who must support and update your code.
   </listitem>
+
 </itemizedlist>
 
 <para>
-  In this document, we will focus primarily on the documentation you write for other programmers, both
-  client programmers and colleagues.
+  In this document, we will focus primarily on the documentation you
+  write for other programmers, both client programmers and colleagues.
 </para>
 
 </section> <!--doc-forms-->
@@ -58,70 +70,83 @@
 <section id="documentation-levels"><title>Documenting at Many Levels</title>
 
 <para>
-  One of the first things you should observe as you write documentation for other programmers is that 
-  there are many levels of documentation you need to write, particularly if you're providing a host of
-  classes for client or colleague (or yourself).
+  One of the first things you should observe as you write documentation
+  for other programmers is that there are many levels of documentation
+  you need to write, particularly if you're providing a host of classes
+  for client or colleague (or yourself).
 </para>
 
 <para>
-  You should begin with a <emphasis>package-level overview</emphasis> of the various classes and objects 
-  and the relationships they play with each other. Such an overview helps guide your colleagues to the right
-  place to find something and guides your clients as to what classes they need for different purposes and 
-  how they interact. As a client, you may have found such high-level overviews useful for figuring out how 
-  things go together. Experience suggests that high-level overviews are strengthened by sample code, but you 
-  often don't want to write that code until after you've written a few programs using your package or 
+  You should begin with a <emphasis>package-level overview</emphasis>
+  of the various classes and objects and the relationships they play with
+  each other. Such an overview helps guide your colleagues to the right
+  place to find something and guides your clients as to what classes
+  they need for different purposes and how they interact. As a client,
+  you may have found such high-level overviews useful for figuring out
+  how things go together. Experience suggests that high-level overviews
+  are strengthened by sample code, but you often don't want to write that
+  code until after you've written a few programs using your package or
   packages yourself.
 </para>
 
 <para>
-  Next, you should provide a <emphasis>class-level overview</emphasis> of each class or interface you write. 
-  Like the package-level overview, it guides your reader as to how things fit together and where things can 
-  be found. Such overviews might also include code.
+  Next, you should provide a <emphasis>class-level overview</emphasis>
+  of each class or interface you write.  Like the package-level overview,
+  it guides your reader as to how things fit together and where things
+  can be found. Such overviews might also include code.
 </para>
 
 <para>
-  Third, you should write <emphasis>method and field summaries</emphasis> that provide details about the 
-  individual fields, methods, and constructors of your classes. Typically, a field summary provides 
-  information about the intended use of the field and any special values it may take on. (For example, 
-  some programs use 0 or -1 to indicate a special situation.) The summary for a method or constructor 
-  should provide coherent information about the purpose of the method. We revisit the form and content 
-  of this summary in a subsequent section.
+  Third, you should write <emphasis>method and field summaries</emphasis>
+  that provide details about the individual fields, methods, and
+  constructors of your classes. Typically, a field summary provides
+  information about the intended use of the field and any special values
+  it may take on. (For example, some programs use 0 or -1 to indicate
+  a special situation.) The summary for a method or constructor should
+  provide coherent information about the purpose of the method. We
+  revisit the form and content of this summary in a subsequent section.
 </para>
 
 <para>
-  Finally, within each method, you document the intended meaning of each step.
+  Finally, within each method, you document the intended purpose 
+  of each step.
 </para>
+
 </section> <!--documentation-levels-->
 
 <section id="when-to-document"><title>When to Document?</title>
 
 <para>
-  Many programmers seem unsure of when they should write their documentation. The answer is easy: you 
-  should <emphasis>Document Early and Often</emphasis>. By early, I mean that you should write most of 
-  your documentation <emphasis>before</emphasis> you begin to code. You may have to go back and modify 
-  your comments later, perhaps as you realize that you can't meet your intent, but early documentation 
-  helps guide you when you've forgotten what you want to do (and helps others help you).
+  Many programmers seem unsure of when they should write their
+  documentation. The answer is easy: you should <emphasis>Document Early
+  and Often</emphasis>. By early, I mean that you should write most of
+  your documentation <emphasis>before</emphasis> you begin to code. You
+  may have to go back and modify your comments later, perhaps as you
+  realize that you can't meet your intent, but early documentation helps
+  guide you when you've forgotten what you want to do (and helps others
+  help you).
 </para>
 
 <para>
-  Let's consider an example: How might we document and then write a procedure for exponentiation? I begin 
-  with a full statement of what I expect the algorithm to compute.
+  Let's consider an example: How might we document and then write a
+  procedure for exponentiation? I begin with a full statement of what
+  I expect the algorithm to compute.
 </para>
 
-<programlisting> <!--This might not be the right tag since it's a block of documentation-->
-  /**
-  * Given an integer, x, and an exponent, p, compute x^p.
-  *
-  * @param x
-  *   an integer
-  * @param p
-  *   a whole number
-  * @pre
-  *   x must be non-negative.
-  *   x^p must be smaller than the largest representable integer.
-  * @post
-  *   The result = x*x*x* ... *x (p times)
-  */
+<programlisting> 
+   /**
+    * Given an integer, x, and an exponent, p, compute x^p.
+    *
+    * @param x
+    *   an integer
+    * @param p
+    *   a whole number
+    * @pre
+    *   x must be non-negative.
+    *   x^p must be smaller than the largest representable integer.
+    * @post
+    *   The result = x*x*x* ... *x (p times)
+    */
 </programlisting>
 
 <para>
@@ -129,12 +154,12 @@
 </para>
 
 <programlisting> <!--documentation block-->
-  /*
-   * Algorithm: We rely on the rules that
-   *   x^0 = 1
-   *   x^k+1 = x^k*x
-   *   x^2k = (x^k)^2
-   */
+    /*
+     * Algorithm: We rely on the rules that
+     *   x^0 = 1
+     *   x^k+1 = x^k*x
+     *   x^2k = (x^k)^2
+     */
 </programlisting>
 
 <para>
@@ -300,235 +325,28 @@
 
 </section> <!--documentation-->
 
-<section id="testing">
+<section id="javadoc-wrapup"><title>Wrapping Up</title>
 
-<section id="intro"><title>Unit Testing</title>
-
-<para>
-  Unit testing is a method that is used to test individual pieces of source code. This method is a powerful 
-  tool for helping you test complicated code by breaking it into smaller and more easily understood pieces. 
-  In order to unit test in Java, we use a framework called JUnit.
-</para>
-
-</section> <!--intro-->
-
-<section id="how-to-test"><title>How We Do It</title>
-
-<para>
-  In order to use JUnit in eclipse, right click the class that we want to test then choose 
-  <guimenu>New</guimenu> ><guimenuitem>JUnit Test Case</guimenuitem>. This will open the New JUnit Test   
-  Case window. Once there, hit the Next button. After that you will have the <guimenu>Test Methods</guimenu> 
-  menu open. This menu will have the class that you chose as the first option. Underneath, it will have all 
-  of the methods in your class that you can test. Pick the methods that you want to test and hit the Finish 
-  button, and Eclipse will create a new class within the same package that you can use for testing. For 
-  reference, you usually won’t have to test the <methodname>constructor</methodname> method or the 
-  <methodname>toString</methodname> method.
-</para>
-
-<para>
-  Within the class that you just made, there will be methods that are prefixed with test. These are what you 
-  will use to test each method you have chosen. At the moment they all should have:
-</para>
-
-<programlisting>
-  fail("Not yet implemented");
-</programlisting>
-
-<para>
-  We will replace this code with test code, of which we have a variety to choose from:
-</para>
+<section id="javadoc-terms"><title>Important Terms</title>
 
 <itemizedlist>
-<listitem>
-  <methodname>assertEquals()</methodname>
-</listitem>
-
-<listitem>
-  <methodname>assertTrue()</methodname> and <methodname>assertFalse()</methodname>
-</listitem>
-
-<listitem>
-  <methodname>assertNull()</methodname> and <methodname>assertNotNull()</methodname>
-</listitem>
-
-<listitem>
-  <methodname>assertSame()</methodname> and <methodname>assertNotSame()</methodname>
-</listitem>
-
-<listitem>
-  <methodname>assertArrayEquals()</methodname>
-</listitem>
-
-<listitem>
-  <methodname>fail()</methodname>
-</listitem>
+  <listitem>Javadoc</listitem>
+  <listitem>Javadoc tags</listitem>
+  <listitem>Java API</listitem>
 </itemizedlist>
 
-<para>
-  It should be noted that there are more methods that can be used in JUnit than just these few, though the   
-  most commonly used method is <methodname>assertEquals()</methodname>. We can use as many of these tests as 
-  we need within a single method, but when we run our code, JUnit will only tell us if our method as a whole 
-  passed. If JUnit reports that the method has failed, it means that a test within the method we’re testing 
-  failed. It will tell you the location of the first test that our code did not pass. Note that JUnit will 
-  stop at the first test that our code does not pass.
-</para>
+</section>  <!-- javadoc-terms -->
 
-<para>
- For example, we want to test this class:
-</para>
+<section id="javadoc-review"><title>Review Questions</title>
 
-<programlisting> <!--This looks terrible here in gedit, but hopefully DocBook will fix that?-->
-package jUnit;
-
-public class Example {
-
-    /*An array of integers with factorial of 1 in the index 0.*/
-    static int[] factorials = new int[100];
-
-   
-
-/**
- * @param number
- *  a positive number that is larger than 0 and less then 100
- * @return
- *  the factorial of the parameter
- * @pre
- *  factorial() will compute the factorial of a given number between 0 and 100, 
- *  not inclusive. The given number must be an integer.
- * @post
- *     factorial() will return a positive integer that will represent that factorial 
- *     of a given number. If factorial() is given a number that is outside of the predefined 
- *     range, 0-100, it will throw an ArrayIndexOutOfBoundsException.
- */
-
-    public static int factorial(int number) {
-
-        if(number == 1){
-
-            factorials[0] = 1;
-
-            return 1;
-
-        } // if       
-
-        if(factorials[number] == 0){
-
-            factorials[number -1] = number * factorial(number - 1);
-
-        } // if 
-
-        return factorials[number -1];
-
-    } // factorial(int number)
-
-/**
-* @param number
-*  any integer, if the number is a double the method will fail
-* @return
-*  isEven() will return true if the given number is even and false if it is odd 
-*  In the case of 0, it will return true
-*/
-
-    public static boolean isEven(int number) {
-
-        if(number % 2 ==0)
-
-            return true;
-
-        else
-
-            return false;
-
-    } // isEven(int number)
-
-   
-} // Example
-</programlisting>
-
-<para>
-  This is out JUnit Test Case class:
-</para>
-
-<programlisting>
-package jUnit;
-
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-public class ExampleTest {
-
-    @Test
-
-    public void testFactorial() {
-
-        assertEquals(6, Example.factorial(3));
-
-        assertNotSame(5, Example.factorial(5));
-
-        assertEquals(Example.factorial(5), Example.factorial(5));
-
-    } // testFactorial()
-} // ExampleTest
-</programlisting>
-
-<para>
-  In order to use the <methodname>factorial()</methodname> method from the Example class, we have to treat 
-  it as a library and prefix the method <methodname>isEven</methodname> with the library that it comes from. 
-  In Java, we do this by putting a period between the library and method. This code will work perfectly if 
-  we were to run it, but what if we wanted to test more than one method at a time? We could do this by 
-  either making a new JUnit test case or by adding a <methodname>testIsItFive()</methodname> method. However 
-  if we were to add this:
-</para>
-
-<programlisting>
-  public void testIsEven() {
-    assertTrue(Example.isEven(6));
-  } // testIsEven()
-</programlisting>
-
-<para>
-JUnit would not tell us if the method passed, but would only tell us if the <methodname>testFactorial()</methodname> method passed. In order to make sure JUnit also tests this new method, we need to write <code>@Test</code> on the line above it. In fact, all of the methods that we want JUnit to test must be marked with <code>@Test</code> in order for JUnit to run through them all. 
-</para>
-
-<para>
-Make sure that you are aware that any operation within a method will not affect the operations within another method. An example of this is if we had an empty list and added an element to it within the method testA, and then tried to get the first element of the same list within the method testB we would find that there is nothing in the list. 
-</para>
-
-<para>
-Obviously this feature of JUnit, poses a problem. One way that we can sidestep this feature is by declaring a global variable or by using the setUp() method. This method prefixed with @Before, will fix that problem. The prefix @Before will run the setUp() method before each test, so if we want each of our methods to refer to a non-empty list, we can add it within setUp(). Generally, whatever we put in setUp() will hold true for every other test method. The first time you use @Before, Eclipse will underline it red. Hover over it and import ‘Before’ (org.junit).
-</para>
-</section><!--how-to-do-it-->
-</section> <!--testing-->
-
-<section id="terms"><title>Important Terms</title>
-<itemizedlist>
-  <listitem>
-    Javadoc
-  </listitem>
-
-  <listitem>
-    Javadoc tags
-  </listitem>
-
-  <listitem>
-    Java API
-  </listitem>
-
-  <listitem>
-    Unit Testing
-  </listitem>
-
-  <listitem>
-    JUnit
-  </listitem>
-</itemizedlist>
-</section><!--terms-->
-
-<section id="questions"><title>Review Questions</title>
 <orderedlist>
+
   <listitem>
-    Why would one create their own Javadoc tags? What are some tags that you think would be useful?
+    Why do we document our code?
+  </listitem>
+
+  <listitem>
+    Who is likely to read our documentation?
   </listitem>
 
   <listitem>
@@ -536,20 +354,26 @@ Obviously this feature of JUnit, poses a problem. One way that we can sidestep t
   </listitem>
 
   <listitem>
-    Why do we document our code?
+    Why would one create their own Javadoc tags? What are some tags that
+    you think would be useful?
   </listitem>
 
   <listitem>
     How can we automatically generate Doc Comments when we create a class?
   </listitem>
 
-  <listitem>
-    Why is it better to write test suits, than testing our code with a bunch of print statements?
-  </listitem>
-
-  <listitem>
-    How do we enter JUnit?
-  </listitem>
 </orderedlist>
-</section> <!--questions-->
-</section> <!--javadocs-and-testing-->
+
+</section><!-- javadoc-review -->
+
+<section id="javadoc-explore"><title>Exploratory Questions</title>
+
+<orderedlist>
+  <listitem>...</listitem>
+</orderedlist>
+
+</section> <!-- javadoc-explore -->
+
+</section> <!-- javadoc-wrapup -->
+
+</section> <!--javadoc -->
