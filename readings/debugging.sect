@@ -1,235 +1,466 @@
-<section id="debugging"> <title>Debugging</title>
-
-<emphasis>Summary</emphasis>: Debugging summary.
-
-<section name="intro" title="Intro to Debugging">
+<section id="debugging"><title>Debugging</title>
 
 <para>
-Unfortunately, as much as we would like to, sometimes we write code that is less than perfect. When that happens, we can spend more time trying to figure out what’s wrong than we actually spent writing the code itself. In order to make sure our code is working, we have to make sure it has no bugs.
+  <emphasis>Summary</emphasis>: We consider strategies for debugging code
+  and begin our exploration of Eclipse's Java debugger.
+</para>
+
+<section name="bugs"><title>The Wonder of Program Bugs</title>
+
+<para>
+  Unfortunately, as much as we would like to, sometimes we write code
+  that is less than perfect. When that happens, we can spend more time
+  trying to figure out what is wrong than we actually spent writing
+  the code itself. In order to make sure our code is working, we have
+  to make sure it has no bugs (or at least as few bugs as possible).
+</para>
+
+<para>
+  How do we know that code is bug-free?  It passes all of our well-designed
+  unit tests.  How do we know that code has bugs?  It fails to pass a
+  unit test.
+</para>
+
+<para>
+  How do you avoid bugs?  You can never completely avoid bugs.
+  Every programmer makes mistakes, fails to predict certain situations,
+  or misunderstands how a language or library works.  But you can still
+  work on strategies that help you avoid bugs in the first place.
+</para>
 
 <itemizedlist>
-<listitem>The best way to catch bugs is to not insert them in the first place, or to document your code sufficiently well that they become "obvious". </listitem>
-<listitem>Use preconditions and postconditions whenever possible. You may even find it useful to explicitly test both pre and postconditions in your code.</listitem>
+  <listitem>
+    Write your tests first so that you think about the special cases
+    that you may have to handle.
+  </listitem>
+
+  <listitem>
+    Use preconditions and postconditions whenever possible.  In some cases,
+    you may find it useful to insert <quote>assertions</quote> directly 
+    in your code so that (a) you document what you expect at any point
+    and (b) you know where things started to go awry.
+  </listitem>
+
+  <listitem>
+    Document each section of a procedure so that you can remember what
+    it's supposed to do when you revisit it at a later time (or so that
+    a colleague who revisits your code knows what you were trying to
+    do).
+  </listitem>
 </itemizedlist>
+
+<para>
+  If your code still ends up failing the tests, what do you do next?
+  Sometimes just walking through the procedure again helps.  (A
+  student claims the most valuable lesson he ever got from me was
+  <quote>Explain your code to someone, even your golden retriever</quote>.
+  That is, if you sit down and explain what you're trying to do and how
+  you acheive it, you're likely to find the bug.)
 </para>
 
 <para>
-If you still end up producing non-working code, despite following the above conventions, then it’s time to debug your code. This can be done by simply looking at it and figuring out what’s wrong by testing it in many different ways, or using the built-in Eclipse Debugger.
+  More often, though, you'll need to see what's happening while your
+  code runs, as what's happening is clearly different than what you
+  expect.  You may be tempted to insert a bunch of print statements,
+  but you are much better off using a debugger.  And, fortunately,
+  Eclipse, like most IDEs, has an integrated debugger.
 </para>
+
 </section> <!-- Intro -->
 
-<section id="debuggers"> <title>What are Debuggers?</title>
+<section id="debuggers"><title>A Quick Introduction to Debuggers</title>
 
 <para>
-Debuggers are tools for tracing code to find if there’s something wrong and what that something is. They let you single-step through your code, printing variables as you go. They also let you set breakpoints so that your steps can be large enough. Using a debugger will be more efficient and informative than simply putting a bunch of print statements in your code to trace what’s going on.
+  Debuggers are tools for tracing code to find if there is something
+  wrong and what that something is.  More precisely, they give you the
+  opportunity to find out where in your code things start going wrong.
+  How do they achieve this?  First, they let you <emphasis>single-step
+  through your code</emphasis>, printing values as you go.  They also
+  let you set <emphasis>breakpoints</emphasis> so that your steps can
+  be large. Using a debugger will be more efficient and informative
+  than simply putting a bunch of print statements in your code to trace
+  what is going on.
 </para>
 
 <para>
-Why debugging with print statements is bad:
+  What capabilities can you expect to find in most debuggers?
 </para>
 
 <itemizedlist>
-<listitem>In large programs you might have hundreds of output lines to check and it’s easier to break that output down and focus on a small piece</listitem>
-<listitem>The buffer window for the (whole) output might be too small, so you would have to catch the output in a file</listitem>
-<listitem>You can’t change the code while it’s running</listitem>
-<listitem>You can’t skip or repeat certain pieces of code</listitem>
-<listitem>You can’t examine memory contents in real time</listitem>
-<listitem>You have to recompile many, many times</listitem>
+  <listitem>
+    You can <emphasis>determine the value of variables and
+    parameters</emphasis>.  In some cases, you will need to explicitly
+    click on a variable (or type a command in a textual debugger).
+    In others, the debugger will print them out automatically.
+  </listitem>
+
+  <listitem>
+    You can <emphasis>set breakpoints</emphasis> - locations in the
+    code in which you want to start exploring behavior and values.  Once
+    breakpoints are set, you can simply run your program until it hits a
+    breakpoint. In Eclipse you set breakpoints by right-clicking the left
+    sidebar of the bottom left window and selecting <guimenuitem>Toggle
+    Breakpoint</guimenuitem>.  You can also remove breakpoints after
+    you've realized that a particular portion of your code is not at
+    fault for the errors.
+  </listitem>
+
+  <listitem>
+    You can <emphasis>single step through a method or function</emphasis>.
+    Once you've reached a breakpoint, you may want to follow control flow
+    by executing one line at a time and checking the state of the system
+    after each step.  Single stepping can be useful for some loops.
+  </listitem>
+
+  <listitem>
+    You can <emphasis>trace the stack</emphasis>  Sometimes, it's difficult
+    to know how you got into the current place in the current procedure.
+    A stack trace gives you the full history of calls (often with
+    parameter values).
+  </listitem>
+
+
+  <listitem>
+    You can <emphasis>watch variables</emphasis>.  You can set certain
+    variables whose values are always displayed.  In the upper right window you
+    can see all the variables you have declared in a method and check
+    what is happening to them every time the method is called
+  </listitem>
+
+  <listitem>
+    In many debuggers, you can also <emphasis>change variables</emphasis>.
+    You may find that a variable has a value other than you expected, and
+    want to explore what happens if it has the right value.  You may
+    just want to see what happens if it takes on a different value.
+  </listitem>
+
+  <listitem>
+    In many debuggers, you can also <emphasis>alter control flow</emphasis>.
+    For example, when you hit a breakpoint, you can direct the program to
+    call another subroutine next, rather than advance to the next statement.
+  </listitem>
+
+</itemizedlist> 
+
+</section> <!-- Things -->
+
+<section id="no-print"><title>Why Not Debug with Print Statements?</title>
+
+<para>
+  This list of capabilities may suggest many reasons that debuggers
+  are better than just inserting some print statements.  Here are
+  some reasons why debugging with print statements is not the best
+  choice.
+</para>
+
+<itemizedlist>
+  <listitem>
+    At some point, you'll need to remove those print statements.
+    (Well, if you work with a language with macros, or use a
+    subroutine that checks a global debug flag, you may not have to,
+    but you've still spent time inserting code that is unlikely to
+    be necessary over the lifetime of your program.
+  </listitem>
+
+  <listitem>
+    In large programs, particularly large programs with loops you might 
+    have hundreds of output lines to check.  It's much easier to 
+    it is easier to break that output down and focus on a small piece.
+  </listitem>
+
+  <listitem>
+    If you change your mind about what you're looking for, you have
+    to change the code and recompile.  (So, as you debug, you have 
+    to do this many, many time.)
+  </listitem>
+
+  <listitem>
+    You can't alter the behavior of the program while it's running
+    (e.g., you can't change a variable or calling order).
+  </listitem>
+
+  <listitem>
+    You cannot examine memory contents in real time.
+  </listitem>
 </itemizedlist>
-</section> <!-- Debuggers -->
-
-<section id="things"> <title>Things To Do &amp; How</title>
 
 <para>
-There are some general things every debugger lets you do. You can:
+  So, why not use a debugger instead?
+</para>
 
-<itemizedlist>
-  <listitem>
-    <emphasis>Set breakpoints</emphasis> (parts of code you want to
-    examine): In Eclipse you do that by right-clicking the left sidebar
-    of the bottom left window and selecting Toggle Breakpoint
-  </listitem>
+</section> <!-- no-print -->
 
-  <listitem>
-    <emphasis>Watch variables</emphasis>: In the upper right window you
-    can see all the variables you’ve declared in a method and check
-    what’s happening to them every time the method is called
-  </listitem>
-
-  <listitem>
-    <emphasis>Single step through a method or function</emphasis>: Goes through your code one line at a time and it’s especially useful for loops
-  </listitem>
-
-  <listitem>
-    <emphasis>Remove breakpoints</emphasis>: Right click on the left
-    sidebar of the bottom left window and select either 
-    <guimenuitem>Disable Breakpoint</guimenuitem>
-    or <guimenuitem>Toggle Breakpoint</guimenuitem>.
-  </listitem>
-
-</itemizedlist> </para> </section> <!-- Things -->
-
-<section id="howto"> <title>How to Use the Debugger</title>
+<section id="howto"><title>Using the Eclipse Debugger</title>
 
 <para>
-There are some general things every debugger lets you do. You can:
+  You will need to develop you're own debugging strategy.  And you can
+  best develop that strategy by exploring what you can do.  So let's
+  do an exercise so that you get a feeling of what's happening. 
+  (Please don't take the code as representative of what you should
+  write or even of code that we'd write.)
 </para>
 
 <para>
-The debugger will be useful for some of these tasks and not for others. It is up to your discretion to decide where to use it. Let’s do an exercise together, so you get a feeling of what it does. The example we’re using is one from the lab that corresponds to this reading.
+  Let's take a look at <code>oddPrint</code>.  We want it to print
+  every String at an odd index in the array. When we run it, though,
+  it seems to to exactly the opposite. Clearly there is something wrong
+  with our code and we need to fix it.
 </para>
 
-<para>
-Let’s take a look at Task1. We want it to print every String at an odd index in the array. When we run it, though, it seems to to exactly the opposite. Clearly there’s something wrong with our code and we need to fix it.
-</para>
-
-<para>
-We can check what’s happening to every variable each time the loop executes by entering the Debug mode.
-</para>
-
-<para>
-  <emphasis><imagedata fileref="../images/debug0.png" format="PNG"/></emphasis> 
-</para>
-
-<para>
-To enter Debug mode, either click on the Debug button in the top right corner or, if that’s hidden from view, click the box on its left and click Debug. You will be presented with this interface:
-</para>
-
-<para>
-  <emphasis><imagedata fileref="../images/debug1.png" format="PNG"/></emphasis> 
-</para>
-
-<para>
-Here you can choose the class you want to debug and you run that class in Debug mode by going to <guimenu>Run</guimenu> > <guimenuitem>Debug</guimenuitem>.
-</para>
-
-<para>
-We want to check the line in our class that we think is messing up our program and set a <emphasis>Breakpoint</emphasis> there. This means that the debugger will tell us exactly what’s happening at that particular line of the code and won’t continue to execute the rest of the code unless we tell it to move on. Because we’ve established the error has to be in the for loop (there’s really not much else to the code), we’ll set our breakpoint on the for loop line. Of course the main method has to be executed as well, since it “runs” the method defined in our class. If we had more methods in our class, the only part of main that would be executed would be the part that pertains to the particular method we’re evaluating.
-</para>
-
-<para>
-We set a breakpoint by right clicking or double clicking on the right of the class window. In the example the area is separated by a thin line (highlighted yellow in the example below).
-</para>
-
-<para>
-  <emphasis><imagedata fileref="../images/debug2.png" format="PNG"/></emphasis> 
-</para>
-
-<para>
-We select Toggle Breakpoint.
-</para>
-
-<para>
-  <emphasis><imagedata fileref="../images/debug3.png" format="PNG"/></emphasis> 
-</para>
-
-<para>
-And now we’ve set our breakpoint at the for loop. There’s a little blue dot at it. You can also see that the area that will be getting evaluated by the debugger is denoted by a blue line spanning from the method’s beginning to the end.
-</para>
-
-<para>
-Now we can finally run the code in debugging mode. 
-</para>
-
-<para>
-  <emphasis><imagedata fileref="../images/debug4.png" format="PNG"/></emphasis> 
-</para>
-
-<para>
-A bunch of things happen at once here. The Debug window shows us that it’s running the code in this class, and that it starts at line 9 and ends at line 22. The main window with our class code shows the line we’re evaluating by highlighting it green. The window in the top right corner (Variables) shows us what’ happening to our variables when we run the method with the input we set in main:
-
-<programlisting>System.out.println("Task 1 output:");
-String[] numbers = {"zero", "one", "two", "three", "four", "five", "six"};
-oddPrint(numbers);
+<programlisting>
+    public static void oddPrint(String[] array) {
+        int x = 0;
+        for (int i = 0; i &lt; array.length; i++) {
+            if (x++ % 2 == 0) {
+                System.out.println(array[i]);
+            } // if
+        } // for
+    } // oddPrint
 </programlisting>
+
+<para>
+  We can check what is happening to every variable each time the loop
+  executes by entering Debug mode.  To enter Debug mode, either click on
+  the <guibutton>Debug</guibutton> button in the top right corner or,
+  if that is hidden from view, click the box on its left and click
+  <guibutton>Debug</guibutton>. You will be presented with this interface:
 </para>
 
 <para>
-The Variables window is the one that we actually want to watch. We want to see how x and i change with each loop. I Right now it only shows us that x = 0, because we haven’t executed a loop yet. We can do that by “Stepping into” the method. 
+  <imagedata fileref="../images/debug1.png" format="PNG" width="100%"/>
 </para>
 
 <para>
-  <emphasis><imagedata fileref="../images/debug5.png" format="PNG"/></emphasis> 
+  Here you can choose the class you want to debug and you run
+  that class in Debug mode by going to <guimenu>Run</guimenu> &gt;
+  <guimenuitem>Debug</guimenuitem>.
 </para>
 
 <para>
-Stepping over the method moves the debugger down one line - the if statement. We can see the variable i appeared under the Variables tab. Stepping into the method we can track what’s happening to both variables. So let’s do that a few more times to see what’ actually happening and why the method isn’t working. You can go to <emphasis>Step Over</emphasis> by clicking the button show above or going to <guimenu>Run</guimenu> > <guimenuitem>Step Over</guimenuitem>.
+  We want to check the line in our class that we think is messing up our
+  program and set a <emphasis>Breakpoint</emphasis> there. This means
+  that the debugger will tell us exactly what is happening at that
+  particular line of the code and will not continue to execute the rest
+  of the code unless we tell it to move on. Because we have established
+  the error has to be in the for loop (there is really not much else to
+  the code), we will set our breakpoint on the for loop line. Of course
+  the main method has to be executed as well, since it <quote>runs</quote> the
+  method defined in our class. If we had more methods in our class,
+  the only part of main that would be executed would be the part that
+  pertains to the particular method we are evaluating.
 </para>
 
 <para>
-There’s other ways you could debug the code, like:
+  We set a breakpoint by right clicking or double clicking on the right
+  of the class window. In the example the area is separated by a thin line
+  (highlighted yellow in the example below).
+</para>
+
+<para>
+  <imagedata fileref="../images/debug2.png" format="PNG"/>
+</para>
+
+<para>
+  We select <guimenuitem>Toggle Breakpoint</guimenuitem>.
+</para>
+
+<para>
+  <imagedata fileref="../images/debug3.png" format="PNG"/>
+</para>
+
+<para>
+  And now we have set our breakpoint at the beginning of the for
+  loop. There is a little blue dot at it. You can also see that the
+  area that will be getting evaluated by the debugger is denoted by a
+  blue line spanning from the method's beginning to the end.
+</para>
+
+<para>
+  Now we can finally run the code in debugging mode. 
+</para>
+
+<para>
+  <imagedata fileref="../images/debug4.png" format="PNG" width="100%"/>
+</para>
+
+<para>
+  A bunch of things happen at once here. The <guilabel>Debug</guilabel>
+  pane shows us that it is running the code in this class, and that
+  it starts at line 9 and ends at line 22. The main pane with our class
+  code shows the line we are evaluating by highlighting it green. The
+  <guilabel>Variables</guilabel> pane in the top right corner shows
+  us what's happening to our variables when we run the method with the
+  values we set in <methodname>main</methodname>.
+</para>
+
+<programlisting>
+    System.out.println("Task 1 output:");
+    String[] numbers = {"zero", "one", "two", "three", "four", "five", "six"};
+    oddPrint(numbers);
+</programlisting>
+
+<para>
+  The Variables window is the one that we actually want to watch. We
+  want to see how x and i change with each iteration. Right now it only
+  shows us that x = 0, because we have not executed the first iteration
+  yet. We can do that by <quote>Stepping into</quote> the method.
+</para>
+
+<para>
+  <imagedata fileref="../images/debug5.png" format="PNG" width="100%"/>
+</para>
+
+<para>
+  Stepping over the method moves the debugger down one line - the if
+  statement. We can see the variable i appeared under the Variables
+  tab. Stepping into the method we can track what is happening to
+  both variables. So let's do that a few more times to see what is
+  actually happening and why the method is not working. You can go to
+  <emphasis>Step Over</emphasis> by clicking the button show above or
+  going to <guimenu>Run</guimenu> &gt; <guimenuitem>Step Over</guimenuitem>.
+</para>
+
+<para>
+  There are other ways you could move through the code, such as:
+</para>
 
 <itemizedlist>
-<listitem><emphasis>Step Into</emphasis>: Goes through every line of the code one by one, does not go through every loop</listitem>
-<listitem><emphasis>Step Out</emphasis>: If you’re stepping into every line, Step out skips over a function that you don’t want to evaluate</listitem>
-<listitem><emphasis>Step Over</emphasis>: If the method you’re looking into is a loop, it will execute according to your input in the use of that method in main</listitem>
+  <listitem>
+    <emphasis>Step Over</emphasis> moves over the method call, treating
+    it like a single line.
+  </listitem>
+
+  <listitem>
+    <emphasis>Step Into</emphasis> moves into the indicated method
+    (the method on the current line).
+  </listitem>
+
+  <listitem>
+    <emphasis>Step Out</emphasis> or <emphasis>Step Return</emphasis>
+    executes to the end of the current method call, stopping at the next
+    line of the calling method.
+  </listitem>
+
 </itemizedlist>
+
+<para>
+  <imagedata fileref="../images/debug6.png" format="PNG"/>
 </para>
 
 <para>
-  <emphasis><imagedata fileref="../images/debug6.png" format="PNG"/></emphasis> 
+  You can see that the variables get highlighted yellow as we go through
+  each line of the loop. This means the variable just changed. We keep
+  stepping over the method and we notice a pattern.
 </para>
 
 <para>
-You can see that the variables get highlighted yellow as we go through each line of the loop. This means the variable just changed. We keep stepping over the method and we notice a pattern.
+  We may notice that <code>x</code> is one more than <code>i</code>
+  when we enter the for loop.
 </para>
 
 <para>
-  <emphasis><imagedata fileref="../images/debug7.png" format="PNG"/></emphasis> 
+  <imagedata fileref="../images/debug8.png" format="PNG" width="100%"/>
 </para>
 
 <para>
-We notice that x is one more than i when we enter the for loop.
+  When we reach the if statement, x == i. Clearly the method should be
+  implemented in a way where when i is odd, i gets printed. Or in other
+  words, when x is odd, i gets printed.
 </para>
 
 <para>
-  <emphasis><imagedata fileref="../images/debug8.png" format="PNG"/></emphasis> 
+  There are a few ways of how to do fix our code. We could:
 </para>
-
-<para>
-When we enter the if statement, x == i. Clearly the method should be implemented in a way where when i is odd, i gets printed. Or in other words, when x is odd, i gets printed.
-
-There are a few ways of how to do that. We could:
-
-Change the remainder value:
-<code>if (x++ % 2 != 0)</code>
-
-or
-
-<code>if (x++ % 2 == 1)</code>
-
-Get rid of the x variable completely:
-<code>if (i % 2 != 0)</code>
-
-or
-
-<code>if (i % 2 == 1)</code>
-
-Use prefix incrementation on x:
-<code>if (++x % 2 == 0) </code>
-</para>
-</section> <!-- How To -->
-
-<section id="terms"> <title>Important Terms</title>
 
 <itemizedlist>
-<listitem>Debugging</listitem>
-<listitem>Debug mode</listitem>
-<listitem>Step Into</listitem>
-<listitem>Step Over</listitem>
-<listitem>Breakpoint</listitem>
+  <listitem>
+    Change the remainder value:
+    <code>if (x++ % 2 == 1)</code>
+  </listitem>
+
+  <listitem>
+    Use prefix incrementation on x:
+    <code>if (++x % 2 == 0) </code>
+  </listitem>
+
+  <listitem>
+    Or, most sensibly et rid of the x variable completely:
+    <code>if (i % 2 == 1)</code>
+  </listitem>
+
 </itemizedlist>
-</section> <!-- Terms -->
-
-<section id="review"> <title>Review Questions</title>
 
 <para>
-1. Think of examples where using the debugger would be useful.
+  You've now seen a quick debugging session with the Eclipse debugger.
+  Soon you'll have your own opportunity to debug.
+</para>
+
+</section> <!-- howto -->
+
+
+<section id="final-thoughts"><title>Some Final Thoughts</title>
+
+<para>
+  While debuggers are useful, and can help you identify the locations
+  of the errors in your code, they are not a silver bullet.  In the
+  end, you will still need to analyze your code for errors, both obvious
+  (well, obvious in retrospect) and subtle. 
 </para>
 
 <para>
-2. How could we prevent making mistakes before implementing the code?
+  Some errors can be quite subtle (and infrequent).  For example, a
+  debugger is unlikely to help you find the error in the following
+  code.  (An error which experienced programmers may be more likely
+  to note.)
 </para>
-</section> <!-- Review -->
 
-</section> <!-- Debugging -->
+<programlisting>
+   /**
+    * Average two integers.  If the average has a fractional portion,
+    * may round up or down.
+    */
+   public static int average(int x, int y) {
+       return (x + y) / 2;
+   } // average
+</programlisting>
+
+</section> <!-- final-thoughts -->
+
+<section id="debugging-wrapup"><title>Wrapping Up</title>
+
+<section id="debugging-terms"> <title>Important Terms</title>
+
+<itemizedlist>
+  <listitem>Debugging</listitem>
+  <listitem>Debug mode</listitem>
+  <listitem>Step Into</listitem>
+  <listitem>Step Over</listitem>
+  <listitem>Breakpoint</listitem>
+  <listitem>Stack trace</listitem>
+</itemizedlist>
+
+</section> <!-- debugging-terms -->
+
+<section id="debugging-review"> <title>Review Questions</title>
+
+<itemizedlist>
+  <listitem>
+    List a few times you've had errors in your programs and how
+    you identified the errors.  Would a debugger have been useful?
+  </listitem>
+
+  <listitem>
+    What are some techniques you use to write less buggy code?
+  </listitem>
+
+  <listitem>
+    When your program doesn't work, how can you determine where
+    in the program things are going wrong?
+  </listitem>
+</itemizedlist>
+
+</section> <!-- debugging-review -->
+
+</section> <!-- debugging-wrapup -->
+
+</section> <!-- debugging -->
