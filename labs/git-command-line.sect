@@ -1,12 +1,12 @@
-<section id="lab-git"><title>Laboratory: Getting Started with Git</title>
+<section id="lab-git"><title>Laboratory: Getting Started with Git on the Command Line</title>
 
 <para>
   <emphasis>Summary</emphasis>: In this laboratory, you will be
-  practicing using git.  You will use the command line 
+  practicing using Git.  You will use the command line 
   to manage your git repositories.  (Eclipse has a plugin, EGit, that
-  makes it easier to interact directly with GitHub.  However, we don't
-  seem to have that plugin correctly installed or configured, so we'll
-  do it by hand.)
+  makes it easier to interact directly with GitHub.  However, many
+  programmers find it much easier to use Git from the command line, and
+  so we will do so.)
 </para>
 
 <para>
@@ -18,11 +18,13 @@
 <section id="git-0"> <title>Preparation</title>
 
 <para>
-  a. Make sure you’ve read <ulink url="../readings/git.html">the Introduction to Git reading</ulink>. 
+  a. Make sure you’ve read <ulink url="../readings/git.html">the
+  Introduction to Git reading</ulink>.
 </para>
 
 <para>
-  b. Make sure that you've done <ulink url="../labs/eclipse.html">the Introduction to Eclipse lab</ulink>
+  b. Make sure that you've done <ulink url="../labs/eclipse.html">the
+  Introduction to Eclipse lab</ulink>
 </para>
 
 <para>
@@ -45,7 +47,8 @@
 <section id="git-01"> <title>Exercise 1: Make an Account</title>
 
 <para>
-  Create a GitHub account at <ulink url="https://github.com/">https://github.com/</ulink>
+  If you haven't already done so, create a GitHub account at <ulink
+  url="https://github.com/">https://github.com/</ulink>
 </para>
 
 </section> <!-- Exercise 1 -->
@@ -54,7 +57,8 @@
 
 <para>
   As you may recall, your life is easier if you do a bit of configuration
-  before working with Git.
+  before working with Git.  If you haven't already done so, configure
+  your account (name, email, editor).
 </para>
 
 <para>
@@ -68,8 +72,7 @@
 <screen>
 <prompt>$</prompt> <userinput>git config --global user.name "<emphasis>YourName</emphasis>"</userinput>
 <prompt>$</prompt> <userinput>git config --global user.email <emphasis>username@
-grinnell.edu</emphasis></userinput></screen>
-
+grinnell.edu</emphasis></userinput></screen> 
 <para>
   Finally, set your editor.
 </para>
@@ -99,14 +102,341 @@ grinnell.edu</emphasis></userinput></screen>
 
 <para>
   c. Name your repository (e.g., <code>git-exercise</code>).  Click
-  the buttons to make it public and to initialiez the repository
+  the buttons to make it public and to initialize the repository
   with a README file.  Choose the Java .gitignore file.  Choose
   a license you like.  Finally, click <code>Create Repository</code>.
 </para>
 
-</section> <!-- Exercise git-03 -->
+</section> <!-- git-03 -->
 
-</section> <!-- Exercises -->
+<section id="git-04"><title>Exercise 4: Cloning Your Repository</title>
+
+<para>
+  The easiest way to clone a repository is by using the HTTPS
+  address of your repository.  Get that address from the GitHub
+  page (either from the address bar or from HTTPS Clone URL
+  widget).
+</para>
+
+<para>
+   Open a terminal window and cd to the directory you created in
+   the preliminaries.  For example,
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>cd ~/CSC207/Git</userinput> </screen>
+
+<para>
+  Once you are in that directory, use <code>git clone</code> to copy
+  the repository you created.
+</para>
+
+<para>
+  Verify that the repository contains the files that you expected.
+</para>
+
+</section> <!-- git-04 -->
+
+<section id="git-05"><title>Exercise 5: Importing Into Eclipse</title>
+
+<para>
+  In Eclipse, start the New Java Project Wizard with
+  <guimenu>File</guimenu> &gt; <guimenuitem>New</guimenuitem> &gt;
+  <guimenuitem>Java Project</guimenuitem>.
+</para>
+
+<para>
+  Pick a name for your project.
+</para>
+
+<para>
+  Uncheck <guilabel>Use Default Location</guilabel>
+</para>
+
+<para>
+  Enter the directory for your Git repository.  It should be something
+  like 
+  <code>/home/<emphasis>username</emphasis>/CSC207/Git/git-exercise</code>.
+</para>
+
+<para>
+  Click <guibutton>Finish</guibutton>.
+</para>
+
+<para>
+  You should now see an Eclipse project that matches your Git repository.
+  You may want to open one of the files (e.g., the LICENSE or README.md)
+  and check.
+</para>
+
+</section> <!-- git-05 -->
+
+<section id="git-06"><title>Exercise 6: Identifying Changes</title>
+
+<para>
+  Return to your terminal window and cd to your Git repository.
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>cd ~/CSC207/Git/git-exercise</userinput> </screen>
+
+<para>
+  Issue a <code>git status</code> command to see what files 
+  Eclipse created.  Git should list them as <quote>Untracked files</quote>.
+  You may also see some modified files.
+</para>
+
+<para>
+  Use <code>git add</code> to add the files and other changes
+  to the repository.
+</para>
+
+<para>
+  Use <code>git commit</code> to commit those additions and updates.
+</para>
+
+<para>
+  Use <code>git push</code> to send them back to the GitHub 
+  repository.
+</para>
+
+</section> <!-- git-06 -->
+
+<section id="git-07"><title>Exercise 7: Add Some Java</title>
+
+
+<para>
+  In <ulink url="../labs/eclipse.html">the Eclipse lab</ulink>, you created
+  a simple <quote>Hello World</quote> Java program.  Create a similar
+  program in your new repository.  That is,
+</para>
+
+<para>
+  a. Create a new package, such as <code>edu.grinnell.csc207.<emphasis>username</emphasis>.hello</code>.
+</para>
+
+<para>
+  b. Create a new class, such as <code>HelloWorld</code>.
+</para>
+
+<para>
+  c. Add a <code>main</code> method to the class that has the following
+  form.
+</para>
+
+<programlisting>
+    public static void main(String[] args) {
+        System.out.println("Hello, GitHub!");
+    } // main(String[])
+</programlisting>
+
+<para>
+  d. Run your program to make sure that it's correct.
+</para>
+
+<para>
+  e. Save your program.
+</para>
+
+</section> <!-- git-07 -->
+
+<section id="git-08"><title>Exercise 8: Commit and Push Your Code</title>
+
+<para>
+  You've updated the repository and so should commit the code to the
+  repository.  You should also push it back to the main repository.  
+  So do so now.  (That is, use the sequence of status, add, commit,
+  and push to get the Java files into the GitHub repository.)
+  (Note that we usually don't push immediately immediately after each commit,
+  but it's handy to do so now.  Normally, we do a series of small commits
+  and only push once we've reached a larger goal.)
+</para>
+
+<para>
+  Go to GitHub and see if the changes you have made are visible.  You may
+  need to navigate a few layers deep, since Eclipse makes a directory for
+  each portion of the package.
+</para>
+
+</section> <!-- git-08 -->
+
+<section id="git-09"><title>Exercise 09: Making Updates on GitHub</title>
+
+<para>
+  Although we normally update code in our local copy of the repository,
+  it is also possible to update code directly on GitHub.  Navigate to
+  the Java code you just wrote and click the <guibutton>Edit</guibutton>
+  button.
+</para>
+
+<para>
+  Change the output.  Then scroll to the bottom of the page, enter a
+  commit message, and click <guibutton>Commit</guibutton>.
+</para>
+
+</section> <!-- git-09 -->
+
+<section id="git-10"><title>Exercise 10: Pulling Updates from GitHub</title>
+
+<para>
+  Our primary repository is now updated.  How about our local repository?
+  Let's see.  Switch back to the terminal window.  Look at the file in
+  the finder using <code>less</code>.  
+</para>
+
+<para>
+  It is unlikely that the Java code changed.  Why?  Because you haven't
+  told Git to pull the updated version.  Do so now.
+</para>
+
+<para>
+  Once you've issued the <code>git pull</code> command, verify that the
+  file has indeed been updated in your local copy of the repository.
+</para>
+
+<para>
+  Finally, use <code>git log</code> to see a list of changes that
+  have been made.
+</para>
+
+</section> <!-- git-10 -->
+
+<section id="git-11"><title>Exercise 11: Viewing Changes in Eclipse</title>
+
+<para>
+  Switch back to Eclipse.  Open the Java code you created and
+  edited.  Has it changed?
+</para>
+
+<para>
+  Your are likely to see a message from Eclipse that your code is now
+  out of synch, along with instructions for synching.  Follow them.
+</para>
+
+</section> <!-- git-11 -->
+
+<section id="git-12"><title>Exercise 12: Making Changes in Eclipse</title>
+
+<para>
+  In Eclipse, change the output of your program slightly (i.e., change
+   one of the strings).  Save the file.
+</para>
+
+<para>
+  In the terminal, type <code>git status</code> to determine whether or
+  not Git saw the change.  (It should note that your file has been changed.)
+</para>
+
+<para>
+  Next, type <code>git diff</code> to see what the change was.  You should
+  see your new code prefixed by plus signs, old code by minus signs, and
+  a bit of context.
+</para>
+
+<para>
+  Commit your change, but don't push it.
+</para>
+
+</section> <!-- git-12 -->
+
+<section id="git-13"><title>Exercise 13: Conficting Changes</title>
+
+<para>
+  You have a local change that has not been pushed.  Let's see what
+  happens if someone else also makes a change.
+</para>
+
+<para>
+  On GitHub, update the Java file by adding another print statement.
+</para>
+
+<para>
+  Determine what happens when you try to pull the updated version.
+</para>
+
+<para>
+  If all goes as expected, you should get a message like the following:
+</para>
+
+<screen>
+Auto-merging <emphasis>FILE</emphasis>
+CONFLICT (content): Merge conflict in <emphasis>FILE</emphasis>
+Automatic merge failed; fix conflicts and then commit the result.
+</screen>
+
+<para>
+  Open the file in Eclipse.  You are likely to see lines that look
+  something like this
+</para>
+
+<programlisting>
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+        <emphasis>CODE</emphasis>
+=======
+        <emphasis>OTHER CODE</emphasis>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 68f7b764bb0e83971245e8db7e58c330c9d9d25c
+</programlisting>
+
+<para>
+  These lines show the conflict.  Fix the conflict and save the file.
+</para>
+
+<para>
+  Back in the terminal, add and commit the changed file.  Then try
+  pulling again.  Git should now be happy.
+</para>
+
+</section> <!-- git-13 -->
+
+</section> <!-- git-exercises -->
+
+<section id="git-extra"><title>For Those With Extra Time</title>
+
+<section id="git-extra-01"><title>Extra 1: SSH Connections</title>
+
+<para>
+   You did this lab using HTTPS connections to GitHub.  HTTPS
+   connections are easy and straightforward.  However, they also
+   require you to type a password each time you push code back
+   to GitHub.
+</para>
+
+<para>
+  GitHub also permits you to create a pair of private and public RSA
+  keys and to use SSH connections with those keys.  In that case, you
+  may have to type the passphrase you associated with your keys, but
+  you won't have to enter your GitHub account info.
+</para>
+
+<para>
+  Figure out how to set up an SSH connection with GitHub.
+</para>
+
+</section> <!-- git-extra-01 -->
+
+<section id="git-extra-03"><title>Extra 2: Shared Repositories</title>
+
+<para>
+  You'll need to do this exercise with a partner.
+</para>
+
+<para>
+  First, figure out how to give someone else administrative access to
+  your repository.
+</para>
+
+<para>
+  Next, verify that they have administrative access by having them
+  make a change and upload it to the repository.
+</para>
+
+<para>
+  Finally, figure out what happens if the two of you make changes.
+</para>
+
+</section> <!-- git-extra-02 -->
+                                                           
+</section> <!-- git-extra -->
 
 <anchor id="anchor-git-commands"/>
 <section id="git-commands"><title>Some Useful Git Commands</title>
