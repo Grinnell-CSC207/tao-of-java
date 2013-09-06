@@ -1,7 +1,43 @@
 <section id="generic"><title>Generic</title>
 
 <para>
-  A generic document.  Intended mostly for testing.
+  <emphasis>Summary:</emphasis>
 </para>
+
+<para>
+  <emphasis>Prerequisites:</emphasis>
+</para>
+
+<section id="generic-introduction"><title>Introduction</title>
+
+</section> <!-- generic-introduction -->
+
+<section id="generic-wrapup"><title>Wrapping Up</title>
+
+<section id="generic-terms"><title>Important Terms</title>
+
+<itemizedlist>
+  <listitem>...</listitem>
+</itemizedlist>
+
+</section>  <!-- generic-terms -->
+
+<section id="generic-review"><title>Review Questions</title>
+
+<orderedlist>
+  <listitem>...</listitem>
+</orderedlist>
+
+</section><!-- generic-review -->
+
+<section id="generic-explore"><title>Exploratory Questions</title>
+
+<orderedlist>
+  <listitem>...</listitem>
+</orderedlist>
+
+</section> <!-- generic-explore -->
+
+</section> <!-- generic-wrapup -->
 
 </section> <!-- generic -->
