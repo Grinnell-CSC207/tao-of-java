@@ -88,8 +88,9 @@ public static void testRemoveAs() {
 
 <para>
   a. What do you expect to happen if you click the 
-  <guibutton>Resume</guibutton> button?  (The button that looks like
-  a green triangle.)
+  <guibutton>Resume</guibutton> button - the button that looks like
+  a green triangle.  (Note that in the future, you can also hit
+  <keycap>F8</keycap>.)
 </para>
 
 <para>
@@ -107,7 +108,7 @@ public static void testRemoveAs() {
 <para>
   c. Start the unit test again.  This time, let's single step through
   the procedure, using the <guibutton>Step Over</guibutton> (also
-  <keycap>F6</keycap>.  See if you can identify where the code goes wrong.
+  <keycap>F6</keycap>).  See if you can identify where the code goes wrong.
 </para>
 
 <para>
@@ -194,9 +195,9 @@ public static void testRemoveAs() {
   a. Add the following assertion at the start of your test.
 </para>
 
-<para>
+<programlisting>
 assertEquals("1K", 1024, expt(2, 10));
-</para>
+</programlisting>
 
 <para>
   b. Run the test.  It will likely fail.
@@ -222,7 +223,7 @@ assertEquals("1K", 1024, expt(2, 10));
   f. You may have discovered that instead of returning to the call in
   the unit test, the debugger continued executing the code until the
   next call to <code>expt</code>, which is a recursive call.  Hit
-  the <guibutton>Resume</guibutton> another time.
+  the <guibutton>Resume</guibutton> button another time.
 </para>
 
 <para>
