@@ -1,175 +1,289 @@
-<section id="lab-debugging"><title>Laboratory: Debugging</title>
+<section id="debugging-lab"><title>Laboratory: Debugging with Eclipse</title>
 
 <para>
-  <emphasis>Summary:</emphasis>
-  In this laboratory, you will get more experience using the Debugger.
+  <emphasis>Summary</emphasis>: We begin to explore the ways in which
+  we can use a debugger to better understand flaws in our code.
 </para>
 
-<section id="debugging-exercises"> <title>Exercises</title>
-
-<section id="debugging-0"> <title>Exercise 0: Preparation</title>
+<section id="debugging-preparation"><title>Preparation</title>
 
 <para>
-  a. Let’s get the first piece of code you’ll be working with.
+  In the <ulink url="../labs/unit-testing.html">the laboratory on
+  unit testing</ulink>, you forked and cloned the repository
+  <code>github.com/Grinnell-CSC207/laboratory-unit-testing</code>.
+  I've now made some changes to that code, so update your repository.
 </para>
 
-<para>
-  b. Go to -link forthcoming- and fork the repository so that it now appears in your repositories.
-</para>
+<screen>
+<prompt>$</prompt> <userinput>git remote add upstream https://github.com/Grinnell-CSC207/laboratory-unit-testing</userinput>
+<prompt>$</prompt> <userinput>git pull upstream master</userinput>
+</screen>
 
 <para>
-  c. Follow the instructions for importing the repository into Eclipse as a Git      Repository and a Project in the Package Explorer.
+  The pull may cause some conflicts, so resolve the conflicts, add the
+  files with conflicts, and then commit.
 </para>
 
-<para>
-  d. This code seems just a little bit broken. Can you figure out how to fix it?
-The instructions should be in the class BrokenCode before every method. Use your knowledge of C, common sense and Eclipse’s helpful hints to figure out what is wrong with the code, but don’t start fixing it quite yet.
-</para>
+</section> <!-- debugging-preparation -->
+
+<section id="debugging-exercises"><title>Exercises</title>
+
+<section id="debugging-01"><title>Exercise 1: Removing A's</title>
 
 <para>
-  e. When you look at the code you can see that some parts are in green. These are   the comments that don’t affect the code, but usually provide explanations regarding methods, fields, variables...
-</para>
-
-<para>
-  f. You can make one-line comments in Java by prefixing a line with <code>//</code>
-</para>
-
-<para>
-  g. You can make longer comments by putting <code>/*</code> at the start of the comment, and <code>*/</code> at the end.
-</para>
-
-<para>
-  h. In the exercises below identify where using the debugger would be useful.
+  As you may have noted in the <ulink url="../labs/unit-testing.html">the
+  laboratory on unit testing</ulink>, the procedure
+  <methodname>SampleMethods.removeAs</methodname> is not quite successful in its
+  attempt to remove all copies of the letter 'a' from its parameter
+  string.
 </para>
 
 <para>
-  i. How did using the debugger help with those exercises?
+  If you haven't yet written your test cases, here's one.
 </para>
 
-</section> <!-- Exercise 0 -->
-
-<section id="debugging-2"> <title>Exercise 2: sumUp()</title>
-
-<para>
-  This method should print out every odd numbered index in an array (0 is considered an even number). Unfortunately it doesn’t do that.
-</para>
-
-<para>
-  a. Run the code to verify this and explain what it actually does.
-</para>
-
-<para>
-  b. Fix the code and explain why it wasn’t working.
-</para>
-
-</section> <!-- Exercise 2 --> 
-
-<section id="debugging-3"> <title>Exercise 3: removeAs()</title>
+<programlisting>
+public static void testRemoveAs() {
+  assertEquals("empty string, "", "");
+  assertEquals("no as", "hello", "hello");
+  assertEquals("eliminate one a", "", SampleMethods.removeAs("a"));
+  assertEquals("eliminate many as", "", SampleMethods.removeAs("aaaa"));
+  assertEquals("eliminate one a, short string", "pin", 
+               SampleMethods,removeAs("pain"));
+  assertEquals("eliminate many as, medium string", "lphbet", 
+               SampleMethods.removeAs("alphabet"));
+  assertEquals("eliminate many as, silly string", "BCDEFGHIJKLMNOPQ");
+               SampleMethods.removeAs("aBaaCDaaaEFGaaaaHIJKaaaaLMNaaaOPaaQa");
+  assertEquals("eliminate prefix and suffix as", "bbb",
+               SampleMethods.removeAs("aaabbbaaa"));
+} // testRemoveAs
+</programlisting>
 
 <para>
-  This method is supposed to remove all the a’s in a String. For some Strings it works and for others it doesn’t.
+  You may be able to tell by inspection why the method fails.  But
+  let's assume that you don't.
 </para>
 
 <para>
-  a. Run the code to verify this and explain what it actually does.
+  Open the code for <code>removeAs</code> and right click in the grey
+  bar to the left of the code to set a breakpoint at the start of the
+  method.
 </para>
 
 <para>
-  b. Fix the code and explain why it wasn’t working for every String.
-</para>
-
-</section> <!-- Exercise 3 --> 
-
-<section id="debugging-4"> <title>Exercise 4: helloYou()</title>
-
-<para>
-  This method is supposed to greet the user, but for some reason it’s not working. Eclipse might give you a helpful hint as to why it’s not working in this case. Whenever you see a squiggly red line underneath a piece of code, hover over it to see what Eclipse suggests to do. Sometimes it might be misleading, but it usually gets the right point across.
+  Switch to the code for your unit test.  Select
+  <guimenu>Run</guimenu> &gt; <guimenuitem>Debug As</guimenuitem>
+  &gt; <guimenuitem>JUnit Test</guimenuitem>.
 </para>
 
 <para>
-  a. Run the code to verify this and explain what it actually does.
+  A dialog box should pop up asking you to confirm switching to the
+  Java perspective.
 </para>
 
 <para>
-  b. Fix the code and explain why it wasn’t working.
-</para>
-
-</section> <!-- Exercise 4 --> 
-
-<section id="debugging-5"> <title>Exercise 5: floats()</title>
-
-<para>
-  This method is supposed to print out the declared number that is a double. As far as I can remember we did that with %f in C, so why doesn’t it work here? How do we print out variables in Java?
+  If all goes well, Eclipse should stop at the point that you inserted
+  a breakpoint.
 </para>
 
 <para>
-  a. Run the code to verify this and explain what it actually does.
+  a. What do you expect to happen if you click the 
+  <guibutton>Resume</guibutton> button?  (The button that looks like
+  a green triangle.)
 </para>
 
 <para>
-  b. Fix the code and explain why it wasn’t working.
-</para>
-
-</section> <!-- Exercise 5 --> 
-
-<section id="debugging-6"> <title>Exercise 6: convertTemp()</title>
-
-<para>
-  This is a temperature converter from Celsius to Fahrenheit. Unfortunately it doesn’t work. What could be the problem?
+  b. Check your answer experimentally.
 </para>
 
 <para>
-  a. Run the code to verify this and explain what it actually does.
+  As you may have noted, Eclipse resumed computation and ran until
+  the completion of this test.  (Presumably, failure.)  To see the 
+  results, you may need to switch back to the Java perspective.  
+  You can get that perspective by clicking on the downward arrow
+  in the upper-right-corner of the screen.
 </para>
 
 <para>
-  b. Fix the code and explain why it wasn’t working.
-</para>
-
-</section> <!-- Exercise 6 --> 
-
-<section id="debugging-7"> <title>Exercise 7: convertTemp()</title>
-
-<para>
-  This method is supposed to compute the number we get if we raise the first parameter to the power of the second parameter. Because we didn’t want to have an inefficient method with a for-loop, we decided to implement it with recursion. But something went wrong.
+  c. Start the unit test again.  This time, let's single step through
+  the procedure, using the <guibutton>Step Over</guibutton> (also
+  <keycap>F6</keycap>.  See if you can identify where the code goes wrong.
 </para>
 
 <para>
-  a. Run the code to verify this and explain what it actually does.
+  d. Correct the code to the best of your ability, remove the
+  breakpoint, run the unit tests again, and see if your code
+  passes all of the tests.
+  If so, go on to the next exercise.  If not, repeat the 
+  debugging steps until you find the next bug.
+</para>
+
+</section> <!-- debugging-01 -->
+
+<section id="debugging-02"><title>Exercise 2: Removing B's</title>
+
+<para>
+  The <methodname>removeBs</methodname> procedure has much the same
+  goals as <methodname>removeAs</methodname> although it uses a
+  different (but still buggy) approach.
 </para>
 
 <para>
-  b. Fix the code and explain why it wasn’t working.
-</para>
-
-</section> <!-- Exercise 7 --> 
-
-<section id="debugging-8"> <title>Exercise 8: underscore()</title>
-
-<para>
-  Given a string, this method should replace all instances of ‘-’ with ‘_’ and return the number of characters replaced. Unfortunately, that’s not what it does.
+  Use JUnit and the Eclipse debugger to identify and correct the errors.
 </para>
 
 <para>
-  a. Run the code to verify this and explain what it actually does.
+  <emphasis>Note:</emphasis>
+  Your goal is to correct the errors in this approach.  Inserting
+  slightly modified code from <methodname>removeAs</methodname> is not
+  an acceptable strategy.
+</para>
+
+</section> <!-- debugging-02 -->
+
+<section id="debugging-03"><title>Exercise 3: Exponentiation</title>
+
+<para>
+  The <methodname>SampleMethods.expt</methodname> method computes
+  x<superscript>p</superscript> using a divide-and-conquer approach.
+</para>
+
+<itemizedlist>
+  <listitem>
+    x<superscript>0</superscript> = 1
+  </listitem>
+
+  <listitem>
+    x<superscript>2k</superscript> = 
+    x<superscript>k</superscript> * x<superscript>k</superscript>
+  </listitem>
+
+  <listitem>
+    x<superscript>2k</superscript> =
+    (x<superscript>2</superscript>)<superscript>k</superscript>
+  </listitem>
+
+  <listitem>
+    x<superscript>k+1</superscript> =
+    x * x<superscript>k</superscript>
+  </listitem>
+</itemizedlist>
+
+<para>
+  Some people combine the last two when dealing with an odd exponent.
 </para>
 
 <para>
-  b. Fix the code and explain why it wasn’t working.
+  This approach requires only log<subscript>2</subscript>p
+  multiplications to raise x to the pth power, while the naive loop
+  requires p multiplications.  (Of course, if you have a book of
+  tables, or functions that simulate those tables, you can compute
+  x<superscript>p</superscript> in two table lookups.)
 </para>
-
-</section> <!-- Exercise 8 --> 
-
-<section id="debugging-9"> <title>Exercise 9: Commit and Push</title>
 
 <para>
-  Push the fixed code to your repository.
+  It's a nice approach, but have we implemented it correctly?
 </para>
 
-</section> <!-- Exercise 9 --> 
+<para>
+  If you haven't done so already write unit tests for 
+  <code><methodname>SampleMethods.expt</methodname>(int,int)</code>.
+</para>
 
-</section> <!-- Exercises --> 
+<para>
+  a. Add the following assertion at the start of your test.
+</para>
 
-</section> <!-- lab-debugging --> 
+<para>
+assertEquals("1K", 1024, expt(2, 10));
+</para>
 
+<para>
+  b. Run the test.  It will likely fail.
+</para>
 
+<para>
+  c. Set a breakpoint at the start of the <methodname>expt</methodname>
+  method.  (Make sure that you choose the right one.  There are two!)
+</para>
+
+<para>
+  d. Start the debugger.  It should bring you to the first line
+  of <methodname>expt</methodname>.
+</para>
+
+<para>
+  e. What do you expect to happen if you click the 
+  <guibutton>Resume</guibutton> button?  (The button that looks like
+  a green triangle.)
+</para>
+
+<para>
+  f. You may have discovered that instead of returning to the call in
+  the unit test, the debugger continued executing the code until the
+  next call to <code>expt</code>, which is a recursive call.  Hit
+  the <guibutton>Resume</guibutton> another time.
+</para>
+
+<para>
+  g. You are now three levels deep in the recursive call stack for
+  <code>expt</code>.  In the <guilabel>Debug</guilabel> pane, navigate
+  between them to see the changing values of <code>x</code> and
+  <code>p</code>.
+</para>
+
+<para>
+  h. Single step through the code to see if you can identify where
+  the error occurs.
+</para>
+
+<para>
+  i. Since intermediate values are not clearly represented in the
+  code, you may find it difficult, if not impossible, to quickly
+  identify the error.  So what next?  You could explicitly insert
+  temporary values for the recursive call.  Instead of calling
+  <code>return</code> in each case, you could set a local values
+  (e.g., <code>results</code> and then exit in the logical case).
+  Or you could get Eclipse to behave better.  
+</para>
+
+<para>
+  Choose one approach and see if you can identify the error.  Get 
+  help if you're not sure which approach you should use or if you
+  still can't identify the error after trying additional approaches.
+</para>
+
+</section>
+
+</section> <!-- debugging-exercises -->
+
+<section id="debugging-extra"><title>For Those With Extra Time</title>
+
+<section id="debugging-extra-01"><title>Extra 1: Exponentiation, Revisited</title>
+
+<para>
+  Consider the <code><methodname>expt</methodname>(double, int)</code>
+  method.  As you might have noted, it doesn't work any more correctly
+  than the old version of <methodname>expt</methodname>
+</para>
+
+<para>
+  One issue we <emphasis>may</emphasis> hit in unit testing is that
+  doubles are approximate.  Hence, slightly different orders of
+  computation can make slight differences in the result (e.g., in
+  practice <code>Math.sqrt(2)*Math.sqrt(2)</code> is often not the
+  same as <code>Math.sqrt(2*2)</code>, even though they are logically
+  the same.
+</para>
+
+<para>
+  Write appropriate unit tests for this alternate version.  Then determine
+  if your corrections from the exercise above suffice.  If not, use the
+  debugger to figure out why.
+</para>
+
+</section> <!-- debugging-extra-01 -->
+
+</section> <!-- debugging-extra -->
+
+</section> <!-- debugging-lab -->
