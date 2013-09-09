@@ -1,0 +1,202 @@
+<section id="classes"><title>Laboratory: Designing Your Own Classes</title>
+
+<!-- 
+  1. Make a repo with 
+     Examples/username/fractions/Fraction.java  and
+       TestFraction.java
+
+  2. Add a few examples in which they learn about static access to
+     fields (or fail to access those fields).  Maybe something as
+     simple as giving them a procedure.
+
+  3. Add links to the Java API.
+-->
+
+<para>
+  <emphasis role="strong">Summary</emphasis>: 
+  In this laboratory, you will extend your knowledge of numeric
+  values in Java.
+</para>
+
+<para>
+  <emphasis role="strong">Primary Classes Used</emphasis>:
+</para>
+
+<itemizedlist>
+  <listitem>
+    <ulink url="{$javaapi}java/lang/Integer.html"><code>java.lang.Integer</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="{$javaapi}java/lang/String.html"><code>java.lang.String</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="{$javaapi}java/math/BigInteger.html"><code>java.math.BigInteger</code></ulink>
+  </listitem>
+</itemizedlist>
+
+<para>
+  <emphasis role="strong">GitHub Repository</emphasis>:
+  <code><ulink url="https://github.com/Grinnell-CSC207/lab-classes"/></code>.
+</para>
+
+
+<section id="classes-exercises"><title>Exercises</title>
+
+<section id="classes-preparation"><title>Preparation</title>
+
+<para>
+  Fork and clone the repository.
+</para>
+
+<para>
+  Read through the code to make sure that you understand what it
+  does.
+</para>
+
+</section> <!-- classes-prep -->
+
+<section id="classes-01"><title>Exercise 1: Multiplication</title>
+
+<para>
+  a. Extend the <code>Fraction</code> class so that it permits
+  multiplication of two fractions.
+</para>
+
+<para>
+  b. Test your code.
+</para>
+
+</section>  <!-- classes-1 -->
+
+<section id="classes-2"><title>Exercise 2: Fractional Portions</title>
+
+<para>
+  As you may know, we can represent every non-negative rational number as
+  a whole number plus a fractional value no smaller than 0 and 
+  strictly less than 1.
+</para>
+
+<para>
+  a. Write a method of the <code>Fraction</code> class,
+  <code>fractional</code>, that identifies and returns this fractional
+  value as a <code>Fraction</code>.  Your procedure need only work for
+  positive numbers.  Here are some tests that illustrate what it's
+  supposed to do.
+</para>
+
+<programlisting>
+public static void testFractional() {
+    Fraction f = new Fraction(11,3);
+    assertEquals("2/3", f.fractional().toString());
+
+    f = new Fraction(1,2);
+    assertEquals("1/2",  f.fractional().toString());
+
+    f = new Fraction(4,2);
+    assertEquals("0", f.fractional().toString());
+} // testFractional()
+</programlisting>
+
+<para>
+  b. Test your procedure and correct any errors.
+</para>
+
+</section>  <!-- classes-2 -->
+
+<section id="classes-3"><title>Exercise 3: From String to Fraction</title>
+
+<para>
+  Write and test a third constructor for the <code>Fraction</code>
+  class.  This constructor should accept a string as a parameter,
+  <quote>parse</quote> that string, and generate the appropriate fraction.
+  For example,
+</para>
+
+<programlisting>
+public static void stringConstructorTest() {
+  Fraction f = new Fraction("1/4");
+  assertEquals(1, f.numerator());
+  assertEquals(4, f.denominator());
+  f = new Fraction("11/5");
+  assertEquals(11, f.numerator());
+  assertEquals(4, f.denominator());
+  f = new Fraction("120/3");
+  assertEquals(40.0, f.toReal(), 0.0001);
+} // stringConstructorTest()
+</programlisting>
+
+<para>
+  You can expect that the string will have two positive integers
+  separated by a slash.  You may find it useful to reflect on the
+  <code>indexOf</code> method of the <code>java.lang.String</code> class
+  and on various static methods of the <code>java.lang.Integer</code>
+  class.
+</para>
+
+</section>  <!-- classes-03 -->
+
+<section id="classes-05"><title>Exercise 5: A Counter Class</title> 
+
+<para>
+  Write and test a class, <code>Counter</code>, that generates
+  objects that can count.  Objects in class <code>Counter</code>
+  should provide two methods: <code>increment</code>, which adds 1
+  to the counter, and <code>get</code>, which gets the current value
+  of the counter.
+</para>
+
+<para>
+  Make sure to verify that if you create two separate objects in
+  class <code>Counter</code>, you can change the two objects separately.
+</para>
+
+</section>  <!-- classes-05 -->
+
+<section id="classes-06"><title>Exercise 6: Enhancing Counters</title>
+
+<para>
+  a. Update your <code>Counter</code> class to include a second constructor that
+  Allows the user to specify a starting value.
+</para>
+
+<para>
+  b. Update your <code>Counter</code> class to include a
+  <methodname>reset</methodname> method that reset the counter to the
+  starting value.
+</para>
+
+<para>
+  c. Test both updates to ensure that they work as appropriate.
+</para>
+
+</section>  <!-- classes-06 -->
+
+</section>  <!-- exercises -->
+
+<section id="classes-extra"><title>For Those With Extra Time</title>
+
+<section id="classes-extra-1"><title>Extra 1: Further Enhancing Counters</title>
+
+<para>
+  Identify other methods that would be useful to include in the
+  <code>Counter</code> class and add them.
+</para>
+
+</section>  <!-- classes-extra-1 -->
+
+<section id="classes-extra-2"><title>Extra 2: Further Enhancing Fractions</title>
+
+<para>
+  Identify other methods that would be useful to include in the
+  <code>Fraction</code> class and add them.
+</para>
+
+</section>  <!-- classes-extra-2 -->
+
+</section>  <!-- classes-extra -->
+
+</section>  <!-- classes -->
+
+
