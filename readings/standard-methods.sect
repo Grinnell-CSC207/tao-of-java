@@ -1,0 +1,397 @@
+<section id="standard-methods"><title>Standard Object Methods</title>
+
+<para>
+  <emphasis role="strong">Summary:</emphasis> We consider the standard methods
+  that all (or most) objects provide.
+</para>
+
+<para>
+  <emphasis role="strong">Prerequisites:</emphasis> Basics of Java,
+  Classes and Object.
+</para>
+
+<section id="standard-methods-intro"><title>Introduction</title>
+
+<para>
+  In Java, all template classes provide a variety of standard methods.
+  By <emphasis>standard method</emphasis>, I mean that it is a standard
+  that you include the method.  You may have already encountered one
+  such method, <code>toString</code>.
+</para>
+
+<para>
+  Why does Java have standard methods?  Because programmers benefit
+  from knowing that certain methods are there.  For example, you can
+  easily convert any object to a string with the <code>toString</code>
+  method, and you don't even have to bother to look it up.  Similarly,
+  you can compare any two objects in the same class for equality with
+  the <code>equals</code> method.
+</para>
+
+<para>
+  Java has a few groups of standard methods.  Some must be there
+  for every class.  These methods include <code>toString</code> and
+  <code>equals</code>.  
+  Others you may choose whether or not to include, and you specify in
+  an interesting way that you have included them.  These methods include
+  <code>clone</code> and <code>compareTo</code>.
+</para>
+
+<para>
+  What happens if you don't write the simplest standard methods?  Java
+  supplies its own, and they don't always work the way you would
+  expect them to work.
+</para>
+
+</section> <!-- standard-methods-intro -->
+
+<section id="toString"><title>Converting to Human-Readable Form with the <methodname>toString</methodname> Method</title>
+
+<para>
+  One of the simplest methods that most classes provide is the
+  <methodname>toString</methodname> method, which has the signature
+  <code>public String toString()</code>.
+</para>
+
+<para>
+  As the name of the method suggests, this method converts the object
+  to a string.  Why would we want to convert an object to a string?
+  Most typically, so that we can print the object (to the screen,
+  to a file, perhaps even to a dialog box).
+</para>
+
+<para>
+  The <code>toString</code> method is so fundamental that Java
+  uses it implicitly in a number of cases.  For example, whenever
+  you try to print an object, Java calls the <code>toString</code>
+  method, even if you haven't explicitly listed it in your call.
+  Similarly, if you try too concatenate another object with a
+  string using the <code>+</code> operation, Java converts the
+  object to a string using the <code>toString</code> method.
+</para>
+
+<para>
+  What happens when you don't write the <code>toString</code> method?
+  Java supplies a default version that prints the class of the object
+  followed by the address of the object in memory.  (Yes, it's a strange
+  default, but it's about as good as anything.)
+</para>
+
+</section>  <!-- toString -->
+
+<section id="equals"><title>Comparing Values with the <code>equals</code> Method</title>
+
+<para>
+  Another simple standard method is <code>equals</code>, which you 
+  use to determine whether one object is <quote>naturally</quote> the 
+  same as another object.  You first have a responsibility to 
+  determine what <quote>naturally</quote> means.  For example, are
+  two decimal numbers the same if they are not precisely equal?
+  Are two fractions the same if one is simplified and one is
+  not?  Are two vectors in two-space the same if one has an
+  angle of 360 degrees more than the other?  Are two vectors
+  in two-space the same if they have the same radius, and their
+  angles differ by a very small amount (less than 1/1000 of
+  a degree)?  It's up to you.  But once you've made your decision,
+  document it well.
+</para>
+
+<para>
+  The standard signature for the <code>equals</code> method
+  is <code>public boolean equals(Object other)</code>.
+</para>
+
+<para>
+  Note that it is somewhat difficult to compare an object in a specific
+  class to a more general object.  So, what do you do?  My standard
+  solution is to provide a second form of <methodname>equals</methodname>
+  that takes the specific kind of object as a parameter, and then,
+  in the first <methodname>equals</methodname>, call the second while
+  <emphasis>casting</emphasis> the object to that type.  (Recall that
+  you cast a value to another type by prefacing the name of the value
+  with the name of the type in parentheses.)
+</para>
+
+<para>
+  For example, in the <code>Fraction</code> class, we might write
+</para>
+
+<programlisting>
+/**
+ * Compare this fraction to another object.  The two are only
+ * equal if they are both fractions and have the same numerator
+ * and denominator.
+ */
+public boolean equals(Object other) {
+    if (other instanceof Fraction) {
+        return this.equals((Fraction) other);
+    } else {
+        return false;
+    } 
+} // equals(Object)
+
+/**
+ * Compare this fraction to another fraction.  They are the same
+ * if they have the same numerator and denominator.
+ */
+public boolean equals(Fraction other) {
+  return this.numerator.equals(other.numerator)
+         &amp;&amp; this.denominator.equals(other.denominator);
+} // equals(Fraction)
+</programlisting>
+
+<para>
+  Of course, you might express that more concisely as
+</para>
+
+<programlisting>
+public booleans equals(Object other) {
+  return (other instanceof Fraction) 
+         &amp;&amp; this.equals((Fraction) other);
+} // equals(Object)
+</programlisting>
+
+<para>
+  At some point, you should consider comparing fractions to other
+  numeric types.
+</para>
+
+<para>
+  If you don't bother to write <methodname>equals</methodname>, Java provides a
+  default version that returns <code>true</code> only if the two values
+  share the same memory locations.
+</para>
+
+<para>
+  Once you start writing your own <methodname>equals</methodname> methods,
+  you should make sure that you understand 
+  <ulink url="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html#equals(java.lang.Object)">the specifications for <methodname>equals</methodname></ulink>.
+</para>
+
+</section>  <!-- equals -->
+
+<section id="compareTo"><title>Comparing Objects with <methodname>compareTo</methodname></title>
+
+<para>
+  The <methodname>equals</methodname> method provides the simplest form
+  of comparison.  At times, we need more complex comparison, such as
+  when we want to put a sequence of values in order from smallest to
+  largest.  For such situations, objects may (but need not) provide the
+  <methodname>compareTo</methodname> method.
+</para>
+
+<para>
+  This method has the signature <code>public int
+  compareTo(<emphasis>Class</emphasis> other)</code>, where
+  <emphasis>Class</emphasis> is typically the class you're defining.
+  For example, in the <code>Fraction</code> class, we would write
+</para>
+
+<programlisting>
+public int compareTo(Fraction other) {
+    ...
+} / /compareTo(Fraction)
+</programlisting>
+
+<para>
+  The <code>this.compareTo(other)</code> method returns 
+</para>
+
+<itemizedlist>
+  <listitem>
+    a negative number, if <code>this</code> naturally precedes
+    <code>other</code>;
+  </listitem>
+
+  <listitem>
+    zero, if <code>this.equals(other)</code>;
+  </listitem>
+
+  <listitem>
+    a positive number, if <code>other</code> naturally precedes
+    <code>this</code>
+  </listitem>
+</itemizedlist>
+
+<para>
+  How should you decide if one object <quote>naturally precedes</quote>
+  another?  Once again, that's up to you.  What if you can't choose
+  such a relationship?  Then you shouldn't bother implementing
+  <code>compareTo</code>.  What if there are many possible relationships,
+  as in the case of of students, who you might compare by name, by age,
+  by student ID, by height, by GPA, or by something completely different?
+  Then you can either pick one as a default or decide that by default,
+  students are not comparable.  In a subsequent reading, we'll consider
+  how to support multiple kinds of comparisons.
+</para>
+
+<para>
+  The ordering given by <code>compareTo</code> should be transitive and
+  reflexive.  When we say that it is <emphasis>transitive</emphasis>,
+  we mean that if <code>a.compareTo(b)</code> returns a negative number
+  and <code>b.compareTo(c)</code> returns a negative number, then
+  <code>a.compareTo(c)</code> should also return a negative number.
+  (We can say something similar when it reutrns positive numbers.)
+  When we say that it is <emphasis>reflexive</emphasis>, we mean that
+  if <code>a.compareTo(b)</code> returns a negative number, then
+  <code>b.compareTo(a)</code> should return a positive number (and
+  vice versa).
+</para>
+
+<para>
+  Because this standard method is not always implementable (that is, there
+  is sometimes no natural ordering), you need not include it.  If you do
+  you should add the following line to the header of your class
+</para>
+
+<programlisting>
+  implements Comparable&lt;<emphasis>Class</emphasis>&gt;
+</programlisting>
+
+<para>
+  You must also import <code>java.util.Comparable</code>.
+</para>
+
+<para>
+  For example,
+</para>
+
+<programlisting>
+import java.util.Comparable;
+
+public class Fraction implements Comparable&lt;Fraction&gt; {
+    ...
+} // class Fraction
+</programlisting>
+
+<para>
+  Note that for the <code>compareTo</code> method, you need not
+  follow the <quote>two method</quote> strategy that you had to use in
+  <code>equals</code>.  Only one <code>compareTo</code>,
+  which compares to objects in the same class, is all that
+  is necessary.
+</para>
+
+</section>  <!-- compareTo -->
+
+<section id="clone"><title>Copying Objects with the <code>clone</code> Method</title>
+
+<para>
+  At times, you have one copy of an object and you need another copy.
+  For example, you may have created a <code>StringBuffer</code> and
+  want to keep the original and make a copy that you will modify.
+  To support such situations, Java encourages you to provide a method
+  called <methodname>clone</methodname>.
+</para>
+
+<para>
+  The signature of this method is <code>public Object clone()</code>.
+  You may find it strange that <methodname>clone</methodname> returns an
+  <code>Object</code> rather than explicitly returning a member of the
+  specified class.  This form of return was all that was supported in
+  an early version of Java (that is, there was no way to have multiple
+  methods with the same name and parameter types, but different return
+  types), and it seems to have been retained.
+</para>
+
+<para>
+  Because <code>clone</code> returns an object, you need to cast
+  the return value.  For example, the Java compiler will complain
+  about the following code.
+</para>
+
+<programlisting>
+Fraction frac2 = frac1.clone();
+</programlisting>
+
+<para>
+  Intead, you must write:
+</para>
+
+<programlisting>
+Fraction frac2 = (Fraction) frac1.clone();
+</programlisting>
+
+<para>
+  Although <code>clone</code> is standard, it is also optional.  If you
+  supply the method, you should indicate that your class
+  <code>implements Cloneable</code>.  For example,
+</para>
+
+<programlisting>
+public class Fraction implements Cloneable, Comparable&lt;Fraction&gt; {
+    ...
+} // class Fraction
+</programlisting>
+
+</section>  <!-- clonse -->
+
+<section id="hashCode"><title>The Mysterious <code>hashCode</code> Method</title>
+
+<para>
+  The last of the standard methods is somewhat strange.  The
+  <code>hashCode</code> method returns <quote>some integer that represents
+  this object</quote>.  What integer should you return?  It's up to you.
+  However, there are two rules you should follow:
+</para>
+
+<itemizedlist>
+  <listitem>
+    Two objects that are equal (according to the <code>equals</code>) method
+    should have the same value returned by <code>hashCode</code>.
+  </listitem>
+
+  <listitem>
+    Two objects that are not equal class should be unlikely
+    to have the same number.  
+  </listitem>
+</itemizedlist>
+
+<para>
+  Of course, it is impossible to guarantee that unequal objects have
+  different numbers, since there are typically more objects than there
+  are integers.  You should simply <emphasis>try</emphasis> to give
+  unequal objects different numbers.
+</para>
+
+<para>
+  Why does Java include the <methodname>hashCode</methodname> method
+  as a standard method?  That method is very useful for hash tables,
+  which we will consider later in the semester.  (The designers of Java
+  made some strange decisions as to what to make default.  Some folks
+  find this one of the stranger ones.)
+</para>
+
+<para>
+  Do you <emphasis>have to</emphasis> write the
+  <methodname>hashCode</methodname> method?  It's not a bad idea.  The
+  Java standard suggests that if you write <methodname>equals</methodname>, then
+  you <emphasis>must</emphasis> write <methodname>hashCode</methodname>.
+</para>
+
+<para>
+  What is the default behavior of <methodname>hashCode</methodname>?  By default
+  <methodname>hashCode</methodname> returns some value computed from the memory
+  location of the object.  Hence, two equal values are unlikely to have
+  the same hash code unless you write the method.
+</para>
+
+<para>
+  And yes, it's okay if your method is relatively naive, provided you
+  make some attempt to provide different numbers when values are different.
+  For example, the following would be acceptable for the <code>Fraction</code>
+  class, assuming that you either decided that (a) fractions are stored
+  in simplified form or (b) fractions with different numerators are
+  different.  (And yes, this method does create lots of duplicate
+  hash codes.)
+</para>
+
+<programlisting>
+public int hashCode() {
+    return this.numerator() * this.denominator();
+} // hashCode()
+</programlisting>
+
+</section>  <!-- hashCode -->
+
+</section>  <!-- standard-methods -->
