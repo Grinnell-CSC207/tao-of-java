@@ -1,0 +1,275 @@
+<section id="unit-testing"> <title>Laboratory: Unit Testing</title>
+
+<para>
+  <emphasis>Summary</emphasis>: In this laboratory, you will explore the
+  JUnit unit testing framework, Eclipse's facilities for using JUnit,
+  and the basics of Unit testing.
+</para>
+
+<section id="unit-testing-exercises"> <title>Exercises</title>
+
+<section id="unit-testing-preparation"> <title>Preparation</title>
+
+<para>
+  Make sure you’ve read <ulink url="../readings/unit-testing.html">the
+  related reading</ulink>.  You may find it helpful to have it open in
+  a separate tab.
+</para>
+
+<para>
+  Fork and clone the repository at <code><ulink
+  url="https://github.com/Grinnell-CSC207/lab-unit-testing"/></code> 
+  (alternately <code>git@github.com:Grinnell-CSC207/lab-unit-testing.git</code>).
+</para>
+
+</section> <!-- unit-testing-preparation -->
+
+<section id="unit-testing-01"> <title>Exercise 1: Getting Started</title>
+
+<para>
+  a. Create a JUnit Test Case for the <code>c2f</code> method in the
+  <code>SampleMethods</code> class.  That is, 
+</para>
+
+<itemizedlist>
+  <listitem>
+    Select <guimenu>New</guimenu> &gt; 
+    <guimenuitem>JUnit Test Case</guimenuitem>.
+  </listitem>
+
+  <listitem>
+    Pick a sensible name for your test class, such as <code>C2FTest</code>.
+  </listitem>
+
+  <listitem>
+    Make sure that the class being tested is
+    <code>taojava.labs.testing.SampleMethods</code>.
+  </listitem>
+
+  <listitem>
+    Click the <guibutton>Next &gt;</guibutton> button.
+  </listitem>
+
+  <listitem>
+    Tick the box next to <methodname>c2f</methodname>.
+  </listitem>
+
+  <listitem>
+    Click the <guibutton>Finish</guibutton> button.
+  </listitem>
+</itemizedlist>
+
+<para>
+  b. Click the <guibutton>Run</guibutton> button and observe what
+  happens.
+</para>
+
+<para>
+  c. Replace the body of the <code>testC2F</code> (or just
+  <code>test</code>) method with <code>assertEquals(0,0)</code>.
+  Then click the <guibutton>Run</guibutton> button and observe
+  what happens.
+</para>
+
+<para>
+  d. Create a second method that looks like the following:
+</para>
+
+<programlisting>
+    public void test2() {
+        fail("Not yet implemented");
+    } // test2()
+</programlisting>
+
+<para>
+  e. What do you expect to happen when you run your test?
+</para>
+
+<para>
+  f. Check your answer experimentally.
+</para>
+
+<para>
+  g. Insert the annotation <code>@Test</code> before the declaration
+  of <methodname>test2</methodname>.  Then determine what happens
+  when you run your test code.
+</para>
+
+<para>
+  h. Change the body of <methodname>test2</methodname> to the following.  Then
+  observe what happens when you run your test code.  
+</para>
+
+<programlisting>
+        assertEquals("stupid test", 10, 3*5);
+</programlisting>
+
+<para>
+  Yes, this test is supposed to fail.  It's there
+  to demonstrate that (a) you can add a message
+  to <methodname>assertEquals</methodname>, (b) you can include
+  computations in the body of <methodname>assertEquals</methodname>, and
+  (c) <methodname>assertEquals</methodname> treats the first non-message
+  value as the expected value and the second value as the received value.
+</para>
+
+</section> <!-- unit-testing-01 -->
+
+<section id="unit-testing-02"><title>Exercise 2: Temperature Conversion</title>
+
+<para>
+  You've seen how Eclipse lets you create and run tests.  Now it's
+  time to write a few of your own.
+</para>
+
+<para>
+  a. We know that 0 degrees Celsius is 32 degrees Fahrenheit.  Write
+  a test that verifies that <methodname>SampleMethods.c2f</methodname> computes the
+  expected value.
+</para>
+
+<para>
+  b. We know that 100 degrees Celsius is 212 degrees Fahrenheit.  Write
+  a test that verifies that <methodname>SampleMethods.c2f</methodname> computes the
+  expected value.
+</para>
+
+<para>
+  c. Run your tests.
+</para>
+
+<para>
+  d. If your tests reveal errors in <code>c2f</code>, correct the code.
+  Then run the tests again.
+</para>
+
+<para>
+  e. Write any other tests you think are relevant.  If the tests
+  reveal errors, correct the code and then run the tests again.
+</para>
+
+</section> <!-- unit-testing-02 -->
+
+<section id="unit-testing-03"><title>Exercise 3: Testing Simple Sums</title>
+
+<para>
+  a. Read the documentation for <methodname>sum</methodname>
+</para>
+
+<para>
+  b. Create a new test class and write some simple tests for
+  <methodname>sum</methodname>.  Note that you can create an
+  array of integers with the following instruction.
+</para>
+
+<programlisting>
+    int[] values = { 1, 2, 3 };
+</programlisting>
+
+<para>
+  c. Attempt to fix any errors that your tests revealed.
+</para>
+
+<para>
+  d. Write a few more tests.  Fix any more errors that you notice.
+</para>
+
+<para>
+  e. Consider the following test.  Does it meet the preconditions
+  of <methodname>sum</methodname>?  Do you expect your code to pass
+  the test?  
+</para>
+
+<programlisting>
+    public static void testExtremes() {
+        int tmp = Integer.MAX_VALUE - 10;
+        int[] values = { tmp, tmp, -tmp, -tmp };
+        asssertEquals("extreme test", 0, sum(values));
+    } // testExtremes
+</programlisting>
+
+<para>
+  f.  If your code does not pass the test, you have multiple options.
+  One option is to fix your code to handle situations like this.  Another
+  is to rewrite the preconditions (e.g., "For every subset of ints,
+  the sum of that subset is greater than <code>Integer.MIN_VALUE</code>
+  and less than <code>Integer.MAX_VALUE</code>).  Another is to say that
+  the test is so stupid that it shouldn't matter.  Which do you prefer?
+</para>
+
+</section> <!-- unit-testing-03 -->
+
+<section id="unit-testing-04"><title>Exercise 4: Writing Multiple Test Cases</title>
+
+<para>
+  Read the documentation for the <methodname>expt</methodname> method.
+</para>
+
+<para>
+  Rather than writing individual test cases for this function, we should
+  be able to write a loop that does multiple test cases.  Something
+  like the following:
+</para>
+
+<para>
+    Let expected be 1
+    For power = 0 to K
+        Confirm that expected = expt(2,power)
+	expect = expected * 2
+</para>
+
+<para>
+  a. Create a new test class and then add a test that follows that
+  strategy.
+</para>
+
+<para>
+  b. Determine if <methodname>expt</methodname> works as advertised.
+  It probably won't.  But debugging the code is a task for another day.
+  Instead, we're going to write more tests.
+</para>
+
+<para>
+  c. Right now, your test only uses a base of 2.  Rewrite your test so that
+  it tries multiple bases, both positive and negative.
+</para>
+
+</section> <!-- unit-testing-04 -->
+
+</section> <!-- unit-testing-exercises -->
+
+<section id="unit-testing-extra"><title>For Those With Extra Time</title>
+
+<section id="unit-testing-extra-01"><title>Extra 1: Removing A's</title>
+
+<para>
+  Write tests for the <methodname>removeAs</methodname> method.
+  Fix the method if necessary.
+</para>
+
+</section> <!-- unit-testing-extra-01 -->
+
+<section id="unit-testing-extra-02"><title>Extra 2: Removing B's</title>
+
+<para>
+  Write tests for the <methodname>removeBs</methodname> method.
+  Fix the method if necessary.
+</para>
+
+</section> <!-- unit-testing-extra-02 -->
+
+<section id="unit-testing-extra-03"><title>Extra 3: Sharing Tests</title>
+
+<para>
+  Incorporate tests from other groups for
+  <methodname>removeAs</methodname> and <methodname>removeBs</methodname>
+  and see if your repaired code passes their tests, too.
+</para>
+
+</section> <!-- unit-testing-extra-03 -->
+
+</section> <!-- unit-testing-extra -->
+
+</section> <!-- unit-testing -->
+
+
