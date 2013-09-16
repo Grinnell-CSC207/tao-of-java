@@ -1,0 +1,390 @@
+<section id="lab-exceptions"><title>Laboratory: Exceptions</title>
+
+<para>
+  <emphasis role="strong">Summary</emphasis>: In this laboratory, you
+  will begin working with exceptions in Java.
+</para>
+
+<section id="exceptions-preparation"><title>Preparation</title>
+
+<para>
+  Fork and clone the repository at
+  <code><ulink url="https://github.com/Grinnell-CSC207/lab-exceptions/"/></code>.
+  (You don't really need to fork the repo, but if you don't you can't
+  save your work.)
+</para>
+
+<para>
+  Start Eclipse.
+</para>
+
+<para>
+  Import the repository into Eclipse.
+</para>
+
+<para>
+  Quickly skim the code to see what the purpose is.
+</para>
+
+</section> <!-- exceptions-preparation -->
+
+<section id="exceptions-exercises"><title>Exercises</title>
+
+<section id="exceptions-01"><title>Exercise 1: A Reminder About I/O</title>
+
+<para>
+  Run <code>ReadIntExpt1.java</code> to verify that it works as you
+  might expect (except for very large positive or negative numbers).
+</para>
+
+<para>
+  Early in the <methodname>main</methodname> method for 
+  <code>ReadIntExpt1.java</code>, you should see a line that
+  reads as follows.
+</para>
+
+<programlisting>
+PrintWriter pen = new PrintWriter(System.out, true);
+</programlisting>
+
+<para>
+  <code>PrintWriter</code> provides a constructor that doesn't require
+  the boolean.  Find out what happens if you just use
+</para>
+
+<programlisting>
+PrintWriter pen = new PrintWriter(System.out);
+</programlisting>
+
+<para>
+  Then explain the difference in output (if you observe one).
+</para>
+
+</section> <!-- exceptions-01 -->
+
+<section id="exceptions-02"><title>Exercise 2: Exception Basics</title>
+
+<para>
+  a. Remove the <code>throws Exception</code> from the <code>main</code>
+  method and determine what, if any, error messages you get.  If Eclipse
+  permits you to do so, try running the program. 
+</para>
+
+<para>
+  After you finish exploring the effects of that removal, reinsert the
+  throws warning.
+</para>
+
+<para>
+  b. Remove the <code>throws Exception</code> from the definition of
+  <code>readInt</code> and determine what, if any, error messages you
+  get.  If Eclipse permits you to do so, try running the program with
+  that warning removed.
+</para>
+
+<para>
+  Do not reinsert the warning.
+</para>
+
+<para>
+  c. Within <code>readInt</code>, you should have a sequence of lines
+  (or perhaps a single line) that does something like the following:
+</para>
+
+<programlisting>
+String response = br.readLine();
+return Integer.parseInt(response);
+</programlisting>
+
+<para>
+  Enclose those lines in a try/catch clause that returns 0 if an
+  exception is thrown, as in
+</para>
+
+<programlisting>
+  try {
+      String response = br.readLine();
+      return Integer.parseInt(response);
+  } catch (Exception e) {
+      return 0;
+  }
+</programlisting>
+
+<para>
+  Verify that Eclipse is no longer concerned about errors in your code.
+</para>
+
+<para>
+  Determine what happens when the user enters an invalid value
+  (such as <code>Hello</code>) in response to a request for an integer.
+</para>
+
+</section>  <!-- exceptions-2 -->
+
+<section id="exceptions-03"><title>Exercise 3: Computing A Quadratic Root</title>
+
+<para>
+  To the <code>MathUtils</code> class, add a static
+  <code>smallQuadraticRoot(double a, double b, double c)</code>
+  method that computes the smaller of the two roots of a quadratic
+  expression.
+</para>
+
+<para>
+  Note that you can use
+  the following formula to compute that root:
+</para>
+
+<blockquote>
+(-<emphasis>b</emphasis> - sqrt(<emphasis>b</emphasis><superscript>2</superscript> - 4<emphasis>ac</emphasis>))/2<emphasis>a</emphasis>
+</blockquote>
+
+<para>
+  You will, of course, have to translate that mathematical expression 
+  into Java code.
+</para>
+
+<para>
+  b. Write a few simple unit tests for that procedure.  Note that you
+  are likely to find it easier of you choose quadratics for which you
+  know the solution.
+</para>
+
+<itemizedlist>
+  <listitem>
+    If we multiply <emphasis>x</emphasis>-2 and <emphasis>x</emphasis>+5,
+    we get <emphasis>x</emphasis><superscript>2</superscript>+3-10,
+    we know the roots are 2 and -5.
+  </listitem>
+
+  <listitem>
+    If we multiply 2<emphasis>x</emphasis>+3)
+    and 3<emphasis>x</emphasis>-4), giving us
+    6<emphasis>x</emphasis><superscript>2</superscript>+<emphasis>x</emphasis>-12,
+    we know that the roots are -3/2 and 4/3.
+  </listitem>
+</itemizedlist>
+
+</section>  <!-- exceptions-3 -->
+
+<section id="exceptions-04"><title>Exercise 4: Adding User Input</title>
+
+<para>
+  a. Write a new main class, <code>QR</code>, which
+</para>
+
+<itemizedlist>
+  <listitem>
+    prompts the user for coefficients of a quadratic function,
+  </listitem>
+
+  <listitem>
+    computes one root of the quadratic,
+  </listitem>
+
+  <listitem>
+    prints that root, and
+  </listitem>
+
+  <listitem>
+    prints the value of the quadratic at that root.
+  </listitem>
+</itemizedlist>
+
+<para>
+  b. Use your class to compute a root of
+  <emphasis>x</emphasis><superscript>2</superscript>-<emphasis>x</emphasis>-2.
+  (The roots of that quadratic are 2 and -1.)
+</para>
+
+</section>  <!-- exceptions-4 -->
+
+<section id="exceptions-05"><title>Exercise 5: Erroneous Input</title>
+
+<para>
+  a. Determine what happens if the user enters 0 for the coefficient of
+  <emphasis>x</emphasis><superscript>2</superscript>.
+</para>
+
+<para>
+  b. Determine what happens if user enters values for which there is no
+  real root.
+</para>
+
+<para>
+  c. Determine what happens if the user enters values for which the function 
+  has only one root (e.g., <emphasis>x</emphasis><superscript>2</superscript>-2<emphasis>x</emphasis>+1 has only one root)?
+</para>
+
+</section>  <!-- exceptions-5 -->
+
+<section id="exceptions-06"><title>Exercise 6: Indicating Potential Errors</title>
+
+<para>
+  a. Extend <code>smallerQuadraticRoot</code> to indicate that it may
+  throw an exception.  Note that you'll need to change the method head
+  for <code>smallerQuadraticRoot</code> to something like the following
+</para>
+
+<programlisting>
+public static double smallerQuadraticRoot(double a, double b, double c)
+         throws Exception
+</programlisting>
+
+<para>
+  b. Can you successfully compile your modified code?  If not, make any
+  changes necessary to permit you to compile it.
+</para>
+
+<para>
+  c. Can you successfully compile <code>QR</code>?  If not, get help from 
+  a tutor or faculty member.
+</para>
+
+<para>
+  d. What now happens if you enter the <quote>erroneous</quote> input described
+  in the previous exercise?
+</para>
+
+</section>  <!-- exceptions-6 -->
+
+<section id="exceptions-07"><title>Exercise 7: Throwing Exceptions</title>
+
+<para>
+  a. Extend <code>smallerQuadraticRoot</code> so that it throws an exception if 
+  <code>a</code> is 0.  For example,
+</para>
+
+<programlisting>
+if (a == 0) {
+    throw new Exception("Cannot compute quadratic roots of linear functions.");
+} // if (a == 0)
+</programlisting>
+
+<para>
+  b. Extend <code>smallerQuadraticRoot</code> so that it throws an exception
+  if the root is not real (i.e., if it has an imaginary component).  Note
+  that the root is not real if the thing you're taking a square root of 
+  is negative.
+</para>
+
+<para>
+  c. What now happens if you enter the <quote>erroneous</quote> input
+  described above?
+</para>
+
+</section>  <!-- exceptions-07 -->
+
+<section id="exceptions-08"><title>Exercise 8: Catching Exceptions</title>
+
+<para>
+  If you've written your <code>main</code> method using the recommended
+  template, you have the line <code>throws Exception</code> in
+  the head of that method.  Remove that line.
+</para>
+
+<para>
+  a. What effect do you expect removing that line will have?
+</para>
+
+<para>
+  b. Verify your answer experimentally.  Ask a tutor or teacher if you
+  don't understand the results of your experiment.
+</para>
+
+<para>
+  c. Enclose your call to <code>smallerQuadraticRoot</code> in a
+  try/catch block.  For example, 
+</para>
+
+<programlisting>
+try {
+    double root = f.smallerQuadraticRoot(a,b,c);
+    pen.println("The smaller root of the polynomial is: " + root);
+    pen.println("Experimentally, " + a + "*" + root + "*" + root
+            + "+" + b + "*" + root + "+" + c + " = " 
+            + (a*root*root + b*root + c));
+} catch (Exception e) {
+    pen.println("Sorry, I could not compute a root.");
+} // try/catch
+</programlisting>
+
+<para>
+  d. Determine what happens with the problematic inputs described above.
+</para>
+
+</section>  <!-- exceptions-8 -->
+
+<section id="exceptions-09"><title>Exercise 9: Specific Exceptions</title>
+
+<para>
+  a. Update <code>smallerQuadraticRoot</code> so that it tries to throw a
+  <code>DivideByZeroException</code> if the coefficient of the
+  quadratic term is 0.  You can still throw a generic exception
+  if the result includes an imaginary component.
+</para>
+
+<para>
+  b. What do you expect to happen when you try to compile the
+  revised program?
+</para>
+
+<para>
+  c. Verify your answer experimentally.
+</para>
+
+</section>  <!-- exceptions-09 -->
+
+<section id="exceptions-10"><title>Exercise 10: Your Own Exceptions</title>
+
+<para>
+  As you should have determined in the previous exercise, Java does
+  not know by default what a <code>DivideByZeroException</code>
+  is.  Hence, you'll need to create your own Exception.
+  You do so using the strategy described in the <ulink
+  url="../readings/exceptions.html">reading</ulink>.
+</para>
+
+<para>
+  a. Create and compile a Java file for <code>DivideByZeroException</code>.
+</para>
+
+<para>
+  b. Verify that the previously-modified code now works.
+</para>
+
+</section>  <!-- exceptions-10 -->
+
+<section id="exceptions-11"><title>Exercise 11: Catching Specific Exceptions</title>
+
+<para>
+  a. Extend <code>QR</code> so that it has a catch clause for your
+  new <code>DivideByZeroException</code> <emphasis>before</emphasis>
+  the catch clause for the generic <code>Exception</code>.  For example,
+</para>
+
+<programlisting>
+try {
+    ...
+} catch (DivideByZeroException dbze) {
+    pen.println("Cannot compute a result because the coefficient of the quadratic term is 0.");
+} catch (Exception e) {
+    ...
+} // try/catch
+</programlisting>
+
+<para>
+  b. Determine what happens in each of the problematic cases.
+</para>
+
+<para>
+  c. What do your results for this problem suggest?
+</para>
+
+</section>  <!-- exceptions-11 -->
+
+</section>  <!-- exceptions-exercises -->
+
+</section>  <!-- exceptions-lab -->
+
+
