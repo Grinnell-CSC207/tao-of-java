@@ -1,0 +1,299 @@
+<section id="strings"><title>Strings in Java</title>
+
+<para>
+  <emphasis role="strong">Summary:</emphasis> We introduce (or
+  re-introduce) strings in the Java programming language, focusing on
+  a selection of useful operations.
+</para>
+
+<para>
+  <emphasis role="strong">Prerequisites:</emphasis> Basics of Java
+</para>
+
+<para>
+  <emphasis role="strong">Important Classes</emphasis>
+</para>
+
+<itemizedlist>
+  <listitem>
+    <ulink url="&javapi;java/lang/String.html"><code>java.lang.String</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="&javapi;java/lang/StringBuffer.html"><code>java.lang.StringBuffer</code></ulink>
+  </listitem>
+</itemizedlist>
+
+<section id="basics"><title>String Basics</title>
+
+<para>
+  In the parlance of computer science, a <emphasis>string</emphasis> is
+  a sequence of simple characters.  (A character is, most frequently,
+  something you can type on the keyboard, such as a letter, number,
+  or piece of punctuation.)  Almost every modern programming language
+  permits programmers to use variables of the string data type.  Languages
+  typically permit a variety of operations on strings, including input
+  (since they are easy for most people to type), output (since they are
+  easy for most people to type), and to extract individual characters.
+</para>
+
+<para>
+  In Java, strings are objects that belong to class
+  <code>java.lang.String</code>.  Because that is such a common class,
+  Java permits you to skip the package name, even without a corresponding
+  <code>import</code> statement.  For example,
+</para>
+
+<programlisting>
+String username;
+</programlisting>
+
+<para>
+  is equivalent to 
+</para>
+
+<programlisting>
+java.lang.String username;
+</programlisting>
+
+<para>
+  String constants are represented by placing the sequence of characters
+  between a pair of double-quotation marks.  For example
+</para>
+
+<programlisting>
+username = "jdoe";
+</programlisting>
+
+<para>
+  Java strings can contain essentially any character you can type or otherwise
+  generate.  They can contain numbers, spaces, punctuation, and so on and
+  so forth.  For example,
+</para>
+
+<programlisting>
+String address;
+address = "Apt. 2, East House, Main St.";
+</programlisting>
+
+</section>  <!-- basics -->
+
+<section id="comparison"><title>Comparing Strings</title>
+
+<para>
+  Strings are also <emphasis>comparable</emphasis>.  That means we can
+  determine whether two strings are the same and whether one string
+  <quote>naturally</quote> precedes another.  (Java typically uses a
+  local configuration file for determining order so that it matches the
+  local language and its ordering rules.)  Once you can compare strings,
+  you have the ability to develop more sophisticated operations on
+  collections of strings, such as placing them in order or searching
+  for a particular string.
+</para>
+
+<para>
+  Java provides two basic operations for comparing strings:
+</para>
+
+<itemizedlist>
+  <listitem>
+    <code>equals(String other)</code> determines whether this string is
+    the same as another string.
+  </listitem>
+
+  <listitem>
+    <code>compareTo(String other)</code> determines the relative order for
+    two strings.  It returns zero if they are equal, a negative number
+    if the string executing <code>compareTo</code> naturally precedes
+    <code>other</code>, and a positive number if the string executing
+    <code>compareTo</code> naturally follows <code>other</code>.
+  </listitem>
+</itemizedlist>
+
+</section>  <!-- comparison -->
+
+<section id="operations"><title>Other Operations</title>
+
+<para>
+  We can do many other things with strings.  Java's primary string
+  class, <code>java.lang.String</code> gives us access not just to the
+  sequence of characters as a whole, but also to subsequences and to
+  operations on those subsequences.  Interestingly enough, Java takes
+  advantage of the encapsulation for the String class and makes strings
+  <emphasis>immutable</emphasis>: Operations do not change strings,
+  but only return new strings based on the original string executing
+  an operation.
+</para>
+
+<para>
+  Some of the string operations you may find useful include:
+</para>
+
+<itemizedlist>
+  <listitem>
+    <code>toLowerCase()</code>: Build a new string, similar to the
+    original, but with all letters in the string converted to lower-case
+    (using the local installations definition of lower-case and upper-case
+    to lower-case conversion).
+  </listitem>
+
+  <listitem>
+    <code>toUpperCase()</code>: Build a new string, similar to the
+    original, but with all letters in the string converted to upper-case.
+  </listitem>
+
+  <listitem>
+    <code>trim()</code>: Build a new string, similar to the original,
+    but without leading and trailing whitespace.  This command is often
+    useful when you're processing unstructured user input.
+  </listitem>
+
+  <listitem>
+    <code>substring(<emphasis>startindex</emphasis>)</code>:
+    Extract the portion of the string that begins at
+    <code><emphasis>startindex</emphasis></code>.  Note that indices
+    start at 0.
+  </listitem>
+
+  <listitem>
+    <code>substring(<emphasis>startindex</emphasis>,<emphasis>endindex</emphasis>)</code>:
+    Extract the portion of the string that begins at
+    <code><emphasis>startindex</emphasis></code> and ends directly before
+    <code><emphasis>endindex</emphasis></code>.
+  </listitem>
+
+  <listitem>
+    <code>replace(<emphasis>target</emphasis>,<emphasis>replacement</emphasis>)</code>:
+    Build a new string, similar to the orignal, but with all substrings
+    that match <code><emphasis>target</emphasis></code> replaced by
+    <code><emphasis>replacement</emphasis></code>.
+  </listitem>
+
+  <listitem>
+    <code>indexOf(<emphasis>target</emphasis>)</code>: Determine the
+    first index of <code><emphasis>target</emphasis></code> within
+    the string.  (This method is often useful in conjunction with
+    <code>substring</code>.)
+  </listitem>
+
+  <listitem>
+    <code>indexOf(<emphasis>target</emphasis>,
+    <emphasis>startHere</emphasis>)</code>: A variant that starts looking
+    at the specified index.
+  </listitem>
+
+  <listitem>
+    <code>concat(<emphasis>target</emphasis>)</code>: Build a new string
+    by joining the specified <code><emphasis>target</emphasis></code>
+    to the end of the current string.
+  </listitem>
+
+  <listitem>
+    <code>length()</code>: Determine how many characters are in the string.
+  </listitem>
+</itemizedlist>
+
+<para>
+  For example,
+</para>
+
+<programlisting>
+String str = "All mimsy were the Borogoves.";
+pen.println(str);
+	// <emphasis>All mimsy were the Borogoves.</emphasis>
+pen.println(str.toLowerCase());
+	// <emphasis>all mimsy were the borogoves.</emphasis>
+pen.println(str.toUpperCase());
+	// <emphasis>ALL MIMSY WERE THE BOROGOVES.</emphasis>
+pen.println(str.substring(4));
+	// <emphasis>mimsy were the Borogoves.</emphasis>
+pen.println(str.substring(4,9));
+	// <emphasis>mimsy</emphasis>
+pen.println(str.replace("mimsy","frumious"));
+	// <emphasis>All frumious were the Borogoves.</emphasis>
+pen.println(str.indexOf("Borogoves"));
+	// <emphasis>19</emphasis>
+pen.println(str.indexOf("Borogroves"));
+	// <emphasis>-1</emphasis>
+pen.println(str.concat("  And the mome raths outgrabe."));
+	// <emphasis>All mimsy were the Borogoves.  And the mome raths outgrabe.</emphasis>
+pen.println(str);
+	// <emphasis>All mimsy were the Borogoves.</emphasis>
+</programlisting>
+
+<para>
+  Observe that even after all of the <quote>changes</quote> to the
+  original string, the final command prints the original string,
+  suggesting that the string was never changed.
+</para>
+
+<para>
+  You can find other interesting and useful string operations in the official
+  documentation, linked at the top of this reading.
+</para>
+
+</section>
+
+<section id="stringbuffer"><title>StringBuffer Objects</title>
+
+<para>
+  As suggested at the end of the previous section, String objects
+  are <emphasis>immutable</emphasis> in Java.  That is, once you've
+  created a string, you can't change it.  However, there are also
+  times that you want to change your strings, rather than simply
+  building new strings each time.  For such purposes, Java provides the
+  <code>java.lang.StringBuffer</code> class.  (Again, you need not import
+  this class to refer to objects simply as <code>StringBuffer</code>.)
+</para>
+
+<para>
+  You can create a new <code>StringBuffer</code> in one of two ways,
+  using a zero-parameter constructor, which builds an empty buffer,
+  or using a string as the parameter, which builds a string buffer
+  based on the given string.  For example,
+</para>
+
+<programlisting>
+  StringBuffer initiallyEmpty;
+  StringBuffer sillyWord;
+  initiallyEmpty = new StringBuffer();
+  sillyWord = new StringBuffer("borogoves");
+</programlisting>
+
+<para>
+  The <code>StringBuffer</code> class provides many of the same methods
+  as the <code>String</code> class, including <code>indexOf</code>,
+  <code>substring</code>, and <code>length</code>.
+</para>
+
+<para>
+  However, the <code>StringBuffer</code> class also provides many
+  mutators for changing the underlying string.  
+</para>
+
+<itemizedlist>
+  <listitem>
+    <code>append(String str)</code>: Appends <code>str</code>
+    to the end of the buffer.
+  </listitem>
+
+  <listitem>
+    <code>insert(int offset, String str)</code>: Inserts <code>str</code>
+    starting at position <code>offset</code>.  Everything that was at that
+    position is moved to the right, after <code>str</code>.
+  </listitem>
+
+  <listitem>
+    <code>delete(int start, int end)</code>: Delete the characters between
+    <code>start</code> and <code>end</code>-1, inclusive.
+  </listitem>
+</itemizedlist>
+
+<para>
+  You can also use the <code>toString</code> method to recover a
+  string from a <code>StringBuffer</code>.
+</para>
+
+</section>
+
+</section>  <!-- strings -->

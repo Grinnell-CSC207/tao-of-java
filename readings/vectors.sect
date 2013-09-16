@@ -1,0 +1,88 @@
+<section id="vectors"><title>Vectors: More Object-Like Arrays</title>
+
+<para>
+  Many programmers find it odd that arrays have a different syntax
+  than do most objects.  Others find it inconvenient that arrays have
+  a fixed size.  To handle these, and similar, objects, Java provides
+  an array-like structure called <code>java.util.Vector</code>.
+  Vectors are much like arrays in that Vectors are
+</para>
+
+<itemizedlist>
+  <listitem>
+    <emphasis>homogeneous</emphasis> - vectors typically store only one kind of element;
+  </listitem>
+
+  <listitem>
+    <emphasis>indexed</emphasis> - vectors permit clients to access values using integers
+  that indicate position;
+  </listitem>
+
+  <listitem>
+    <emphasis>efficient</emphasis> - vectors provide fast access to values.
+  </listitem>
+</itemizedlist>
+
+<para>
+  However, unlike arrays, vectors are <emphasis>expandable</emphasis>
+  - you can continue to add elements to a vector, even if the vector
+  has grown beyond its original size.  As you are likely to discover,
+  it is fairly easy to build your own <code>Vector</code> class from
+  the underlying array structures; in essence, you have a field that
+  contains an array, and you build a new array and copy over values
+  whenever the original array gets too big.  For now, you can rely on
+  the built-in class.
+</para>
+
+<para>
+  The standard vector class, <code>java.util.Vector</code> is a
+  parameterized class.  That is, when you create an object in that
+  class, you must supply the underlying type.  For example, to create
+  a vector of strings, you would write
+</para>
+
+<programlisting>
+Vector&lt;String&gt; stuff = new Vector&lt;String&gt;();
+</programlisting>
+
+<para>
+  Once you have created a vector (or obtained one from another method
+  or class), you can
+</para>
+
+<itemizedlist>
+  <listitem>
+    add a value to the end of the vector with the <code>add(<emphasis>T</emphasis> val)</code> method;
+  </listitem>
+
+  <listitem>
+    obtain a value from a vector with the <code>get(int index)</code>
+  method;
+  </listitem>
+
+  <listitem>
+    change the value in a particular position with the <code>set(int index, <emphasis>T</emphasis> val)</code> method; and
+  </listitem>
+
+  <listitem>
+    determine the number of values in the vector with the <code>size()</code> method.
+  </listitem>
+</itemizedlist>
+
+<para>
+  Note that <code>java.util.Vector</code> distinguishes between the
+  number of values that are stored in the vector (that is, the
+  <code>size</code> of the vector) from the number of valid spaces
+  in the underlying array, which it calls the <code>capacity</code>
+  of the vector.  In general, adding an element to the vector will
+  increment the size, but have no effect on the capacity.
+</para>
+
+<para>
+  Vectors provide a wide variety of other methods, which you will
+  explore in lab.  (As we will consider later, some consider the
+  vector interface in Java somewhat bloated.)
+</para>
+
+</section>  <!-- vectors -->
+

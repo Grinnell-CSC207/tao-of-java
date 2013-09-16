@@ -1,0 +1,320 @@
+<section id="numbers"><title>Numbers in Java</title>
+
+<para>
+  <emphasis role="strong">Summary:</emphasis> We introduce (or
+  re-introduce) numbers in the Java programming language, focusing on
+  a selection of useful operations.
+</para>
+
+<para>
+  <emphasis role="strong">Prerequisites:</emphasis> 
+  <ulink url="../Readings/intro-java.html">Basics of Java</ulink> and
+  <ulink url="../Readings/strings.html">Strings in Java</ulink>.
+</para>
+
+<para>
+  <emphasis role="strong">Important Classes</emphasis>
+</para>
+
+<itemizedlist>
+  <listitem>
+    <ulink url="&javapi;java/lang/Double.html"><code>java.lang.Double</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="&javapi;java/lang/Float.html"><code>java.lang.Float</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="&javapi;java/lang/Integer.html"><code>java.lang.Integer</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="&javapi;java/lang/Long.html"><code>java.lang.Long</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="&javapi;java/lang/Number.html"><code>java.lang.Number</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="&javapi;java/math/BigDecimal.html"><code>java.math.BigDecimal</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="&javapi;java/math/BigInteger.html"><code>java.math.BigInteger</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="&javapi;java/lang/Math.html"><code>java.lang.Math</code></ulink>
+  </listitem>
+</itemizedlist>
+
+<section id="primitive"><title>Primitive Types</title>
+
+<para>
+  Almost every modern programming language permits programmers to use
+  variables of one or more numeric data types.  Not so surprisingly,
+  most also provide a variety of representations of numbers so that
+  programmers can choose the ones that are most appropraite for the task
+  at hand.
+</para>
+
+<para>
+  One important question is whether one accepts a fixed amount of memory
+  for numeric values or prefers to permit memory to be allocated depending
+  on the size of the number.  If you limit yourself to a fixed amount
+  of memory (as most languages do for the basic numeric types), one can
+  only represent a limited number of values.  If you permit memory to
+  be allocated on the fly, you complicate operations (usually making
+  them more costly in terms of time).
+</para>
+
+<para>
+  In Java, the primitive types <code>long</code>, <code>int</code>,
+  and <code>short</code> each represent integers with a
+  fixed amount of memory.  The range of legal values for
+  <code>long</code> is -2<superscript>63</superscript> to
+  2<superscript>63</superscript>-1.  The range of legal values
+  for <code>int</code> is -2<superscript>31</superscript> to
+  2<superscript>31</superscript>-1.  The range of legal values
+  for <code>short</code> is -2<superscript>15</superscript> to
+  2<superscript>15</superscript>-1.  You can represent constant values
+  in each of these types by writing the digits of the value, potentially
+  prefixed by a <quote>minus sign</quote>.
+</para>
+
+<para>
+  In Java, the primitive types <code>double</code> and <code>float</code>
+  represent approximations of real numbers.  The range of each
+  is difficult to describe, particularly as they approximate different sizes
+  of values differently.  Beginning programmers should generally use
+  <code>double</code>.  You represent constant values of these types using
+  the digits, including a possible decimal point.  (Other notations are
+  also available.  We will introduce them as necessary.)
+</para>
+
+<para>
+  Note that we have referred to all of these types as
+  <quote>primitive</quote>.  This term suggests that they are the basic
+  building blocks upon which other types in the language are built.
+  It also suggests that they may have a lower-level implementation than
+  do other types, which generally makes computation with primitive types
+  more efficient.
+</para>
+
+<para>
+  Here are a few simple declarations of primitive numeric names and values.
+</para>
+
+<programlisting>
+int x = 5;
+double pi_approx = 3.1415;
+</programlisting>
+
+</section>  <!-- basics -->
+
+<section id="arithmetic"><title>Arithmetic Operations</title>
+
+<para>
+  Java allows you to compute with the various primitive types of
+  values.  The binary arithmetic operations (addition, subtraction,
+  multiplication, and division) are written with the natural symbol
+  (<code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code>)
+  in standard infix form.  (The term <quote>infix</quote> means that
+  the operation is written between the two operands.  It is contrasted
+  with <quote>prefix</quote>, in which the operation appears before the
+  operands, and <quote>postfix</quote>, in which the operation appears
+  after the operands.)
+</para>
+
+<para>
+  For example, to add 2 to <code>x</code> and assign the result to 
+  <code>y</code>, you would write
+</para>
+
+<programlisting>
+y = x + 2;
+</programlisting>
+
+<para>
+  Java understands precedence and associativity, so you can also combine
+  operations in a single expression and have a predictable result, as in
+</para>
+
+<programlisting>
+pen.println(3 + 4 * 5); // prints 23
+pen.println(3 - 1 - 1); // prints 1
+</programlisting>
+
+</section>  <!-- arithmetic -->
+
+<section id="comparison"><title>Comparing Numbers</title>
+
+<para>
+  Numbers, like strings, are comparable.  You can compare two numbers
+  to determine whether the first is less than (<code>&lt;</code>),
+  less than or equal to (<code>&lt;=</code>), equal to
+  (<code>==</code>), greater than or equal to (<code>&gt;=</code>),
+  greater than (<code>&gt;</code>) or not equal to (<code>!=</code>)
+  another numeric values.
+</para>
+
+<para>
+  In all cases, the comparator goes between the new numbers, as in
+  <code>x &lt; 5</code> or <code>(y-j &gt; 1.0)</code>.
+</para>
+
+<para>
+  It is generally considered a bad idea to compare two floating point
+  approximations of real numbers for exact equality or inequality.  Instead,
+  one should take the absolute value of their difference and compare that
+  to a relatively small value.
+</para>
+
+</section>  <!-- comparison -->
+
+<section id="other-computations"><title>Other Computations</title>
+
+<para>
+  What do you do if you want to perform more complex mathematical
+  calculations, such as finding square roots?  You use the useful
+  class <code>java.lang.Math</code>.  You should refer to <ulink
+  url="&javapi;java/lang/Math.html">the documentation for that class</ulink>
+  for more information.
+</para>
+
+<para>
+  Because <code>java.lang.Math</code> is primarily a utility class,
+  when you call methods in that class, you typically write write
+  <code>Math.<emphasis>methodName</emphasis>(<emphasis>params</emphasis>)</code>,
+  as in
+</para>
+
+<programlisting>
+double root;
+root = Math.sqrt(x);
+</programlisting>
+
+</section>  <!-- other-computations -->
+
+<section id="coercion"><title>Coercing Values</title>
+
+<para>
+  Most of the time, Java will permit you to use different numeric
+  types and <quote>coerce</quote> a value to the appropriate type.
+  For example, if you assign an integer to a double, it will convert the
+  integer to the corresponding double (e.g., 5 to 5.0) before assigning.
+  Similarly, if an operation has two different paramater types (e.g.,
+  you add an integer and a float), it will convert the less-general type
+  to the more-general type.
+</para>
+
+<para>
+  You should be careful about such conversions, as they can lead to slight
+  changes in your data (particularly as you use the approximation types).
+  Strive to use the types you need and to stay within those types in thee
+  expressions you write.
+</para>
+
+</section>  <!-- coercion -->
+
+<section id="classes"><title>Numeric Classes</title>
+
+<para>
+  For each primitive numeric type, Java also has a corresponding class.
+  These classes are <code>java.lang.Short</code>,
+  <code>java.lang.Integer</code>, <code>java.lang.Long</code>,
+  <code>java.lang.Float</code>, and <code>java.lang.Double</code>.
+  All are based on the more general class <code>java.lang.Number</code>.
+</para>
+
+<para>
+  Each class also provides an appropriate constructor (e.g., one
+  constructor for <code>Integer</code> accepts an <code>int</code>
+  as a parameter) and a <code>toString</code> method that gives a
+  representation of the value as a sequence of characters appropriate
+  for output.  Most also provide a constructor that takes a string as
+  a parameter and <quote>parses</quote> it to extract the number.
+</para>
+
+<para>
+  For example,
+</para>
+
+<programlisting>
+Double d;
+d = new Double(3.2);
+Integer i;
+i = new Integer("3123");
+</programlisting>
+
+<para>
+  More recent versions of Java add the capability to automatically
+  <quote>box</quote> and <quote>unbox</quote> numeric values - convert
+  from the primitive representation to the object and back again.
+</para>
+
+<programlisting>
+Integer i = 3.14;
+int j = i;
+</programlisting>
+
+<para>
+  The general Number class (and therefore all the related classes) provides
+  a number of conversion methods, including <code>shortValue</code>,
+  <code>intValue</code>, <code>longValue</code>, <code>floatValue</code>,
+  and <code>doubleValue</code>.  Each of these methods returns a value of
+  the specified type.
+</para>
+
+<para>
+  For example,
+</para>
+
+<programlisting>
+Double d;
+d = new Double(3.14);
+float f;
+f = d.floatValue();
+</programlisting>
+
+</section>  <!-- classes -->
+
+<section id="big"><title>Big Numbers</title>
+
+<para>
+  Because some progams need values that go beyond the
+  ranges of the primitive types (ranges that are duplicated
+  by the corresponding number classes), Java also provides
+  two kinds of <quote>arbitrary size</quote> numbers: <ulink
+  url="&javapi;java/math/BigDecimal.html"><code>java.math.BigDecimal</code></ulink>
+  and <ulink
+  url="&javapi;java/math/BigInteger.html"><code>java.math.BigInteger</code></ulink>.
+</para>
+
+<para>
+  These classes provide their own methods for the basic arithmetic and
+  comparison operations.  The basic operations are <code>add</code>,
+  <code>subtract</code>, <code>multiply</code>, and <code>divide</code>.
+  The operations are written in the object-oriented <emphasis>object dot
+  method</emphasis> format.  For example, you to multiply <code>x</code>
+  by <code>y</code> and then add <code>z</code>, you might write:
+</para>
+
+<programlisting>
+BigInteger result, x, y, z;
+...
+result = x.multiply(y).subtract(z);
+</programlisting>
+
+<para>
+  These methods are necessarily less efficient than those for the
+  primitive classes.  Nonethless, if you need to represent numbers
+  beyond the normal ranges (or with greater precision, in the case of
+  <code>BigDecimal</code>, they are excellent options.
+</para>
+
+</section>
+
+</section>  <!-- numbers -->

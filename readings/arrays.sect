@@ -1,0 +1,245 @@
+<section id="arrays"><title>Arrays in Java</title>
+
+<para>
+  <emphasis role="strong">Summary:</emphasis> We consider one of the
+  central building blocks for data structures: the Array.  Arrays group
+  values and permit fast access by numeric index.  
+</para>
+
+<para>
+  <emphasis role="strong">Prerequisites:</emphasis> Basics of Java.  For loops.
+  Parameterized classes.
+</para>
+
+<section id="background"><title>Background: Grouping Data</title>
+
+<para>
+  As you build larger and larger programs, you will soon find that you have
+  many situations in which you need to group large amounts of similar data.  For
+  example, in a grading program, you may need to group students and, for
+  each student, you may need to group grades.  Because grouping data is
+  at the center of so many programs, computer scientists study different
+  ways to group data.
+</para>
+
+<para>
+  As you may have seen in the past, there are two initial approaches one
+  can take.  One can describe <emphasis>abstract data types</emphasis>
+  (ADTs), which specify the <emphasis>what</emphasis> of data.   That is,
+  ADTs describe the overall philosophy of the collection of data and the
+  primary methods that client algorithms and programs use to access the
+  data.  One can also focus on <emphasis>data structures</emphasis>, which
+  specify the <emphasis>how</emphasis> of data.  That is, data structures
+  provide the implementation for the methods that ADTs describe.
+</para>
+
+<para>
+  Arrays play an odd role in this classification.  From one perspective,
+  we can think of them as ADTs, in that the design of arrays is guided by
+  a central philosophy, and programmers usually rely on them to provide
+  certain operations.  However, from another perspective, arrays are
+  implemented in a particular way, and many programmers take advantage
+  of that implementation as they build other data structures.  We will
+  consider both aspects.
+</para>
+
+</section>  <!-- background -->
+
+<section id="array-basics"><title>Array Basics</title>
+
+<para>
+  We begin with the central philosophy or pupose of arrays: Arrays
+  group similar kinds of values and allow clients to access those
+  values by number.  If we want to use specialized terminology, we say
+  that arrays are collections of homogenous values that are indexed by
+  non-negative integers.
+</para>
+
+<para>
+  What operations do we expect to have for such a collection?
+</para>
+
+<itemizedlist>
+  <listitem>
+    We should be able to find out determine how many elements are 
+    in the collection.
+  </listitem>
+
+  <listitem>
+    We should be able to find out what value is associated with a 
+    particular index.
+  </listitem>
+
+  <listitem>
+    We should be able to specify what value is associated with a 
+    particular index.
+  </listitem>
+
+  <listitem>
+    We should be able to create a new collection of a specified size 
+    (and, perhaps, with a specified range of indices).
+  </listitem>
+</itemizedlist>
+
+<para>
+  Because arrays are both simple and central, we also expect most of
+  these operations to be comparatively quick (and, except for the case
+  of creating a collection, to take an amount of time or computation
+  independent of the number of values in the array).
+</para>
+
+<para>
+  To provide fast access to elements, most languages store arrays as a
+  contiguous area of memory.  If the array starts at memory location
+  <emphasis>l</emphasis>, and each value in the array takes space
+  <emphasis>s</emphasis>, and the indices start at 0, then the value
+  in position <emphasis>i</emphasis> can be found at memory location
+  <emphasis>l</emphasis>+<emphasis>is</emphasis>.
+</para>
+
+</section>  <!-- basics -->
+
+<section id="array-syntax"><title>Syntax of Arrays in Java</title>
+
+<para>
+  In Java, arrays have a special syntax.  In order to use arrays, you
+  will need to mamster this syntax (and master it fairly quickly).
+</para>
+
+<para>
+  The <emphasis>type</emphasis> of an array is specified by giving
+  the type of the elements followed by an open square bracket and a
+  close square bracket.  So, , for example, the type of an array of
+  integers is <code>int[]</code> and the type of an array of exceptions
+  is <code>Exception[]</code>.
+</para>
+
+<para>
+  We most typically <emphasis>construct</emphasis> an array with the
+  <code>new</code> operator, followed by the type of each element,
+  an open bracket, an integer that gives the size of the array,
+  and a close bracket.  To create an array of five integers called
+  <code>ratings</code>, we would write
+</para>
+
+<programlisting>
+int[] ratings = new int[5];
+</programlisting>
+
+<para>
+  Similarly, to create an array of ten objects in class <code>Student</code>,
+  we would write
+</para>
+
+<programlisting>
+Student[] class = new Student[10];
+</programlisting>
+
+<para>
+  We can also <emphasis>initialize</emphasis> an array during construction
+  by eliding the array size and following the right bracket with a
+  sequence of values separated by commas and surrounded by curly braces.
+  For example, to create an array of the names Jane, Jack, Julie, and
+  John, we would write
+</para>
+
+<programlisting>
+String[] names = new String[] { "Jane", "Jack", "Julie", "John" };
+</programlisting>
+
+<para>
+  Similarly, to create an array of the ratings 5, 4, 3, 4, and 2,
+  we might write
+</para>
+
+<programlisting>
+int[] ratings = new int[] { 5, 4, 3, 4, 2 };
+</programlisting>
+
+<para>
+  When writing these array initializers, we might also construct
+  objects within the braces.  For example,
+</para>
+
+<programlisting>
+Fraction[] thirds = new Fraction[] { new Fraction("1/3"),
+                                     new Fraction("2/3"),
+                                     new Fraction("3/3"),
+                                     new Fraction("4/3") };
+</programlisting>
+
+<para>
+  To <emphasis>obtain the number of values</emphasis> in an array,
+  we use the name of the array, followed by a period, followed by the
+  keyword <code>length</code>.  For example,
+</para>
+
+<programlisting>
+pen.println("There are " + students.length + " students.");
+</programlisting>
+
+<para>
+  To <emphasis>get</emphasis> a particular value in the array, we
+  use the name of the array, followed by an open bracket, followed
+  by an expression that gives the index, followed by a close bracket.
+  For example, here is some simple code to print all the fractions in
+  the array of fractions declared above.
+</para>
+
+<programlisting>
+for (int i = 0; i &lt; thirds.length; i++) {
+    pen.println(thirds[i]);
+} // for
+</programlisting>
+
+<para>
+  Similarly, to <emphasis>set</emphasis> a particular value in the array,
+  we assign to the name of the array, followed by an open bracket,
+  followed by an expression that gives the index, followed by a close
+  bracket.
+</para>
+
+<para>
+  For example, here is some code that increments all the ratings in
+  an array by 1.
+</para>
+
+<programlisting> 
+for (int i = 0; i &lt; ratings.length; i++) {
+    ratings[i] = ratings[i] + 5;
+} // for 
+</programlisting>
+
+</section> <!-- array-syntax -->
+
+<section name="arrays-design"><title>The Design of Arrays, Revisited</title>
+
+<para>
+  Let's return to the original philosophy of arrays: <emphasis>an array
+  is an indexed collection of homogenous values</emphasis>.  Do the
+  arrays we've just looked at meet that goal?  Yes, it seems they do.
+  But Java arrays also add one more implicit characteristic: Java arrays 
+  are <emphasis>fixed sized</emphasis> indexed collections of homogenous
+  values.  
+</para>
+
+<para>
+  Do arrays have to have a fixed size?  No.  One
+  can design and implement arrays that expand dynamically when
+  necessary.  Instead of asking about the length of such arrays,
+  you would probably ask about the current capacity of the array
+  or what the largest indexed used is (or something similar).  You
+  might also need to consider when the array expands.  Does it expand
+  automatically when a client requests a value outside of the bounds,
+  or is there an explicit command to expand the array?
+</para>
+
+<para>
+  In Java, the standard arrays have a fixed size.  However, there are
+  a variety of container types (e.g., <code>java.util.Vector</code>,
+  <code>java.util.ArrayList</code>) that provide dynamic arrays.
+</para>
+
+</section> <!-- arrays-design -->
+
+</section>  <!-- arrays -->

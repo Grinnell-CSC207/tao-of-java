@@ -1,0 +1,548 @@
+<section id="classes"><title>Writing Your Own Classes</title>
+
+<para>
+  <emphasis role="strong">Summary:</emphasis> 
+  We describe how and why to create your own classes that serve as
+  templates for the creation of new objects.
+</para>
+
+<para>
+  <emphasis role="strong">Prerequisites:</emphasis> 
+  <ulink url="../readings/java-basics.html">Basics of Java</ulink> and
+  <ulink url="../readings/oops-basics.html">Basics of Object-Oriented
+  Programming</ulink>.
+</para>
+
+<section id="imperative-to-oo"><title>Making the Transition From Imperative to Object-Oriented Programming</title>
+
+<para>
+  You have probably heard that Java is an object-oriented language.
+  What does that mean?  It means that the focus of programming in
+  Java is supposed to be on the design of objects and they ways in
+  which they interact.  In particular, Java supports objects,
+  encapsulation, inheritance, and polymorphism.  (It's okay if you
+  don't remember those last few terms; we'll revisit them frequently.)
+</para>
+
+<para>
+  You may find that emphasis surprising, given that most of the 
+  programs you've written have focused primarily on using objects,
+  rather than on designing objects.  It turns out that Java supports
+  two models of problem solving, imperative and object-oriented.
+  Computer science educators have mixed opinions on which model to
+  teach first.  
+</para>
+
+<para>
+  We will assume that you have encountered many of the imperative
+  aspects of Java, the ways in which Java is basically just a more
+  verbose version of C.  It is time to move on to the object-oriented
+  paradigm.  We begin by considering how to build and use what I'll
+  call <quote>template classes</quote> in Java.  
+</para>
+
+<para>
+  (No, <quote>template
+  class</quote> is not standard terminology.  Mostly, folks just call
+  them classes.  But I find it useful to distinguish between the
+  different ways in which we use classes - as templates, to provide a 
+  set of static methods (<quote>utility classes</quote>), and as a place
+  to start the program (<quote>main classes</quote>).)
+</para>
+
+</section>  <!-- imperative-to-oo -->
+
+<section id="template-class"><title>What is a Template Class?</title>
+
+<para>
+  Different object-oriented languages provide a variety of mechanisms
+  by which programmers describe objects.  In Java, as in many
+  languages, programmers typically describe objects through classes.
+  that provides a template for building individual objects.  Template
+  classes typically contain three parts:
+</para>
+
+<itemizedlist>
+  <listitem>
+    The <emphasis>fields</emphasis> of a class (and of an object)
+    provide the data associated with each object.  Each field in a
+    template class has a name and a type.  When we build individual
+    objects from the class, we fill in a value for each field.
+  </listitem>
+
+  <listitem>
+    The <emphasis>methods</emphasis> of a class describe how objects
+    within that class do things (compute values, input information,
+    output information, update their state, etc.).  We often distinguish
+    between <quote>observers</quote>, methods that simply observe the state 
+    of an object, and <quote>mutators</quote>, methods that change
+    the state of an object.
+  </listitem>
+
+  <listitem>
+    The <emphasis>constructors</emphasis> of a class provide
+    instructions for building new objects in the class.  Constructors
+    typically fill in values for fields.
+  </listitem>
+</itemizedlist>
+
+<para>
+  We will consider each in turn.
+</para>
+
+</section>  <!-- template-class -->
+
+<section id="class-structure"><title>The Structure of a Java Template Class</title>
+
+<para>
+  In Java, a template class typically has the following structure.
+</para>
+
+<programlisting>
+package <emphasis>packagname</emphasis>;
+
+import <emphasis>otherpackagename.NeededClass</emphasis>;
+
+/**
+ * <emphasis>A helpful introductory comment that describes the class.</emphasis>
+ */
+public class <emphasis>ClassName</emphasis> {
+  // +--------+---------------------------------------------------------
+  // | Fields |
+  // +--------+
+
+  <emphasis>Field declarations</emphasis>
+
+  // +--------------+---------------------------------------------------
+  // | Constructors |
+  // +--------------+
+
+  <emphasis>Constructors</emphasis>
+
+  // +---------+--------------------------------------------------------
+  // | Methods |
+  // +---------+
+
+  <emphasis>Methods</emphasis>
+
+} // class <emphasis>ClassName</emphasis>
+</programlisting>
+
+<para>
+  You can also include portions of a utility class or a main class,
+  such as static fields, static methods, constants, and a main
+  method.
+</para>
+
+</section>  <!-- class-structure -->
+
+<section id="fields"><title>Object Fields</title>
+
+<para>
+  As suggested above, object fields provide a place to hold the
+  data associated with an object.  They may be information the
+  object contains (e.g., a list might contain a particular value
+  as its first element), or they may describe the object (e.g., a
+  book has a title).
+</para>
+
+<para>
+  Each field declaration has three parts: 
+</para>
+
+<itemizedlist>
+  <listitem>
+    The <emphasis>name</emphasis> of the field.
+  </listitem>
+
+  <listitem>
+    The <emphasis>type</emphasis> of the field.  That is, the kinds
+    of values it can take on.
+  </listitem>
+
+  <listitem>
+    An optional <emphasis>protection level</emphasis>.  We won't specify 
+    protection levels right now.
+  </listitem>
+</itemizedlist>
+
+<para>
+  Field declarations have the form:
+</para>
+
+<programlisting>
+<emphasis>protection</emphasis> <emphasis>Type</emphasis> <emphasis>name</emphasis>;
+</programlisting>
+
+<para>
+  For example, to say that we have a field named <code>title</code>
+  with type <code>String</code> and the standard package protection,
+  we would write
+</para>
+
+<programlisting>
+String title;
+</programlisting>
+
+<para>
+  The custom in Java is to have field names begin with a lower case
+  letter.  When you reference an object's fields within that object,
+  you typically preface the name of the field with the keyword
+  <code>this</code>.  For example, we would refer to the
+  <code>title</code> field as <code>this.title</code>.  (Ideally,
+  you will only drectly reference an object's fields within that
+  object.)
+</para>
+
+<para> 
+  You may note that field declarations look a lot like variable
+  declarations.  However, they differ in a number of ways.  First,
+  variable declarations are nested within method definitions;
+  field declarations appear directly within the class definition.
+  Next, variables are available only within the declaring method,
+  while fields are available to any method in the class.  Finally,
+  fields have protection levels, variables do not.
+</para>
+
+<para>
+  You may also note that field declarations look a lot like global
+  variable declarations within a utility class.  Global variables
+  look much like field declarations, except that they also have the 
+  keyword <code>static</code>.  Global variables are accessible to
+  all the static methods of a class and all the object methods in a
+  class.  (In contrast, fields are available only to objects, not
+  to state methods.)
+</para>
+
+</section>  <!-- fields -->
+
+<section id="vector-fields"><title>An Example: A Vector in Two-Space</title>
+
+<para>
+  As an example, let's consider a simple class that we see in many
+  sciences, a vector in two space rooted at the origin.  If you
+  have no idea what a vector in two space is, think of it as a line
+  from the origin, (0,0), to a point, (x,y).
+</para>
+
+<para>
+  What fields might we have for a vector in two space?  One possibility
+  is to have the location of the head, that is, the x and y coordinates.
+  Another is to use the angle of the vector from the positive x axis
+  and the radius.  Which do we choose?  It depends on our application.
+  (In fact, you will find that choosing the appropriate fields is one
+  of the difficult aspects of object design.)  For now, let's just
+  use the radius and the angle.
+</para>
+
+<programlisting>
+    /** The length of the vector. */
+    double radius;
+    /** The angle of the vector from the positive X axis in radians. */
+    double theta;
+</programlisting>
+
+</section>  <!-- vector-fields -->
+
+<section id="constructors"><title>Constructors</title>
+
+<para>
+  How do the fields of a new object get set?  Traditionally, they
+  get initialized when you build (or <quote>construct</quote>) a
+  new object in the class.  To initialize the fields, you write
+  something called a <emphasis>constructor</emphasis> that fills
+  in those fields (and, perhaps, does other initialization).
+</para>
+
+<para>
+  The form of a constructor is fairly simple,
+</para>
+
+<programlisting>
+<emphasis>protection</emphasis> <emphasis>NameOfClass</emphasis>(<emphasis>parameters</emphasis>) <emphasis>OptionalThrowsClause</emphasis> {
+  <emphasis>body</emphasis>;
+} // <emphasis>NameOfClass</emphasis>(<emphasis>ParameterTypes</emphasis>)
+</programlisting>
+
+<para>
+  The body of the constructor contains a sequence of imperative
+  operations to fill in the fields and do other initialization.
+  The parameters provide the information necessary to fill in those
+  fields.
+</para>
+
+<para>
+  As you have seen, you typically call a constructor using the
+  <code>new</code> keyword, as in
+</para>
+
+<programlisting>
+PrintWriter pen = new PrintWriter(System.out, true);
+</programlisting>
+
+<para>
+  or
+</para>
+
+<programlisting>
+Vec2D alpha = new Vec2D(Math.PI/2, 1.0);
+</programlisting>
+
+</section>  <!-- constructors -->
+
+<section id="constructing-vectors"><title>Constructing Vectors</title>
+
+<para>
+  For the case of vectors in two-space, we might want an angle
+  and a radius to build a vector.  Here's the definition of 
+  such a constructor, assuming that we've called the class
+  <code>Vec2D</code>.
+</para>
+
+<programlisting>
+/**
+ * Create a new vector with angle _theta and radius _radius.
+ */
+public Vec2D(double _theta, double _radius) {
+    this.theta = _theta;
+    this.radius = _radius;
+} // Vec2D(double, double)
+</programlisting>
+
+<para>
+  You'll note that I've given the parameters similar names to the
+  fields, the main difference being that they begin with an underscore.
+  You may choose whatever name you want for the parameters, but I 
+  find that when the parameters match the fields, it's convenient
+  to choose similar names.  Note that Java is very lenient about naming,
+  so you could also have named these parameters <code>theta</code> and
+  <code>radius</code> and it would have distinguished those parameters
+  from the field.  But I find programmers get confused more more easily
+  than Java.
+</para>
+
+<para>
+  Once we've designed the constructor, we might call it as follows.
+</para>
+
+<programlisting>
+    Vec2D alpha = new Vec2D(Math.PI/2, 1.0);
+</programlisting>
+
+<para>
+  We can create more than one constructor.  In this case, we might
+  also want to permit clients to construct a unit vector (that is,
+  with a radius of 1.0) at any angle.
+</para>
+
+<programlisting>
+/**
+ * Create a unit vector with angle _theta.
+ */
+public Vec2D(double _theta) {
+  this.theta = _theta;
+  this.radius = 1.0;
+} // Vec2D(double)
+</programlisting>
+
+<para>
+  We can call this constructor with
+</para>
+
+<programlisting>
+  Vec2D northeast = new Vec2D(Math.PI/4);
+</programlisting>
+
+<para>
+  We might even want to permit clients to construct vectors given
+  the x and y position of the head of the vector.  It would be
+  tempting to write such a constructor as
+</para>
+
+<programlisting>
+/**
+ * Create a new vector from (0,0) to (x,y).
+ */
+public Vec2D(double x, double y) {
+    this.theta = Math.atan(y/x);
+    this.radius = Math.sqrt(x*x + y*y);
+} // Vec2D(double, double)
+</programlisting>
+
+<para>
+  Unfortunately, Java will not permit you to write two constructors
+  that take identical types as parameters.  After all, if the
+  constructors have the same names and the same types, Java will
+  be unable to tell which one you mean.  What is the alternative?
+  We can create a special method that builds the vector (which we
+  describe below) or we can choose different parameter types.
+</para>
+
+<programlisting>
+/**
+ * Create a new vector from (0,0) to (x,y).
+ */
+public Vec2D(int x, int y) {
+  this.theta = Math.atan(((double) y)/((double) x));
+  this.radius = Math.sqrt(x*x + y*y);
+} // Vec2D(int, int)
+</programlisting>
+
+</section>  <!-- constructing-vectors -->
+
+<section id="methods"><title>Object Methods</title>
+
+<para>
+  Finally, we're ready to consider the methods of the class.
+  Object methods look much like static methods, except that
+  (a) they do not require the keyword <code>static</code>
+  and (b) they can refer to the fields of the class.
+</para>
+
+<para>
+  The general form of an object method is
+</para>
+
+<programlisting>
+/**
+ * <emphasis>Helpful introductory comment.</emphasis>
+ */
+<emphasis>protection</emphasis> <emphasis>Type</emphasis> <emphasis>methodName</emphasis>(<emphasis>parameters</emphasis>) <emphasis>optionalThrowsClause</emphasis> {
+  <emphasis>body</emphasis>;
+} // <emphasis>methodName</emphasis>(<emphasis>parameterTypes</emphasis>)
+</programlisting>
+
+<para>
+  Calling a method is fairly simple: You write the name of the
+  object (that you've already constructed), followed by the
+  name of the method, followed by parameters.  For example,
+</para>
+
+<programlisting>
+pen.println("Hi!");
+</programlisting>
+or
+<programlisting>
+Vec2D newvec = alpha.add(northeast);
+</programlisting>
+
+</section>  <!-- methods -->
+
+<section id="vec2d-methods"><title>Some Methods for 2D Vectors</title>
+
+<para>
+  The simplest methods that we can call are the methods that
+  extract simple information from an object.  Such methods are
+  typically called <quote>observers</quote> or, when the extracted
+  information matches a field, <quote>getters</quote>.  Here's one
+  that gets the radius.
+</para>
+
+<programlisting>
+/**
+ * Determine the radius of this vector.
+ */
+public double getRadius() {
+    return this.radius;
+} // getRadius()
+</programlisting>
+
+<para>
+  Similarly, here's one that gets the angle from the positive
+  x axis.
+</para>
+
+<programlisting>
+/**
+ * Determine the angle of this vector from the positive x axis.
+ */
+public double getTheta() {
+    return this.theta;
+} // getTheta()
+</programlisting>
+
+<para>
+  Here's a silly program fragment that uses those two methods.
+</para>
+
+<programlisting>
+int x = ...;
+int y = ...;
+Vec2D sample = new Vec2D(x,y);
+pen.println("Considering the point "(" + x + "," + y + ")");
+pen.println("  That point is " + sample.getRadius() 
+            + " units from the origin.");
+pen.println("  The angle between the X-axis and the line to that point is "
+            + sample.getTheta());
+</programlisting>
+
+<para>
+  We can certainly write methods that compute new values, too.
+</para>
+
+<programlisting>
+/**
+ * Compute the x position of the head of this vector.
+ */
+public double getX() {
+    return this.radius * Math.cos(this.theta);
+} // getX()
+</programlisting>
+
+<para>
+  We can even write methods that build new objects.
+</para>
+
+<programlisting>
+/**
+ * Create a new vector that is twice as long as this vector.
+ */
+public Vec2D double() {
+    return new Vec2D(this.getTheta(), this.getRadius()*2);
+} // double
+</programlisting>
+
+<para>
+  Given that we can build new objects, we might even write static methods
+  that act very much like constructors.  (As mentioned above, this approach
+  is one of the ways we can deal with wanting multiple constructors that
+  have the same parameter types.)
+</para>
+
+<programlisting>
+/**
+ * Build a vector to the point (x,y)
+ * @pre
+ *   x != 0
+ */
+public static Vec2D vectorTo(double x, double y) {
+    return new Vec2D(Math.atan(y/x), Math.sqrt(x*x + y*y));
+} // vectorTo(double,double)
+</programlisting>
+
+<para>
+  We can even use these techniques to write a method that uses
+  the current information and constructor-like methods to build
+  new objects.
+</para>
+
+<programlisting>
+/**
+ * Add another vector to this vector.  
+ */
+public Vec2D add(Vec2D addend) {
+  return Vec2D.vectorTo((this.getX() + addend.getX()),
+                        (this.getY() + addend.getY()));
+} // add(Vec2D)
+</programlisting>
+
+<para>
+  You may have noted that we didn't write any mutators.  While mutators
+  are useful and necessary in many situations, for elements like vectors
+  we often find it more useful to build <emphasis>immutable</emphasis>
+  values that retain their values.
+</para>
+
+</section>  <!-- vec2d-methods -->
+
+</section>  <!-- classes -->
