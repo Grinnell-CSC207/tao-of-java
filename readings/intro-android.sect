@@ -1,12 +1,20 @@
-<section id="introtoandroid"><title>INTRODUCTION TO ANDROID</title>
+<section id="intro-android"><title>An Introduction to Android Development</title>
 
-<section id="settingup"><title>1. Setting up your first Android Application Project</title>
+<section id="settingup"><title>Setting up your first Android Application Project</title>
 
 <para>
-a) Getting the tools
-Before we even begin wrapping our heads around the jungle that is app development for the Android platform, we have to get some new tools for our Eclipse IDE. We can get all the resources (both the tools, and helpful advice) we need from the Android developers at developer.android.com .  There's a very straightforward process for installing the Android SDK (Software Development Kit) whether you already have Eclipse or not. Navigate to: http://developer.android.com/sdk/index.html , choose the appropriate installation, download the the ADT Bundle or the SDK Tools, follow the instructions, and you're ready to go. 
+  Before we even begin wrapping our heads around the jungle that is
+  app development for the Android platform, we have to get some new
+  tools for our Eclipse IDE. We can get all the resources (both the
+  tools, and helpful advice) we need from the Android developers
+  at developer.android.com .  There's a very straightforward
+  process for installing the Android SDK (Software Development
+  Kit) whether you already have Eclipse or not. Navigate to:
+  http://developer.android.com/sdk/index.html , choose the appropriate
+  installation, download the the ADT Bundle or the SDK Tools, follow
+  the instructions, and you're ready to go.
 </para>
- 
+
 <para>
 b) Creating an Android Application Project
 Making an Android application project is very different from creating a normal Java project. Fortunately for us, the plugin generates all the necessary files we need, and the difference is abysmal. Creating a Java project, you omit certain configurations, and you don't generate template or dummy files at all. You also only link against the Java language jar and not the Android + Support Library jars. Android's ant configuration file does quite a bit under the hood.
@@ -34,7 +42,7 @@ Android Application Project
 </para>
 
 <para>
-c) <emphasis>Setting up</emphasis>
+<emphasis>Setting up</emphasis>
 In this reading we'll make a simple About Me application that displays someone's username and a bit of textual information about them on the screen.
 </para>
 
