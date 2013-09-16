@@ -1,16 +1,23 @@
-<section id="firstandroidproject"><title>Laboratory: Your first Android Application Project</title>
+<section id="first-android"><title>Laboratory: Your First Android Project</title>
 
 <para>
-In this laboratory you will learn how to create Android Application Projects. You'll learn what the basic components of an app are, how to modify them, and finally how to run your application.
+  In this laboratory you will learn how to create Android applications,
+  as well as Android Application Projects in Eclipse. You'll learn what the
+  basic components of an app are, how to modify them, and finally how
+  to run your application.
 </para>
 
-<section id="exercise0"><title>Exercise 0: Prerequisite </title>
+<section id="first-android-prep"><title>Preparation</title>
 
 <para>
-a) Make sure you've completed and understood the reading, Introduction To Android.
+  Make sure you've completed and understood the reading, Introduction
+  To Android.
 </para>
 
-</section> <!-- exercise0 -->
+</section> <!-- first-android-prep -->
+
+<section id="first-android-exercises"><title>Exercises</title>
+
 <section id="exercise1"><title>Exercise 1: Create your first application</title>
 
 <para>
@@ -147,4 +154,7 @@ f) Change the manifest file back to its original state, to make sure the app com
 g) Add a new item to the main menu xml. What happens when you compile and run the app?
 </para>
 </section> <!-- exercise5 -->
-</section> <!-- firstandroidproject -->
+
+</section> <!-- first-android-exercises -->
+
+</section> <!-- first-android -->
