@@ -24,15 +24,15 @@
 
 <itemizedlist>
   <listitem>
-    <ulink url="{$javaapi}java/lang/Integer.html"><code>java.lang.Integer</code></ulink>
+    <ulink url="&javapi;/java/lang/Integer.html"><code>java.lang.Integer</code></ulink>
   </listitem>
 
   <listitem>
-    <ulink url="{$javaapi}java/lang/String.html"><code>java.lang.String</code></ulink>
+    <ulink url="&javapi;/java/lang/String.html"><code>java.lang.String</code></ulink>
   </listitem>
 
   <listitem>
-    <ulink url="{$javaapi}java/math/BigInteger.html"><code>java.math.BigInteger</code></ulink>
+    <ulink url="&javapi;/java/math/BigInteger.html"><code>java.math.BigInteger</code></ulink>
   </listitem>
 </itemizedlist>
 
