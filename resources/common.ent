@@ -1,3 +1,5 @@
 <!ENTITY title-prefix "">
 <!ENTITY trade "&#x2122;">
 <!ENTITY eof "#&lt;eof&gt;">
+<!ENTITY javapi "http://docs.oracle.com/javase/7/docs/api">
+<!ENTITY javaapi "http://docs.oracle.com/javase/7/docs/api">
