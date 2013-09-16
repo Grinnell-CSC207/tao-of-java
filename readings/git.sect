@@ -331,7 +331,7 @@
       Web browser's bar.
     </para>
     <para>
-      <imagedata fileref="../images/git-url-bar.png" format="PNG"/>
+      <imagedata fileref="../images/git-url-bar.png" format="PNG" width="100%"/>
     </para>
   </listitem>
 
@@ -394,8 +394,10 @@
 
   <listitem>
     Click the button in the upper right-hand corner that says
-    <guibutton>fork</guibutton>.
+    <guibutton>Fork</guibutton>.
+<para>
     <imagedata fileref="../images/git-fork.png" format="PNG"/>
+</para>
   </listitem>
 
   <listitem>
