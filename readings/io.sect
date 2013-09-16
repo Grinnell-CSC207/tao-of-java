@@ -1,19 +1,19 @@
 <section id="io"> <title>Basic Textual Input and Output in Java</title>
 
 <para>
-<emphasis>Summary:</emphasis> We introduce (or re-introduce) the basics of
-input and output in Java, including input from the keyboard and files,
-and output to the screen and to files.
+  <emphasis>Summary:</emphasis> We introduce (or re-introduce) the basics of
+  input and output in Java, including input from the keyboard and files,
+  and output to the screen and to files.
 </para>
 
 <emphasis>Important Classes</emphasis>
 
 <itemizedlist>
-<listitem><ulink url="{$javaapi}java/io/BufferedReader.html"><code>java.io.BufferedReader</code></ulink></listitem>
-<listitem><ulink url="{$javaapi}java/io/FileReader.html"><code>java.io.FileReader</code></ulink></listitem>
-<listitem><ulink url="{$javaapi}java/io/File.html"><code>java.io.File</code></ulink></listitem>
-<listitem><ulink url="{$javaapi}java/io/InputStreamReader.html"><code>java.io.InputStreamReader</code></ulink></listitem>
-<listitem><ulink url="{$javaapi}java/io/PrintWriter.html"><code>java.io.PrintWriter</code></ulink></listitem>
+<listitem><ulink url="&javapi;/java/io/BufferedReader.html"><code>java.io.BufferedReader</code></ulink></listitem>
+<listitem><ulink url="&javapi;/java/io/FileReader.html"><code>java.io.FileReader</code></ulink></listitem>
+<listitem><ulink url="&javapi;/java/io/File.html"><code>java.io.File</code></ulink></listitem>
+<listitem><ulink url="&javapi;/java/io/InputStreamReader.html"><code>java.io.InputStreamReader</code></ulink></listitem>
+<listitem><ulink url="&javapi;/java/io/PrintWriter.html"><code>java.io.PrintWriter</code></ulink></listitem>
 </itemizedlist>
 
 <emphasis>Prerequisites:</emphasis> Basics of Java.
@@ -21,146 +21,208 @@ and output to the screen and to files.
 <section id="about-io"> <title>Input and Output</title>
 
 <para>
-In the early days of computing, programs were run only in <emphasis>batch</emphasis> mode.  That is, you would start the program, wait for it to compute results (or crash), and then read the results (or error log).  Initially, programmers coded any values the program would use directly into the program.  Soon thereafter, however, they realized that it was far more general to place the input to a program (and the output from a program) in separate files.  
+  In the early days of computing, programs were run only in
+  <emphasis>batch</emphasis> mode.  That is, you would start the program,
+  wait for it to compute results (or crash), and then read the results
+  (or error log).  Initially, programmers coded any values the program
+  would use directly into the program.  Soon thereafter, however, they
+  realized that it was far more general to place the input to a program
+  (and the output from a program) in separate files.
 </para>
 
 <para>
-With the advent of interactive computing systems, it became even more
-important for programs to be able to read input from a variety of sources and to send output to a variety of targets.  In early interactive systems, most input was based on text that came from the keyboard and that went to a monitor or printer that showed only alphanumeric characters.  Hence, the focus of early input and output commands was textual input and output.
+  With the advent of interactive computing systems, it became even more
+  important for programs to be able to read input from a variety of sources
+  and to send output to a variety of targets.  In early interactive systems,
+  most input was based on text that came from the keyboard and that
+  went to a monitor or printer that showed only alphanumeric characters.
+  Hence, the focus of early input and output commands was textual input
+  and output.  
 </para>
 
 <para>
-Event with the creation of modern window-based systems, in which input can come from mice, touchscreens, and a variety of other devices and output can be graphical and auditory as well as textual, it is still useful to be able to read and write text, if only to save comments to a log and to gather data from a file.  
+  Even with the creation of modern window-based systems, in which input
+  can come from mice, touchscreens, and a variety of other devices and
+  output can be graphical and auditory as well as textual, it is still
+  useful to be able to read and write text, if only to save comments to
+  a log and to gather data from a file.
 </para>
 
 <para>
-In many of the exercises in <emphasis>Espresso</emphasis>, we will focus on text-based
-input and output.  It is therefore important to learn textual
-input and output.  In this reading (and the corresponding lab), we will
-explore the basics of textual input and output.
+  While there are a variety of graphical input and output mechanisms,
+  it is still useful to be able to do basic textual input and output.
+  input and output.  In this reading (and the corresponding lab), we will
+  explore the basics of textual input and output.
 </para>
+
 </section> <!-- About -->
 
 <section id="output"> <title>Output Basics</title>
 
 <para>
-You should already know most of what you need to know about simple output
-in Java.  The primary kind of object for output (at least the most basic
-output) is a <code>java.io.PrintWriter</code>.  You can create PrintWriters
-that print to the screen and PrintWriters that print to a file.
+  You should already know most of what you need to know about simple output
+  in Java.  The primary kind of object for output (at least the most basic
+  output) is a <code>java.io.PrintWriter</code>.  You can create PrintWriters
+  that print to the screen and PrintWriters that print to a file.
 </para>
 
 <para>
-To create a PrintWriter for the sceen, use something the following.
-<code>
+  To create a PrintWriter for the sceen, use something the following.
+</para>
+
+<programlisting>
 java.io.PrintWriter pen;
 pen = new java.io.PrintWriter(System.out, true);
-</code>
-</para>
+</programlisting>
 
 <para>
-Two shorthands can simplify this code.  First, if you import <code>java.io.PrintWriter</code>, you need only provide the basic class name.  Second, you can put assignment on the same line as declaration.  The result is therefore
-<code>
+  Two shorthands can simplify this code.  First, if you import
+  <code>java.io.PrintWriter</code>, you need only provide the basic class
+  name.  Second, you can put assignment on the same line as declaration.
+  The result is therefore
+</para>
+
+<programlisting>
 PrintWriter pen = new PrintWriter(System.out, true);
-</code>
-</para>
+</programlisting>
 
 <para>
-Preparing a PrintWriter for a file is nearly as simple.  First, you must create an object in class <code>java.io.File</code>.  Second, you build a new <code>PrintWriter</code> with that file as a parameters.  In verbose form,
-<code>
+  Preparing a <code>PrintWriter</code> for a file is nearly as simple.
+  First, you must create an object in class <code>java.io.File</code>.
+  Second, you build a new <code>PrintWriter</code> with that file as
+  a parameters.  In verbose form,
+</para>
+
+<programlisting>
 java.io.File outfile;
 java.io.PrintWriter pen;
 outfile = new java.io.File("<emphasis>name-of-file</emphasis>");
 pen = new java.io.PrintWriter(outfile);
-</code>
-</para>
+</programlisting>
 
 <para>
-Custom suggests that you <code>close</code> a File when you're done with it.
+  Custom suggests that you <code>close</code> a file when you're done with it.
 </para>
 
-<para>
-<code>
+<programlisting>
 pen.close();
-</code>
+</programlisting>
+
+<para>
+  One benefit of creating the same kind of object for either kind of
+  output is that it's very easy to update your program to write to a
+  file instead of to the screen (or vice versa).
 </para>
 
 <para>
-One benefit of creating the same kind of object for either kind of output
-is that it's very easy to update your program to write to a file instead
-of to the screen (or vice versa).
+  You may find that the <code>PrintWriter</code> output methods don't
+  quite behave the way you expect.  That is, you may print something
+  but it won't immediately appear on the screen.  (This behavior is
+  particularly painful when you are prompting the user.)  Many programmers
+  find the delayed printing of <methodname>print</methodname> somewhat
+  confusing.  After all, you've told the <code>PrintWriter</code> to
+  print, so why doesn't it do so immediately?  It turns out that for
+  some applications, it is much more efficient to delay printing until
+  a certain amount of text has been printed.  The designers of Java,
+  like many designers before them, decided to make <quote>wait until
+  there's enough to write</quote> the default behavior and provided a
+  special procedure named <methodname>flush</methodname> for those who
+  want different behavior.  When creating a new <code>PrintWriter</code>,
+  you can set it to <quote>autoflush</quote>, which means that it flushes
+  the output buffer whenever you print a newline.
 </para>
 
 <para>
-PrintWriters provide a few basic methods:
+  <code>PrintWriter</code> objects provide a few basic methods:
+</para>
+
 <itemizedlist>
-<listitem><code>print(<emphasis>what-to-print</emphasis>)</code>: Queue for printing the given value to the appropriate destination.  Does not print a carriage return, so subsequent output will appear on the same line.</listitem>
-<listitem><code>println(<emphasis>what-to-print</emphasis>)</code>: Print the given value to the appropriate destination followed by a carriage return.  Normally <quote>flushes</quote> the output.</listitem>
-<listitem><code>println()</code>: Print a carriage return.  Normally <quote>flushes</quote> the output.</listitem>
-<listitem><code>flush()</code>: Finishes printing anything queued by <code>print</code>.</listitem>
-</itemizedlist>
-</para>
+  <listitem>
+    <code>print(<emphasis>what-to-print</emphasis>)</code>: Queue for printing 
+    the given value to the appropriate destination.  Does not print a 
+    carriage return, so subsequent output will appear on the same line.
+  </listitem>
 
-<para>
-Many programmers find the delayed printing of <code>print</code>
-somewhat confusing.  After all, you've told the PrintWriter to print,
-so why doesn't it do so immediately?  It turns out that for some
-applications, it is much more efficient to delay printing until a
-certain amount of text has been printed.  The designers of Java, like
-many designers before them, decided to make <quote>wait until there's enough
-to write</quote> the default behavior and provided <code>flush</code>
-for those who want different behavior.
-</para>
+  <listitem>
+    <code>println(<emphasis>what-to-print</emphasis>)</code>: Print the
+    given value to the appropriate destination followed by a carriage
+    return.  The <methodname>println</methodname> procedure 
+    <quote>flushes</quote> the output only if you've created the
+    <code>PrintWriter</code> with the autoflush flag set to true.
+  </listitem>
 
-</section> <!-- Exercise Output -->
+  <listitem>
+    <code>println()</code>: Print a carriage return.
+  </listitem>
+
+  <listitem>
+    <code>flush()</code>: Finishes printing anything queued by
+   <code>print</code> (and by <methodname>println</methodname>
+   if autoflush is not set.
+ </listitem> 
+
+ <listitem>
+   <code><methodname>format</methodname>(<parameter>format-string</parameter>,
+     <parameter>value</parameter>, ..., <parameter>value</parameter>)</code>:
+     Print values using a <function>printf</function>-style
+     format string.
+ </listitem>
+</itemizedlist> 
+
+</section> <!-- output -->
 
 <section id="input"> <title>Input Basics</title>
 
 <para>
-Most simple input in Java is done using objects from class
-<code>java.io.BufferedReader</code>.  As you might expect,
-you can create buffered readers that read from the keyboard and
-buffered readers that read from files.  However, before creating
-a BufferedReader, 
-you must create an intermediate object, either an
-<code>java.io.InputStreamReader</code> or a
-<code>java.io.FileReader</code>.  
+  Most simple input in Java is done using objects from class
+  <code>java.io.BufferedReader</code>.  As you might expect,
+  you can create buffered readers that read from the keyboard and
+  buffered readers that read from files.  However, before creating
+  a <code>BufferedReader</code>, you must create an intermediate
+  object, either an <code>java.io.InputStreamReader</code> or a
+  <code>java.io.FileReader</code>.
 </para>
 
 <para>
-For example, to create an object to read from the keyboard, you would use code like the following
-<code>
+  For example, to create an object to read from the keyboard, you would
+  use code like the following
+</para>
+
+<programlisting>
 java.io.BufferedReader eyes;
 java.io.InputStreamReader istream;
 istream = new java.io.InputStreamReader(System.in);
 eyes = new java.io.BufferedReader(istream);
-</code>
-</para>
+</programlisting>
 
 <para>
-Similarly, to create an object to read from a file, you would use
-code like the following
-<code>
+  Similarly, to create an object to read from a file, you would use
+  code like the following
+</para>
+
+<programlisting>
 java.io.File infile;
 java.io.FileReader istream;
 infile = new java.io.File(<emphasis>name-of-file</emphasis>);
 istream = new java.io.FileReader(infile);
 eyes = new BufferedReader(istream);
-</code>
+</programlisting>
+
+<para>
+  Note that the names you choose for your objects need not match
+  the ones that I've chosen.
 </para>
 
 <para>
-Note that the names you choose for your objects need not match
-the ones that I've chosen.
+  <code>BufferedReader</code> objects provide a variety of basic methods.
+  You can use <methodname>read</methodname> to read a single character and
+  <methodname>readLine</methodname> to read the next line of input and
+  returns it as a string.  The line read does not include the carriage
+  return or line feed that typically ends lines.  You typically assign
+  the line read to a variable, as in
 </para>
 
-<para>
-BufferedReaders provide one basic method: <code>readLine()</code>.
-This method reads the next line of input and returns it as a string.
-The line read does not linclude the carriage return or line feed that
-typically ends lines.  You typically assign the line read to a variable,
-as in 
-<code> 
+<programlisting> 
 // Declarations
 ...
 String name; 
@@ -168,53 +230,56 @@ String name;
 // Commands
 ...
 name = eyes.readLine(); 
-</code>
-</para>
+</programlisting>
 
 <para>
-You may, of course, also use the line read as you may use any string,
-such as to print it out directly.
-<code>
+  You may, of course, also use the line read as you may use any string,
+  such as to print it out directly.
+</para>
+
+<programlisting>
 pen.println(eyes.readLine());
-</code>
-</para>
+</programlisting>
 
 <para>
-When you're done with input, you should close it, just as you close
-output.
+  When you're done with input, you should close it, just as you close
+  output.
 </para>
 
-<para>
-<code>
-pen.close();
-</code>
-</para>
+<programlisting>
+eyes.close();
+</programlisting>
 
 </section> <!-- Exercise Input -->
 
 <section id="rewinding"> <title>Rewinding Input</title>
 
 <para>
-One nice part about <code>BufferedReader</code> objects is that they
-permit you to <quote>back up</quote> in the input file.  As you will note from
-<ulink url="http://java.sun.com/j2se/1.5.0/docs/api/java/io/BufferedReader.html">the documentation</ulink>, you can use <code>mark</code> to indicate a place
-to which you will rewind and <code>reset</code> to rewind to that place.
-Note that <code>mark</code>  takes one parameter, <code>readAheadLimit</code>,
-a number that indicates the maximum number of characters that will be read
-before the next call to <code>reset</code>.  For example, here is some
-silly code that reads two lines from a file and then prepares to read the
-first of the two lines again.
+  One nice part about <code>BufferedReader</code> objects is that they
+  permit you to <quote>back up</quote> in the input file.  As you will note from
+  <ulink url="&javapi;/java/io/BufferedReader.html">the documentation</ulink>, 
+  you can use <code>mark</code> to indicate a place
+  to which you will rewind and <code>reset</code> to rewind to that place.
+  Note that <code>mark</code>  takes one parameter, <code>readAheadLimit</code>,
+  a number that indicates the maximum number of characters that will be read
+  before the next call to <code>reset</code>.  For example, here is some
+  silly code that reads two lines from a file and then prepares to read the
+  first of the two lines again.
 </para>
 
-<para>
-<code>
+<programlisting>
 eyes.mark(1024);
 pen.println(eyes.readLine());
 pen.println(eyes.readLine());
 eyes.reset();
-</code>
+</programlisting>
+
+<para>
+  Why would you want to rewind input?  Typically, because you want to
+  look ahead for some value to determine how best to parse the input.
+  But there are a host of other reasons.
 </para>
 
-</section>  <!-- Exercise Rewinding -->
+</section>  <!-- rewinding -->
 
-</section> <!-- IO Lab -->
+</section> <!-- io -->
