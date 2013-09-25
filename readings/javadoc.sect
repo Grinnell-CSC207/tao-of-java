@@ -211,114 +211,127 @@
 
 </section> <!--five-ps-->
 
-<section id="javadocs"><title>What are Javadocs?</title>
+<section id="javadoc"><title>What is Javadoc?</title>
 
 <para>
-  Javadoc is a documentation generator from Oracle. It transforms the documentation we give each method and
-  generates a nice, uniformly formatted HTML output. We call the actual comments we put in Eclipse to   
-  document our code <emphasis>Doc Comments</emphasis>. We can document pretty much everything for any method with them. Doc Comments tell us what each parameter does, what the method returns, and if it throws any exceptions (they handle errors in specific cases). 
-</para>
-
-<para>
-  Here’s an example of Javadoc documentation in action.
-</para>
-<para>
-  <emphasis><imagedata fileref="../images/Javadoc1.png" format="PNG"/></emphasis> 
-</para>
-<para>
-  To create Doc Comments you need to preface them with <code>/**</code> and end with <code>*/</code>
-  This will turn the comments blue. 
+  When documenting Java code, programmers traditionally use a format
+  called <quote>Javadoc</quote>.  Javadoc is a documentation generator
+  developed alongside the  Java programming language.  (So, it was
+  originally from Sun and is now from Oracle.)  Javadoc transforms the
+  documentation we give each method and creates nice, uniformly formatted
+  HTML output.  The Javadoc-style comments that we include in our code
+  are called <quote>doc comments</quote>.  You can have a doc comment for
+  each field, constant, method, class, interface, and such.  For methods,
+  doc comments tell us what each parameter does, what the method returns,
+  and if it throws any exceptions (they handle errors in specific cases).
 </para>
 
 <para>
-  One odd aspect of Javadoc is that you indicate special aspects of your documentation with tags that begin 
-  with an at sign. In the sample above, you see <code>@pre</code>, <code>@post</code>, and 
+  How does the Javadoc processor know that you have doc comments?
+  It looks for comments that begin with with <code>/**</code> and end
+  with <code>*/</code>.  In Eclipse, this notation should turn the 
+  comments blue.
+</para>
+
+<para>
+  In Javadoc, you indicate special aspects of your documentation
+  with <emphasis>tags</emphasis> that begin with an at sign. In the
+  sample above, you see <code>@pre</code>, <code>@post</code>, and
   <code>@param</code>. Other important tags include:
 </para>
 
 <itemizedlist>
   <listitem>
-    <code>@author</code> - the author of the class. This should only be included in the Javadoc comment for 
-    the whole class
+    <code>@author</code> - the author of the class. This tag should only be
+    included in the Javadoc comment for the whole class
   </listitem>
+
   <listitem>
-    <code>@version</code> - the version of the class (date). As above, only include in the Javadoc comment 
-    for the whole class
+    <code>@version</code> - the version of the class (date).  As above, only 
+    include in the Javadoc comment for the whole class
   </listitem>
+
   <listitem>
     <code>@return</code> - what the method returns and its type
   </listitem>
+
   <listitem>
-    <code>@exception NameOfException</code> - when and why the method throws that exception
+    <code>@exception NameOfException</code> - when and why the method 
+    throws that exception
   </listitem>
 </itemizedlist>
 
 <para>
-  In our example, we've included <code>@pre</code> and <code>@post</code>.  These are custom tags that we 
-  must create on our own in Eclipse. To do this, we write our Javadocs with <code>@pre</code> and 
-  <code>@post</code> added as shown. With our project or class (for which we want to generate the Javadoc) 
-  highlighted, we go to <guimenu>Project</guimenu> <guimenuitem> > Generate Javadoc...</guimenuitem>. We 
-  make sure that we’re generating the Javadoc for the right document. Normally we would just click Finish 
-  and let Eclipse do its job, but this first time we want to click Next and Next again.
+  In our example, we've included <code>@pre</code> and <code>@post</code>.
+  These are custom tags that we must create on our own. To do
+  this, we write our Javadoc comments with <code>@pre</code> and
+  <code>@post</code> added as shown.  In Eclipse, With our project
+  or class (for which we want to generate the Javadoc) highlighted,
+  we go to <guimenu>Project</guimenu> &gt; <guimenuitem> Generate
+  Javadoc...</guimenuitem>. We make sure that we’re generating the
+  Javadoc for the right document. Normally we would just click 
+  <guibutton>Finish</guibutton> and let Eclipse do its job.  However,
+  if we've added custom tags, we need to click <guibutton>Next</guibutton>
+  and <guibutton>Next</guibutton> again.
 </para>
 
 <para>
   Under Extra Javadoc Options we want to enter:
 </para>
-<literallayout> <!--This is me making up for not being able to find a newline tag-->
-<userinput> <!--may be the wrong tag-->
-  -tag pre:cm:"Preconditions:"
-  -tag post:cm:"Postconditions:"
-</userinput>
+<literallayout>-tag pre:cm:"Preconditions:"
+-tag post:cm:"Postconditions:"
 </literallayout>
 
 <para>
-  <emphasis><imagedata fileref="../images/Javadoc2.png" format="PNG"/></emphasis> 
+  <imagedata fileref="../images/Javadoc2.png" format="PNG"/>
 </para>
 
 <para>
-  A popup window will appear. Select Yes To All and make the Ant File when it prompts you for one. You’ve 
-  successfully created a Javadoc!  To see the Javadoc in a web browser, go to <guimenu>Navigate</guimenu> > 
-  <guimenuitem>Open Attached Javadoc</guimenuitem> 
+  A popup window will appear. Select <guibutton>Yes To All</guibutton> and
+  make the Ant File when it prompts you for one. You’ve successfully
+  created Javadoc documentation!  To see the documentation in a Web
+  browser, select <guimenu>Navigate</guimenu> &gt; <guimenuitem>Open Attached
+  Javadoc</guimenuitem>.
 </para>
 
 </section> <!--javadocs-->
 
-<section id="example"><title>A More Indepth Example</title>
+<section id="example"><title>An Extended Example</title>
 
 <para>
-  Since we haven’t written long and elaborate code yet, you might not see how useful Javadoc can really be.  
-  Let’s look at a larger project we’ll work on later in the semester. 
+  Since we haven’t written long and elaborate code yet, you might
+  not see how useful Javadoc can really be.  Let’s look at a larger
+  project we’ll work on later in the semester.
 </para>
 
 <para>
-  <emphasis><imagedata fileref="../images/Javadoc3.png" format="PNG"/></emphasis> 
-</para>
-
-<para>
-  <emphasis><imagedata fileref="../images/Javadoc4.png" format="PNG"/></emphasis> 
-</para>
-
-<para>
+  Here's a sample of the documentation we might produce.  Note that
+  we see a list of all of the classes we create in a nice summary.
   The package list presents us with an overview of all the classes in the package and links to each of 
   those classes’ documentation.
 </para>
 
 <para>
-  Here’s an example of how the documentation looks like for the DoublyLinkedList.
+  <imagedata fileref="../images/Javadoc4.png" format="PNG"/>
+</para>
+
+
+<para>
+  Here's what the documentation for one class looks like.
 </para>
 
 <para>
-  <emphasis><imagedata fileref="../images/Javadoc5.png" format="PNG"/></emphasis> 
+  <imagedata fileref="../images/Javadoc5.png" format="PNG" width="100%"/>
 </para>
 
 <para>
-  <emphasis><imagedata fileref="../images/Javadoc6.png" format="PNG"/></emphasis> 
+  <imagedata fileref="../images/Javadoc6.png" format="PNG" width="100%"/>
 </para>
 
 <para>
-  It looks like a less polished version of the <ulink url="http://docs.oracle.com/javase/7/docs/api/">
-  Java API</ulink>, but the skeleton is the same.
+  You'll note that this looks like a less polished version of the <ulink
+  url="http://docs.oracle.com/javase/7/docs/api/"> Java API</ulink>,
+  but the skeleton is the same.
 </para>
 
 </section> <!--example-->
@@ -333,6 +346,7 @@
   <listitem>Javadoc</listitem>
   <listitem>Javadoc tags</listitem>
   <listitem>Java API</listitem>
+  <listitem>Doc comment</listitem>
 </itemizedlist>
 
 </section>  <!-- javadoc-terms -->
@@ -369,7 +383,7 @@
 <section id="javadoc-explore"><title>Exploratory Questions</title>
 
 <orderedlist>
-  <listitem>...</listitem>
+  <listitem><emphasis>Forthcoming</emphasis></listitem>
 </orderedlist>
 
 </section> <!-- javadoc-explore -->
