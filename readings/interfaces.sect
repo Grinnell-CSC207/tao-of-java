@@ -1,0 +1,372 @@
+<section id="interfaces"><title>Separating <emphasis>What</emphasis> from <emphasis>How</emphasis>: Interfaces in Java</title>
+
+<para>
+  <emphasis role="strong">Summary:</emphasis> Good programming style
+  suggests that you decide <emphasis>what</emphasis> methods a class
+  provides before you decide <emphasis>how</emphasis> the class
+  will provide those methods.  In this reading, we consider Java's
+  <emphasis>interfaces</emphasis>, which encourage such separation.
+</para>
+
+<emphasis role="strong">Prerequisites:</emphasis> Class basics.
+
+<section id="intro"><title>Introduction: Separating the What from the How</title>
+
+<para>
+  As you should have discovered by now, a pair of key activities
+  in object-oriented design are describing classes of objects
+  and using objects from those classes.  I have also recommended
+  a particular strategy for designing classes: Start by deciding
+  <emphasis>what</emphasis> your class should do and then figure out
+  <emphasis>how</emphasis> to make the class do that.
+</para>
+
+<para>
+  Why do I (and most object-oriented designers) make the what/how
+  distinction?  First, because there's good evidence that programmers
+  cannot think carefully about a wide variety of issues simultaneously.
+  That is, if programmers have to think from the start about how they
+  are going to implement a class (and its methods), they may not think as
+  carefully about what methods it should provide.  Second, because there's
+  good evidence that programmers often decide upon the methods they will
+  provide based on their choice of how they will implement the class.
+  Third, because it's difficult to decide when rewriting a class what
+  methods are necessary and what methods are tied to the implementation.
+  Finally, because the what/how interface relates closely to the key
+  object-oriented concept of <emphasis>encapsulation</emphasis>.  That is,
+  because the clients of a class should only know what the class can do,
+  and not how the class does it, class designers should also carefully
+  distinguish the two.
+</para>
+
+</section>  <!-- intro -->
+
+<section id="java-interfaces"><title>Interfaces in Java</title>
+
+<para>
+  Many programming languages accept this important need to distinguish
+  between what a piece of code does and how it accomplishes that task,
+  and incorporate in the language a mechanism for distinguishing these
+  two key issues.  In Java, the primary mechanism for distinguising
+  what from how is something called an <emphasis>interface</emphasis>.
+  Interfaces contain only method headers (a method declaration without
+  the body) and, optionally, static fields.
+</para>
+
+<para>
+  Interface declarations look much like class declarations, except:
+  (1) interfaces use the keyword <code>interface</code>, rather than
+  the keyword <code>class</code>; (2) interfaces contain no constructors,
+  object fields, or static methods; (3) method declarations in interfaces
+  lack bodies.
+</para>
+
+<para>
+  Hence, an interface declaration looks much like the following:
+</para>
+
+<programlisting>
+public interface <emphasis>InterfaceName</emphasis> {
+    // +-----------+---------------------------------------------------------
+    // | Constants |
+    // +-----------+
+
+    // ...
+  
+    // +---------+-----------------------------------------------------------
+    // | Methods |
+    // +---------+
+
+    // ...
+
+} // interface <emphasis>InterfaceName</emphasis>
+</programlisting>
+
+<para>
+  For example, here is a portion of an interface declaration for a point 
+  in two-space.
+</para>
+
+<programlisting>
+/**
+ *  Vectors in two-space.
+ *
+ *  @author Samuel A. Rebelsky
+ *  @version 1.1 of September 2013
+ */
+public interface Point2D {
+    // +---------+-----------------------------------------------------------
+    // | Methods |
+    // +---------+
+
+    /**
+     * Get the X coordinate of the point.
+     */
+    public double getX();
+  
+    /**
+     * Get the Y coordinate of the point.
+     */
+    public double getY();
+
+    /**
+     * Get the distance of this point from the origin.
+     */
+    public double getDistanceFromOrigin();
+
+    /**
+     * Translate this point by deltaX in the x direction and 
+     * deltaY in the y direction.  Note that this method
+     * mutates the underlying point.
+     */
+    public void translate(double deltaX, double deltaY);
+
+    /**
+     * Make a copy of this point.
+     */
+    public Point2D clone();
+} // interface Point2D
+</programlisting>
+
+</section>  <!-- java-interfaces -->
+
+<section id="interfaces-and-classes"><title>Interfaces and Classes</title>
+
+<para>
+  What happens after you've defined an interface?  It's time to build
+  a class that corresponds to the interface.  When we build that class,
+  we tell Java that the class corresponds to the interface with the
+  <code>implements</code> keyword.  That is, we write
+</para>
+
+<programlisting>
+public class <emphasis>ClassName</emphasis> implements <emphasis>InterfaceName</emphasis> {
+  // ...
+} // class <emphasis>ClassName</emphasis>
+</programlisting>
+
+<para>
+  For example, if we chose to implement <code>Point2D</code> as a
+  class with a pair of fields, the x coordinate and the y coordinate,
+  we might write
+</para>
+
+<programlisting>
+/**
+ * An implementation of points in two space using an X coordinate
+ * and a Y coordinate.
+ *
+ * @author Samuel A. Rebelsky
+ *  @version 1.1 of September 2013
+ */
+public class Point2DPair implements Point2D {
+    // +--------+------------------------------------------------------------
+    // | Fields |
+    // +--------+
+
+    /**
+     * The x coordinate of the point
+     */
+    double x;
+
+    /**
+     * The y coordinate of the point.
+     */
+    double y;
+
+    // +--------------+------------------------------------------------------
+    // | Constructors |
+    // +--------------+
+
+    /**
+     * Create the point (x,y).
+     */
+    public Point2DPair(double x, double y) {
+        this.x = x;
+        this.y = y;
+    } // Point2DPair(double,double)
+
+    // +---------+-----------------------------------------------------------
+    // | Methods |
+    // +---------+
+
+    /**
+     * Get the X coordinate of the point.
+     */
+    public double getX() {
+        return this.x;
+    } // getX() 
+  
+    /**
+     * Get the Y coordinate of the point.
+     */
+    public double getY() {
+        return this.y;
+    } // getY()
+
+    /**
+     * Get the distance of this point from the origin.
+     */
+    public double getDistanceFromOrigin() {
+        return Math.sqrt(this.x*this.x + this.y*this.y);
+    } // getDistanceFromOrigin()
+
+    /**
+     * Translate this point by deltaX in the x direction and
+     * deltaY in the y direction.  Note that this method
+     * mutates the underlying point.
+     */
+    public void translate(double deltaX, double deltaY) {
+        this.x = this.x + deltaX;
+        this.y = this.y + deltaY;
+    } // translate(double, double)
+
+    /**
+     * Make a copy of this point.
+     */
+    public Point2D clone() {
+        return new Point2DPair(this.x, this.y);
+    } // clone()
+} // class Point2DPair
+</programlisting>
+
+</section>  <!-- interfaces-and-classes -->
+
+<section id="alternative-implementations"><title>Alternative Implementations</title>
+
+<para>
+  One particularly important aspect of Java's interface mechanism is
+  that you, as programmer, are not limited to only one implementation
+  per interface.  That is, you can implement the same interface in
+  multiple ways and then later choose with implementation is best for
+  a particular task.  For example, if we found that we were frequently
+  checking the distance of points from the origin, we might instead
+  choose to implement them as a radius/theta pair.
+</para>
+
+<programlisting>
+/**
+ *  An implementation of points in two space using a radius/theta pair
+ *  which specify the distance of the point from the origin and the
+ *  angle between the positive x-axis and a line from the origin to
+ *  the point.
+ *
+ *  @author Samuel A. Rebelsky
+ *  @version 1.1 of September 2013
+ */
+public class Point2DPolar implements Point2D {
+    // +--------+------------------------------------------------------------
+    // | Fields |
+    // +--------+
+  
+    /**
+     * The radius, which represents the distance of the point from 
+     * the origin.
+     */
+    double radius;
+  
+    /**
+     * Theta, which represents the angle between the positive X axis
+     * and a line from the origin to the point.
+     */
+    double theta;
+  
+    // +--------------+------------------------------------------------------
+    // | Constructors |
+    // +--------------+
+  
+    /**
+     * Create the point (x,y)
+     */
+    public Point2DPolar(double x, double y) {
+        this.radius = Math.sqrt(x*x + y*y);
+        this.theta = Math.atan(y/x);
+    } // Point2DPolar(double,double)
+  
+    /**
+     * Create a point radius 0 and angle 0 (with the expectation that
+     * we'll change it almost immediately).
+     */
+    private Point2DPolar() {
+        this.radius = 0.0;
+        this.theta = 0.0;
+    } // Point2DPolar()
+  
+    // +---------+-----------------------------------------------------------
+    // | Methods |
+    // +---------+
+  
+    /**
+     * Get the X coordinate of the point.
+     */
+    public double getX() {
+        return this.radius * Math.cos(this.theta);
+    } // getX() 
+    
+    /**
+     * Get the Y coordinate of the point.
+     */
+    public double getY() {
+        return this.radius * Math.sin(this.theta);
+    } // getY()
+  
+    /**
+     * Get the distance of this point from the origin.
+     */
+    public double getDistanceFromOrigin() 
+    {
+      return this.radius;
+    } // getDistanceFromOrigin()
+  
+    /**
+     * Translate this point by deltaX in the x direction and
+     * deltaY in the y direction.  Note that this method
+     * mutates the underlying point.
+     */
+    public void translate(double deltaX, double deltaY) {
+        // Left as an exercise to the reader.
+    } // translate(double, double)
+  
+    /**
+     * Make a copy of this point.
+     */
+    public Point2D clone() {
+        Point2DPolar tmp = new Point2DPolar();
+        tmp.radius = this.radius;
+        tmp.theta = this.theta;
+        return tmp;
+    } // clone()
+  
+} // class Point2DPolar
+</programlisting>
+
+<para>
+  As suggested above, we can use <emphasis>either</emphasis> of these
+  implementations and expect that they will behave the same (except,
+  of course, in terms of efficiency).  How do clients write code that
+  accepts either implementation?  The they write code that uses the
+  interface, rather than a particular class.  For example, we can write
+  a method to compare points by distance from the origin as follows:
+</para>
+
+<programlisting>
+/**
+ * Compare two points.  Return a negative number if p1 is closer to
+ * the origin than p2, 0 if the two are the same distance from the
+ * origin, and a positive number if p1 is further from the origin.
+ */
+public int compare(Point2D p1, Point2D p2) {
+    return Double.compare(p1.distanceFromOrigin(), p2.distanceFromOrigin());
+} // compare(Point2D, Point2D)
+</programlisting>
+
+<para>
+  It is now perfectly acceptable to call this <code>compare</code> method
+  with two <code>Point2DPair</code> objects, with two <code>Point2DPolar</code>
+  objects, or even with one object of each class.  We return to this idea
+  in the reading on <ulink url="polymorphism.html">polymorphism</ulink>.
+</para>
+
+</section>
+
+</section>  <!-- interfaces -->
