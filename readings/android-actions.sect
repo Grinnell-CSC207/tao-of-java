@@ -30,7 +30,7 @@
 </para>
 
 <para>
-<imagedata fileref="../images/Android2/Percy.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Percy.jpg" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -64,7 +64,7 @@
 
 <!-- MISSING
 <para>
-<imagedata fileref="../images/Android1/Lab2Image2.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Lab2Image2.png" align="center" contentwidth="400"/>
 </para>
 -->
 
@@ -83,7 +83,7 @@
 </para>
 
 <para>
-  <imagedata fileref="../images/Android1/PercyApp.png" align="center" contentwidth="400"/>
+  <imagedata fileref="../images/Android2/PercyApp.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -110,7 +110,7 @@
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Layouts.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Layouts.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -151,7 +151,7 @@
 
 <!-- NO SUCH FILE
 <para>
-<imagedata fileref="../images/Android1/Lab2Image4.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Lab2Image4.png" align="center" contentwidth="400"/>
 </para>
 -->
 
@@ -163,7 +163,7 @@
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image5.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Lab2Image5.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -173,11 +173,11 @@
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image6.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Lab2Image6.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image7.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Lab2Image7.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -185,7 +185,7 @@
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image8.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Lab2Image8.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -197,7 +197,7 @@
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image9.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Lab2Image9.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -205,7 +205,7 @@
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image10.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Lab2Image10.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -217,7 +217,7 @@
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image11.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Lab2Image11.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -227,7 +227,7 @@
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image13.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Lab2Image13.png" align="center" contentwidth="400"/>
 </para>
 
 <itemizedlist>
@@ -272,7 +272,7 @@
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image14.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Lab2Image14.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -280,7 +280,7 @@ And this is how our strings file currently looks like with all the added strings
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image15.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Lab2Image15.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -383,7 +383,7 @@ button.setOnClickListener(this);
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image16.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Lab2Image16.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -462,7 +462,7 @@ public void onClick(View v) {
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image17.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Lab2Image17.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -493,7 +493,7 @@ android:onClick="clickThis"
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image18.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Lab2Image18.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
@@ -525,7 +525,7 @@ public void clickThis(View v) {
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image19.png" align="center" contentwidth="400"/>
+<imagedata fileref="../images/Android2/Lab2Image19.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
