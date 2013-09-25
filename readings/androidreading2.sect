@@ -1,98 +1,165 @@
 <section id="androidreading2"><title>Making Our Apps Do Things</title>
 
-<section id="section0"><title>0. Prerequisites</title>
-<para>Introduction to Android reading &amp; accopmanying lab</para>
-
 <para>
-We've gone over how Android apps are created, and how we add and modify objects within them. Now it's time to see how we can modify the code, add some functionality, and actually make an app that we can interact with.
-</para>
-</section> <!-- section 0 -->
-
-<section id="section1"><title>1. Adding resources</title>
-
-<para>
-Yes, we can modify our apps by adding objects in the xml files, but we can also add other resources like images. Continuing with our "About me" app, we should probably include a representative image, because pictures speak louder than words.
+  At this point, you know how to set up an Android app and get it onto
+  your device.  You've also seen how to add and modify the objects in an
+  app, at least a little bit.  Now it's time to see how we can modify
+  the code, add some functionality, and actually make an app that we
+  can interact with.
 </para>
 
 <para>
-Say we wanted to make our app about an inquisitive baby chameleon called Percy Shabunkins. This guy, right here.
+  <emphasis>Prerequisites:</emphasis>
+  <ulink url="../readings/intro-android.html">Introduction to Android</ulink>
+  &amp; 
+  <ulink url="../labs/first-android.html">Lab: Your first android app.</ulink>
+</para>
+
+<section id="adding-images"><title>Adding Images to Your App</title>
+
+<para>
+  Yes, we can modify our apps by adding objects in the XML files, but we
+  can also add other resources like images. Continuing with our basic app,
+  we should probably include a representative image, because pictures
+  speak louder than words.
 </para>
 
 <para>
-<imagedata fileref="../images/Android2/Lab2Image1.png" align="center" contentwidth="400"/>
+  Say we wanted to make our app about an inquisitive baby chameleon
+  called Percy Shabunkins. This guy, right here.
 </para>
 
 <para>
-When we have an appropriate picture, we open the res folder to store it in. We can see that there's alredy a bunch of folders created for us to store our images in. Because Android machines come in many different shapes and sizes, its good practice to make our resources in different resolutions. If we have an image that corresponds to the three pre-made drawable folders - drawable hdpi (high density), drawable mdpi (medium density), and drawable ldpi (low density), we can be more confident that the screen will show up the way we intended it to on any machine. The platform will pick the image that best matches the device's density.
+<imagedata fileref="../images/Android2/Percy.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
-We don't need to worry about that now, since this app won't actually be released in the Play Store. It's mostly for class use, and the machines you'll be using are all Nexus 10.
+  When we have an appropriate picture, we open the res folder to store
+  it in. We can see that there's alredy a bunch of folders created for us
+  to store our images in. Because Android machines come in many different
+  shapes and sizes, its good practice to make our resources in different
+  resolutions. If we have an image that corresponds to the three pre-made
+  drawable folders - drawable hdpi (high density), drawable mdpi (medium
+  density), and drawable ldpi (low density), we can be more confident that
+  the screen will show up the way we intended it to on any machine. The
+  platform will pick the image that best matches the device's density.
 </para>
 
 <para>
-Because we're using a Nexus 10 device for developing, we want to put our image in the drawable hdpi folder. To do this, we expand the res folder and drag our picture from the it's current location to the drawable-hdpi folder. When prompted, we select to copy the files, instead of just linking to them. This puts the resource in the actual app, so if we were to publish it, the resource would stay there. In the other case, we would only be able to successfully compile the app on our own computer, where the resources are located.
+  We don't need to worry about that now, since this app won't actually
+  be released in the Play Store. It's mostly for class use, and the
+  machines you'll be using are all Nexus 7 tables.
 </para>
 
+<para>
+  Because we're using a Nexus 7 device for developing, we want to put
+  our image in the drawable hdpi folder. To do this, we expand the res
+  folder and drag our picture from the it's current location to the
+  drawable-hdpi folder. When prompted, we select to copy the files,
+  instead of just linking to them. This puts the resource in the actual
+  app, so if we were to publish it, the resource would stay there. In
+  the other case, we would only be able to successfully compile the app
+  on our own computer, where the resources are located.
+</para>
+
+<!-- MISSING
 <para>
 <imagedata fileref="../images/Android1/Lab2Image2.png" align="center" contentwidth="400"/>
 </para>
+-->
 
-</section> <!-- section1 -->
-<section id="section2"><title>2. Design is important</title>
+</section> <!-- adding-images -->
+
+<section id="design"><title>Design is Important</title>
 
 <para>
-Before we actually use our image, though, we need to decide what we want our app to look like. We can't just throw images and text on the screen with no predefined idea.That's bad design practice.
+  Before we actually use our image, though, we need to decide what we
+  want our app to look like. We can't just throw images and text on the
+  screen with no predefined idea.  That's bad design practice.
 </para>
 
 <para>
-We want our product to end up looking somewhere along these lines.
+  We want our product to end up looking somewhere along these lines.
 </para>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image3.png" align="center" contentwidth="400"/>
+  <imagedata fileref="../images/Android1/PercyApp.png" align="center" contentwidth="400"/>
 </para>
 
 <para>
-We can now begin to build our app.
-</para>
-</section> <!-- section2 -->
-
-<section id="section3"><title>3. Choosing a different layout type</title>
-
-<para>
-Bearing our design idea in mind, we want to be able to create an app whose presentation is similar on all possible Android devices. Our design is also not overly complicated. We need to have three objects one under another, neatly centered in the middle of the screen.
+  Isn't that just wonderful?  We can now begin to build our app.
 </para>
 
-<para>
-The first thing to do is choose the layout your objects will be put on. You can see there are many different layout types in the Graphical Layout tab. Each of the layouts is useful for a specific type of an app. Feel free to explore all the different layouts on your own, because unfortunately this is out of the scope of this course. 
-</para>
+</section> <!-- design -->
+
+<section id="layout"><title>Choosing a Layout Type</title>
 
 <para>
-<imagedata fileref="../images/Android1/Lab2Image3.5.png" align="center" contentwidth="400"/>
+  Bearing our design idea in mind, we want to be able to create an app
+  whose presentation is similar on all possible Android devices. Our
+  design is also not overly complicated. We need to have three objects
+  one under another, neatly centered in the middle of the screen.
 </para>
 
 <para>
-For our app, the default layout is the relative layout. It's useful when you want to manage your objects (children) relative to one another or the layout(parent) itself. For this project a simple Linear Layout will do the trick. 
+  The first thing to do is choose the layout your objects will be put
+  on. You can see there are many different layout types in the Graphical
+  Layout tab. Each of the layouts is useful for a specific type of
+  an app. Feel free to explore all the different layouts on your own,
+  because unfortunately this is out of the scope of this course.
 </para>
-	
-<para>
-In a Linear Layout your objects are positioned in a line, one after another, either vertically or horizontally. Because that is exactly what we want form our app, a linear layout makes more sense. 
-</para>
-</section> <!-- section3 -->
-
-<section id="section4"><title>4. Putting it together</title>
 
 <para>
-We need to identify what the part of our app are. Looking at the screen, it seems like we want a TextView on top, on ImageView beneath it, and a Button Widget on the bottom.
+<imagedata fileref="../images/Android1/Layouts.png" align="center" contentwidth="400"/>
 </para>
 
+<para>
+  For our app, the default layout is the relative layout. The relative
+  layout is useful when you want to manage your objects (children)
+  relative to one another or the layout(parent) itself. For this project
+  a simple Linear Layout will do the trick.
+</para>
+
+<para> 
+  In a Linear Layout your objects are positioned in a line,
+  one after another, either vertically or horizontally. Because that is
+  exactly what we want form our app, a linear layout makes more sense.
+</para> 
+
+</section> <!-- layout -->
+
+<section id="putting-it-together"><title>Putting It Together</title>
+
+<para>
+  We need to identify what the parts of our app are. Looking at the screen, 
+  it seems like we want 
+</para>
+
+<itemizedlist>
+  <listitem>
+    a TextView on top,
+  </listitem>
+  
+  <listitem>
+    an ImageView beneath it, and 
+  </listitem>
+  
+  <listitem>
+   a Button Widget on the bottom.
+  </listitem>
+</itemizedlist>
+
+<!-- NO SUCH FILE
 <para>
 <imagedata fileref="../images/Android1/Lab2Image4.png" align="center" contentwidth="400"/>
 </para>
+-->
 
 <para>
-First, we change the RelativeLayout tag in the raw xml to LinearLayout. If we look at our Graphical Layout now, there's nothing really changed. Our string is still the same, and positioned in the upper left corner.
+  First, we change the RelativeLayout tag in the raw XML to
+  LinearLayout. If we look at our Graphical Layout now, there's nothing
+  really changed. Our string is still the same, and positioned in the
+  upper left corner.
 </para>
 
 <para>
@@ -100,7 +167,9 @@ First, we change the RelativeLayout tag in the raw xml to LinearLayout. If we lo
 </para>
 
 <para>
-We can now add our image beneath it, by opening the Images &amp; Media folder (in the Palette window in the Graphical Layout interface), and dragging the ImageView on our screen. 
+  We can now add our image beneath it, by opening the Images &amp; Media
+  folder (in the Palette window in the Graphical Layout interface),
+  and dragging the ImageView on our screen.
 </para>
 
 <para>
@@ -112,7 +181,7 @@ We can now add our image beneath it, by opening the Images &amp; Media folder (i
 </para>
 
 <para>
-Next let's drag a Button Widget beneath the ImageView.
+  Next let's drag a Button Widget beneath the ImageView.
 </para>
 
 <para>
@@ -120,9 +189,11 @@ Next let's drag a Button Widget beneath the ImageView.
 </para>
 
 <para>
-The resulting screen is not quite what we wanted. This is because we haven't set the orientation in our LinearLayout. To do this we have to add a new attribute to our LinearLayout object. 
-
-Add android:orientation="vertical" in the opening LinearLayout tag.
+  The resulting screen is not quite what we wanted. This is because we
+  haven't set the orientation in our LinearLayout. To do this we have
+  to add a new attribute to our LinearLayout object.   In particular, we
+  should add android:orientation="vertical" in the opening LinearLayout
+  tag.
 </para>
 
 <para>
@@ -130,7 +201,7 @@ Add android:orientation="vertical" in the opening LinearLayout tag.
 </para>
 
 <para>
-It's starting to look better.
+  Our App is starting to look better.
 </para>
 
 <para>
@@ -138,7 +209,11 @@ It's starting to look better.
 </para>
 
 <para>
-But how did that Button end up on top of the ImageView? We need to change that. We can either drag the Button underneath the ImageView in the Graphical Layout, or change the order in which the objects are declared in the raw xml file, so we end up with a screen that' pretty close to what we've envisioned.
+  But how did that Button end up on top of the ImageView? We need to
+  change that. We can either drag the Button underneath the ImageView
+  in the Graphical Layout, or change the order in which the objects
+  are declared in the raw XML file, so we end up with a screen that's
+  pretty close to what we've envisioned.
 </para>
 
 <para>
@@ -146,46 +221,55 @@ But how did that Button end up on top of the ImageView? We need to change that. 
 </para>
 
 <para>
-We just need to adjust and add some attributes and strings to match it exactly to our original plan. Our layout's raw xml should look like this. 
+  We just need to adjust and add some attributes and strings to match
+  it exactly to our original plan. Our layout's raw XML should look
+  like this.
 </para>
 
 <para>
 <imagedata fileref="../images/Android1/Lab2Image13.png" align="center" contentwidth="400"/>
 </para>
 
-<para>
-android:gravity sets where the children of the parent with that atribute will gravitate towards
-</para>
+<itemizedlist>
+  <listitem>
+    <code>android:gravity</code> sets where the children of the parent 
+    with that atribute will gravitate towards.
+  </listitem>
+
+  <listitem>
+    <code>android:textSize</code> affects the size of the text.
+  </listitem>
+
+  <listitem>
+    <code>android:layout_width</code> is the width of the object.
+    <code>"wrap_content"</code> means that the width of the object will
+    be just big enough to enclose its contents.
+    The layout_width of the ImageView was set to "match_parent" before,
+    which means that that specific object will be as big as the parent
+    object (minus padding). This was making the Button object act funny. The
+    ImageView itself (that could be larger than the actual image) was
+    trying to fill the entire screen, so there was no room for the Button
+    on the bottom.
+  </listitem>
+
+  <listitem>
+    <code>android:layout_height</code> is the height of the object
+    The layout_height of the ImageView was set to a specific number. This
+    means that the image would always render with that height, but the
+    width would have tried to fill the parent element. In that case,
+    the screen would have rendered differently on different devices,
+    which in our case, would be a sign of bad programming design.
+  </listitem>
+
+  <listitem>
+    <code>android:contentDescription</code> is a neccessary evil we need
+    to add to the ImageView to make Eclipse happy.
+  </listitem>
+</itemizedlist>
 
 <para>
-android:textSize affects the size of the text
+  Now our product looks just the way we imagined.	
 </para>
-
-<para>
-android:layout_width is the width of the object
-* &quot;wrap_content&quot; means that the width of the object will be just big enough to enclose its contents
-</para>
-
-<para>
-The layout_width of the ImageView was set to "match_parent" before, which means that that specific object will be as big as the parent object (minus padding). This was making the Button object act funny. The ImageView itself (that could be larger than the actual image) was trying to fill the entire screen, so there was no room for the Button on the bottom.
-</para>
-
-<para>
-android:layout_height is the height of the object
-</para>
-
-<para>
-The layout_height of the ImageView was set to a specific number. This means that the image would always render with that height, but the width would have tried to fill the parent element. In that case, the screen would have rendered differently on different devices, which in our case, would be a sign of bad programming design.
-</para>
-
-<para>
-android:contentDescription is a neccessary evil we need to add to the ImageView to make Eclipse happy.
-</para>
-
-<para>
-Now our product looks just the way we imagined.	
-</para>
-</section> <!-- section4 -->
 
 <para>
 <imagedata fileref="../images/Android1/Lab2Image14.png" align="center" contentwidth="400"/>
@@ -200,25 +284,34 @@ And this is how our strings file currently looks like with all the added strings
 </para>
 
 <para>
-Of course we could have done this another way, by simply declaring our xml objects in the raw xml file and giving them their appropriate attributes immediately, instead of changing them later. Feel free to use whichever method you'd like when creating your Android application.
+Of course we could have done this another way, by simply declaring our XML objects in the raw XML file and giving them their appropriate attributes immediately, instead of changing them later. Feel free to use whichever method you'd like when creating your Android application.
 </para>
 
-<section id="section5"><title>5. Linking objects to methods</title>
+</section> <!-- putting-it-together-->
+
+<section id="linking-objects-and-methods"><title>Linking Objects and Methods</title>
 
 <para>
-Now when we run our app, it gives us a nice picture of Percy. This is pretty boring, so we should really make our button do something.
-</para>
-
-<para>
-For example, we can make use of the Toast class. A Toast that is a view that contains a quick little message for the user, for example &quot;Hey, I'm a chameleon.&quot;.
-</para>
-
-<para>
-To make this happen, we need to create another method in our activity class (finally, some Java!).
+ Now when we run our app, it gives us a nice picture of Percy. This is
+ pretty boring, so we should really make our button do something.
 </para>
 
 <para>
-Let's call our method onClick(), because it's what happens when the button is clicked. It needs to be public, void and take a View parameter. When Eclipse complains that View is not imported, we go ahead and import it.
+  For example, we can make use of the Toast class. A Toast that is a
+  view that contains a quick little message for the user, for example
+  &quot;Hey, I'm a chameleon.&quot;.
+</para>
+
+<para>
+  To make this happen, we need to create another method in our activity
+  class. (Finally, we get to write some Java!)
+</para>
+
+<para>
+  Let's call our method <methodname>onClick</methodname>, because it's
+  what happens when the button is clicked. It needs to be public, void
+  and take a View parameter. When Eclipse complains that View is not
+  imported, we go ahead and import it.
 </para>
 
 <programlisting>
@@ -228,38 +321,45 @@ public void onClick(View v) {
 </programlisting>
 
 <para>
-Because we want to manipulate the button object, we have to somehow get it in our Java code. We do this by declaring a private Button variable.
+  Because we want to manipulate the button object, we have to somehow get
+  it in our Java code. We do this by declaring a private Button variable.
 </para>
 
 <para>
-private Button button;
+  private Button button;
 </para>
 
 <para>
-Eclipse will again complain about the Button class not being imported. Import it.
+  Eclipse will again complain about the Button class not being
+  imported. Import it.
 </para>
 
 <para>
-After that we have to set the button object to the button in our xml. We do this by refering to it via a resource ID in the R file.
+  After that we have to set the button object to the button in our
+  XML. We do this by refering to it via a resource ID in the R file.
 </para>
 
 <programlisting>
-button = (Button) findViewById(R.id.button1);
+  button = (Button) findViewById(R.id.button1);
 </programlisting>
 
 <para>
-We initialize our button by casting the Button infront of the findViewById() method.findViewById() returns a view, not specifically a button, so to access its &quot;buttonosity&quot; we have to specify what we want.
-</para>
-
-<para>A pretty common part of app development is using listeners to enable reaction in objects. To make out button react we call the setOnClickListener() method on our button object, with &quot;this&quot; as a parameter. &quot;this&quot; refers to the instance of the class that we're within. 
-</para>
-
-<para>
-* You can't use &quot;this&quot; in a static context
+  <code>findViewById</code> returns a view (a somewhat generic class).
+  But we want a button (which, believe it or not, is a type of view), so
+  we cast it to a Button.  Such casting gives us access to its
+  "buttonisity".
 </para>
 
 <para>
-To enable the activity of our button, we therefore write:
+  A common aspect of app development is using listeners to
+  enable reaction in objects. To make out button react we call the
+  <code>setOnClickListener</code> method on our Button object, with
+  <code>this</code> as a parameter. And, as you know, <quote>this</quote>
+  refers to the object that we're building to react to button presses.
+</para>
+
+<para>
+  To make our object respond to button clicks, we write
 </para>
 
 <programlisting>
@@ -267,11 +367,19 @@ button.setOnClickListener(this);
 </programlisting>
 
 <para>
-We declared the button outside a method, but we set it up in the onCreate() method. Why? Because it's the method that's called automatically, and it's the method that's called first. If we had set it up in a new method, the button's set up and it's activity would have to be called simultaniously, ultimately causing our application to fail to execute properly. It will be able to set up the button, but not execute the rest of the code.
+  We declared the button outside a method, but we set it up in
+  the onCreate() method. Why? Because it's the method that's called
+  automatically, and it's the method that's called first. If we had set
+  it up in a new method, the button's set up and it's activity would
+  have to be called simultaniously, ultimately causing our application
+  to fail to execute properly. It will be able to set up the button,
+  but not execute the rest of the code.
 </para>
 
 <para>
-Eclipse has underlined the setOnClickListener(this), though, and it's not giving us a good reason why. It suggests changing the method to another one, or casting (OnClickListner) before this. 
+  Eclipse has underlined the setOnClickListener(this), though, and it's
+  not giving us a good reason why. It suggests changing the method to
+  another one, or casting (OnClickListner) before this.
 </para>
 
 <para>
@@ -279,27 +387,35 @@ Eclipse has underlined the setOnClickListener(this), though, and it's not giving
 </para>
 
 <para>
-Neither of these suggestions is valid. The correct answer is that our Activity class has to implement the OnClickListener interface. You'll learn more about implementing interfaces, and interfaces themselves and in the future, but for now, just now that this make our activity both an Activity and takes on the behavious of an OnClickListener, so we can pass &quot;this&quot; as a parameter when calling methods from both the Activity class and the OnClickListener interface.
+  Neither of these suggestions is valid. The correct answer is that our
+  Activity class has to implement the <code>OnClickListener</code>
+  interface. You'll learn more about implementing interfaces,
+  and interfaces themselves and in the future, but for now, just
+  now that this make our activity both an Activity and takes on the
+  behavious of an OnClickListener, so we can pass <code>this</code>
+  as a parameter when calling methods from both the Activity class and
+  the OnClickListener interface.
 </para>
 
 <para>
-Now that we've set up our Button, we can finally make it to something in the onClick method. Remember the Toast class we've talked about before that displays a simple message for the user? We're going to use that.
+  Now that we've set up our Button, we can finally make it to something in
+  the onClick method. Remember the Toast class we've talked about before
+  that displays a simple message for the user? We're going to use that.
 </para>
 
 <para>
-We declare a Toast variable
+  We declare a Toast variable
 </para>
 
 <programlisting>
-Toast chameleonGreeintg
+Toast chameleonGreeting
 </programlisting>
 
 <para>
-and we call a makeText() method on it
-</para>
-
-<para>
-the makeText() method is a static method that takes 3 parameters, the Context, the Text we want it to display, and the duration of how long the Toast is displayed.
+  and we call a <methodname>makeText</methodname> method on it.
+  The <methodname>makeText</methodname> method is a static method that
+  takes three parameters, the Context, the Text we want it to display,
+  and the duration of how long the Toast is displayed.
 </para>
 
 <programlisting>
@@ -307,19 +423,22 @@ makeText(Context context, CharSequence text, int duration)
 </programlisting>
 
 <para>
-For the context, we'll use the application context, by calling the no parameter method getApplicationContext(). We'll hardcode a string for the CharSequence, and use one of the two predefined durations - LENGTH_SHORT (the other being LENGTH_LONG).
+  For the context, we'll use the application context, by calling the
+  no parameter method getApplicationContext(). We'll hardcode a string
+  for the CharSequence, and use one of the two predefined durations -
+  LENGTH_SHORT (the other being LENGTH_LONG).
 </para>
 
 <para>
-So the full method we want to invoke on our chameleonGreeting will be
+  So the full method we want to invoke on our chameleonGreeting will be
 </para>
 
 <programlisting>
-makeText(getApplicationContext(), "Hey, I'm a chameleon!", Toast.LENGTH_SHORT)
+  makeText(getApplicationContext(), "Hey, I'm a chameleon!", Toast.LENGTH_SHORT)
 </programlisting>
 
 <para>
-After that we need to call the show() method on our parameter to actually show it on the screen. We do that by simply stating
+  After that we need to call the show() method on our parameter to actually show it on the screen. We do that by simply stating
 </para>
 
 <programlisting>
@@ -332,13 +451,14 @@ Our full method should then look like this:
 
 <programlisting>
 public void onClick(View v) {	
-	Toast chameleonGreeting = Toast.makeText(getApplicationContext(), "Hey, I am a chameleon", Toast.LENGTH_SHORT);
-	chameleonGreeting.show();
-}
+    Toast chameleonGreeting = Toast.makeText(getApplicationContext(), 
+            "Hey, I am a chameleon", Toast.LENGTH_SHORT);
+    chameleonGreeting.show();
+} // onClick(View)
 </programlisting>
 
 <para>
-If we run our app now, we can see our button in action.
+  If we run our app now, we can see our button in action.
 </para>
 
 <para>
@@ -346,11 +466,18 @@ If we run our app now, we can see our button in action.
 </para>
 
 <para>
-Because we've called our method onClick(), while implementing the OnClickListener, we've implemented an OnClickListener method that connects to the element we've set the listener for (in this case our button). Buttons have an onClick attribute in the xml, that we've now set up for the button via the Java file, instead of setting it through the xml.
+  Because we've called our method <code>onClick</code>, while implementing
+  the OnClickListener, we've implemented an OnClickListener method that
+  connects to the element we've set the listener for (in this case our
+  button). Buttons have an onClick attribute in the XML, that we've now
+  set up for the button via the Java file, instead of setting it through
+  the XML.  
 </para>
 
 <para>
-There's another, possibly simpler, way to do this, though. We can simply tell the button what to do when the onClick method is called by giving our button another attribute in the xml
+  There's another, possibly simpler, way to do this, though. We can
+  simply tell the button what to do when the onClick method is called
+  by giving our button another attribute in the XML
 </para>
 
 <programlisting>
@@ -358,11 +485,11 @@ android:onClick="clickThis"
 </programlisting>
 
 <para>
-Here we basically tell the onClick() method that it should do whatever we say it should in a method called clickThis().
+ Here we basically tell the <methodname>onClick</methodname> method that it should do whatever we say it should in a method called clickThis().
 </para>
 
 <para>
-With this implemented, we can scratch all we did in our activity class, until it looks as it did before.
+  With this implemented, we can scratch all we did in our activity class, until it looks as it did before.
 </para>
 
 <para>
@@ -370,22 +497,31 @@ With this implemented, we can scratch all we did in our activity class, until it
 </para>
 
 <para>
-In this case we don't need to create a button that refers to the button we already have in the xml and add to it, because it's all done in the xml. We don't need to implement the interface, and the only thing we need to do is create a new method clickThis().
+  In this case we don't need to create a button that refers to the button
+  we already have in the XML and add to it, because it's all done in the
+  XML. We don't need to implement the interface, and the only thing we
+  need to do is create a new method clickThis().
 </para>
 
 <para>
-The method basically looks the same as the onClick() method we did previously, without all the overhead:
+  The method basically looks the same as the
+  <methodname>onClick</methodname> method we did previously, without
+  all the overhead:
 </para>
 
 <programlisting>
 public void clickThis(View v) {
-	Toast chameleonGreeting = Toast.makeText(getApplicationContext(), "Hey, I'm a chameleon", Toast.LENGTH_LONG);
-	chameleonGreeting.show();
-}
+    Toast chameleonGreeting = Toast.makeText(getApplicationContext(), 
+            "Hey, I'm a chameleon", Toast.LENGTH_LONG);
+    chameleonGreeting.show();
+} // clickThis
 </programlisting>
 
 <para>
-The only change we've made here is the duration in the makeText() method. Running our app now, makes the Toast message appear on the screen for longer, but the general effect is the same.
+  The only change we've made here is the duration in the
+  <methodname>makeText</methodname> method. Running our app now, makes the Toast
+  message appear on the screen for longer, but the general effect is
+  the same.
 </para>
 
 <para>
@@ -393,11 +529,17 @@ The only change we've made here is the duration in the makeText() method. Runnin
 </para>
 
 <para>
-And we've succeeded adding a bit of functionality to our app. That wasn't that hard, was it?
+  And we've succeeded adding a bit of functionality to our app. That
+  wasn't that hard, was it?
 </para>
 
 <para>
-In the future, it's technically &quot;better&quot;, or more in the spirit of developing Android apps, to use the second method. The xml is supposed to control what happens to the objects, and the Java files tell them what to execute.
+  In the future, it's technically <quote>better</quote>, or at least more
+  in the spirit of developing Android apps, to use the second method. The
+  XML is supposed to control what happens to the objects, and the Java
+  files tell them what to execute.  
 </para>
-</section> <!-- section5 --> 
+
+</section> <!-- linking-objects-and-methods --> 
+
 </section> <!-- androidreading2 -->
