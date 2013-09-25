@@ -137,7 +137,7 @@ public static void stringConstructorTest() {
 
 </section>  <!-- classes-03 -->
 
-<section id="classes-05"><title>Exercise 5: A Counter Class</title> 
+<section id="classes-04"><title>Exercise 4: A Counter Class</title> 
 
 <para>
   Write and test a class, <code>Counter</code>, that generates
@@ -152,9 +152,9 @@ public static void stringConstructorTest() {
   class <code>Counter</code>, you can change the two objects separately.
 </para>
 
-</section>  <!-- classes-05 -->
+</section>  <!-- classes-04 -->
 
-<section id="classes-06"><title>Exercise 6: Enhancing Counters</title>
+<section id="classes-05"><title>Exercise 5: Enhancing Counters</title>
 
 <para>
   a. Update your <code>Counter</code> class to include a second constructor that
@@ -171,7 +171,7 @@ public static void stringConstructorTest() {
   c. Test both updates to ensure that they work as appropriate.
 </para>
 
-</section>  <!-- classes-06 -->
+</section>  <!-- classes-05 -->
 
 </section>  <!-- exercises -->
 
@@ -198,5 +198,3 @@ public static void stringConstructorTest() {
 </section>  <!-- classes-extra -->
 
 </section>  <!-- classes -->
-
-
