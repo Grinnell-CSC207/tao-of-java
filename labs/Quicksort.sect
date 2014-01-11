@@ -1,0 +1,103 @@
+<section id="Quicksort"><title>Laboratory: Quicksort</title>
+
+<para>
+  <emphasis>Summary:</emphasis> We explore the construction of 
+  Quicksort.
+</para>
+
+<para>
+  <emphasis>Prerequisite Knowledge:</emphasis>
+  The general structure of Quicksort.  Arrays.  Loop invariants.
+</para>
+
+<section id="Quicksort-preparation"><title>Preparation</title>
+
+<para>
+  Fork and clone the repository at
+  <ulink url="https://github.com/Grinnell-CSC207/sorting"/>
+</para>
+
+</section> <!-- Quicksort-preparation -->
+
+<section id="Quicksort-exercises"><title>Exercises</title>
+
+<section id="Quicksort-01"><title>Exercise 1: Code Reading</title>
+
+<para>
+  a. Explain why there are two sorting procedures in
+  <code>Quicksort.java</code>, one called <code>sorti</code> and one
+  called <code>qsort</code>.
+</para>
+
+<para>
+  b. The Quicksort algorithm says (approximately): <quote>Divide the
+  collection into small values and large values, sort the two 
+  subcollections, and join them back together.</quote>  How is each
+  aspect of that algorithm represented in <code>qsort</code>?
+</para>
+
+<para>
+  c. In your own words, explain what value <code>partition</code>
+  returns.
+</para>
+
+</section> <!-- Quicksort-01 -->
+
+<section id="Quicksort-02"><title>Exercise 2: Picking a Random Pivot</title>
+
+<para>
+  Quicksort requires you to pick an element of the collection as a
+  <quote>pivot</quote> to use to identify small (&lt;= pivot) and
+  large (&gt; pivot) elements.  Write a procedure that, given an
+  array, a lower bound, and an upper bound, and a comparator,
+  picks a random pivot in the given range.  (You probably won't need
+  the comparator, but we include it because we'll use it later.)
+</para>
+
+</section> <!-- Quicksort-02 -->
+
+<section id="Quicksort-03"><title>Exercise 3: A Loop Invariant</title>
+
+<para>
+  Sketch a loop invariant for partition.  (You may want to refer to
+  <ulink url="../readings/Quicksort.html">the reading</ulink> for a
+  suggestion.  If you use that suggestion, you should make sure that
+  you understand what's going on.
+</para>
+
+</section> <!-- Quicksort-03 -->
+
+<section id="Quicksort-04"><title>Exercise 4: Implement Partition</title>
+
+<para>
+  You should now be ready to implement the partition method.  Do so.
+</para>
+
+</section> <!-- Quicksort-04 -->
+
+<section id="Quicksort-05"><title>Exercise 5: Tests and Experiments</title>
+
+<para>
+  Conduct a few tests or experiments to determine whether your 
+  partition and sorting methods work correctly.
+</para>
+
+</section>  <!-- Quicksort-05 -->
+
+</section> <!-- Quicksort-exercises -->
+
+<section id="Quicksort-extra"><title>For Those With Extra Time</title>
+
+<section id="Quicksort-extra-01"><title>Extra 1: Choosing a Pivot, Revisited</title>
+
+<para>
+  We can significantly improve Quicksort by randomly picking three 
+  candidates for the pivot, and using the median of the three.
+  Rewrite your procedure to pick a Pivot to use that strategy.
+</para>
+
+</section> <!-- Quicksort-extra-01 -->
+
+</section> <!-- Quicksort-extra -->
+
+</section> <!-- Quicksort -->
