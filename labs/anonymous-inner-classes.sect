@@ -1,0 +1,175 @@
+<section id="anonymous-inner-classes"><title>Laboratory: Anonymous Inner Classes</title>
+
+<para>
+  <emphasis>Summary:</emphasis>
+  We begin our explorations of Java's anonymous inner classes, classes
+  without explicit names (hence, <quote>anonymous</quote>) that are
+  declared within other classes (hence, <quote>inner</quote>).
+</para>
+
+<para>
+  <emphasis>Prerequisite Knowledge:</emphasis>
+  Classes, Interfaces, Interitance, Iterators, Predicates
+</para>
+
+<section id="anonymous-inner-classes-preparation"><title>Preparation</title>
+
+<para>
+  Fork and clone the repository at
+  <ulink url="https://github.com/Grinnell-CSC207/anonymous-inner-classes"/>.
+</para>
+
+</section> <!-- anonymous-inner-classes-preparation -->
+
+<section id="anonymous-inner-classes-exercises"><title>Exercises</title>
+
+<section id="anonymous-inner-classes-01"><title>Exercise 1: </title>
+
+</section> <!-- anonymous-inner-classes-01 -->
+
+<section id="anonymous-inner-classes-01"><title>Exercise 1: Exploring the Basics</title>
+
+<para>
+  a. Read the descriptions of <code>Greeter.java</code> and 
+  <code>Greetable.java</code> to make sure that you understand the
+  purposes and components of each interface.
+</para>
+
+<para>
+  b. Read through <code>GreetableExperiments.java</code> so that you can see
+  the shape of the basic experiment.
+</para>
+
+<para>
+  c. Look at <code>SampleGreetable1.java</code> and predict what the
+  output of the experiment will be.  Check your prediction.
+</para>
+
+<para>
+  d. Look at <code>SampleGreetable2.java</code>.  Update the experiment 
+  to use <code>SampleGreetable2</code>.  Predict the output.  Then
+  check your prediction.
+</para>
+
+<para>
+  e. Look at <code>SampleGreetable3.java</code>.  Update the experiment 
+  to use <code>SampleGreetable3</code>.  Predict the output.  Then
+  check your prediction.
+</para>
+
+<para>
+  f. Look at <code>SampleGreetable4.java</code>.  Update the experiment 
+  to use <code>SampleGreetable4</code>.  Predict the output.  Then
+  check your prediction.
+</para>
+
+<para>
+  g. Change the body of <code>GreetableExperiments.main</code> to read
+</para>
+
+<programlisting>
+Greetable g = new SampleGreetable4();
+experiment(g);
+experiment(g);
+</programlisting>
+
+<para>
+  What do you expect the new output to be?  Check your prediction.
+</para>
+
+<para>
+  h. Look at <code>SampleGreetable5.java</code>.  Update the experiment 
+  to use <code>SampleGreetable5</code>.  Predict the output.  Then
+  check your prediction.
+</para>
+
+<para>
+  i. Look at <code>SampleGreetable6.java</code>.  Update the experiment 
+  to use <code>SampleGreetable6</code>.  Predict the output.  Then
+  check your prediction.
+</para>
+
+</section> <!-- anonymous-inner-classes-01 -->
+
+<section id="anonymous-inner-classes-02"><title>Exercise 2: Named Greetables</title>
+
+<para>
+  Design and implement a class that implements the Greetable interface.
+  Your class should have a field of type <code>String</code> called
+  <code>name</code> that gets filled in by the constructor.  The objects
+  that your <code>greeter</code> method returns should incorporate the
+  name in their output, but each should give independent output.
+</para>
+
+</section> <!-- anonymous-inner-classes-02 -->
+
+<section id="anonymous-inner-classes-03"><title>Exercise 3: Updating Greeter Output</title>
+
+<para>
+  Create a new class, based on <code>SampleGreetable4</code>, in which the
+  Greeter returned by <code>greeter</code> has an internal field <code>i</code>
+  that gets printed and updated each time the <code>greet</code> method
+  is called.  The output should be something like:
+</para>
+
+<screen>
+Greeting 2 from greeter 3 of 5.
+</screen>
+
+</section> <!-- anonymous-inner-classes-03 -->
+
+<section id="anonymous-inner-classes-04"><title>Exercise 4: Fun with Filtering</title>
+
+<para>
+  a. Read through the code of <code>PredicateExample.java</code>.  Predict
+  what it's output will be.
+</para>
+
+<para>
+  b. Run <code>PredicateExample</code> to check your prediction.
+</para>
+
+<para>
+  c. Update <code>PredicateExample.java</code> so that it prints out
+  all of the words in the array that end in <quote>e</quote>.
+</para>
+
+</section> <!-- anonymous-inner-classes-04 -->
+
+<section id="anonymous-inner-classes-05"><title>Exercise 5: Configurable Filtering</title>
+
+<para>
+  Extend <code>PredicateExample</code> so that it prompts the user for
+  a string and prints out all of the elements of our array that contain
+  that string.
+</para>
+
+</section> <!-- anonymous-inner-classes-05 -->
+
+</section> <!-- anonymous-inner-classes-exercises -->
+
+<section id="anonymous-inner-classes-extra"><title>For Those With Extra Time</title>
+
+<section id="anonymous-inner-classes-extra-01"><title>Extra 1: Iterating Stacks</title>
+
+<para>
+  Find your stack code and rewrite the <code>iterator</code> method to use 
+  the technique
+  described in <ulink url="../readings/anonymous-inner-classes.html">the
+  reading</ulink>.
+</para>
+
+</section> <!-- anonymous-inner-classes-extra-01 -->
+
+<section id="anonymous-inner-classes-extra-02"><title>Extra 2: Iterating Queues</title>
+
+<para>
+  Find your queue code and rewrite the <code>iterator</code> method to use 
+  an anonymous inner class.
+</para>
+
+</section> <!-- anonymous-inner-classes-extra-02 -->
+
+</section> <!-- anonymous-inner-classes-extra -->
+
+</section> <!-- anonymous-inner-classes -->
