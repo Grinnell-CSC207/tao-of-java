@@ -1,0 +1,284 @@
+<section id="bst-lab"><title>Laboratory: Binary Search Trees</title>
+
+<para>
+  <emphasis>Summary:</emphasis> We explore the design and implementation
+  of binary search trees, focusing on the ways in which we navigate and
+  iterate such trees.
+</para>
+
+<section id="bst-prelim"><title>Preliminaries</title>
+
+<para>
+  As you may recall, a <emphasis>binary search tree</emphasis> is a linked
+  data structure designed with the <quote>divide and conquer</quote> strategy.
+  The tree consists of nodes, each of which contains a key, a value, and 
+  links to two other trees.  (Those links may also lead to null.)  We
+  speed up searching by ensuring that all the <quote>smaller</quote> keys
+  fall in the left subtree and that all of the <quote>larger</quote> keys
+  fall in the right subtree.
+</para>
+
+<para>
+  In such a tree, it should be easy to find a key.
+</para>
+
+<literallayout>search(key,node)
+  If the node is null, the key is not there
+    Give up // Return a special value, throw an exception, ...
+  Otherwise
+    Compare key to the node's key
+    If key equals the node's key, we've found it
+      Return the value
+    Otherwise, if key precedes the node's key, 
+      Recurse on the left subtree
+    Otherwise, key follows the node's key
+      Recurse on the right subtree
+</literallayout>
+
+</section> <!-- bst-prelim -->
+
+<section id="bst-prep"><title>Preparation</title>
+
+<para>
+  Fork and clone the repository at <ulink url="https://github.com/Grinnell-CSC207/bst"/>.
+</para>
+
+<para>
+  Sketch the tree that you expect to create by adding the following 
+  key/value pairs (in order).
+</para>
+
+<itemizedlist>
+  <listitem>e: elephant</listitem>
+  <listitem>c: chinchilla</listitem>
+  <listitem>b: baboon</listitem>
+  <listitem>d: dingo</listitem>
+  <listitem>a: aardvark</listitem>
+  <listitem>g: gibbon</listitem>
+  <listitem>f: flying squirrel</listitem>
+  <listitem>h: hippo</listitem>
+</itemizedlist>
+
+</section> <!-- bst-prep -->
+
+<section id="bst-exercises"><title>Exercises</title>
+
+<section id="bst-01"><title>Exercise 1: Checking Trees</title>
+
+<para>
+  Our <filename>BST.java</filename> class includes a method,
+  <methodname>dump</methodname>, that prints a tree using a simple format.
+</para>
+
+<para>
+  a. Read through the code of <filename>BSTExpt.java</filename>.  You will note that
+  it uses the same sequence of operations as given above.  
+</para>
+
+<para>
+  b. Run <code>BSTExpt</code> and compare the trees it gives to the
+  trees you predicted.
+</para>
+
+<para>
+  c. Read the definitions of <methodname>set</methodname> and
+  <methodname>insert</methodname> to understand how we build
+  binary search trees.
+</para>
+
+</section> <!-- bst-01 -->
+
+<section id="bst-02"><title>Exercise 2: Exploring Repetition</title>
+
+<para>
+  In some of our previous work, we've seen some errors when we reuse
+  a key or value.  So let's consider such situations.
+</para>
+
+<para>
+  a. Given your reading of <methodname>set</methodname> and
+  <methodname>insert</methodname>, what do you expect to have happen if we
+  call <methodname>set</methodname> with a key that we've used before?
+</para>
+
+<para>
+  b. What do you expect to have happen if we call <methodname>set</methodname>
+  with a value that we've used before?
+</para>
+
+<para>
+  c. Check your answers experimentally.  (You'll see two lines in
+  <filename>BSTExpt.java</filename> that you can uncomment as a
+  starting point.)
+</para>
+
+</section> <!-- bst-02 -->
+
+<section id="bst-03"><title>Exercise 3: Printing Trees</title>
+
+<para>
+  a. Suppose you had to implement <methodname>dump</methodname>.  Sketch
+  the algorithm you would use.  Note that each node in the tree contains
+  a key, a value, and links to two subtrees called <code>smaller</code>
+  and <code>larger</code>.
+</para>
+
+<para>
+  b. Compare your answer to our implementation of
+  <methodname>dump</methodname>.
+</para>
+
+</section> <!-- bst-03 -->
+
+<section id="bst-04"><title>Exercise 4: Similar Trees</title>
+
+<para>
+  Does the order in which we add elements to the tree matter?
+</para>
+
+<para>
+  a. Suppose we add elements to the tree in alphabetical order.  
+  What do you expect the tree to look like?
+</para>
+
+<para>
+  b.  Update <code>BSTExpt</code> so that the elements get added to
+  the tree in alphabetical order and see if the results are similar
+  to what you predicted.
+</para>
+
+<para>
+  c. As you may have noted, when we add the elements in alphabetical
+  order, we get a fairly unbalanced tree.  Spend <emphasis>no more than
+  five minutes</emphasis> considering how you might keep the tree more
+  balanced.  Do not attempt to implement your idea, but be prepared to
+  discuss the idea.
+</para>
+
+<para>
+  d. Rearrange the lines that add elements so that they build some other
+  tree.  (It doesn't matter which; we just want something a bit more
+  balanced.)
+</para>
+
+</section> <!-- bst-04 -->
+
+<section id="bst-05"><title>Exercise 5: Implementing <methodname>get</methodname></title>
+
+<para>
+  If you've looked at the <filename>BST.java</filename>, you'll note
+  that some important methods are left unimplemented.  One such method
+  is <methodname>get</methodname>.  Implement that method and add some
+  experiments that help verify that your implementation is correct.
+</para>
+
+<para>
+  Note: You may find it easier to implement <methodname>get</methodname>
+  with a helper method, similar to the one we used as a helper to
+  <methodname>insert</methodname>.
+</para>
+
+</section> <!-- bst-05 -->
+
+<section id="bst-06"><title>Exercise 6: Iterating Trees</title>
+
+<para>
+  We make it a habit to implement iterators for every collection
+  we create.  And so we should implement an iterator for our BST.
+  In fact, we'll implement two, one for the keys and one for the values.
+  Of course, their implementations are likely to be similar.
+</para>
+
+<para>
+  a. Sketch a strategy for implementing an iterator over binary 
+  search trees.  Think about what data you will need to store and
+  how you will implement the <methodname>next</methodname> and
+  <methodname>hasNext</methodname> methods.
+</para>
+
+<para>
+  b. Compare your answer to the implementation in <filename>BST.java</filename>.
+</para>
+
+<para>
+  c. Suppose we create an iterator for the keys in the tree.  In what order
+  do you expect to see the values?  
+</para>
+
+<para>
+  d. Check your answer experimentally.  Here's some sample code.
+</para>
+
+<programlisting>
+for (String key : dict.keys()) {
+    pen.print(key + " ");
+} // for each key
+pen.println();
+</programlisting>
+
+</section> <!-- bst-06 -->
+
+</section> <!-- bst-exericses -->
+
+<section id="bst-extra"><title>For Those with Extra Time</title>
+
+<para>
+  If you find that you have extra time, you may want to attempt one
+  or more of the following.  (You can do them in any order.)
+</para>
+
+<section id="bst-extra-01"><title>Extra 1: Rethinking <methodname>get</methodname></title>
+
+<para>
+  Some people find it natural to implement <methodname>get</methodname>
+  recursively.  Others find it natural to implement <methodname>get</methodname>
+  iteratively.  (I will admit that I fall in the first category.)
+</para>
+
+<para>
+  a. If you implemented <methodname>get</methodname> recursively, implement
+  it iteratively.  If you implemented <methodname>get</methodname> iteratively,
+  implement it recursively.
+</para>
+
+<para>
+  b. Which do you prefer, and why?
+</para>
+
+</section> <!-- bst-extra-01 -->
+
+<section id="bst-extra-02"><title>Extra 2: Implement <methodname>containsKey</methodname></title>
+
+<para>
+  You'll note that we have not implemented
+  <methodname>containsKey</methodname>.  Implement that method
+  <emphasis>without significantly duplicating code</emphasis>.  (In order
+  to avoid significantly duplicating code, you may need to generalize
+  your code that implements <methodname>get</methodname> so that both
+  <methodname>containsKey</methodname> and <methodname>get</methodname>
+  can use the same core code.)
+</para>
+
+</section> <!-- bst-extra-02 -->
+
+<section id="bst-extra-03"><title>Extra 3: Alternate Iterators</title>
+
+<para>
+  Right now, the iterators for our binary search tree iterate in the
+  same order that we print the tree.  But what if we want a different
+  order?  Say, suppose we want the root, then all the values that are
+  one away from the root (the children), then all the values that are
+  two away from the root (the grandchildren), then all the values that
+  are three away from the root (the great-grandchildren), and so on
+  and so forth.
+</para>
+
+<para>
+  Update the iterators to provide the values in that order.
+</para>
+
+</section> <!-- bst-extra-03 -->
+
+</section> <!-- bst-extra -->
+
+</section> <!-- bst-lab -->
