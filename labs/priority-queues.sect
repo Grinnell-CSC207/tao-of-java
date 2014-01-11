@@ -1,0 +1,195 @@
+<section id="priority-queues-lab"><title>Laboratory: Priority Queues</title>
+
+<para>
+  <emphasis>Summary:</emphasis> In this laboratory, you will have an
+  opportunity to ground your understanding of priority queues, particularly 
+  of the array-based implementation of queues.
+</para>
+
+<emphasis role="strong">Required Code Files:</emphasis>
+
+<para>
+  <ulink url="https://github.com/Grinnell-CSC207/linear"/>
+</para>
+
+<section id="priority-queues-prep"><title>Preparation</title>
+
+<para>
+  a. Add up the number of vowels in the first names of all of your group
+  members.  Remember if that number is even or odd.
+</para>
+
+<para>
+  b. Review the <ulink url="../Readings/linear.html">reading on linear structures</ulink>.
+</para>
+
+<para>
+  c. Review the <ulink url="../Readings/priority-queues.html">reading on priority queues</ulink>.  
+</para>
+
+<para>
+  d. If you haven't already done so, fork and clone the repo at <ulink url="https://github.com/Grinnell-CSC207/linear"/>  If you have forked and cloned that repository, pull changes from the upstream repository using commands something like the following.
+</para>
+
+<screen>
+$ git commit
+$ git remote add upstream https://github.com/Grinnell-CSC207/linear
+$ git pull upstream master
+</screen>
+
+<para>
+  You may also have to fix any merge conflicts.  After fixing the merge
+  conflicts, try something like the following to note that you have
+  resolved those conflicts.
+</para>
+
+<screen>
+$ git add <emphasis>merged-file-1.java</emphasis>
+$ git add <emphasis>merged-file-2.java</emphasis>
+$ git commit
+</screen>
+
+</section> <!-- queues-prep -->
+
+<section id="priority-queues-exercises"><title>Exercises</title>
+
+<section id="priority-queues-01"><title>Exercise 1: Code Reading, Revisited</title>
+
+<para>
+  a. Read through our interface for priority queues,
+  <code>PriorityQueue.java</code>.
+</para>
+
+<para>
+  b. Read through the documentation on the standard Java implementation of
+  priority queues, available at
+  <ulink url="http://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html"/>.
+</para>
+
+<para>
+  c. Note how you would write a wrapper class (formally, an adapter class)
+  to make the built in priority queues behave like our priority queues.
+</para>
+
+<para>
+  d. Look at <code>BuiltinPriorityQueue.java</code> to see how our
+  implementation matches your design.
+</para>
+
+</section> <!-- priority-queues-01 -->
+
+<section id="priority-queues-02"><title>Exercise 2: Basic Experiments</title>
+
+<para>
+  Look at <code>PriorityQueueExpt</code>.  Summarize what the queue
+  should look like at each step of the first series of procedure calls.
+  You may also want to revisit the <code>ReportingLinearStructure</code>
+  class.
+</para>
+
+<para>
+  Run <code>PriorityBasedQueueExpt</code> and see if you get the output that
+  you expect.
+</para>
+
+</section> <!-- queues-02 -->
+
+<section id="priority-queues-03"><title>Exercise 3: Changing the Ordering</title>
+
+<para>
+  a. Revise <code>PriorityQueueExpt</code> so that the queue gives highest
+  priority to the longest strings.  That is, <code>get</code> should
+  return the longest remaining string.
+</para>
+
+<para>
+  b. Revise <code>PriorityQueueExpt</code> so that the queue gives 
+  highest priority to the alphabetically first string.
+</para>
+
+</section> <!-- priority-queues-03 -->
+
+<section id="priority-queues-04"><title>Exercise 4: Code Reading, Revised</title>
+
+<para>
+  Read through <code>ArrayBasedPriorityQueue.java</code>.  You will note 
+  that the iterator is not yet implemented and that prioritization is not
+  yet implemented.
+</para>
+
+<para>
+   Make some notes to yourself as to how you might finish implementing
+   the <code>put</code> and <code>get</code> methods.
+</para>
+
+</section> <!-- priority-queues-04 -->
+
+<section id="priority-queues-05"><title>Exercise 5: Implementing Priority Queues</title>
+
+<para>
+  As the reading noted, there are two basic strategies for implementing
+  priority queues in arrays.
+</para>
+
+<itemizedlist>
+  <listitem>
+    You can keep the values in order from lowest priority to highest
+    priority.  In this case, the <code>put</code> method must ensure that
+    the elements in the array are stored in order.  (You can probably
+    use a variant of the <code>insert</code> method from insertion sort to 
+    achieve that goal.)
+  </listitem>
+  <listitem>
+    You can keep the values in arbitrary order and search for the
+    highest-priorty element whenever we call <code>get</code> or
+    <code>peek</code>.  (You can probalby use a variant of the
+    <code>indexOfSmallest</code> method from selection sort to
+    achieve that goal.)
+  </listitem>
+</itemizedlist>
+
+<para>
+  If you came up with an even number in the preparation, use the first
+  of the two approaches.  If you came up with an odd number, use the
+  second of the two approaches.
+</para>
+
+</section> <!-- priority-queues-05 -->
+
+</section> <!-- queues-exercises -->
+
+<section id="priority-queues-extra"><title>For Those with Extra Time</title>
+
+<para>
+  If you are fortunate enough to have extra time, do some of the following:
+</para>
+
+<itemizedlist>
+  <listitem>
+    Implement array-based priority queues using whichever approach you
+    did not use in exercise 5.
+  </listitem>
+
+  <listitem>
+    Make your priority queues expand automatically when someone tries to
+    add an element beyond the initial capacity.
+  </listitem>
+
+  <listitem>
+    Implement linked priority queues.
+  </listitem>
+
+  <listitem>
+    Implement randomized queues, which give you an
+    <quote>unpredictable</quote> element of the queue each time you call
+    <code>get</code>.  The easy approach is to simply pick a random
+    position each time.  However, that approach does not guarantee
+    that <code>peek</code> returns the same value as the subsequent
+    <code>get</code>.  Start with the easy approach, and then see if you
+    can get <code>peek</code> and <code>get</code> to work in synchrony.
+  </listitem>
+</itemizedlist>
+
+</section>  <!-- priority-queues-extra -->
+
+</section>  <!-- priority-queues-lab -->
