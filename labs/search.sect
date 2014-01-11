@@ -1,0 +1,203 @@
+<section id="search"><title>Laboratory: Binary Search in Java</title>
+
+<para>
+  <emphasis>Summary:</emphasis> In today's laboratory, you will explore
+  issues pertaining to search in Java.  Along the way, you will not
+  only consider the binary search algorithm, but explore some program
+  design issues in Java.
+</para>
+
+<section id="search-prep"><title>Preparation</title>
+
+<para>
+  a. You are likely to find it useful to have <ulink
+  url='../readings/search-reading.html'>the corresponding reading</ulink>
+  open in another window.
+</para>
+
+<para>
+  b. Create a new Eclipse project and Java package for this lab.
+  (I'd recommend that you also create a Git repository, but it's up
+  to you.)
+</para>
+
+<para>
+  c. Create a new class, <code>Utils</code>, that will hold much of
+  code that you will write today.
+</para>
+
+</section> <!-- search-prep -->
+
+<section id="search-exercises"><title>Exercises</title>
+
+<section id="search-01"><title>Exercise 1: Binary Search in Arrays of Integers</title>
+
+<para>
+  Although the reading introduced a variety of techniques for designing
+  generalized search algorithms, it's probably easiest to start by
+  focusing on a single type.
+</para>
+
+<para>
+  Implement the following procedure.
+</para>
+
+<programlisting>
+/**
+ * Search for val in values, return the index of an instance of val.
+ *
+ * @param val
+ *   An integer we're searching for
+ * @param values
+ *   A sorted array of integers
+ * @result
+ *   index, an integer
+ * @throws Exception
+ *   If there is no i s.t. values[i] == val
+ * @pre
+ *   values is sorted in increasing order.  That is, values[i] &lt;
+ *   values[i+1] for all reasonable i.
+ * @post
+ *   values[index] == val
+ */
+public static int 
+binarySearch (int i, int[] vals) 
+    throws Exception 
+{
+  return 0;   // STUB
+} // binarySearch
+</programlisting>
+  
+</section> <!-- search-01 -->
+
+<section id="search-02"><title>Exercise 2: Testing Our Algorithm</title>
+
+<para>
+  Evidence suggests that (a) many programmers have difficulty implementing
+  binary search coorectly and (b) many programmers do only casual testing
+  of their binary search algorithm.  But it's really easy to write a
+  relatively comprehensive test suit for binary search. 
+</para>
+
+<literallayout>For each s from 1 to 32
+    Create an array of size s, containing the values 0, 2, 4, ... 2*(s-1)
+    For all i from 0 to s-1, inclusive
+        // Make sure that value 2*i is in position i
+        assert(binarySearch(2*i, array) == i)
+        // Make sure that odd values are not in the array
+        assertException(binarySearch(2*i+1, array))
+    assertException(-1, array)
+</literallayout>
+
+<para>
+  Implement this test.  Then repair any bugs you find in your implementation
+  of binary search.
+</para>
+
+<para>
+  Note that I've found this test very useful.  A surprising number of
+  pieces of code fail just one or two of the many assertions in this test.
+</para>
+
+<para>
+  <emphasis>Citation:</emphasis> This test is closely based on one suggested
+  by Jon Bentley in a Programming Pearls column.
+</para>
+
+</section> <!-- search-02 -->
+
+<section id="search=03"><title>Exercise 3: Care In Checking Midpoints</title>
+
+<para>
+  As binary search is phrased in the reading, when we note that the
+  middle element is not equal to the target value, we either set
+  <code>ub</code> to <code>mid-1</code> or <code>lb</code> to
+  <code>mid+1</code>.  But programmers often get confused by the
+  need for the <code>+1</code> and <code>-1</code>.
+</para>
+
+<para>
+  Determine experimentally what happens if you leave out the
+  <code>+1</code> and <code>-1</code>.  Explain why that result
+  happens.
+</para>
+
+</section> <!-- search-03 -->
+
+<section id="search-04"><title>Exercise 4: An Alternate Approach</title>
+
+<para>
+  In implementing binary search, you either wrote a loop or a
+  recursive procedure.  Write a second version of binary search
+  that uses the other approach.
+</para>
+
+</section> <!-- search-04 -->
+
+<section id="search-05"><title>Exercise 5: Timing Search</title>
+
+<para>
+  In theory, binary search should take O(log<subscript>2</subscript>n)
+  steps.  Does it really?  Augment each of your methods so that it counts
+  the number of repetitions (loop) or calls (procedure).  It's probably
+  easiest to create global variables that you set to 0, and then increment
+  at the top of the loop body or at the start of the procedure.
+</para>
+
+<para>
+  Build some moderately large arrays (at least 1000 elements) to verify
+  that you get the expected running times.
+</para>
+
+</section> <!-- search-05 -->
+
+<section id="search-06"><title>Exercise 6: Searching for the Smallest Value</title>
+
+<para>
+  a. Implement the following procedure:
+</para>
+
+<programlisting>
+/**
+ * Find the "smallest" integer in an array of integers
+ */
+public static Integer smallest(Integer[] values, Comparator&lt;Integer&gt; compare) {
+   return null; // STUB
+} // smallest(Integer[])
+</programlisting>
+
+<para>
+  b. Run your procedure with a comparator that does the standard
+  integer comparison.
+</para>
+
+<para>
+  c. Run your procedure with a comparator that does reverse integer
+  comparison (e.g., if x &lt; y, <code>compareTo(x,y)</code> should 
+  return a positive number.
+</para>
+
+<para>
+  d. Run your procedure with a comparator that does closest-to-zero
+  comparisons.
+</para>
+
+</section> <!-- search-06 -->
+
+</section> <!-- search-exercises -->
+
+<section id="search-extra"><title>For Those With Extra Time</title>
+
+<para>
+  Implement a generic binary search that takes a comparator as
+  a parameter.
+</para>
+
+<programlisting>
+public static &lt;T&gt; int binarySearch(T value, T[] values, Comparator&lt;T&gt; compare) throws Exception {
+} // binarySearch
+</programlisting>
+
+</section> <!-- search-extra  -->
+
+</section> <!-- search -->
