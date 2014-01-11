@@ -1,29 +1,41 @@
-<section id="makingyourappdothingspart2"><title>Making Our Apps Do Things Part II</title>
+<section id="makingyourappdothingspart2"><title>Adding Activities: Making Our Apps Do More Things</title>
 
-<section id="sofar"><title>0. What we've covered so far</title>
+<section id="review"><title>Review</title>
+
 <para>
-We've learned quite a bit so far. We know about the basics of android App development. We know about both the xml and the Java part and we know how they can work together. It might seem like we've focused a little bit more on the xml part of the application process, but it's very important to have a solid understanding of how it works so you don't run into problems later on when you should be paying attention to the Java part.
+  We've learned quite a bit so far. We know about the basics of android
+  App development. We know about both the xml and the Java part and we
+  know how they can work together. It might seem like we've focused a
+  little bit more on the xml part of the application process, but it's
+  very important to have a solid understanding of how it works so you
+  don't run into problems later on when you should be paying attention
+  to the Java part.
 </para>
+
 </section> <!-- sofar -->
 
-<section id="newactivity"><title>1. Adding a new activity</title>
+<section id="newactivity"><title>Adding a New Activity</title>
 
 <para>
-Remember how we talked about each activity of an app having it's own class? It's time to make good on that. Percy Shabunkuns is a very interesting baby chameleon, and he deserves more than just "Hey, I'm a chameleon!" popup message, when we want to find out more about him. So out goal is to make that button take us to another screen with a bit more information. This other screen will be another activity class.
+  Remember how we talked about each activity of an app having its own
+  class? It's time to make good on the promise to consider additional
+  activities. Percy Shabunkuns is a very interesting baby chameleon,
+  and he deserves more than just "Hey, I'm a chameleon!" popup message,
+  when we want to find out more about him. So out goal is to make that
+  button take us to another screen with a bit more information. This
+  other screen will be another activity class.
 </para>
 
 <para>
-To add an activity we click on the package in our src folder and go to
-</para>
-
-<para>
-<guimenu>File</guimenu> > <guimenuitem>New</guimenuitem> > <guimenuitem>Other...</guimenuitem>
+  To add an activity we click on the package in our src folder and select
+  <guimenu>File</guimenu> &gt; <guimenuitem>New</guimenuitem> &gt; <guimenuitem>Other...</guimenuitem>.
 </para>
 
 <imagedata fileref="../images/Android3/Lab3Image1.png" align="center" contentwidth="400"/>
 
 <para>
-We want our activity to be a simple Blank Activity, so we press <guimenuitem>Next</guimenuitem>.
+  We want our activity to be a simple Blank Activity, so we press
+  <guibutton>Next</guibutton>.
 </para>
 
 <para>
@@ -31,11 +43,7 @@ We want our activity to be a simple Blank Activity, so we press <guimenuitem>Nex
 </para>
 
 <para>
-  <emphasis><imagedata fileref="../images/List3.jpg" align="center" contentwidth="175"/></emphasis> 
-</para>
-
-<para>
-Now we give it a descriptive name, like ShabunkInfoActivity
+  Now we give it a descriptive name, like ShabunkInfoActivity
 </para>
 
 <para>
@@ -43,11 +51,13 @@ Now we give it a descriptive name, like ShabunkInfoActivity
 </para>
 
 <para>
-and click <guimenuitem>Finish</guimenuitem>.
+  Finall, we click <guibutton>Finish</guibutton>.
 </para>
 
 <para>
-Adding a new activity, auto-generates some files. As you might have expected, a layout xml file for the new activity is created, as well as a new String value for the activity's name.
+  Adding a new activity auto-generates some files. As you might have
+  expected, a layout xml file for the new activity is created, as well
+  as a new String value for the activity's name.
 </para>
 
 <para>
@@ -67,28 +77,36 @@ Besides that, the manifest file was updated to say that our app now has two acti
 </para>
 </section> <!-- newactivity -->
 
-<section id="addingtonewactivity"><title>2. Adding to our new activity</title>
+<section id="addingtonewactivity"><title>Adding to Our New Activity</title>
+
 <para>
-Our new activity is very similar to our first activity. We can change how it looks like and what UI objects it has via its xml layout file, and we can add resources like Strings in the Strings.xml file in the values folder. We modify it and interact with the same way we did we our main (first) activity.
+  Our new activity is very similar to our first activity. We can change
+  how it looks and what UI objects it has via its xml layout file, and
+  we can add resources like strings in the strings.xml file in the values
+  folder. We modify it and interact with the same way we did we our main
+  (first) activity.
 </para>
 
 <para>
-Our goal is to display some relevant tidbits about Percy's life
-A good way to do this is in form of a list. Here's some information about Percy's life that we could include.
+  Our goal is to display some relevant tidbits about Percy's life.
+  A good way to do this is in form of a list. Here's some information
+  about Percy's life that we could include.
 </para>
 
-<para>
-Name
-Age
-Species
-Occupation
-Life Goal
-Favorite Book
-Personal Blurb
-</para>
+<itemizedlist>
+  <listitem>Name</listitem>
+  <listitem>Age</listitem>
+  <listitem>Species</listitem>
+  <listitem>Occupation</listitem>
+  <listitem>Life Goal</listitem>
+  <listitem>Favorite Book</listitem>
+  <listitem>Personal Blurb</listitem>
+</itemizedlist>
 
 <para>
-Now we can create a simple Java class, called Info, that creates objects with the fields we defined above, to create Percy-specific data in our activity.
+  Now we can create a simple Java class, called Info, that creates
+  objects with the fields we defined above, to create Percy-specific
+  data in our activity.
 </para>
 
 <para>
@@ -96,20 +114,37 @@ Now we can create a simple Java class, called Info, that creates objects with th
 </para>
 
 <para>
-We can use regular Java classes in Android specific activity classes, just as we would normally. We can access all the methods and fields we have permission to (public/protected/private) and use them in any of our activities.
+  We can use regular Java classes in Android specific activity classes,
+  just as we would normally. We can access all the methods and fields
+  we have permission to (public/protected/private) and use them in any
+  of our activities.
 </para>
 
 <para>
-So, we decided to display our info as a list. Luckily for us, Android provides us with a ListView element that we can add to our activity in its layout xml file. The ListView consists of an infinite (or at least as large as memory can handle) numbers of rows. These rows are actually TextViews, so in order to create our ListView, we also need to define a TextView that tells the ListView exactly how each row will look like. To do that we can create a new xml file that will deal with only our row's TextView. 
+  So, we decided to display our info as a list. Luckily for us, Android
+  provides us with a ListView element that we can add to our activity
+  in its layout xml file. The ListView consists of an infinite (or at
+  least as large as memory can handle) numbers of rows. These rows are
+  actually TextViews, so in order to create our ListView, we also need
+  to define a TextView that tells the ListView exactly how each row will
+  look like. To do that we can create a new xml file that will deal with
+  only our row's TextView.
 </para>
 
 <para>
-To make a listView in Android, we simply just drag it onto the layout screen
-We can leave the layout kind to be a RelativeLayout. There's no reason to change it since it only has one element. ListView's are scrollable by default, so we don't have t worry about having too much information that won't fit in the screen.
+  To make a listView in Android, we simply just drag it onto the layout
+  screen We can leave the layout kind to be a RelativeLayout. There's
+  no reason to change it since it only has one element. ListViews are
+  scrollable by default, so we don't have t worry about having too much
+  information that won't fit in the screen.
 </para>
 
 <para>
-To define how a single row looks like, we need to create a new xml file that will contain only the information about that row. To keep it simple, we'll make our rows be TextViews. In that case, our ListView will contain multiple, vertically stacked TextViews. To do this, we simly add a new file to our layout folder, we can call it simple_row.
+  To define how a single row looks like, we need to create a new xml
+  file that will contain only the information about that row. To keep it
+  simple, we'll make our rows be TextViews. In that case, our ListView
+  will contain multiple, vertically stacked TextViews. To do this,
+  we simply add a new file to our layout folder, we can call it simple_row.
 </para>
 
 <para>
@@ -125,7 +160,7 @@ To define how a single row looks like, we need to create a new xml file that wil
 </para>
 
 <para>
-By default, the xml file will have a LinearLayout, like this:
+  By default, the xml file will have a LinearLayout, like this:
 </para>
 
 <para>
@@ -133,21 +168,19 @@ By default, the xml file will have a LinearLayout, like this:
 </para>
 
 <para>
-For it to just have TextView, we can replace the whole xml file with something like this:
+  For it to just have TextView, we can replace the whole xml file with something like this:
 </para>
 
 <programlisting>
-
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8"?&gt;
-&lt;TextView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    android:layout_width=&quot;fill_parent&quot;
-    android:layout_height=&quot;wrap_content&quot;
-    android:padding=&quot;10dp&quot;
-    android:id=&quot;@+id/rowTextView&quot;
-    android:textSize=&quot;16sp&quot; &gt;
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:id="@+id/rowTextView"
+    android:textSize="16sp" &gt;
     
-&lt;&quot;TextView&gt;
-
+&lt;"TextView&gt;
 </programlisting>
 
 <para>
@@ -155,67 +188,65 @@ For it to just have TextView, we can replace the whole xml file with something l
 </para>
 
 <para>
-ListViews in Android get information via an Adapter that we declare in our Activity class. Because our Info object is a cluster of Strings, a good way to proceed here, is to make of nicely formatted Strings, and feed them to the Adapter. Because we're giving the Adapter an Array, we'll use the ArrayAdapter that takes Strings as arguments.
+  ListViews in Android get information via an Adapter that we declare in
+  our Activity class. Because our Info object is a cluster of Strings,
+  a good way to proceed here, is to make of nicely formatted Strings,
+  and feed them to the Adapter. Because we're giving the Adapter an Array,
+  we'll use the ArrayAdapter that takes Strings as arguments.
 </para>
 
 <para>
-We probably also want to create a new method, for example createList(), where we can do all of the above, without clustering the onCreate() method. 
+  We probably also want to create a new method, for example createList(),
+  where we can do all of the above, without cluttering the onCreate()
+  method.
 </para>
 
 <para>
-As you can see there's a pattern to creating and filling a list in Android development. And the steps that we took are as follows:
+  As you can see there's a pattern to creating and filling a list in
+  Android development. And the steps that we took are as follows:
 </para>
 
 <itemizedlist mark="steps">
-<listitem>
-<para>
+  <listitem>
 	Create a new activity
-</para>
-</listitem>
-<listitem>
-<para>
+  </listitem>
+
+  <listitem>
 	Put the ListView element on your activity via the graphical layout
-</para>
-</listitem>
-<listitem>
-<para>
+  </listitem>
+
+  <listitem>
 	Define how a sinlge row in the ListView looks like
-</para>
-</listitem>
-<listitem>
-<para>
+  </listitem>
+
+  <listitem>
 	Declare a ListView and an ArrayAdapter object 
-</para>
-</listitem>
-<listitem>
-<para>
+  </listitem>
+
+  <listitem>
 	Decide what type of objects the ArrayAdapter will take, by putting it between angle brackets, for example Strings
-</para>
-</listitem>
-<listitem>
-<para>
+  </listitem>
+
+  <listitem>
 	Initialize the ListView object, by getting its id number 
-</para>
-</listitem>
-<listitem>
-<para>
+  </listitem>
+
+  <listitem>
 	Declare an array of String objects
-</para>
-</listitem>
-<listitem>
-<para>
+  </listitem>
+
+  <listitem>
 	Initialize the ArrayAdapter with our array
-</para>
-</listitem>
-<listitem>
-<para>
+  </listitem>
+
+  <listitem>
 	Set the Adapter for our ListView
-</para>
-</listitem>
+  </listitem>
 </itemizedlist>
 
 <para>
-Since we decided to put this in a new method, our activity ends up looking similar to this:
+  Since we decided to put this in a new method, our activity ends up
+looking similar to this: 
 </para>
 
 <programlisting>
@@ -231,7 +262,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class ShabunkInfoActivity extends Activity {
-
 	private ListView infoList;
 	private ArrayAdapter&lt;String&gt; listAdapter;
 	private Info shabunk;
@@ -251,25 +281,25 @@ public class ShabunkInfoActivity extends Activity {
 		infoList = (ListView) findViewById (R.id.listView1);
 		
 		// Create the Info object
-		shabunk = new Info(&quot;Percy Shabunkins&quot;, &quot;11 months&quot;, &quot;Brodypodion&quot;, 
-				&quot;Master of disguise&quot;, &quot;De-snake the planet&quot;, 
-				&quot;Understanding your everchanging identity&quot;, 
-				&quot;Hi there, my name is Percy and I am a chameleon. My story is a short one, &quot; +
-				&quot;but despite that an interesting one. As an egg I was stolen from my parents' &quot; +
-				&quot;warm and loving embrace by an evil overlord, Moldemort. I was hatched into a &quot; +
-				&quot;world of cruelty, despair, and bald chameleons with no noses. I was forced &quot; +
-				&quot;to do my master's bidding, and suffered in silence for many a month. &quot; +
-				&quot;My master was not your average chameleon, for he was able to befriend and&quot; +
-				&quot;control chameleons' natural enemies - snakes. He swore to exterminate the&quot; +
-				&quot;world of all chameleons with noses, so his kind could reign supreme!&quot; +
-				&quot;This was when I knew I had to act! Long story short, I now know how to&quot; +
-				&quot;kill snakes, and will proceed to do so until there are none left. The end.&quot;);
+		shabunk = new Info("Percy Shabunkins", "11 months", "Brodypodion", 
+				"Master of disguise", "De-snake the planet", 
+				"Understanding your everchanging identity", 
+				"Hi there, my name is Percy and I am a chameleon. My story is a short one, " +
+				"but despite that an interesting one. As an egg I was stolen from my parents' " +
+				"warm and loving embrace by an evil overlord, Moldemort. I was hatched into a " +
+				"world of cruelty, despair, and bald chameleons with no noses. I was forced " +
+				"to do my master's bidding, and suffered in silence for many a month. " +
+				"My master was not your average chameleon, for he was able to befriend and" +
+				"control chameleons' natural enemies - snakes. He swore to exterminate the" +
+				"world of all chameleons with noses, so his kind could reign supreme!" +
+				"This was when I knew I had to act! Long story short, I now know how to" +
+				"kill snakes, and will proceed to do so until there are none left. The end.");
 		
 		// Create the nicely formatted String
-		String[] aboutShabunk = {&quot;Name:\n &quot; + shabunk.name, &quot;Age:\n &quot; + shabunk.age, 
-				&quot;Species:\n &quot; + shabunk.species, &quot;Occupation:\n &quot; + shabunk.occupation, 
-				&quot;Life Goal:\n &quot; + shabunk.lifeGoal, &quot;Favourite Book:\n &quot; + shabunk.favoriteBook, 
-				&quot;Personal Blurb:\n &quot; + shabunk.personalBlurb};
+		String[] aboutShabunk = {"Name:\n " + shabunk.name, "Age:\n " + shabunk.age, 
+				"Species:\n " + shabunk.species, "Occupation:\n " + shabunk.occupation, 
+				"Life Goal:\n " + shabunk.lifeGoal, "Favourite Book:\n " + shabunk.favoriteBook, 
+				"Personal Blurb:\n " + shabunk.personalBlurb};
 		
 		// Fill the ArrayAdapter with our String array
 		listAdapter = new ArrayAdapter&lt;String&gt;(this, R.layout.simple_row, aboutShabunk);
@@ -291,75 +321,94 @@ public class ShabunkInfoActivity extends Activity {
 	} // toMain()
 }
 </programlisting>
+
 </section> <!-- addingtonewactivity -->
 
-<section id="linkingactivies"><title>3. Linking Activities</title>
+<section id="linkingactivies"><title>Linking Activities</title>
 
 <para>
-Now we need to link our activities together, so that we can somehow go from our main screen, to our list.
+  Now we need to link our activities together, so that we can somehow
+  go from our main screen to our list.
 </para>
 
 <para>
-To do this, we can create a Button in the graphical layout of our main activity class. We position it wherever we want, and give it a name "About" that will take us to the new screen. To connect a Button with a method, we need to add a new qualifier to the Button's xml definition. 
+  To make this connection, we can create a Button in the graphical
+  layout of our main activity class.  We position it wherever we want,
+  give it a name, such as "About", and write a method that will take us
+  to the new screen. To connect a Button with a method, we need to add
+  a new qualifier to the Button's xml definition.
 </para>
 
 <para>
-We add: 
-android:onClick="name_of_method"
+  We add <code>android:onClick="name_of_method"</code>
 </para>
 
 <para>
-Let's say we'll name our method toInfo(). We can add the qualifier before we actually write the method, we just have to make sure to keep the names consistent.
+  Let's say we'll name our method <methodname>toInfo</methodname>. We
+  can add the qualifier before we actually write the method, we just
+  have to make sure to keep the names consistent.
 </para>
 
 <para>
-* hint: You don't include parentheses in the qualifier, so in our case, our
-qualifier would look like this:
-android:onClick="toInfo"
+  <emphasis>Hint</emphasis>: You don't include parentheses in the
+  qualifier, so in our case, our qualifier would look like this:
+  <code>android:onClick="toInfo"</code>.
 </para>
 
 <para>
-In our main Activity, we now create our method. It's time to introduce another pretty important part of Android development - Intents. 
+  In our main activity, we now create our method. It's time to introduce another pretty important part of Android development - Intents. 
 </para>
 
 <para>
-Intents are abstract descriptions of operations to be performed. We use them with the startActivity() method, when we want to move between activities. 
+  Intents are abstract descriptions of operations to be performed. We
+  use them with the startActivity() method, when we want to move between
+  activities.
 </para>
 
 <para>
-Another that that should be noted is that whenever you're trying to write a method that is evoked when the user clicks a certain element on te screen, the method will always have at least one parameters - View. 
+  Another that that should be noted is that whenever you're trying to
+  write a method that is evoked when the user clicks a certain element on
+  te screen, the method will always have at least one parameters - View.
 </para>
 
 <para>
-There's many ways the Intent object can be created. For what we want to do, we'll use:
+  There's many ways an Intent object can be created. For what we want
+  to do, we'll use one of the simpler constructors.
 </para>
 
 <programlisting>
-public Intent (Context packageContext, Class&lt;?&gt; cls)
+public Intent(Context packageContext, Class&lt;?&gt; cls)
 </programlisting>
 
 <para>
-The Context will simply be this, and the Class&lt;?&gt; will be the Activity we want to go to followed by ".class". After that we just need to use startActivity(), and our Button should be able to take us to our desired screen.
+  The Context will simply be this, and the Class&lt;?&gt; will be the
+  Activity we want to go to followed by ".class". After that we just
+  need to use startActivity(), and our Button should be able to take us
+  to our desired screen.
 </para>
 
 <programlisting>
-	public void toInfo (View v) 
-	{
-		Intent intent = new Intent(this, ShabunkInfoActivity.class);
-		startActivity(intent);
-	} // toInfo (View)
+public void toInfo(View v) 
+{
+    Intent intent = new Intent(this, ShabunkInfoActivity.class);
+    startActivity(intent);
+} // toInfo (View)
 </programlisting>
+
 </section> <!-- linkingactivies -->
-<section id="seeingitallcometogether"><title>4. Seeing it all come together</title>
+
+<section id="seeingitallcometogether"><title>Seeing it all come together</title>
 
 <para>
-This is what the app looks like now, when we compile and run it. Pretty exciting, eh?This is what the app looks like now, when we compile and run it. Pretty exciting, eh?
+  This is what the app looks like now, when we compile and run it. Pretty
+  exciting, eh?
 </para>
 
 <imagedata fileref="../images/Android3/Lab3Image10.png" align="center" contentwidth="400"/>
+
 </section> <!-- seeingitallcometogether -->
 
-<section id="linkingtomainactivity"><title>5. Linking back to our main activity</title>
+<section id="linkingtomainactivity"><title>Linking back to our main activity</title>
 
 <para>Usually, apps allow you to go back to the main (or home) activity. We could use another button, and create an Intent like we did to go from our home screen to our info screen, but that's not the conventional way.
 </para>
