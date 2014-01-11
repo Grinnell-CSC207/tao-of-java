@@ -1,0 +1,135 @@
+<section id="queues-lab"><title>Laboratory: Queues</title>
+
+<para>
+  <emphasis>Summary:</emphasis> In this laboratory, you will have an
+  opportunity to ground your understanding of queues, particularly of
+  the array-based implementation of queues.
+</para>
+
+<emphasis role="strong">Required Code Files:</emphasis>
+
+<para>
+  <ulink url="https://github.com/Grinnell-CSC207/linear"/>
+</para>
+
+<section id="queues-prep"><title>Preparation</title>
+
+<para>
+  a. Review the <ulink url="../Readings/linear.html">reading on linear structures</ulink>.
+</para>
+
+<para>
+  b. Review the <ulink url="../Readings/queues.html">reading on queues</ulink>.
+</para>
+
+<para>
+  c. If you haven't already done so, fork and clone the repo at <ulink url="https://github.com/Grinnell-CSC207/linear"/>  If you have forked and cloned that repository, pull changes from the upstream repository.
+</para>
+
+<screen>
+$ git remote add upstream https://github.com/Grinnell-CSC207/linear
+$ git pull upstream master
+</screen>
+
+</section> <!-- queues-prep -->
+
+<section id="queues-exercises"><title>Exercises</title>
+
+<section id="queues=01"><title>Exercise 1: Code Reading</title>
+
+<para>
+  Read through <code>ArrayBasedQueue.java</code>.  You will note that
+  the iterator is not yet implemented.  You may also note a few subtle
+  (or not so subtle) bugs.  If so, write them down.  If not, that's okay,
+  we'll work them out in the lab.
+</para>
+
+</section> <!-- queues-01 -->
+
+<section id="queues-02"><title>Exercise 2: Basic Experiments</title>
+
+<para>
+  Look at <code>ArrayBasedQueueExpt</code>.  Summarize what the queue
+  should look like at each step of the first series of procedure calls.
+  You may also want to revisit the <code>ReportingLinearStructure</code>
+  class.
+</para>
+
+<para>
+  Run <code>ArrayBasedQueueExpt</code> and see if you get the output that
+  you expect.
+</para>
+
+</section> <!-- queues-01 -->
+
+<section id="queues-02"><title>Exercise 2: Correcting a Bug</title>
+
+<para>
+  You've probably determined that there seem to be some significant
+  bugs in the queue implementation.  Can you tell where they are?
+</para>
+
+<para>
+  You might learn a bit more about the bug by adding a call
+  to <code>expt.put("d")</code> before the first call to
+  <code>expt.get()</code>.
+</para>
+
+<para>
+  Do your best to correct the first bug: <code>get</code> and
+  <code>peek</code> don't seem to return the correct value after some
+  point.  If you need a hint as to where to look, ask your instructor
+  or mentor.
+</para>
+
+</section> <!-- queues-02 -->
+
+<section id="queues-03"><title>Exercise 3: Wrapping the Queue</title>
+
+<para>
+  If you uncomment the second section of code and reduce the size of
+  the queue to, say, 4, you may find that the queue fills before it
+  should.  (You may also have dealt with that issue.)
+</para>
+
+<para>
+  How do we fix that problem?  Normally, we <quote>wrap around</quote>,
+  so that the back of the queue goes to the front of the array.  For
+  example, if we have seven items in a queue, and the front is at 4,
+  then the item 0 is at 4; item 1 is at 5; item 2 is at 6; item 3 is
+  at 7; item 4 can't be at 8 (there is no index 8), so we wrap it
+  around to index 0; item 5 is at 1, item 6 is at 2, and the back of
+  the queue is at 3.
+</para>
+
+<para>
+  Rewrite your code so that elements wrap in the specified way.  You'll
+  need to change <code>back</code>.  You may also need to change the
+  code for <code>isEmpty</code> and <code>isFull</code>.
+</para>
+
+</section>  <!-- queues-03 -->
+
+<section id="queues-4"><title>Exercise 4: An Iterator</title>
+
+<para>
+  Right now, <code>ArrayBasedQueue</code> has only a stub iterator.
+  Finish implementing the iterator.  You may want to uncomment the
+  third set of experiments to see if the iterator works.
+</para>
+
+</section>  <!-- queues-04 -->
+
+</section> <!-- queues-exercises -->
+
+<section id="queues-extra"><title>For Those with Extra Time</title>
+
+<para>
+  If you are fortunate enough to have extra time, work on any
+  of the regular or extra problems from <ulink url="../labs/stacks.html">
+  the lab on stacks</ulink>.
+</para>
+
+</section>  <!-- queues-extra -->
+
+</section>  <!-- queues-lab -->
