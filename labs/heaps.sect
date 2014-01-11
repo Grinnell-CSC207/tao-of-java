@@ -1,0 +1,145 @@
+<section id="heaps"><title>Lab: Heaps and Heap Sort</title>
+
+<para>
+  <emphasis>Summary:</emphasis> In this laboratory, you will explore
+  the wonder of heaps.
+</para>
+
+<section id="heaps-prep"><title>Preparation</title>
+
+<para>
+  Fork and clone the repository at
+  <ulink url="https://github.com/Grinnell-CSC207/heaps"/>.
+</para>
+
+<para>
+  Import the repository into Eclipse.
+</para>
+
+<para>
+  Scan through the code so that you understand what methods are
+  available and what approaches are used.  Make notes on areas
+  that are likely to be problematic.
+</para>
+
+</section> <!-- heaps-prep -->
+
+<section id="heaps-exercises"><title>Exercises</title>
+
+<section id="heaps-01"><title>Exercise 1: Experiments</title>
+
+<para>
+  The file <filename>HeapExpt.java</filename> contains a few simple experiments
+  with heaps.  Pick one or two of those experiments, run the experiments,
+  and check that the heaps created seem to be correct.
+</para>
+
+</section> <!-- heaps-01 -->
+
+<section id="heaps-02"><title>Exercise 2: Designing Heap Sort</title>
+
+<para>
+  As you may recall, the in-place heap sort algorithm has two phases.
+  First, it turns the array into a heap.  Then, it repeatedly swaps 
+  the largest remaining element to the appropriate place in the array.
+</para>
+
+<para>
+  Sketch invariants for each phase of heap sort.
+</para>
+
+</section> <!-- heaps-02 -->
+
+<section id="heaps-03"><title>Exercise 3: Heap Sort</title>
+
+<para>
+  The file <filename>HeapSorter.java</filename> contains a stub implementation
+  of heap sort.  Finish that implementation.  You can check whether it
+  works using <code>HeapSorterTest.java</code>.
+</para>
+    
+</section> <!-- heaps-03 -->
+
+<section id="heaps-04"><title>Exercise 4: Swap Up, Revisited</title>
+
+<para>
+  Although we initially described the <quote>swap up</quote> algorithm
+  recursively, <filename>Heap.java</filename> has an iterative
+  implementation.  Rewrite <methodname>swapUp</methodname> to use
+  recursion.
+</para>
+
+</section> <!-- heaps-04 -->
+
+<section id="heaps-05"><title>Exercise 5: Swap Down, Revisited</title>
+
+<para>
+  We've both described and implemented the <quote>swap down</quote>
+  algorithm recursively.  However, as you know, many people prefer
+  iteration to recursion.  Rewrite <methodname>swapDown</methodname>
+  to use iteration.  You may not use <code>break</code> to escape from
+  your loop.  However, you may use a sentinel.
+</para>
+
+</section> <!-- heaps-05 -->
+
+</section> <!-- heaps-exercises -->
+
+<section id="heaps-extra"><title>For Those With Extra Time</title>
+
+<para>
+  If you find that you have extra time, try any of the following
+  problems.
+</para>
+
+<section id="heaps-extra-01"><title>Extra 1: A Heap Predicate</title>
+
+<para>
+  Write a predicate that checks if an array is in heap order.  Your
+  predicate should have a signature something like.
+</para>
+
+<programlisting>
+public static &lt;T&gt; boolean isHeap(T[] values, Comparator&lt;T&gt; order) {
+   ....
+} // isHeap
+</programlisting>
+
+</section> <!-- heaps-extra-01 -->
+
+<section id="heaps-extra-02"><title>Extra 2: A Simple Iterator</title>
+
+<para>
+  Add an iterator to the <code>Heap</code> class.  You may iterate the
+  values in any order you find easy.  (You are likely to find it
+  easiest to iterate the values from left to right in the array.)
+</para>
+
+<para>
+  You need only implement the <methodname>next</methodname> and
+  <methodname>hasNext</methodname> methods.
+</para>
+
+</section> <!-- heaps-extra-02 -->
+
+<section id="heaps-extra-03"><title>Extra 3: Removing Elements</title>
+
+<para>
+  Implement the <methodname>remove</methodname> method for the iterator
+  from the previous problem.
+</para>
+
+</section> <!-- heaps-extra-03 -->
+
+<section id="heaps-extra-04"><title>Extra 4: Iterating Elements, Revisited</title>
+
+<para>
+  Implement an iterator that returns the values in order from largest
+  to smallest.  (Note: I know of no easy way to approach this problem.)
+</para>
+
+</section> <!-- heaps-extra-04 -->
+
+</section> <!-- heaps-extra -->
+
+</section> <!-- heaps -->
