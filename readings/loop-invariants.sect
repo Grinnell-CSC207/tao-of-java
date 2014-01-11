@@ -54,6 +54,6 @@
   Jon Bentley. 1983. Programming pearls: Writing correct programs. <emphasis>Commun. ACM</emphasis> 26, 12 (December 1983), 1040-1045. DOI=10.1145/358476.358484 <ulink url="http://doi.acm.org/10.1145/358476.358484"/>.
 </para>
 
-</seciton> <!-- loop-invariants-citations -->
+</section> <!-- loop-invariants-citations -->
 
 </section> <!-- loop-invariants-reading -->
