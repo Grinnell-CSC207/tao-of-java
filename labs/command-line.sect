@@ -1,0 +1,284 @@
+<section id="command-line"><title>Laboratory: Java from the Command Line</title>
+
+<para>
+  <emphasis>Summary:</emphasis>
+  We explore a variety of issues in compiling and running Java from
+  the command line.
+</para>
+
+<para>
+  <emphasis>Prerequisite Knowledge:</emphasis> Objects, interfaces,
+  generics.
+</para>
+
+<section id="command-line-preparation"><title>Preparation</title>
+
+<para>
+  Fork and clone the repository at
+  <ulink url="https://github.com/Grinnell-CSC207/command-line"/>.
+</para>
+
+<para>
+  Scan through the files to make sure that you understand the purpose
+  of each file.
+</para>
+
+</section> <!-- command-line-preparation -->
+
+<section id="command-line-exercises"><title>Exercises</title>
+
+<section id="command-line-01"><title>Exercise 1: Compiling from the Command Line</title>
+
+<para>
+  The command <code>javac</code> is used to compile Java files.
+</para>
+
+<para>
+  a. Use <code>javac</code> to compile <filename>Sorter.java</filename>.  
+  What kind of file is produced?
+</para>
+
+<para>
+  b. Remove <filename>Sorter.class</filename> Use <code>javac</code>
+  to compile <filename>ISort.java</filename>.  Do you get anything
+  in addition to <filename>ISort.class</filename>?  What are the
+  implications?
+</para>
+
+<para>
+  c. You can run a Java <filename>.class</filename> file with the
+  <code>java</code> command and the name of a class that contains
+  a <code>main</code> method.  Type the following command (without
+  the dollar sign prompt) to run our sample sorting program.
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>java ISort 6 1 2 9 6 0</userinput>
+</screen>
+
+</section> <!-- command-line-01 -->
+
+<section id="command-line-02"><title>Exercise 2: Packages and Your <code>CLASSPATH</code></title>
+
+<para>
+  Right now, the <filename>.java</filename> files are in the default
+  package.  As a good Java programmer, you know that every class should
+  really be in an appropriate package.  So let's put these files in
+  the package <filename><emphasis>username</emphasis>.sorting</filename>.  
+</para>
+
+<para>
+  a. Using your favorite text editor (Emacs, vi, vi-mangled, GEdit),
+  add the line <code>package <emphasis>username</emphasis>.sorting;</code>
+  to the top of each file.
+</para>
+
+<para>
+  b. What happens when you try to compile <filename>ISort.java</filename>?
+</para>
+
+<para>
+  c. As you've discovered, the Java compiler can no longer find the
+  other <filename>.java</filename> files.  What do we do?  Two steps,
+  believe it or not.  First, we need to use the appropriate directory
+  structure.  In particular, if the pacakge is 
+  <code><emphasis>username</emphasis>.sorting</code>, the code is
+  supposed to be in the directory 
+  <filename><emphasis>username</emphasis>/sorting</filename>.  Move
+  you <filename>.java</filename> files to that directory.
+</para>
+
+<para>
+  d. The other important thing to do is to set up your <code>CLASSPATH</code>
+  variable, which governs where Java looks for code files.  Type the
+  following
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>export CLASSPATH=<emphasis>/path/to/parent/directory</emphasis></userinput>
+</screen>
+
+<para>
+  For example, if the Java code is in 
+  <filename>/home/<emphasis>username</emphasis>/Java/<emphasis>username</emphasis>/sorting</filename>, use <filename>/home/<emphasis>username</emphasis>/Java</filename> as the directory in the command above.
+</para>
+
+<para>
+  e. What do you expect to have happen if you try to run 
+  <code>ISort</code>?  Check your answer experimentally.
+</para>
+
+<para>
+  f. The full name of <code>ISort</code> is now
+  <code><emphasis>username</emphasis>.sorting.ISort</code>.
+  See if you can run it with that filename.
+</para>
+
+</section> <!-- command-line-02 -->
+
+<section id="command-line-03"><title>Exercise 3: Library Files</title>
+
+<para>
+  As you may recall from your work in C, we often use library files
+  to store utility code.  In Java, library files are called
+  <quote>jar files</quote> or <quote>jars</quote>.  You build a
+  <quote>jar</quote> with 
+</para>
+
+<screen>
+<prompt>$</prompt> jar cf <emphasis>File</emphasis>.jar <emphasis>classfiles</emphasis>
+</screen>
+
+<para>
+  a. Create a jar file named <filename>Sorting.jar</filename>
+  with the utility filename (<filename>Sorter.class</filename>,
+  <filename>StandardIntegerComparator.class</filename>, and
+  <filename>BuiltinSorter.class</filename>).
+</para>
+
+<para>
+  b. Remove those three <code>.class</code> files.
+</para>
+
+<para>
+  c. What do you expect to have happen when you try to run
+  <code>ISort</code> with the following command?
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>java <emphasis>username</emphasis>.sorting.ISort  10 5 1 2 4 9 1</userinput>
+</screen>
+
+<para>
+  d. Check your answer experimentally.
+</para>
+
+<para>
+  e. As you probably expected, Java doesn't automatically recognize
+  the files in the <code>.jar</code>.  However, we can solve that
+  problem: You can add the <code>.jar</code> to your classpath.
+  Try the following command:
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>export CLASSPATH=Sorting.jar:$CLASSPATH</userinput>
+</screen>
+
+<para>
+  f. Now try to run <code>ISort</code> again.
+</para>
+
+</section> <!-- command-line-03 -->
+
+<section id="command-line-04"><title>Exercise 4: Specifying a Main</title>
+
+<para>
+  What do we do when we want to ship a Java program?  Usually, we
+  put all of the files, including the class with the <code>main</code>
+  method, in the same <filename>.jar</filename> file.  We then have
+  to specify where to find <code>main</code>.  We do that with
+  a <quote>manifest file</quote> that looks somethign like the following.
+</para>
+
+<programlisting>
+Main-Class: ISort
+</programlisting>
+
+<para>
+  a. Create a file, <filename>manifest.txt</filename> with that line.
+</para>
+
+<para>
+  b. Create a jar file, <filename>ISort.jar</filename>, with the
+  following command:
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>jar cvfm ISort.jar ISort.class Sorter.class BuiltinSorter.class StandardIntegerComparator.class</userinput>
+</screen>
+
+<para>
+  c. You can run the jar file with the following command.  Try it with your
+  own set of values.
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>java -jar ISort.jar 5 4 1 2 3</userinput>
+</screen>
+
+</section> <!-- command-line-04 -->
+
+<section id="command-line-05"><title>Exercise 5: Unit Testing</title>
+
+<para>
+  a. What do you expect to have happen if you compile the unit test, which
+  you can find in <filename>BISTest.java</filename>?
+</para>
+
+<para>
+  b. Check your answer experimentally.
+</para>
+
+<para>
+  c. As you probably discovered, the Java compiler is upset that it
+  doesn't know where the JUnit code is.  But you can tell it.
+  The JUnit code is in <filename>/usr/share/java/junit.jar</filename>.
+  Add that to your <code>CLASSPATH</code> and see if you can get
+  the test to compile.
+</para>
+
+<para>
+  d. Of course, you also want to run the unit tests.  But where's
+  the <code>main</code> method?  Somewhere in JUnit.  There are a variety 
+  of ways to run unit tests.  Here's one that should work.  
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>java org.junit.runner.JUnitCore <emphasis>username</emphasis>.sorting.BISTest</userinput>
+</screen>
+
+<para>
+  Give it a try.
+</para>
+
+</section> <!-- command-line-05 -->
+
+<section id="command-line-06"><title>Exercise 6: Javadoc</title>
+
+<para>
+  We've seen how to compile Java files, run the compiled files, put
+  them into libraries, and test them.  What's left?  Generating
+  documentation!
+</para>
+
+<para>
+  You can create Javadoc documentation with the <code>javadoc</code>
+  command.  Try creating the documentation with
+</para>
+
+<screen>
+<prompt>$</prompt> <userinput>javadoc *.java</userinput>
+</screen>
+
+</section> <!-- command-line-06 -->
+
+<section id="command-line-07"><title>Exercise 7: An Improved Structure</title>
+
+<para>
+  Right now, we're doing everything in the same directory.  But that
+  clogs the directory.  Really, we should have separate diretories
+  for our main source code, our tests, our compiled files, our
+  Javadoc, and perhaps other things.
+</para>
+
+<para>
+  As you've discovered, Ant provides a way to organize all of those files.
+  Set up an appropriate directory structure and write an Ant build file
+  to put things in the appropriate place.
+</para>
+
+</section> <!-- command-line-07 -->
+
+</section> <!-- command-line-exercises -->
+
+</section> <!-- command-line -->
