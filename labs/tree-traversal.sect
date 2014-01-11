@@ -1,0 +1,244 @@
+<section id="tree-traversal"><title>Lab: Tree Traversal</title>
+
+<para>
+  <emphasis>Summary:</emphasis> In this laboratory, you will explore
+  the traversal of trees.  Although tree traversal can be used for all
+  sorts of trees, you will ground your exploration in binary search trees.
+</para>
+
+<section id="tree-traversal-prep"><title>Preparation</title>
+
+<para>
+  If you have not done so, fork and clone the repository at
+  <ulink url="https://github.com/Grinnell-CSC207/bst"/>.
+  (We have not updated that repository, so you need not pull changes.)
+</para>
+
+</section> <!-- tree-traversal-prep -->
+
+<section id="tree-traversal-exercises"><title>Exercises</title>
+
+<section id="tree-traversal-01"><title>Exercise 1: Building a Tree</title>
+
+<para>
+  Consider the following set of instructions.  
+</para>
+
+<programlisting>
+String[] values = new String[] { "monkey", "gibbon", "snake", "dingo",
+        "koala", "python", "viper", "baboon", "frog", "hippo", "lemur",
+        "orangutan", "rabbit", "tiger", "wombat", "aardvark", "chinchilla",
+        "emu", "gnu" };
+BST&lt;Character,String&gt; dict = new BST&lt;Character,String&gt;(new Comparator&lt;Character&gt;() {
+    public int compare(Character left, Character right) {
+        return left.compareTo(right);
+    } // compare(Character, Character)
+});
+for (String value : values) {
+   dict.set(value.charAt(0), value);
+} // for
+</programlisting>
+
+<para>
+  a. What tree do you expect these instructions to produce?
+</para>
+
+<para>
+  b. Write a program to check your answer experimentally.
+</para>
+
+</section> <!-- tree-traversal-01 -->
+
+<section id="tree-traversal-02"><title>Exercise 2: Alternate Output</title>
+
+<para>
+  Suppose instead of printing the tree in the deeply nested form, we want
+  to print the elements of the tree on a single (very long) line, but
+  in more or less the same order that we get from 
+  <methodname>dump</methodname>.  
+</para>
+
+<screen>
+monkey gibbon dingo baboon ....
+</screen>
+
+<para>
+  Clearly, we could just modify the wonderfully recursive 
+  <methodname>dump</methodname> procedure to get this output.
+  But <methodname>dump</methodname> is recursive.  What if we can't
+  use recursion?
+</para>
+
+<para>
+  Sketch, but do not implement, an algorithm to print all the values 
+  in the tree without using explicit recursion.
+</para>
+
+</section> <!-- tree-traversal-02 -->
+
+<section id="tree-traversal-03"><title>Exercise 3: Printing Elements</title>
+
+<para>
+  Consider the following potential solution to the previous exercise.
+</para>
+
+<programlisting>
+/**
+ * Print all of the elements in some order or other.
+ * 
+ * Note: We are trying to avoid recursion.
+ */
+public void print(PrintWriter pen) {
+    // A collection of the remaining things to print
+    Stack&lt;Object&gt; remaining = new Stack&lt;Object&gt;();
+    remaining.push(this.root);
+    // Invariants: 
+    //   remaining only contains Strings or BSTNodes
+    //   All key/value pairs in the tree are either
+    //     (a) already printed
+    //     (b) in remaining
+    //     (c) in or below a node in remaining
+    while (!remaining.isEmpty()) {
+        Object next = remaining.pop();
+        if (next instanceof String) {
+            pen.print(next);
+            pen.print(" ");
+        } else {
+            // next must be a BSTNode
+            @SuppressWarnings("unchecked")
+            BSTNode node = (BSTNode) next;
+            if (node.larger != null) {
+                remaining.push(node.larger);
+            } // if (node.larger != null)
+            if (node.smaller != null) {
+                remaining.push(node.smaller);
+            } // if (node.smaller != null)
+            remaining.push(node.value);
+        } // if it's a node
+    } // while
+    pen.println();
+} // print(PrintWriter)
+</programlisting>
+
+<para>
+  a. How does this code achieve the goal of achieving recursive
+  traversal without actually recursing?
+</para>
+
+<para>
+  b. In what order do you expect it to print the values in the tree?
+</para>
+
+<para>
+  c. Add this code to your program and verify that it works.  If it
+  does not, fix it.
+</para>
+
+</section> <!-- tree-traversal-03 -->
+
+<section id="tree-traversal-04"><title>Exercise 4: Other Orderings</title>
+
+<para>
+  The traversal strategy current implemented in
+  <methodname>print</methodname> is what is typically called
+  <emphasis>preorder, depth-first, left-to-right traversal</emphasis>.
+  It is <quote>preorder</quote> because we print/visit a node before
+  we visit its children.  It is <quote>depth-first</quote> because we
+  go deep down into the tree before we go across a particular level.
+  And it is <quote>left-to-right</quote> for obvious reasons.
+</para>
+
+<para>
+  Suppose we want to do <emphasis>inorder</emphasis> traversal, in which
+  we print the value of a node between the children.  (That is, we
+  print the left subtree, then the node, then the right subtree.)
+</para>
+
+<para>
+  a. In what order would you expect to see the values printed?  (You
+  only need list the first six or so.)
+</para>
+
+<para>
+  b. What changes do we have to make to the code to achieve that goal?
+</para>
+
+<para>
+  c. Check your answer experimentally.
+</para>
+
+<para>
+  d. What changes do we need to make in order to achieve
+  <emphasis>postorder</emphasis> traversal, in which we print the value
+  of a node after the children?
+</para>
+
+<para>
+  e. What changes do we need to make in order to achieve
+  right-to-left traversal?
+</para>
+
+</section> <!-- tree-traversal-04 -->
+
+<section id="tree-traversal-05"><title>Exercise 5: Breadth-First Traversal</title>
+
+<para>
+  So far, we've only explored depth-first traversal.  But what if we want
+  to do <emphasis>breadth-first</emphasis> traveral, wherein we visit/print
+  all of the values at a particular level before going on to the next level?
+</para>
+
+<para>
+  a. Sketch what changes you would make to <methodname>print</methodname>
+  to get it to print the values in a top-down, left-to-right,
+  breadth-first traversal.  (Hint: You probably don't want to use a
+  stack any more.)
+</para>
+
+<para>
+  b. Implement those changes.
+</para>
+
+</section> <!-- tree-traversal-05 -->
+
+</section> <!-- tree-traversal-exercises -->
+
+<section id="tree-traversal-extra"><title>For Those With Extra Time</title>
+
+<para>
+  If you find that you have extra time, try any of the following
+  problems.
+</para>
+
+<section id="tree-traversal-extra-01"><title>Extra 1: Numbering Levels</title>
+
+<para>
+  Extend your breadth-first traversal algorithm so that each time it
+  reaches a new level, it prints a new line and the level number 0 for the
+  root, 1 for the children of the root, 2 for the grandchildren, etc.).
+  (It's okay if you print one extra level number at the end, even if there
+  are no values at that level.)
+</para>
+
+<screen>
+0: monkey
+1: gibbon snake
+2: dingo koala python viper
+...
+</screen>
+
+</section> <!-- tree-traversal-extra-01 -->
+
+<section id="tree-traversal-extra-02"><title>Extra 2: Bottom-Up Traversal</title>
+
+<para>
+  Your breadth-first traversal algorithm should start at the top and work
+  its way down.  Rewrite the algorithm so that it prints the tree from
+  the bottom up.
+</para>
+
+</section> <!-- tree-traversal-extra-02 -->
+
+</section> <!-- tree-traversal-extra -->
+
+</section> <!-- tree-traversal -->
