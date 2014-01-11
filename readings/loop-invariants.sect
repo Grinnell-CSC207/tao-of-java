@@ -1,0 +1,59 @@
+<section id="loop-invariants-reading" title="Loop Invariants">
+
+<para>
+  Loop invariants provide an invaluable tool not only for helping ensure
+  the correctness of your code, but also for thinking about the structure
+  of code in the first place.  We introduce the basics of loop invariants
+  and consider both textual and visual invariants.
+</para>
+
+<section id="loop-invariants-introduction"><title>Introduction</title>
+
+<para>
+  Experience shows that as programmers develop more complicated iterative
+  algorithms, they tend to make subtle mistakes in their design that are
+  hard to fix.  (Yes, programmers also make mistakes in their recursive
+  designs.)  As you begin to develop more complicated algorithms, you will
+  find that a variety of tools can help you better ensure that these
+  algorithms are correct.  You've already seen one kind of tool - a
+  systematic test suite can help you identify potential errors.
+</para>
+
+<para>
+  <emphasis>Loop invariants</emphasis> provide an equally important
+  starting point - instead of having you reflect upon incorrect code,
+  loop invariant help you develop correct code from the start.  Basically,
+  <emphasis>a loop invariant is a (formal) statement about the state of 
+  your program.</emphasis>
+</para>
+
+</section> <!-- loop-invariants-introduction -->
+
+<section id="loop-invariants-citations"><title>Citations</title>
+
+<para>
+  This reading was inspired, in part, by Henry Walker's two short articles
+  on loop invariants.
+</para>
+
+<itemizedlist>
+  <listitem>
+    <ulink url="http://www.cs.grinnell.edu/~walker/courses/207.sp13/readings/reading-loop-invariants.shtml">Introduction to Loop Invariants</ulink>
+  </listitem>
+  <listitem>
+    <ulink url="http://www.cs.grinnell.edu/~walker/courses/207.sp13/readings/reading-loop-inv-pic.shtml">Pictorial Loop Invariants</ulink>
+  </listitem>
+</itemizedlist>
+
+<para>
+  Jon Bentley's reading on binary search remains my primary inspiration
+  for encouraging my students to think about loop invariants.
+</para>
+
+<para>
+  Jon Bentley. 1983. Programming pearls: Writing correct programs. <emphasis>Commun. ACM</emphasis> 26, 12 (December 1983), 1040-1045. DOI=10.1145/358476.358484 <ulink url="http://doi.acm.org/10.1145/358476.358484"/>.
+</para>
+
+</seciton> <!-- loop-invariants-citations -->
+
+</section> <!-- loop-invariants-reading -->
