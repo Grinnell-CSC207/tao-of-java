@@ -1,0 +1,187 @@
+<section id="linear"><title>Linear Structures</title>
+
+<para>
+  <emphasis>Summary:</emphasis> We consider the essential features of a
+  class of abstract data types known as <emphasis>linear structures</emphasis>.
+  Linear structures permit you to collect information and retrieve one
+  piece of information at a time.
+</para>
+
+<emphasis role="strong">Contents:</emphasis>
+
+<section id="introduction"><title>Introduction: Collections</title>
+
+<para>
+  As you may have learned earlier, computer scientists regularly design,
+  analyze, and implement mechanisms for collecting information.  Why do
+  we have more than one general <quote>Collection</quote> data type?
+  Because it turns out that we can often make the implementation more
+  efficient if we focus on certain operations.  (More precisely, we can
+  make the implementation of those operations more efficient if we focus
+  on those operations.)
+</para>
+
+<para>
+  You have probably already encountered a variety of collections in
+  your computer science, mathematics, or even <quote>real world</quote>
+  education.  For example, a <emphasis>set</emphasis> collects values
+  and provides one central operation of membership.  In contrast, a
+  <emphasis>list</emphasis>, such as a list of students in a class,
+  collects values and provides a central operation of visiting each
+  value in the list in turn.  And an <emphasis>array</emphasis> or
+  <emphasis>vector</emphasis> organizes values with an integer index.
+  Over the next few readings and labs, we will consider a variety of
+  collections and their implementations.
+</para>
+
+</section>  <!-- introduction -->
+
+<section id="linear"><title>Linear Structures</title>
+
+<para>
+  Among the simplest collections we encounter are the so-called <emphasis>linear
+  structures</emphasis>.  Linear structures are collections that let
+  you add elements to and remove elements from, one at a time.  You can
+  think of a to-do list or a job jar as kinds of linear structures: As
+  you come up with new tasks, you add them to the list or jar.  When you
+  have time to undertake a new task, you grab one from the list or jar.
+</para>
+
+<para>
+  Linear structures therefore provide two central operations:
+</para>
+
+<itemizedlist>
+  <listitem>
+    <code>put(T value)</code>, which adds an object to the structure.
+  </listitem>
+
+  <listitem>
+    <code>T get()</code>, which removes and returns one object from
+the structure.
+  </listitem>
+</itemizedlist>
+
+<para>
+  You may be asking yourself (or the page, or the computer screen,
+  or your professor) what determines which object <code>get()</code>
+  returns.  In the most generic form of linear structure, the particular
+  object returned by <code>get</code> is not specified.  However, we
+  do build a variety of kinds of linear structures, each with its own
+  <emphasis>policy</emphasis> for specifying which object <code>get</code>
+  returns.
+</para>
+
+<itemizedlist>
+  <listitem>
+    <emphasis>Stacks</emphasis> return objects using a last-in, 
+    first-out policy.  That is, <code>get</code> removes and 
+    returns the object that has been most recently added to the stack.
+    We can use stacks to model the typical set of plates in a cafeteria
+    or the calling structure of a program at run time.
+  </listitem>
+
+  <listitem>
+    <emphasis>Queues</emphasis> return objects using a first-in,
+    first-out policy.  That is, <code>get</code> removes and returns
+    the object that has been least recently added to the stack.
+    We can use queues to model the line at at grocery store or
+    to keep track of actions that must be done in order.
+  </listitem>
+
+  <listitem>
+    <emphasis>Priority Queues</emphasis> return objects based on
+    some ordering.  In this case, the <code>get</code> operation
+    removes and returns the object of highest priority.  As you may
+    have learned, in Java, we typically specify the priority using the
+    <code>compareTo</code> operation or a separate object that implements
+    <code>Comparator</code>.  Priority queus are a great way to implement
+    to-do lists.
+  </listitem>
+
+  <listitem>
+    <emphasis>Randomized Linear Structures</emphasis> return objects
+    <quote>randomly</quote>.  In this case, it should be difficult to
+    predict which value the structure will return.
+  </listitem>
+</itemizedlist>
+
+<para>
+  We will visit more details about these structures, particularly 
+  implementations, over the next few readings and labs.
+</para>
+
+</section>  <!-- linear -->
+
+<section id="additional"><title>Additional Operations</title>
+
+<para>
+  So far, we've only specified two operations for linear structures.
+  Are there others we might want or expect them to provide?  Certainly.
+</para>
+
+<para>
+  One principle many designers employ is that any precondition that a client
+  must meet must also have a mechanism for checking that precondition.
+  Since it is a bad idea to try to <code>get</code> a value from an
+  empty structure, clients probably need access to a <code>isEmpty</code>
+  predicate.
+</para>
+
+<para>
+  Experience also suggests that there are times in which it is useful
+  to check what value <code>get</code> will return, but not to remove
+  that value.  (Note that while we can remove and re-add the value in a
+  stack or priority queue, if we remove and re-add it in a queue, it moves
+  to the end.)  For such situations, many designers of linear structures
+  include a <code>peek</code> operation.
+</para>
+
+<para>
+  Some designers prefer as much symmatry in their structures as they
+  can provide.  Others worry about implementation and note that we will
+  eventually run out of room as we add values to a collection.  Both classes
+  of designers provide an <code>isFull</code> method.  
+</para>
+
+<para>
+  Some designers like to add functionality by permitting clients to
+  determine how many values are in the structure.  Others note that
+  determining the size of a linear structure is not central to the mission
+  of linear stuctures and do without it.  In the interests of 
+  minimalism, we follow the latter strategy.
+</para>
+
+<para>
+  Finally, as responsible Java programmers who are collecting values,
+  we should provide an <code>iterator</code> method.
+</para>
+
+</section>  <!-- additional --> 
+
+<section id="interface"><title>A Linear Structure Interface</title>
+
+<para>
+  We have considered the primary purpose of linear structures (to collect
+  values and then to extract them one at a time) and the key methods one
+  provides for linear structures (<code>put</code>, <code>get</code>,
+  <code>isEmpty</code>, and <code>peek</code>).  We are now ready to
+  put everything together into a Java interface that specifies the details.
+</para>
+
+<programlisting>
+<xi:include href="../git/linear/src/taojava/util/LinearStructure.java" parse="text"  xmlns:xi="http://www.w3.org/2001/XInclude"
+/></programlisting>
+
+</section>  <!-- interface -->
+
+<section id="linear-citations"><title>Citations</title>
+
+<para>
+  This reading is based on a reading I originally wrote for
+  <emphasis>Espresso</emphasis>.  
+</para>
+
+</section> <!-- citations -->
+
+</section>  <!-- linear -->
