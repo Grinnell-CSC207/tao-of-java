@@ -238,6 +238,8 @@ for (int i = 0; i &lt; ratings.length; i++) {
   In Java, the standard arrays have a fixed size.  However, there are
   a variety of container types (e.g., <code>java.util.Vector</code>,
   <code>java.util.ArrayList</code>) that provide dynamic arrays.
+  Feel free to read the Javadoc for those classes to learn more about
+  them.
 </para>
 
 </section> <!-- arrays-design -->
