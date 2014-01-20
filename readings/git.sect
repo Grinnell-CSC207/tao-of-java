@@ -28,7 +28,9 @@
   collaboration, so Subversion (sometimes abbreviated as SVN) came along.
   Git (no acronym, at least as far as I know), like Subversion, supports
   simultaneous edits by people spread around the Web, but also distributes
-  the repository to multiple machines.
+  the repository to multiple machines.  These days, there are lots of
+  other options too, such as Mercurial (which I will admit to not knowing).
+  options too
 </para>
 
 </section> <!-- source-code-management -->
@@ -37,10 +39,11 @@
 
 <para>
   For this course, we will be using Git because I use it in my
-  day-to-day software (and course) development.  Git is powerful,
+  day-to-day software development (and course development).  Git is powerful,
   popular, and provides some interesting perspectives on source code
-  management.  Git is also relatively easy to use (although it may take
-  awhile to understand some of its approaches).
+  management.  Git is also relatively easy to use, although it may take
+  awhile to understand some of its approaches.  One complexity of Git is
+  that there at least three different ways to copy a repository.
 </para>
 
 <para>
@@ -53,11 +56,12 @@
 </para>
 
 <para>
-  In Git, there is a main repository where all of the official files for a
-  project are stored.  A few people (sometimes as few as one) control this
-  repository.  They are the only ones with the permission to make changes
-  to files (or to approve changes that others propose).  But anyone can
-  propose changes.
+  In Git, many projects have a central repository where all of the
+  official files for a project are stored, although lots of people can
+  have copies of that repository.  A few people (sometimes as few as one)
+  control this repository.  They are the only ones with the permission
+  to make changes to files (or to approve changes that others propose).
+  But anyone can propose changes.
 </para>
 
 <para>
@@ -65,7 +69,8 @@
   in a repository, you can make your own copy of the repository on
   GitHub (or other Git hosting site), and you then control that
   repository, including the abillty to make changes to files that
-  can then be shared with others.
+  can then be shared with others.  This kind of copy of a repository
+  is called a <emphasis>fork</emphasis>.
 </para>
 
 <para>
@@ -100,16 +105,19 @@
   So, a typical approach to working with a project that is under Git
   is something like the following.  First, you clone the repository
   onto your local machine.  You usually only need to do that once.
+  In some other situations, you start by forking the repository on GitHub
+  and then cloning your fork.  (See, I said that there's a lot of copying
+  that can go on.)
 </para>
 
 <para>
-  At the start of each session, you pull the latest changes from the
-  primary repository.  After all, it doesn't make much sense to work
-  with old code - you might end up redoing changes that someone else
-  made.  (Sometimes when you pull from the main repository, you'll get
-  conflicts with changes you've made but have not sent back to the
-  main repository.  In such cases, you'll need to <quote>resolve</quote>
-  the conflicts and them commit them back to your local copy.)
+  At the start of each work session, you pull the latest changes from
+  the primary repository.  After all, it doesn't make much sense to work
+  with old code - you might end up redoing changes that someone else made.
+  (Sometimes when you pull from the main repository, you'll get conflicts
+  with changes you've made but have not sent back to the main repository.
+  In such cases, you'll need to <quote>resolve</quote> the conflicts
+  and them commit them back to your local copy.)
 </para>
 
 <para>
@@ -134,10 +142,10 @@
 
 <para>
   Of course, professional programmers have a much deeper process.  Most
-  work with branches (alternate threads of development, so that folks
+  work with branches (alternate threads of development), so that folks
   can independently try different approaches to problems or otherwise
   attack issues that may require modifying multiple files in different
-  ways).
+  ways.
 </para>
 
 <para>
@@ -212,11 +220,11 @@
 
 </section> <!-- make-account -->
 
-<section id="setup-mathlan"><title>Configuring Your MathLAN Account</title>
+<section id="setup-mathlan"><title>Configuring Your *nix Account</title>
 
 <para>
   In addition to setting up a GitHub account, it's useful to configure
-  your MathLAN account so that you can easily access Git
+  your *nix account so that you can easily access Git
   We are going to set up your name and email in Git (accessible via
   terminal).  You will only need to do this once. Once again, you
   will have the the opportunity to do this in the upcoming lab.  
@@ -273,8 +281,8 @@
   side of the page.  Click that button.  Give your repository a name
   and  a brief description.  I suggest that you also click 
   <guibutton>Initialize this repository with a README</guibutton>,
-  that you add a Java  <code>.gitignore</code> file, and choose a
-  license for your code.  (I generally use LGPL v3.) 
+  that you add a Java <code>.gitignore</code> file, and choose a
+  license for your code.  (I generally use GPL v3 or LGPL v3.) 
 </para>
 
 <para>
