@@ -1,0 +1,142 @@
+<section id="stacks-lab"><title>Laboratory: Stacks</title>
+
+<para>
+  <emphasis>Summary:</emphasis> In this laboratory, you will have an
+  opportunity to ground your understanding of stacks, particularly of
+  the array-based implementation of stacks.
+</para>
+
+<emphasis role="strong">Required Code Files:</emphasis>
+
+<para>
+  <ulink url="https://github.com/Grinnell-CSC207/linear"/>
+</para>
+
+<section id="stacks-prep"><title>Preparation</title>
+
+<para>
+  a. Review the <ulink url="../Readings/linear.html">reading on linear structures</ulink>.
+</para>
+
+<para>
+  b. Review the <ulink url="../Readings/stacks.html">reading on stacks</ulink>.
+</para>
+
+<para>
+  c. Fork and clone the repo at <ulink url="https://github.com/Grinnell-CSC207/linear"/>
+</para>
+
+</section> <!-- stacks-prep -->
+
+<section id="stacks-exercises"><title>Exercises</title>
+
+<section id="stacks-01"><title>Exercise 1: Basic Experiments</title>
+
+<para>
+  Read through <code>LSExpt.java</code> and <code>LinkedStackExpt</code>.
+  Summarize what the stack should look like at each step.  (A piece of
+  paper might help.)  Note that the <code>info</code> method will print
+  information on the stack (is it empty? is it full? what elements are
+  in the stack) and the <code>clear</code> method will repeatedly call
+  <code>get</code> until the stack is empty.
+</para>
+
+<para>
+  Run <code>LinkedStackExpt</code> and see if you get the output that
+  you expect.
+</para>
+
+</section> <!-- stacks-01 -->
+
+<section id="stacks-02"><title>Exercise 2: A Wrapper Class</title>
+
+<para>
+  Skim through <code>ReportingLinearStructure.java</code>.  Summarize
+  the main approach of the class.  What ideas from the class might you
+  apply in other situations?  (Pick at least one or two.)
+</para>
+
+</section> <!-- stacks-02 -->
+
+<section id="stacks-03"><title>Exercise 3: A Faulty Implementation</title>
+
+<para>
+  The file <code>ArrayBasedStack.java</code> has a significant bug.
+  Identify and correct that bug.
+</para>
+</section>  <!-- stacks-03 -->
+
+<section id="stacks-4"><title>Exercise 4: Matching Parens</title>
+
+<para>
+  One useful application of stacks is matching things.  For example,
+  we can match the parens in a Scheme expression as follows:
+</para>
+
+<literallayout>Step through the characters in the expression
+    When you encounter an open paren or open square bracket, push it 
+      on the stack
+    When you encounter a close paren or close square bracket, pop 
+      the corresponding opening character off the stack.  If the two
+      characters don't match, issue an error.
+    If you encounter a closing character with an empty stack, that 
+      close paren or bracket is mismatched.
+If the stack is not empty, there are unmatched open or closed parens.
+</literallayout>
+
+<para>
+  Implement this algorithm.  (You might also add support for braces and
+  angle  brackets.)  That is, write and experiment with a method, 
+  <code>checkMatching(String str)</code>, that checks whether the
+  parens, square brackets, and potentially other characters, match
+  correctly.
+</para>
+
+</section>  <!-- stacks-4 -->
+
+</section> <!-- stacks-exercises -->
+
+<section id="stacks-extra"><title>For Those with Extra Time</title>
+
+<section id="stacks-extra-1"><title>Extra 1: Matching, Revisited</title>
+
+<para>
+  Revise your answer from the previous exercise to store the indices of
+  matching symbols.  That is, you will need to push both symbol and
+  index.  Use the indices to provide better error messages (e.g., you
+  can say where the mismatch occurs in the string).
+</para>
+
+<para>
+  How can you store two kinds of values in stack?  One option is to
+  make it a stack of Objects, and alternately push Character and
+  Integer objects.  Another option is to create a simple class that
+  groups a character and an integer.
+</para>
+
+</section>  <!-- stacks-extra-1 -->
+
+<section id="stacks-extra-2"><title>Extra 2: Displaying Matching Parens</title>
+
+<para>
+  Extend your answer from the previous extra problem to
+  provide a nice picture of the matching parens.  For example, for
+  each pair of matching parens, you might draw a line underneath,
+  as in the following.
+</para>
+
+<programlisting>
+(oh (boy) (I am having) ((so) much) fun matching (parens))
+    +---+
+          +-----------+
+	                 +--+
+			+---------+
+			                         +------+
++--------------------------------------------------------+
+</programlisting>
+
+</section>  <!-- stacks-extra-2 -->
+
+</section>  <!-- stacks-extra -->
+
+</section>  <!-- stacks-lab -->

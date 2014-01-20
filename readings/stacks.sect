@@ -1,0 +1,245 @@
+<section id="stacks"><title>Stacks</title>
+
+<para>
+  <emphasis>Summary:</emphasis> We consider the essential features of
+  <emphasis>stacks</emphasis>, one of the forms of linear structures.
+  We also consider a straightforward implementation of stacks.
+</para>
+
+<para>
+  <emphasis>Prerequisites:</emphasis> Linear Structures, Arrays, Polymorphism,
+  Inheritance
+</para>
+
+<section id="stack-basics"><title>Stack Basics</title>
+
+<para>
+  Now that you understand about linear structures, stacks are a fairly
+  simple abstract data type.  Stacks are simply linear structures
+  that implement that <emphasis>last in, first out</emphasis>
+  (also <quote>LIFO</quote>) policy.  That is, the value returned by
+  <code>get</code> is the value most recently added to the stack.
+</para>
+
+</section>  <!-- stack-basics -->
+
+<section id="stack-interface"><title>An Interface</title>
+
+<para>
+  We might describe the interface for stacks as follows.
+</para>
+
+<programlisting>
+<xi:include href="../git/linear/src/taojava/util/Stack.java" parse="text"  xmlns:xi="http://www.w3.org/2001/XInclude"
+/></programlisting>
+
+<para>
+  One aspect of this code you may find of interest is that we have said
+  that <code>Stack extends LinearStructure</code>.  This extension is
+  similar to the extension you've seen for classes, although it is used
+  primarily for polymorphism.  It means that you can use a <code>Stack</code>
+  whereever code expects a <code>LinearStructure</code>
+</para>
+
+</section>  <!-- stack-interface -->
+
+<section id="stack-applications"><title>Applications of Stacks</title>
+
+<para>
+  There are a variety of ways in which computer scientists use stacks.
+  At times, they use them simply because they need some linear structure,
+  and stacks are convenient to use.  More frequently, they identify
+  problems for which the last-in, first-out policy is particularly
+  appropriate.
+</para>
+
+<para>
+  One such class of problems involves matching symbols, such as tags in an
+  HTML document or parens in a Scheme program.  In essence, whenever you
+  see an opening symbol, such as <code>&lt;b&gt;</code> in an HTML
+  document or <code>(</code> in a Scheme program, you push it on the
+  stack.  When you see a closing symbol, such as <code>&lt;/b&gt;</code>
+  in an HTML document or <code>)</code> in a Scheme program, you pop
+  the value on the stack and compare it to the closing symbol.  If they
+  match, you continue on.  If they fail to match, you report an error.
+  Clearly, if you encounter an end symbol with an empty stack, there's
+  something seriously wrong with the document or program.  Similarly,
+  if the stack contains values at the end, there are also significant
+  problems, since not all opening symbols are matched.
+</para>
+
+<para>
+  Stacks are also useful for certain kinds of operations.  For
+  example, some mathematicians like to use <emphasis>reverse polish
+  notation</emphasis> (RPN), in which the operation follows the operands.
+  In such a system, we would write <quote>add 2 and the product of 3
+  and 7</quote> as <code>2 3 7 * +</code>.  RPN is useful because you
+  don't have to worry about precedence rules.  RPN is also very easy to
+  implement using stacks.
+</para>
+
+<itemizedlist>
+  <listitem>
+    Whenever you encounter a value, you push it.
+  </listitem>
+
+  <listitem>
+    Whenever you encounter an operation, pop the parameters and push the result.
+  </listitem>
+
+  <listitem>
+    The value on the top of the stack when you are done is the final result.
+  </listitem>
+</itemizedlist>
+
+</section>  <!-- stack-applications -->
+
+<section id="array-implementation"><title>Implementing Stacks with Arrays</title>
+
+<para>
+  It is also fairly easy to implement stacks, at least once we have another
+  data structure, such as an array.  In an array-based implementation of
+  stacks, we typically store the values as they come in, starting at index 0.
+  When we pop a value, we use the index of the last value added and decrease
+  that value.  (Typically, we use a field called <code>top</code> to keep
+  track of where to add values.)
+</para>
+
+<para>
+  Given that strategy, here's the basic code for <code>put</code>
+</para>
+
+<programlisting>
+this.contents[this.top] = newvalue;
+this.top++
+</programlisting>
+
+<para>
+  Most programmers would express this more concisely as
+</para>
+
+<programlisting>
+this.contents[this.top++] = newvalue;
+</programlisting>
+
+<para>
+  It is equally easy to get the value at the top of the stack: We just
+  reverse those two steps.
+</para>
+
+<programlisting>
+this.top--;
+return this.contents[this.top];
+</programlisting>
+
+<para>
+  Again, we can combine these two lines into a single instruction. 
+  Note that when we combine the operations, we use the prefix version
+  of the decrement operation so that <code>this.top</code> is decremented
+  before we use it as an index.
+</para>
+
+<programlisting>
+return this.contents[--this.top];
+</programlisting>
+
+<para>
+  To avoid accidental access to removed data, many programmers
+  make it a habit to clear out the entry in an array whenever we remove
+  a value.  Hence, we will need to temporarily store the value to be
+  returned before clearing the cell and then returning that value.
+</para>
+
+<programlisting>
+T returnme = this.contents[--this.top];
+this.contents[this.top] = null;
+return returnme;
+</programlisting>
+
+<para>
+  Determining whether or not the stack is empty is also easy: The stack
+  is empty only when <code>top</code> is 0.
+</para>
+
+<para>
+  The only hard part is what to do when the stack <quote>fills</quote>.  The
+  simplest thing to do is to make a bigger array and copy the values over.
+  The particular code for doing so is left as an exercise for the reader.
+</para>
+
+</section>  <!-- array-implementation -->
+
+<section id="linked-implementation"><title>A Linked Implementation of Stacks</title>
+
+<para>
+  We can also implement stacks using linked nodes.  What is a node?  
+  It's a simple data type that contains two parts: a value and a link
+  to the next node.
+</para>
+
+<programlisting>
+<xi:include href="../git/linear/src/taojava/util/Node.java" parse="text"  xmlns:xi="http://www.w3.org/2001/XInclude"
+/></programlisting>
+
+<para>
+  For a stack, we just need a pointer to the node at the front of the
+  stack, which we'll call <code>front</code>.
+</para>
+
+<para>
+  To put something at the front of the stack, we can write
+</para>
+
+<programlisting>
+this.front = new Node(val, this.front);
+</programlisting>
+
+<para>
+  To get something from the front of the stack, we can write
+</para>
+
+<programlisting>
+T result = this.front.val;
+this.front = this.front.next;
+return result;
+</programlisting>
+
+<para>
+  Ideally, the stack never fills.  (If it does, we're in pretty big
+  trouble, because we can't even create a small object.
+</para>
+
+<para>
+  We can check if the stack is empty by initializing <code>front</code>
+  to <code>null</code>.
+</para>
+
+</section> <!-- linked-implementation -->
+
+<section id="terminology"><title>Terminology</title>
+
+<para>
+  Unfortunately, some bright computer scientist designed the stack 
+  before some other bright computer scientist designed the more general
+  linear structure.  Hence, the terms that many folks use for the
+  basic stack operations are not <code>put</code> and <code>get</code>,
+  but rather <code>push</code> and <code>pop</code>.
+</para>
+
+<para>
+  To make our code more usable, we will stick with the linear structure
+  terms.
+</para>
+
+</section>  <!-- terminology -->
+
+<section id="citation"><title>Citation</title>
+
+<para>
+  This reading is based on a similar reading I created as a part of
+  <emphasis>Espresso</emphasis>.
+</para>
+
+</section> <!-- citation -->
+
+</section>  <!-- stacks -->
