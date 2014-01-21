@@ -27,7 +27,10 @@
   You still have some opportunity for information hiding, and it
   is much stricter about types, which helps you catch errors 
   earlier.  For example, Java distinguishes Boolean values from integers,
-  and won't let you use one for the other.
+  and won't let you use one for the other.  (Yes, that's right, the
+  Java compiler won't let you write the incorrect <quote><code>while
+  (i = 0)</code></quote> rather than the intended <quote><code>while
+  (i == 0)</code></quote>
 </para>
 
 </section> <!-- simple-java-c-intro -->
@@ -43,8 +46,12 @@
 </para>
 
 <programlisting>
-public class MyClass {
-  public static void main(String[] args) throws Exception {
+public class MyClass 
+{
+  public static void 
+    main (String[] args) 
+      throws Exception 
+  {
     <emphasis>...</emphasis>
   } // main(String[])
 } // MyClass
@@ -93,9 +100,9 @@ public class MyClass {
 </para>
 
 <para>
-  Finally, that <code>throws Exception</code> is our way of signaling
-  that the program can fail.  You'll learn about throwing exceptions
-  later.
+  Finally, that bit of code that says <code>throws Exception</code> is
+  our way of signaling that the program can fail.  You'll learn about
+  throwing exceptions later.
 </para>
 
 </section> <!-- classes -->
@@ -134,7 +141,8 @@ public class MyClass {
   Java, like C, has basic numeric types, including <code>int</code>,
   <code>short</code>, <code>long</code>, <code>float</code>, and
   <code>double</code>.  Unlike C, Java carefully specifies what
-  representation and ranges are used for each of these.
+  representation and ranges are used for each of these.  (You can
+  find those specifications online if you look carefully.)
 </para>
 
 <para>
@@ -144,9 +152,9 @@ public class MyClass {
 
 <para>
   Java does not have pointers.  (It has references, but it does not
-  let you reference and dereference like you can in C.)
-  Java's strings are therefore their own type, <code>String</code>
-  or <code>java.lang.String</code>.
+  let you reference and dereference like you can in C; it does not let
+  you get an address.)  Java's strings are therefore their own type,
+  <code>String</code> or <code>java.lang.String</code>.
 </para>
 
 <para>
@@ -177,7 +185,8 @@ public class MyClass {
 
   <listitem>
     An optional <code>static</code> specification.  Until you start
-    creating you own template classes, you'll need to make all of your
+    creating you own template classes, you'll need to make 
+    <emphasis>all</emphasis> of your
     methods static.
   </listitem>
 
@@ -199,7 +208,9 @@ public class MyClass {
      * @exception Exception 
      *   when the square is larger than the largest int.
      */
-    public static int square(int x) throws Exception
+    public static int 
+      square (int x
+        ) throws Exception
 </programlisting>
 
 </section> <!-- declaring-functions -->
@@ -220,7 +231,7 @@ public class MyClass {
 </para>
 
 <programlisting>
-        long result;
+    long result;
 </programlisting>
 
 <para>
@@ -231,10 +242,10 @@ public class MyClass {
 </para>
 
 <programlisting>
-    /**
-     * A count of the number of errors encountered during testing.
-     */
-    private int errorCount = 0;
+  /**
+   * A count of the number of errors encountered during testing.
+   */
+  private int errorCount = 0;
 </programlisting>
 
 </section> <!-- declaring-variables -->
@@ -260,8 +271,14 @@ public class MyClass {
 </para>
 
 <programlisting>
-        for (int i = 0; i &lt; MAX_VALUE; i++)
+  for (int i = 0; i &lt; MAX_VALUE; i++)
 </programlisting>
+
+<para>
+  C99 programmers also write for loops that put the declaration in the
+  loop header.  But many (most?)  C programmers stick to an earlier
+  version of C and leave the declaration outside of the foor loop.
+</para>
 
 <para>
   Java also provides s special loop that makes it much easier to access
@@ -270,7 +287,7 @@ public class MyClass {
 </para>
 
 <programlisting>
-        for (s : Strings) ...
+    for (s : args) ...
 </programlisting>
 
 <para>
@@ -301,10 +318,14 @@ public class MyClass {
 <programlisting>
 package edu.grinnell.csc207.utils;
 
-public class Util {
-  public static int square(int x) throws Exception {
-     ...
-  }
+public class Util 
+{
+  public static int 
+    square (int x) 
+      throws Exception 
+  {
+   ...
+  } // square (int)
 } // class Util
 </programlisting>
 
@@ -313,7 +334,7 @@ public class Util {
 </para>
 
 <programlisting>
-        edu.grinnell.csc.207.utils.Util.square(...)
+  edu.grinnell.csc.207.utils.Util.square (...)
 </programlisting>
 
 <para>
@@ -323,7 +344,7 @@ public class Util {
 </para>
 
 <programlisting>
-        java.io.PrintWriter pen = new java.io.PrintWriter(System.out,true);
+  java.io.PrintWriter pen = new java.io.PrintWriter (System.out,true);
 </programlisting>
 
 </section> <!-- library -->
@@ -341,17 +362,19 @@ public class Util {
 </para>
 
 <programlisting>
-        java.io.PrintWriter pen = new java.io.PrintWriter(System.out,true);
+    java.io.PrintWriter pen = new java.io.PrintWriter (System.out,true);
 </programlisting>
 
 <para>
   You can then print using that object's <code>print</code> and
   <code>println</code> methods.  (There's also a <code>printf</code>
-  method that works much like C's <code>printf</code>.)
+  method that works much like C's <code>printf</code>.)  You may
+  also find it useful to use the <code>flush</code> method and to
+  <code>close</code> the PrintWriter when you are done with it.
 </para>
 
 <programlisting>
-       pen.println("Hello");
+    pen.println ("Hello");
 </programlisting>
 
 <para>
@@ -360,8 +383,8 @@ public class Util {
 </para>
 
 <programlisting>
-       java.io.BufferedReader eyes =
-           new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
+     java.io.BufferedReader eyes =
+         new java.io.BufferedReader (new java.io.InputStreamReader (System.in));
 </programlisting>
 
 <para>
