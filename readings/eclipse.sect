@@ -65,6 +65,8 @@
     checking</emphasis>.  That is, in many cases, the IDE editor is
     likely to notice when you have an obvious error (usually syntactic,
     occasionally something deeper) and to flag that error quickly.
+    Some will even suggest corrections, although you should
+    probably take those suggests with a grain of salt.
   </listitem>
 
   <listitem>
@@ -92,6 +94,7 @@
     Many IDEs integrate with <emphasis>source code management systems</emphasis>
     like git or Subversion.  Such integration makes it easier to grab code
     from the repository and to upload revised code to the repository.
+    (We've had mixed success with such integrated SCMs.)
   </listitem>
 
   <listitem>
