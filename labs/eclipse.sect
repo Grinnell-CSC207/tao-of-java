@@ -71,14 +71,17 @@ package introduction;
 /**
  * A simple introductory Java class.
  */
-public class HelloJava {
-   /**
-    * Print a silly message.
-    */
-   public static void main(String[] args) {
-       System.out.print("I am the 1337 h4x0r. Phear me!");
-   } // main(String[])
-
+public class HelloJava 
+{
+  /**
+   * Print a silly message.
+   */
+  public static void 
+    main (String[] args) 
+      throws Exception
+  {
+    System.out.print ("I am the 1337 h4x0r. Phear me!");
+  } // main (String[])
 } // class HelloJava
 </programlisting>
 
@@ -139,7 +142,7 @@ public class HelloJava {
 </para>
 
 <programlisting>
-        System.out.println(System.out);
+    System.out.println (System.out);
 </programlisting>
 
 </section> <!-- eclipse-03 -->
@@ -158,6 +161,20 @@ public class HelloJava {
 <screen>
 Adding 3 and 4 gives us 7.</screen>
 
+<para>
+  Here's a sketch.
+</para>
+
+<programlisting>
+    int x = 3;
+    int y = 4;
+    System.out.print ("Adding ");
+    System.out.print (x);
+    ...
+    System.out.print (x+y);
+    System.out.println ();
+</programlisting>
+
 <para>   
   Presumably, you wrote this program using a sequence of calls to
   <code>System.out.print</code> and <code>System.out.println</code>.  Can
@@ -171,7 +188,7 @@ Adding 3 and 4 gives us 7.</screen>
 </para>
 
 <programlisting>
-        System.out.println("Hello" + "World");
+    System.out.println ("Hello" + "World");
 </programlisting>
 
 <para>
@@ -192,9 +209,12 @@ Adding 3 and 4 gives us 7.</screen>
 <section id="eclipse-05"><title>Exercise 5: Configuring Eclipse</title>
 
 <para>
-  In this course, we will be trying to follow the standard Sun (now
-  Oracle) Java Code Conventions.  Eclipse can help if you configure it
-  correctly.
+  In this course, we will be using <ulink
+  url="../handouts/code-conventions.html">a variant of the GNU C code
+  conventions, adapted for Java</ulink>.  Of course, one could also
+  use other conventions, such as the standard Sun (now Oracle) Java
+  Code Conventions.  Eclipse can help if you configure it correctly.
+  We'll explore each.
 </para>
 
 <para>
@@ -215,7 +235,35 @@ Adding 3 and 4 gives us 7.</screen>
 </para>
 
 <para>
-  Select all of your code and hit <keycap>Ctrl</keycap>-<keycap>I</keycap>
+  Hit <keycap>Shift</keycap>-<keycap>Ctrl</keycap>-<keycap>F</keycap>.
+</para>
+
+<para>
+  But those are the Java code conventions.  I find them painful.  So
+  let's use the course conventions.  (Note: those conventions are under
+  development, so I may ask you to update the version you use.)
+</para>
+
+<para>
+  Select <guimenu>Window</guimenu> &gt; <guimenuitem>Preferences</guimenuitem>
+  again.
+</para>
+
+<para>
+  Click the <guibutton>Import ...</guibutton> button
+</para>
+
+<para>
+  Navigate to <code>/home/rebelsky/share</code> and select
+  <code>CSC207.xml</code>.
+</para>
+
+<para>
+  Follow the natural steps.
+</para>
+
+<para>
+  Hit <keycap>Shift</keycap>-<keycap>Ctrl</keycap>-<keycap>F</keycap>.
 </para>
 
 </section> <!-- eclipse-05 -->
@@ -254,11 +302,10 @@ Adding 3 and 4 gives us 7.</screen>
   In one of the exercises, you configured Eclipse to format code in a
   certain way.  Eclipse is highly configurable, so you might explore other
   preferences.  Go back to the Formatter preferences and click
-  <guibutton>New...</guibutton>.  In the dialog box that appears,
-  select <guimenuitem>Java Conventions [built-in]</guimenuitem> 
-  as the initialization profile and then name your preferences.  Click
-  <guibutton>OK</guibutton> and then explore the various preferences that
-  you can set.
+  <guibutton>New...</guibutton>.  In the dialog box that appears, select
+  the course conventions as the initialization profile and then name
+  your preferences.  Click <guibutton>OK</guibutton> and then explore
+  the various preferences that you can set.
 </para>
 
 </section> <!-- eclipse-extra-01 -->
