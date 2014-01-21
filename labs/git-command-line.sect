@@ -101,10 +101,10 @@ grinnell.edu</emphasis></userinput></screen>
 </para>
 
 <para>
-  c. Name your repository (e.g., <code>git-exercise</code>).  Click
-  the buttons to make it public and to initialize the repository
-  with a README file.  Choose the Java .gitignore file.  Choose
-  a license you like.  Finally, click <code>Create Repository</code>.
+  c. Name your repository (e.g., <code>git-exercise</code>).  Click the
+  buttons to make it public and to initialize the repository with a README
+  file.  Choose the Java <code>.gitignore</code> file.  Choose a license
+  you like.  Finally, click <guibutton>Create Repository</guibutton>.
 </para>
 
 </section> <!-- git-03 -->
@@ -169,6 +169,13 @@ grinnell.edu</emphasis></userinput></screen>
   and check.
 </para>
 
+<para>
+  <emphasis>Warning!</emphasis>  Eclipse behaves strangely if you put
+  the Git repository inside the Eclipse directory.  I'd suggest setting
+  up two directories for this class, one for things created in Eclipse,
+  and one for things under Git.
+</para>
+
 </section> <!-- git-05 -->
 
 <section id="git-06"><title>Exercise 6: Identifying Changes</title>
@@ -225,13 +232,15 @@ grinnell.edu</emphasis></userinput></screen>
 </para>
 
 <programlisting>
-    public static void main(String[] args) {
-        System.out.println("Hello, GitHub!");
-    } // main(String[])
+  public static void 
+    main (String[] args) 
+  {
+    System.out.println ("Hello, GitHub!");
+  } // main(String[])
 </programlisting>
 
 <para>
-  d. Run your program to make sure that it's correct.
+  d. Run your program to make sure that it works as you'd expect.
 </para>
 
 <para>
