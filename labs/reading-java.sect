@@ -7,7 +7,7 @@
 
 <para>
   <emphasis>Prerequisite Knowledge:</emphasis>
-  Using Eclipse.  Java basics.
+  Git.  Using Eclipse.  Java basics.
 </para>
 
 <section id="reading-java-preparation"><title>Preparation</title>
@@ -29,7 +29,7 @@
   Import the clone into Eclipse.  Note: This clone is already configured
   as an Eclipse project, so you can select <guibutton>Import Existing
   Projects</guibutton> rather than <guibutton>Use the New Project
-  Wizard</guibutton>.
+  Wizard</guibutton>.  
 </para>
 
 </section> <!-- reading-java-preparation -->
@@ -54,7 +54,7 @@
 <para>
   Look at the <code>MathUtils</code> class.  You may note that it's
   badly formatted.  Find a quick way to reformat it according to the
-  Java formatting conventions.
+  class code-formatting conventions.
 </para>
 
 </section> <!-- reading-java-02 -->
@@ -62,9 +62,9 @@
 <section id="reading-java-03"><title>Exercise 3: Squaring Doubles</title>
 
 <para>
-  Return to the <code>Main</code> class.  Insert code to print the squares
-  of the real numbers 0.1, 0.2, ...., 0.9.  When typing, type slowly and
-  take advantage of the popup menus that appear.
+  Return to the <code>Main</code> class.  Insert code instructions print
+  the squares of the real numbers 0.1, 0.2, ...., 0.9.  When typing,
+  type slowly and take advantage of the popup menus that appear.
 </para>
 
 </section> <!-- reading-java-03 -->
@@ -72,8 +72,8 @@
 <section id="reading-java-04"><title>Exercise 4: Correcting Errors</title>
 
 <para>
-  There's a small error in <methodname>square</methodname><code>(double)</code>.
-  Correct that error.
+  There's a small error in <methodname>square</methodname><code>
+  (double)</code>.  Correct that error.
 </para>
 
 </section> <!-- reading-java-04 -->
@@ -81,7 +81,8 @@
 <section id="reading-java-05"><title>Exercise 5: Commit and Push</title>
 
 <para>
-  Commit and push your changes.
+  Commit your changes and push the result back to GitHub.  Then revisit
+  the GitHub page to see if they are incorporated.
 </para>
 
 </section> <!-- reading-java-05 -->
@@ -136,7 +137,7 @@
 <section id="reading-java-extra-01"><title>Extra 1: Translate C</title>
 
 <para>
-  Pick a simple C program you've written previously and attempt to rewrite
+  Pick a simple C program you've written previously and rewrite
   it in Java.
 </para>
 
