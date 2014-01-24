@@ -20,6 +20,7 @@
   Fork and clone the repository at <code><ulink
   url="https://github.com/Grinnell-CSC207/lab-unit-testing"/></code> 
   (alternately <code>git@github.com:Grinnell-CSC207/lab-unit-testing.git</code>).
+  Then import the project into Eclipse.
 </para>
 
 </section> <!-- unit-testing-preparation -->
@@ -76,9 +77,11 @@
 </para>
 
 <programlisting>
-    public void test2() {
-        fail("Not yet implemented");
-    } // test2()
+  public void 
+  test2() 
+  {
+    fail("Not yet implemented");
+  } // test2()
 </programlisting>
 
 <para>
@@ -181,11 +184,13 @@
 </para>
 
 <programlisting>
-    public static void testExtremes() {
-        int tmp = Integer.MAX_VALUE - 10;
-        int[] values = { tmp, tmp, -tmp, -tmp };
-        asssertEquals("extreme test", 0, sum(values));
-    } // testExtremes
+  public static void 
+  testExtremes() 
+  {
+     int tmp = Integer.MAX_VALUE - 10;
+     int[] values = { tmp, tmp, -tmp, -tmp };
+     asssertEquals("extreme test", 0, sum(values));
+  } // testExtremes
 </programlisting>
 
 <para>
@@ -194,7 +199,8 @@
   is to rewrite the preconditions (e.g., "For every subset of ints,
   the sum of that subset is greater than <code>Integer.MIN_VALUE</code>
   and less than <code>Integer.MAX_VALUE</code>).  Another is to say that
-  the test is so stupid that it shouldn't matter.  Which do you prefer?
+  the test is so stupid that it shouldn't matter.  Which approach
+  do you prefer and why?
 </para>
 
 </section> <!-- unit-testing-03 -->
@@ -207,16 +213,14 @@
 
 <para>
   Rather than writing individual test cases for this function, we should
-  be able to write a loop that does multiple test cases.  Something
+  be able to write a loop that does multiple test cases, something
   like the following:
 </para>
 
-<para>
-    Let expected be 1
-    For power = 0 to K
-        Confirm that expected = expt(2,power)
-	expect = expected * 2
-</para>
+<literallayout>Let expected be 1
+For power = 0 to K
+    Confirm that expected = expt(2,power)
+    expect = expected * 2</literallayout>
 
 <para>
   a. Create a new test class and then add a test that follows that
