@@ -72,7 +72,7 @@
 
 <programlisting>
 java.io.PrintWriter pen;
-pen = new java.io.PrintWriter(System.out, true);
+pen = new java.io.PrintWriter (System.out, true);
 </programlisting>
 
 <para>
@@ -83,7 +83,7 @@ pen = new java.io.PrintWriter(System.out, true);
 </para>
 
 <programlisting>
-PrintWriter pen = new PrintWriter(System.out, true);
+PrintWriter pen = new PrintWriter (System.out, true);
 </programlisting>
 
 <para>
@@ -96,8 +96,8 @@ PrintWriter pen = new PrintWriter(System.out, true);
 <programlisting>
 java.io.File outfile;
 java.io.PrintWriter pen;
-outfile = new java.io.File("<emphasis>name-of-file</emphasis>");
-pen = new java.io.PrintWriter(outfile);
+outfile = new java.io.File ("<emphasis>name-of-file</emphasis>");
+pen = new java.io.PrintWriter (outfile);
 </programlisting>
 
 <para>
@@ -105,13 +105,14 @@ pen = new java.io.PrintWriter(outfile);
 </para>
 
 <programlisting>
-pen.close();
+pen.close ();
 </programlisting>
 
 <para>
   One benefit of creating the same kind of object for either kind of
   output is that it's very easy to update your program to write to a
-  file instead of to the screen (or vice versa).
+  file instead of to the screen (or vice versa).  You can also use a
+  <code>PrintWriter</code> to print to a network connection.
 </para>
 
 <para>
@@ -138,13 +139,13 @@ pen.close();
 
 <itemizedlist>
   <listitem>
-    <code>print(<emphasis>what-to-print</emphasis>)</code>: Queue for printing 
+    <code>print (<emphasis>what-to-print</emphasis>)</code>: Queue for printing 
     the given value to the appropriate destination.  Does not print a 
     carriage return, so subsequent output will appear on the same line.
   </listitem>
 
   <listitem>
-    <code>println(<emphasis>what-to-print</emphasis>)</code>: Print the
+    <code>println (<emphasis>what-to-print</emphasis>)</code>: Print the
     given value to the appropriate destination followed by a carriage
     return.  The <methodname>println</methodname> procedure 
     <quote>flushes</quote> the output only if you've created the
@@ -152,11 +153,11 @@ pen.close();
   </listitem>
 
   <listitem>
-    <code>println()</code>: Print a carriage return.
+    <code>println ()</code>: Print a carriage return.
   </listitem>
 
   <listitem>
-    <code>flush()</code>: Finishes printing anything queued by
+    <code>flush ()</code>: Finishes printing anything queued by
    <code>print</code> (and by <methodname>println</methodname>
    if autoflush is not set.
  </listitem> 
@@ -191,8 +192,8 @@ pen.close();
 <programlisting>
 java.io.BufferedReader eyes;
 java.io.InputStreamReader istream;
-istream = new java.io.InputStreamReader(System.in);
-eyes = new java.io.BufferedReader(istream);
+istream = new java.io.InputStreamReader (System.in);
+eyes = new java.io.BufferedReader (istream);
 </programlisting>
 
 <para>
@@ -203,9 +204,9 @@ eyes = new java.io.BufferedReader(istream);
 <programlisting>
 java.io.File infile;
 java.io.FileReader istream;
-infile = new java.io.File(<emphasis>name-of-file</emphasis>);
-istream = new java.io.FileReader(infile);
-eyes = new BufferedReader(istream);
+infile = new java.io.File (<emphasis>name-of-file</emphasis>);
+istream = new java.io.FileReader (infile);
+eyes = new BufferedReader (istream);
 </programlisting>
 
 <para>
@@ -229,7 +230,7 @@ String name;
 ...
 // Commands
 ...
-name = eyes.readLine(); 
+name = eyes.readLine (); 
 </programlisting>
 
 <para>
@@ -238,7 +239,7 @@ name = eyes.readLine();
 </para>
 
 <programlisting>
-pen.println(eyes.readLine());
+pen.println (eyes.readLine ());
 </programlisting>
 
 <para>
@@ -247,7 +248,7 @@ pen.println(eyes.readLine());
 </para>
 
 <programlisting>
-eyes.close();
+eyes.close ();
 </programlisting>
 
 </section> <!-- Exercise Input -->
@@ -268,10 +269,10 @@ eyes.close();
 </para>
 
 <programlisting>
-eyes.mark(1024);
-pen.println(eyes.readLine());
-pen.println(eyes.readLine());
-eyes.reset();
+eyes.mark (1024);
+pen.println (eyes.readLine ());
+pen.println (eyes.readLine ());
+eyes.reset ();
 </programlisting>
 
 <para>
