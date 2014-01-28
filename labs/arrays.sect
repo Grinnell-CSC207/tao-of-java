@@ -216,6 +216,34 @@ For each remaining index
 
 </section> <!-- arrays-6 -->
 
+<section id="arrays-7"><title>Exercise 7: Vectors</title>
+
+<para>
+  Redo the previous exercise using <code>java.util.Vector</code>
+  rather than <code>java.util.ArrayList</code>.
+</para>
+
+</section> <!-- arrays-7 -->
+
+<section id="arrays-8"><title>Exercise 8: ArrayLists vs. Vectors</title>
+
+<para>
+  a. Give two reasons a programmer might choose to use an ArrayList
+  rather than a Vector.
+</para>
+
+<para>
+  b. Give two reasons a programmer might choose to use a Vector rather
+  than an ArrayList.
+</para>
+
+<para>
+  c. Give two reasons a programmer might prefer an array rather than a
+  Vector or an ArrayList.
+</para>
+
+</section> <!-- arrays-8 -->
+
 </section>  <!-- exercises -->
 
 </section>  <!-- arrays-lab -->
