@@ -7,7 +7,7 @@
 </para>
 
 <para>
-  <emphasis role="strong">Primary Classes Used</emphasis>:
+  <emphasis role="strong">Some Useful Classes</emphasis>:
 </para>
 
 <itemizedlist>
@@ -73,8 +73,8 @@
 </para>
 
 <programlisting>
-pen.print ("Largest int: ");
-pen.println (Integer.MAX_VALUE);
+    pen.print ("Largest int: ");
+    pen.println (Integer.MAX_VALUE);
 </programlisting>
 
 <para>
@@ -134,15 +134,177 @@ Have DrScheme compute the square of the square root of 2 and subtract 2 from the
 
 </section>  <!-- basic-types-04 -->
 
-<section id="basic-types-05"><title>Exercise 5: Getting Parts of Strings</title>
+<section id="basic-types-05"><title>Exercise 5: Manipulating Strings</title>
+
+<para>
+  a. Create a new main class, <code>Exercise5</code>, for this exercise.
+</para>
+
+<para>
+  b. As you may note from the documentation for <code>java.lang.String</code>,
+  Java strings have a <methodname>concat</methodname> operation.
+  What do you expect the result of the following instructions to be?
+</para>
+
+<programlisting>
+    PrintWriter pen = new PrintWriter (System.out, true);
+    String greeting = "Hello ";
+    pen.println (greeting.concat ("World"));
+    pen.println (greeting);
+</programlisting>
+
+<para>
+  c. Check your answer experimentally.  What does the result suggest
+  about strings in Java?
+</para>
+
+<para>
+  d. Strings in Java also contain a few <code>replace</code> methods.
+  What do you expect the result of the following instructions to be?
+  (We'll assume you still have the <code>PrintWriter</code> from the
+  earlier subexercise.)
+</para>
+
+<programlisting>
+   String word = "alphabet";
+   pen.println (word.replace ('a', 'A'));
+   pen.println (word);
+</programlisting>
+
+<para>
+  e. Check your answer experimentally.  What does the result suggest
+  about strings in Java?
+</para>
 
 </section> <!-- basic-types-05 -->
 
-,section id="basic-types-06"><title>Exercise 6: Assigning Strings</title>
+<section id="basic-types-06"><title>Exercise 6: String Buffers</title>
+
+<para>
+  In addition to <code>java.lang.String</code>, Java also provides
+  an alternative called <code>java.lang.StringBuffer</code>.  (You should
+  be able to guess why after the previous exerciss.)  <code>StringBuffer</code>
+  objects provide some similar methods to those we just explored, although
+  with slightly different semantics or names (or both).
+</para>
+
+<para>
+  You can either create a new main class for this exercise, or reuse
+  one from the previous exercise.
+</para>
+
+<para>
+  a. What do you expect the result of the following instructions to be?
+</para>
+
+<programlisting>
+    StringBuffer buffer = new StringBuffer ("This is a StringBuffer");
+    pen.println (buffer);
+</programlisting>
+
+<para>
+  b. Check your answer experimentally.  What does the result suggest
+  about string buffers in Java?
+</para>
+
+<para>
+  c.  What do you expect the result of the following instructions to be?
+</para>
+
+<programlisting>
+    StringBuffer hello = new StringBuffer ("Hello ");
+    pen.println (hello.append ("World"));
+    pen.println (hello);
+</programlisting>
+
+<para>
+  d. Check your answer experimentally.  What does the result suggest
+  about string buffers in Java?
+</para>
+
+<para>
+  e. Let's explore the <methodname>replace</methodname> method.
+  What do you expect the result of the following instructions to be?
+</para>
+
+<programlisting>
+   StringBuffer text = "alphabet";
+   pen.println ((text.replace (0, 0, "A")));
+   pen.println (text);
+   pen.println ((text.replace (2, 3, "A")));
+   pen.println (text);
+   pen.println ((text.replace (8, 9, "A")));
+   pen.println (text);
+</programlisting>
+
+<para>
+  f. Check your answer experimentally.  What does the result suggest
+  about string buffers in Java?
+</para>
 
 </section> <!-- basic-types-06 -->
 
-<section id="basic-types-07"><title>Exercise 7: Segmenting Strings</title>
+<section id="basic-types-07"><title>Exercise 7: Assigning Strings</title>
+
+<para>
+  You can either create a new main class for this exercise, or reuse
+  one from the previous exercise.
+</para>
+
+<para>
+  a. What do you expect the result of the following instructions to be?
+</para>
+
+<programlisting>
+    PrintWriter pen = new PrintWriter (System.out, true);
+    String str = "Hello ";
+    StringBuffer buf = new StringBuffer ("Hello ");
+
+    // Create another name for str
+    String alt = str;
+    pen.println ("alt: " + alt);
+
+    // Update str
+    str = str + "world";
+    pen.println ("str: " + str);
+    pen.println ("alt: " + alt);
+
+    // Create another name for buf
+    StringBuffer stf = buf;
+    pen.println ("stf: " + stf);
+
+    // Update the buffer.
+    buf.append ("world");
+    pen.println ("buf: " + stf);
+    pen.println ("stf: " + stf);
+
+    // Extract info from the buffer
+    alt = buf.toString ();
+
+    // Update the buffer.
+    buf.append (".  Are we done yet?");
+    pen.println ("buf: " + stf);
+    pen.println ("alt: " + stf);
+</programlisting>
+
+<para>
+  b. Check your answer experimentally.
+</para>
+
+</section> <!-- basic-types-07 -->
+
+<section id="basic-types-08"><title>Exercise 8: String Methods</title>
+
+<para>
+  Read through the documentation for <code>java.lang.String</code> and
+  <code>java.lang.StringBuffer</code> and make a note of at least three
+  interesting and useful procedures that we have not yet covered in this
+  lab.
+</para>
+
+</section> <!-- basic-types-08 -->
+
+<section id="basic-types-09"><title>Exercise 9: Segmenting Strings</title>
 
 <para>
   Programmers often find it convenient to store compound data in a text
@@ -171,7 +333,7 @@ Rebelsky:Samuel:Bedazzled:6:5
   Write a method that takes one line of the given form, segments it
   into its components, and returns a string in human-readable form.
   For example, for the first line above, it might return the
-  string <quote>Roger Ebert gave Bedazzled a 5 on a 5-point scale</quote>.
+  string <quote>Roger Ebert gave Bedazzled 5 on a 5-point scale</quote>.
 </para>
 
 <para>
@@ -185,6 +347,8 @@ Rebelsky:Samuel:Bedazzled:6:5
   colon and then <code>substring</code> to extract the appropriate portion.
 </para>
 
-</section>  <!-- basic-types-07 -->
+</section>  <!-- basic-types-09 -->
 
 </section> <!-- basic-types-exercises -->
+
+</section> <!-- basic-types -->
