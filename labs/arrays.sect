@@ -1,0 +1,221 @@
+<section id="lab-arrays"><title>Laboratory: Arrays</title>
+
+<para>
+  <emphasis role="strong">Summary</emphasis>: In this laboratory, you
+  will begin working with arrays in Java.  The particular focus of this
+  lab is working with arrays of numbers to describe values.
+</para>
+
+<section id="conditional-preparation"><title>Preparation</title>
+
+<para>
+  Create a new package for this laboratory named 
+  <code>taojava.labs.arrays</code>.
+</para>
+
+</section> <!-- arrays-preparation -->
+
+<section id="exercises"><title>Exercises</title>
+
+<section id="arrays-1"><title>Exercise 1: Printing Grades</title>
+
+<para>
+  a. Create a utility class, <code>Utils</code>, with two static 
+  methods, <code>printValues (PrintWriter pen, int[] values)</code>
+  and <code>printValues (PrintWriter pen, String[] values)</code>.
+  Each should print an array of values, surrounded by curly braces
+  and with elements separated by commas.
+</para>
+
+<para>
+  In case you've forgotten, a <quote>utility</quote> class is a class
+  that provides static methods for use elsewhere, but which does not
+  necessarily contain a main method.
+</para>
+
+<para>
+  Yes, I know that refactoring and polymorphism suggest that you should
+  not to write two nearly identical methods.  Unfortunately, this is one 
+  of those times that you have to duplicate code because you don't have
+  enough background to do something else.  (Actually, arrays in Java
+  are enough of a pain in the neck that most programmers end up 
+  duplicating code for array utilities.)
+</para>
+
+<para>
+  b. Create a main class, <code>SampleRatings</code>,  with a
+  <methodname>main</methodname> method which does the following:
+</para>
+
+<itemizedlist>
+  <listitem>
+    Creates a <code>PrintWriter</code>.  You may recall that you
+    create <code>PrintWriters</code> objects with something like
+<programlisting>
+    PrintWriter pen = new PrintWriter (System.out, true);
+</programlisting>
+  </listitem>
+
+  <listitem>
+    Creates an array of ten strings with names of books you like.
+  </listitem>
+
+  <listitem>
+    Creates an array of ten integers.
+  </listitem>
+
+  <listitem>
+    Uses <methodname>Utils.printValues</methodname> to print both
+    arrays.
+  </listitem>
+</itemizedlist>
+
+<para>
+  In case you've forgotten, a <quote>main</quote> class is one that has
+  a main method.
+</para>
+
+</section>  <!-- arrays-1 -->
+
+<section id="arrays-2"><title>Exercise 2: Atypical Input</title>
+
+<para>
+  Create a main class, <code>Exercise2</code>, in which you you determine
+  experimentally what happens in each of the following situations.
+</para>
+
+<para>
+  a. You try to create an array of size 0.
+</para>
+
+<para>
+  b. You try to create an array of negative size.
+</para>
+
+<para>
+  c. You try to create an astoundingly large array, such as one of
+  size <code>Integer.MAX_VALUE</code>.
+</para>
+
+<para>
+  d. You try to use an invalid index (an index less than 0 or greater than or
+  equal to the length of the array).
+</para>
+
+</section>  <!-- arrays-2 -->
+
+<section id="arrays-3"><title>Exercise 3: Default Elements</title>
+
+<para>
+  Create a main class, <code>Exercise3</code>, in which you
+  determine experimentally what the default values are in each of the
+  following kinds of arrays.
+</para>
+
+<para>
+  a. An array of integers that is constructed but not initialized.
+</para>
+
+<para>
+  b. An array of boolean values that is constructed but not initialized.
+</para>
+
+<para>
+  c. An array of strings that is constructed but not initialized.
+</para>
+
+<para>
+  d. An array of <code>BigIntegers</code> that is constructed but 
+  not initialized.
+</para>
+
+<para>
+  For the last two, you may see values that only make partial sense.
+  Feel free to ask for an explanation.
+</para>
+
+</section>  <!-- arrays-3 -->
+
+<section id="arrays-4"><title>Exercise 4: Finding the Largest Value</title>
+
+<para>
+  Add a static method, <code>int largest (int[] values)</code>, to
+  <code>Utils</code>.  This method, as you might guess, should
+  determine the largest value in the array.
+</para>
+
+<para>
+  The strategy for determining the largest value is fairly straightforward:
+</para>
+
+<literallayout>Assume the value in index 0 is the largest
+For each remaining index
+  If the value at that index is larger
+    update your assumption </literallayout>
+
+<para>
+  Write a simple set of unit tests for this new method.
+</para>
+
+</section>  <!-- arrays-4 -->
+
+<section id="arrays-5"><title>Exercise 5: Scaling Values</title>
+
+<para>
+  Add a static method, <code>void scale(int[] values, double
+  scalefactor)</code>, to <code>Utils</code>.  This method should
+  scale each value in the array by the scale factor.
+</para>
+
+<para>
+  Note that you may need to do some type coercion in scaling values.
+</para>
+
+<para>
+  When you have completed writing the method, write some appropriate
+  tests.  Note that you will use <methodname>assertArrayEquals</methodname>
+  rather than <code>assertEquals</code>.
+</para>
+
+</section>  <!-- arrays-5 -->
+
+<section id="arrays-6"><title>Exercise 6: Array Lists</title>
+
+<para>
+  Read the documentation for Java's <code>ArrayList</code> class,
+  available at <ulink url="http://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html"/>.  Then answer the following questions (either by reading
+  the documentation or by trying experimentally).
+</para>
+
+<para>
+  a. How do you create a new <code>ArrayList</code>?
+</para>
+
+<para>
+  b. When can you add an element at position i?
+</para>
+
+<para>
+  c. If you have not yet set the element at position i, what happens
+  if you try to get the element at position i?  (In arrays, you can
+  get any element if you've made the array a particular size.)
+</para>
+
+<para>
+  d. The documentation says that <code>ArrayLists</code> provide a
+  <quote>[r]esizable-array implementation of the List interface</quote>.
+  How do we get the array to resize?
+</para>
+
+<para>
+  e. List two other interesting things you learned by reading the
+  documentation or by experimenting.
+</para>
+
+</section> <!-- arrays-6 -->
+
+</section>  <!-- exercises -->
+
+</section>  <!-- arrays-lab -->
+
+
