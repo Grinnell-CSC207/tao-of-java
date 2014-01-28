@@ -184,23 +184,24 @@
 </para>
 
 <programlisting>
-  public static void 
+  public void 
   testExtremes() 
   {
      int tmp = Integer.MAX_VALUE - 10;
      int[] values = { tmp, tmp, -tmp, -tmp };
-     asssertEquals("extreme test", 0, sum(values));
+     assertEquals("extreme test", 0, sum(values));
   } // testExtremes
 </programlisting>
 
 <para>
-  f.  If your code does not pass the test, you have multiple options.
-  One option is to fix your code to handle situations like this.  Another
-  is to rewrite the preconditions (e.g., "For every subset of ints,
-  the sum of that subset is greater than <code>Integer.MIN_VALUE</code>
-  and less than <code>Integer.MAX_VALUE</code>).  Another is to say that
-  the test is so stupid that it shouldn't matter.  Which approach
-  do you prefer and why?
+  f.  If your code does not pass the test (or if you believe that your
+  code should not pass the test because integer overflows are supposed
+  to break things), you have multiple options.  One option is to fix
+  your code to handle situations like this.  Another is to rewrite
+  the preconditions (e.g., "For every subset of ints, the sum of that
+  subset is greater than <code>Integer.MIN_VALUE</code> and less than
+  <code>Integer.MAX_VALUE</code>).  Another is to say that the test is so
+  stupid that it shouldn't matter.  Which approach do you prefer and why?
 </para>
 
 </section> <!-- unit-testing-03 -->
