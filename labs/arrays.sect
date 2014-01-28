@@ -20,59 +20,54 @@
 <section id="arrays-1"><title>Exercise 1: Printing Grades</title>
 
 <para>
-  a. Create a utility class, <code>Utils</code>, with two static 
-  methods, <code>printValues (PrintWriter pen, int[] values)</code>
-  and <code>printValues (PrintWriter pen, String[] values)</code>.
-  Each should print an array of values, surrounded by curly braces
-  and with elements separated by commas.
-</para>
-
-<para>
+  a. Create a utility class, <code>Utils</code>. 
   In case you've forgotten, a <quote>utility</quote> class is a class
   that provides static methods for use elsewhere, but which does not
   necessarily contain a main method.
 </para>
 
 <para>
-  Yes, I know that refactoring and polymorphism suggest that you should
-  not to write two nearly identical methods.  Unfortunately, this is one 
-  of those times that you have to duplicate code because you don't have
-  enough background to do something else.  (Actually, arrays in Java
-  are enough of a pain in the neck that most programmers end up 
-  duplicating code for array utilities.)
+  b. To <code>Utils</code>, add a static method,
+  <code><methodname>printValues</methodname> (PrintWriter pen, 
+  int[] values)</code>, that prints the values in <code>values</code>,
+  surrounded by curly braces and with elements separated by commas.
+  (Yes, that's more or less how you would write them in Java.)
 </para>
 
 <para>
-  b. Create a main class, <code>SampleRatings</code>,  with a
-  <methodname>main</methodname> method which does the following:
+  c. Create a main class, <code>Exercise1</code>, which creates a few
+  arrays and prints them out.  Note that a <quote>main</quote> class is
+  one that has a main method.
 </para>
 
-<itemizedlist>
-  <listitem>
-    Creates a <code>PrintWriter</code>.  You may recall that you
-    create <code>PrintWriters</code> objects with something like
+<para>
+  In case you've forgotten, if we've imported <code>java.io.PrintWriter</code>,
+  we can create a new <code>PrintWriter</code> with
+</para>
+
 <programlisting>
     PrintWriter pen = new PrintWriter (System.out, true);
 </programlisting>
-  </listitem>
-
-  <listitem>
-    Creates an array of ten strings with names of books you like.
-  </listitem>
-
-  <listitem>
-    Creates an array of ten integers.
-  </listitem>
-
-  <listitem>
-    Uses <methodname>Utils.printValues</methodname> to print both
-    arrays.
-  </listitem>
-</itemizedlist>
 
 <para>
-  In case you've forgotten, a <quote>main</quote> class is one that has
-  a main method.
+  d. To <code>Utils</code>, add a static method,
+  <code><methodname>printValues</methodname> (PrintWriter pen, 
+  String[] values)</code>, that prints the values in <code>values</code>,
+  surrounded by curly braces and with elements separated by commas.
+  (Yes, that's more or less how you would write them in Java.)
+</para>
+
+<para>
+  Yes, I know that principles of refactoring and polymorphism suggest that
+  you should not to write two nearly identical methods.  Unfortunately,
+  this is one of those times that you have to duplicate code because
+  you don't have enough background to do something else.  (Actually,
+  the design of arrays in Java is enough of a pain in the neck that 
+  most programmers end up duplicating code for array utilities.)
+</para>
+
+<para>
+  e. Update your main class to print a few arrays of strings.
 </para>
 
 </section>  <!-- arrays-1 -->
@@ -98,8 +93,15 @@
 </para>
 
 <para>
-  d. You try to use an invalid index (an index less than 0 or greater than or
-  equal to the length of the array).
+  d. You try to use an index less than 0.
+</para>
+
+<para>
+  e. You try to use an index equal to the length (size) of the array.
+</para>
+
+<para>
+  f. You try to use an index greater than the length (size) of the array.
 </para>
 
 </section>  <!-- arrays-2 -->
@@ -140,7 +142,7 @@
 
 <para>
   Add a static method, <code>int largest (int[] values)</code>, to
-  <code>Utils</code>.  This method, as you might guess, should
+  <code>Utils</code>.  As you might expect, this method should
   determine the largest value in the array.
 </para>
 
