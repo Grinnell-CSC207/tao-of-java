@@ -1,0 +1,190 @@
+<section id="numbers"><title>Laboratory: Some Basic Types</title>
+
+<para>
+  <emphasis role="strong">Summary</emphasis>: In this laboratory, you 
+  will extend your knowledge of some basic types in Java: Numbers ,
+  Strings, and such.
+</para>
+
+<para>
+  <emphasis role="strong">Primary Classes Used</emphasis>:
+</para>
+
+<itemizedlist>
+  <listitem>
+    <ulink url="&javaapi;/java/lang/Double.html"><code>java.lang.Double</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="&javaapi;/java/lang/Float.html"><code>java.lang.Float</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="&javaapi;/java/lang/Integer.html"><code>java.lang.Integer</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="&javaapi;/java/lang/Long.html"><code>java.lang.Long</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="&javaapi;/java/lang/Short.html"><code>java.lang.Short</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="&javaapi;/java/math/BigDecimal.html"><code>java.math.BigDecimal</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="&javaapi;/java/math/BigInteger.html"><code>java.math.BigInteger</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="&javaapi;/java/lang/Math.html"><code>java.lang.Math</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="&javaapi;/java/lang/String.html"><code>java.lang.String</code></ulink>
+  </listitem>
+
+  <listitem>
+    <ulink url="&javaapi;/java/lang/StringBuffer.html"><code>java.lang.StringBuffer</code></ulink>
+  </listitem>
+</itemizedlist>
+
+<section id="basic-types-preparation"><title>Preparation</title>
+
+<para>
+  Create a new project for this lab.  Create a new package called
+  <code>taojava.labs.basics</code>.
+</para>
+
+</section>
+
+<section id="exercises"><title>Exercises</title>
+
+<section id="basic-types-01"><title>Exercise 1: Limits on Integer Values</title>
+
+<para>
+  a. Read the documentation for the various class forms of integers and
+  write a main class that prints out the largest and smallest legal
+  value for <code>int</code> and <code>long</code>.  For example, to
+  print out the largest <code>int</code>, you would use something like:
+</para>
+
+<programlisting>
+pen.print ("Largest int: ");
+pen.println (Integer.MAX_VALUE);
+</programlisting>
+
+<para>
+  b. Determine experimentally what happens when you add 1, 2, 5, and 100 each largest legal value.  Note that you may get some strange results because, well, it doesn't make a lot of sense to add beyond the largest value.
+</para>
+
+<para>
+  c. Determine experimentally what happens when you subtract 1, 2, 5, and 100 from each smallest legal value.
+</para>
+
+</section>  <!-- basic-types-01 -->
+
+<section id="basic-types-02"><title>Exercise 2: Limits on Real Values</title>
+
+<para>
+  a. Determine experimentally the smallest positive non-zero float value you can represent.
+</para>
+
+<para>
+  b. Read the documentation for <ulink
+  url="&javaapi;/java/lang/Float.html"><code>java.lang.Float</code></ulink>
+  and see if it provides further guidance on what values are
+  representable.
+</para>
+
+</section>  <!-- basic-types-02 -->
+
+<section id="basic-types-03"><title>Exercise 3: Square Roots and Approximations</title>
+
+<para>
+  You may recall that in a previous course, you answered the following
+  question when you first explored numeric computation:
+</para>
+
+<blockquote>
+Have DrScheme compute the square of the square root of 2 and subtract 2 from the result. Ideally, the difference should be 0; why isn't it? How big is the difference?
+</blockquote>
+
+<para>
+  Redo this exercise in Java, using doubles for the computation.  
+</para>
+
+<para>
+  Note that <code>java.lang.Math.sqrt</code> is useful for computing
+  square roots.
+</para>
+
+</section>  <!-- basic-types-03 -->
+
+<section id="basic-types-04"><title>Exercise 4: Other Cool Math Functions</title>
+
+<para>
+  Read the documentation for <ulink
+  url="&javaapi;/java/lang/Math.html"><code>java.lang.Math</code></ulink>
+  and summarize for yourself what methods are available.
+</para>
+
+</section>  <!-- basic-types-04 -->
+
+<section id="basic-types-05"><title>Exercise 5: Getting Parts of Strings</title>
+
+</section> <!-- basic-types-05 -->
+
+,section id="basic-types-06"><title>Exercise 6: Assigning Strings</title>
+
+</section> <!-- basic-types-06 -->
+
+<section id="basic-types-07"><title>Exercise 7: Segmenting Strings</title>
+
+<para>
+  Programmers often find it convenient to store compound data in a text
+  file with one line per entry.  To separate the components of the entry,
+  they use some designated symbol, such as a colon.  For example, we might
+  store information on ratings of movies with a format like
+</para>
+
+<programlisting>
+rater-lname:rater-fname:movie:rating:maxrating
+</programlisting>
+
+<para>
+  with sample entries of
+</para>
+
+<programlisting>
+Ebert:Roger:Bedazzled:5:5
+Siskel:Gene:Bedazzled:4:5
+Rebelsky:Samuel:Satyricon:0:5
+Rebelsky:Samuel:Playtime:5:5
+Rebelsky:Samuel:Bedazzled:6:5
+</programlisting>
+
+<para>
+  Write a method that takes one line of the given form, segments it
+  into its components, and returns a string in human-readable form.
+  For example, for the first line above, it might return the
+  string <quote>Roger Ebert gave Bedazzled a 5 on a 5-point scale</quote>.
+</para>
+
+<para>
+  In approaching this, you may find it easiest to see if you can build
+  a string with just the last name, then add the first name, then
+  the movie, and so on and so forth.
+</para>
+
+<para>
+  Note that you should use <code>indexOf</code> to find the index of the
+  colon and then <code>substring</code> to extract the appropriate portion.
+</para>
+
+</section>  <!-- basic-types-07 -->
+
+</section> <!-- basic-types-exercises -->
