@@ -1,5 +1,7 @@
 <section id="lab-arrays"><title>Laboratory: Arrays</title>
 
+<!-- Add an example on printing arrays.  See examples/arrays/ArrayPrinting -->
+
 <para>
   <emphasis role="strong">Summary</emphasis>: In this laboratory, you
   will begin working with arrays in Java.  The particular focus of this
