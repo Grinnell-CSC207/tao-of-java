@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with mem2svg, one of SamR's hacks -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="152"
+   height="88"
+   id="svg2"
+   version="1.1">
+
+<!-- Top: 8 -->
+<!-- EMPTY -->
+     <line x1="48" y1="8" 
+           x2="48" y2="32" 
+           style="stroke:#000000;stroke-width:1px" />
+     <line x1="144" y1="8" 
+           x2="144" y2="32" 
+           style="stroke:#000000;stroke-width:1px" />
+
+<!-- Top: 32 -->
+<!-- CELL (label:[t], contents:[@4a8822a0], height:[1] -->
+    <text
+      style="font-size:12px;text-align:end;text-anchor:end;font-family:Sans"
+      x="43"
+      y="50">t:</text>
+    <text
+      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Sans"
+      x="96"
+      y="50">@4a8822a0</text>
+   <rect
+     style="fill:none;stroke:#000000;stroke-width:1px"
+     x="48"
+     y="32"
+     width="96"
+     height="24"/>
+
+<!-- Top: 56 -->
+<!-- EMPTY -->
+     <line x1="48" y1="56" 
+           x2="48" y2="80" 
+           style="stroke:#000000;stroke-width:1px" />
+     <line x1="144" y1="56" 
+           x2="144" y2="80" 
+           style="stroke:#000000;stroke-width:1px" />
+
+</svg>

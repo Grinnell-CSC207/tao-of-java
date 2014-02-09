@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with mem2svg, one of SamR's hacks -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="152"
+   height="64"
+   id="svg2"
+   version="1.1">
+
+<!-- Top: 8 -->
+<!-- LABEL (Tally@69c9de24) -->
+    <text
+      style="font-size:12px;text-align:start;text-anchor:start;font-weight:bold;font-family:Sans"
+      x="0"
+      y="26">Tally@69c9de24</text>
+
+<!-- Top: 32 -->
+<!-- CELL (label:[val], contents:[0], height:[1] -->
+    <text
+      style="font-size:12px;text-align:end;text-anchor:end;font-family:Sans"
+      x="43"
+      y="50">val:</text>
+    <text
+      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Sans"
+      x="96"
+      y="50">0</text>
+   <rect
+     style="fill:none;stroke:#000000;stroke-width:1px"
+     x="48"
+     y="32"
+     width="96"
+     height="24"/>
+
+</svg>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with mem2svg, one of SamR's hacks -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="200"
+   height="160"
+   id="svg2"
+   version="1.1">
+
+<!-- Top: 8 -->
+<!-- EMPTY -->
+     <line x1="96" y1="8" 
+           x2="96" y2="32" 
+           style="stroke:#000000;stroke-width:1px" />
+     <line x1="192" y1="8" 
+           x2="192" y2="32" 
+           style="stroke:#000000;stroke-width:1px" />
+
+<!-- Top: 32 -->
+<!-- CELL (label:[meBanana], contents:[@4a8822a0], height:[1] -->
+    <text
+      style="font-size:14px;text-align:end;text-anchor:end;font-family:Sans"
+      x="91"
+      y="51">meBanana:</text>
+    <text
+      style="font-size:14px;text-align:center;text-anchor:middle;font-family:Sans"
+      x="144"
+      y="51">@4a8822a0</text>
+   <rect
+     style="fill:none;stroke:#000000;stroke-width:1px"
+     x="96"
+     y="32"
+     width="96"
+     height="24"/>
+
+<!-- Top: 56 -->
+<!-- EMPTY -->
+     <line x1="96" y1="56" 
+           x2="96" y2="80" 
+           style="stroke:#000000;stroke-width:1px" />
+     <line x1="192" y1="56" 
+           x2="192" y2="80" 
+           style="stroke:#000000;stroke-width:1px" />
+
+<!-- Top: 80 -->
+<!-- BLANK -->
+
+<!-- Top: 104 -->
+<!-- LABEL (Tally@4a8822a0) -->
+    <text
+      style="font-size:14px;text-align:start;text-anchor:start;font-weight:bold;font-family:Sans"
+      x="0"
+      y="123">Tally@4a8822a0</text>
+
+<!-- Top: 128 -->
+<!-- CELL (label:[val], contents:[0], height:[1] -->
+    <text
+      style="font-size:14px;text-align:end;text-anchor:end;font-family:Sans"
+      x="91"
+      y="147">val:</text>
+    <text
+      style="font-size:14px;text-align:center;text-anchor:middle;font-family:Sans"
+      x="144"
+      y="147">0</text>
+   <rect
+     style="fill:none;stroke:#000000;stroke-width:1px"
+     x="96"
+     y="128"
+     width="96"
+     height="24"/>
+
+</svg>

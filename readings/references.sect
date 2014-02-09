@@ -1,0 +1,583 @@
+<section id="references"><title>References</title>
+
+<para>
+  <emphasis>Summary:</emphasis> We consider differences between
+  the ways that Java handles primitive values (e.g., values of
+  type <code>int</code>) and object values.
+</para>
+
+<para>
+  <emphasis>Prerequisites:</emphasis> Java basics.  Primitive types.
+  Object basics.
+</para>
+
+<section id="references-introduction"><title>Introduction</title>
+
+<para>
+  As you may have noted, Java has two general <quote>kinds</quote>
+  of values: primitive values, such as <code>int</code>s and
+  <code>double</code>s, and object values.  At first glance, the
+  two are quite similar.  You can declare variables (or parameters
+  or fields) using primitive types, and you can declare variables
+  (or parameters or fields) using object types.  You can assign
+  to both primitive and object variables.  You can use primitive
+  and objects values as parameters.  
+</para>
+
+<programlisting>
+  int i = 1;
+  int j = i + 1;
+  int k = j;
+  BigInteger bi = BigInteger.ONE;
+  BigInteger bj = bi.add(BigInteger.ONE);
+  BigInteger bk = bj;
+</programlisting>
+
+<para>
+  You may have also noted some subtle differences.  For example, 
+  you normally need to use <code>new</code> when you need a new
+  object value, but you don't use new for integers.
+</para>
+
+<programlisting>
+  int l = 5;
+  BigInteger l = new BigInteger(5);
+</programlisting>
+
+<para>
+  You may also have noted that we can use symbolic operators, such as
+  <code>+</code> on primitive values, but can rarely use them on
+  objects.  (In a later reading, we'll explore a bit what's happening
+  when we use symbolic operators with objects.)
+</para>
+
+<para>
+  However, when we start to look behind the scenes, Java treats
+  variables that store primitive values and variables that store
+  object values very differently.  It's important to understand
+  the difference because it affects the ways that programs behave.
+</para>
+
+</section> <!-- references-introduction -->
+
+<section id="storing"><title>Storing Values</title>
+
+<para>
+  When your program is running, the computer (well, the Java interpreter)
+  needs to store almost every value that you work with.  That means that
+  it needs to reserve space for those values.  For primitive types, 
+  the amount of space is both known and fixed.  For example, the Java
+  specification says that an <code>int</code> requires 32 bits (and
+  uses two's complement representation) and a <code>double</code> 
+  requires 64 bits.  Consider the following declarations.
+</para>
+
+<programlisting>
+  int i;
+  int j;
+  double d;
+  int k;
+</programlisting>
+
+<para>
+  The Java compiler will reserve 32 bits for <code>i</code>,
+  32 bits for <code>j</code>, 64 bits for <code>d</code>, and
+  32 bits for <code>k</code>, as in the following figure.  
+</para>
+
+<table>
+  <tr valign="top">
+    <td>
+      <imagedata fileref="../images/references/ijdk.png" format="PNG"/>
+    </td>
+  </tr>
+</table>
+
+<para>
+  Note that in this diagram, we've explicitly shown that <code>d</code>
+  requires twice as much memory as the other values.  In future diagrams,
+  we'll usually show all the cells as the same size, even though they
+  hold different amounts size values.
+</para>
+
+<para>
+  Now, let's think about a simple Java class.
+</para>
+
+<programlisting>
+/**
+ * A simple mechanism for tallying things.
+ */
+public class Tally
+{
+  /**
+   * The current value of the tally.
+   */
+  int val;
+
+  /**
+   * Build a new tally with value 0.
+   */
+  public Tally()
+  {
+    this.val = 0;
+  } // Tally()
+
+  /**
+   * Get the value of the tally.
+   */
+  public int get()
+  {
+    return this.val;
+  } // get()
+
+  /**
+   * Tally something.
+   */
+  public void tally()
+  {
+    ++this.val;
+  } // tally()
+} // class Tally
+</programlisting>
+
+<para>
+  Suppose we declare a variable of type <code>Tally</code>.
+</para>
+
+<programlisting>
+  Tally t;
+</programlisting>
+
+<para>
+  How much space should we allot to <code>t</code>?  At first
+  glance, the answer seems easy.  We need 32 bits for the <code>val</code>
+  field of type <code>int</code>, and some amount of space (say 64 bits)
+  to refer to the class information, such as the procedures.
+</para>
+
+<para>
+  Unfortunately, things aren't quite that simple.  One of the important
+  features of Java is that variables (and parameters and fields) are
+  <emphasis>polymorphic</emphasis> in that they can take on multiple
+  types of values, as long as those values are appropriately related.
+  For example, someone might create a variant of <code>Tally</code>
+  called <code>MonitoredTally</code> that keeps track not only of
+  the tally, but also of the number of times that
+  <methodname>get</methodname> is called.  Since it's a variant of
+  <code>Tally</code>, Java's polymorphism allows us to write
+</para>
+
+<programlisting>
+  t = new MonitoredTally();
+</programlisting>
+
+<para>
+  Now, it's likely that <code>MonitoredTally</code> will have one more
+  field than <code>Tally</code>, and will therefore need more space.
+  <emphasis>Since we can't know in advance what kinds of objects are
+  stored in an object variable, we can't allocate space for it when
+  it is declared.</emphasis>  So, what does Java do?  Read on.
+</para>
+
+</section> <!-- storing -->
+
+<section id="heap"><title>The Heap</title>
+
+<para>
+  Because objects take up different amounts of space, Java reserves
+  a special part of memory for the objects that are created while
+  the program is running.  This special part of memory is called
+  the <emphasis>heap</emphasis>.  Each time you create a new object,
+  whether directly, via a call to <code>new</code>, or indirectly,
+  via some other procedure that builds an object, the Java interpreter
+  allocates memory in the heap.  
+</para>
+
+<para>
+  How are we able to allocate the right amount of memory on the heap
+  when we couldn't figure out the right amount of memory when we
+  declared a variable?  Because at the time we create an object on the
+  heap, we know exactly what object we are creating.  In contrast,
+  when we declare an object variable, we don't know exactly what
+  kind of object it will store.
+</para>
+
+<para>
+  Given that we can't store objects directly in variables, what does an
+  object variable store?  It stores the <emphasis>address</emphasis>
+  of the actual object in the heap.  So, every object variable
+  stores an address (which most Java programmers refer to as a
+  <emphasis>reference</emphasis>).  When we allocate an object, it gets an
+  address.  When we assign that object to a variable, we copy the address.
+  Consider the following assignment statement.
+</para>
+
+<programlisting>
+  t = new Tally();
+</programlisting>
+
+<para>
+  First, we create a new object on the heap.  Let's say that it has
+  memory address <code>@4a8822a0</code>.  (The <code>@</code> reminds
+  us that it's an address.  The <code>4a8822a0</code> is the actual
+  address, in hexadecimal notation.  Since the Java virtual machine
+  does not necessarily allocate objects sequentially, we'll just show
+  it in the diagram as a separate area of memory.
+</para>
+
+<table>
+  <tr valign="top">
+    <td>
+      <imagedata fileref="../images/references/t.png" format="PNG"/>
+    </td>
+    <td>
+      <imagedata fileref="../images/references/tally.png" format="PNG"/>
+    </td>
+  </tr>
+</table>
+
+<para>
+  That's about it, except for one question that may be puzzling you:
+  If each new object occupies memory on the heap, you may wonder why
+  we don't run out of memory, given that we never explicitly get rid
+  of objects.  In fact, we can run out of memory.  But Java interpreters
+  are smart.  They employ a <emphasis>garbage collector</emphasis> that
+  identifies unused objects and frees the space associated with those
+  objects.  It turns out that some garbage collectors may even move
+  objects around as they clean up garbage.  Java conceals the locations
+  of objects, in part, so that the garbage collector can more easily
+  shuffle objects.
+</para>
+
+</section> <!-- heap -->
+
+<section id="impact"><title>Implications</title>
+
+<para>
+  We started the reading noting that it's important to understand
+  the use of references because it impacts the ways our programs
+  behave.  Let's explore what happens when we <quote>copy</quote>
+  values.  We'll start with primitive values.
+</para>
+
+<programlisting>
+  int i = 2;
+  int j = i;
+</programlisting>
+
+<para>
+  In this case, as in all of the subsequent cases, we declare two
+  variables of the same type, and assign the value of one to the value
+  of the other.  For integers, we end up with a situation like the
+  following.
+</para>
+
+<table>
+  <tr valign="top">
+    <td>
+      <imagedata fileref="../images/references/ij-1.png" format="PNG"/>
+    </td>
+  </tr>
+</table>
+
+<para>
+  Now, what happens if we change one of the two variables?  
+</para>
+
+<programlisting>
+  i += 5;
+</programlisting>
+
+<para>
+  We get the old value of <code>i</code> (2), add five, and then
+  store it back in the same memory location.  Since the two variables
+  are independent, the instruction <code>i</code>, but does update
+  <code>j</code>.
+</para>
+
+<table>
+  <tr valign="top">
+    <td>
+      <imagedata fileref="../images/references/ij-2.png" format="PNG"/>
+    </td>
+  </tr>
+</table>
+
+<para>
+  So, when we print out the two variables, we get different values.
+</para>
+
+<programlisting>
+  pen.println(i); // prints 7
+  pen.println(j); // prints 2
+</programlisting>
+
+<para>
+  None of that should have been surprising.  Now, let's explore something
+  similar with our <code>Tally</code> objects.  Once again, we create
+  two variables of the same type, initialize one, and assign it to the
+  other.
+</para>
+
+<programlisting>
+  Tally t1 = new Tally();
+  Tally t2 = t1;
+</programlisting>
+
+<para>
+  In this case, Java assigns the <emphasis>address</emphasis> of the object,
+  not the actual object.  So, we now have two variables that reference the
+  same objects.
+</para>
+
+<table>
+  <tr valign="top">
+    <td>
+      <imagedata fileref="../images/references/tallies-1a.png" format="PNG"/>
+    </td>
+    <td>
+      <imagedata fileref="../images/references/tallies-1b.png" format="PNG"/>
+    </td>
+  </tr>
+</table>
+
+<para>
+  Since both of them refer to the same object, they get the same value.
+</para>
+
+<programlisting>
+  pen.println(t1.get());        // Prints 0
+  pen.println(t2.get());        // Prints 0
+</programlisting>
+
+<para>
+  What happens when we change <code>t1</code>?  In this case, we can
+  change <code>t1</code> by calling the <methodname>tally</methodname>
+  method.
+</para>
+
+<programlisting>
+  t1.tally();
+</programlisting>
+
+<para>
+  As you might expect, this changes the underlying object, not
+  <code>t1</code>.  So, we have almost exactly the same memory
+  state as before.
+</para>
+
+<table>
+  <tr valign="top">
+    <td>
+      <imagedata fileref="../images/references/tallies-2a.png" format="PNG"/>
+    </td>
+    <td>
+      <imagedata fileref="../images/references/tallies-2b.png" format="PNG"/>
+    </td>
+  </tr>
+</table>
+
+<para>
+  Since the two variables share the same object, both of them have
+  effectively been incremented.
+</para>
+
+<programlisting>
+  pen.println(t1.get());        // Prints 1
+  pen.println(t2.get());        // Prints 1
+</programlisting>
+
+<para>
+  Of course, that's not the only way we can change <code>t1</code>.
+  We might also assign a new object to it.
+</para>
+
+<programlisting>
+  t1 = new Tally();
+</programlisting>
+
+<para>
+  In this case, we've created a new object on the heap and assigned
+  its address to <code>t1</code>.  But <code>t2</code> still holds
+  the address of the first tally.
+</para>
+
+<table>
+  <tr valign="top">
+    <td>
+      <imagedata fileref="../images/references/tallies-3a.png" format="PNG"/>
+    </td>
+    <td>
+      <imagedata fileref="../images/references/tallies-3b.png" format="PNG"/>
+    </td>
+    <td>
+      <imagedata fileref="../images/references/tallies-3c.png" format="PNG"/>
+    </td>
+  </tr>
+</table>
+
+<para>
+  So, if we print the values of the tallies out, we'll get different
+  results.
+</para>
+
+<programlisting>
+  pen.println(t1.get());        // Prints 0
+  pen.println(t2.get());        // Prints 1
+</programlisting>
+
+<para>
+  Now, let's turn our attention to strings.  Although strings
+  <quote>feel</quote> like primitive values, they are, in fact,
+  objects, and behave just like objects.
+</para>
+
+<programlisting>
+  String s1 = "hello";
+  String s2 = s1;
+</programlisting>
+
+<table>
+  <tr valign="top">
+    <td>
+      <imagedata fileref="../images/references/strings-1a.png" format="PNG"/>
+    </td>
+    <td>
+      <imagedata fileref="../images/references/strings-1b.png" format="PNG"/>
+    </td>
+  </tr>
+</table>
+
+<para>
+  What happens if we assign a different string to <code>s1</code>?
+</para>
+
+<programlisting>
+  s1 = s1.concat(" world");
+</programlisting>
+
+<para>
+  Strings are immutable, so the <methodname>concat</methodname> 
+  operator creates a new string, which gets a different address.
+  Hence, <code>s1</code> now refers to a different location 
+  in memory.  
+</para>
+
+<table>
+  <tr valign="top">
+    <td>
+      <imagedata fileref="../images/references/strings-2a.png" format="PNG"/>
+    </td>
+    <td>
+      <imagedata fileref="../images/references/strings-2b.png" format="PNG"/>
+    </td>
+    <td>
+      <imagedata fileref="../images/references/strings-2c.png" format="PNG"/>
+    </td>
+  </tr>
+</table>
+
+<para>
+  If we print the two values out, we'll see different output.
+</para>
+
+<programlisting>
+  pen.println(s1);      // prints hello world
+  pen.println(s2);      // prints hello
+</programlisting>
+
+<para>
+  In contrast to strings, StringBuffers are mutable. Hence, we'll sometimes
+  see a change to one affect another.  
+</para>
+
+<programlisting>
+  StringBuffer sb1 = new StringBuffer("hello");
+  StringBuffer sb2 = sb1;
+</programlisting>
+
+<para>
+  As you might expect, we currently have the following arrangement.
+</para>
+
+<table>
+  <tr valign="top">
+    <td>
+      <imagedata fileref="../images/references/stringbuf-1a.png" format="PNG"/>
+    </td>
+    <td>
+      <imagedata fileref="../images/references/stringbuf-1b.png" format="PNG"/>
+    </td>
+  </tr>
+</table>
+
+<para>
+  Now, let's modify <code>sb1</code> by appending.
+</para>
+
+<programlisting>
+  sb1.append(" world");
+</programlisting>
+
+<para>
+  Since the <code>append</code> procedure mutates the original buffer,
+  we see a change to that area of memory.
+</para>
+
+<table>
+  <tr valign="top">
+    <td>
+      <imagedata fileref="../images/references/stringbuf-2a.png" format="PNG"/>
+    </td>
+    <td>
+      <imagedata fileref="../images/references/stringbuf-2b.png" format="PNG"/>
+    </td>
+  </tr>
+</table>
+
+<para>
+  And so the change to <code>s1</code> affects <code>s2</code>.
+</para>
+
+<programlisting>
+  pen.println(sb1);     // prints hello world
+  pen.println(sb2);     // prints hello world
+</programlisting>
+
+</section>  <!-- impacts -->
+
+<section id="final-thoughts"><title>Things to Remember</title>
+
+<para>
+  What should you take from this reading?  We've stated at least three 
+  important lessons more or less explicitly:
+</para>
+
+<itemizedlist>
+  <listitem>
+    Variables (and fields and parameters) that seem to hold objects don't
+    really hold objects, they refer to objects.
+  </listitem>
+
+  <listitem>
+    Since such variables hold references, more than one variable can
+    refer to the same object.
+  </listitem>
+
+  <listitem>
+    When you change an object through one variable, you may affect
+    the value you see through other variables.
+  </listitem>
+</itemizedlist>
+
+<para>
+  But there's one more lesson that's useful to remember: It can be
+  very useful to sketch the layout of memory.  (When you sketch, you
+  may want to draw an arrow from a reference to the object it
+  references.)
+</para>
+
+</section> <!-- final-thoughts -->
+
+</section> <!-- references -->

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with mem2svg, one of SamR's hacks -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="152"
+   height="184"
+   id="svg2"
+   version="1.1">
+
+<!-- Top: 8 -->
+<!-- EMPTY -->
+     <line x1="48" y1="8" 
+           x2="48" y2="32" 
+           style="stroke:#000000;stroke-width:1px" />
+     <line x1="144" y1="8" 
+           x2="144" y2="32" 
+           style="stroke:#000000;stroke-width:1px" />
+
+<!-- Top: 32 -->
+<!-- CELL (label:[i], contents:[5], height:[1] -->
+    <text
+      style="font-size:12px;text-align:end;text-anchor:end;font-family:Sans"
+      x="43"
+      y="50">i:</text>
+    <text
+      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Sans"
+      x="96"
+      y="50">5</text>
+   <rect
+     style="fill:none;stroke:#000000;stroke-width:1px"
+     x="48"
+     y="32"
+     width="96"
+     height="24"/>
+
+<!-- Top: 56 -->
+<!-- CELL (label:[j], contents:[2], height:[1] -->
+    <text
+      style="font-size:12px;text-align:end;text-anchor:end;font-family:Sans"
+      x="43"
+      y="74">j:</text>
+    <text
+      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Sans"
+      x="96"
+      y="74">2</text>
+   <rect
+     style="fill:none;stroke:#000000;stroke-width:1px"
+     x="48"
+     y="56"
+     width="96"
+     height="24"/>
+
+<!-- Top: 80 -->
+<!-- CELL (label:[d], contents:[3.0], height:[2] -->
+    <text
+      style="font-size:12px;text-align:end;text-anchor:end;font-family:Sans"
+      x="43"
+      y="98">d:</text>
+    <text
+      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Sans"
+      x="96"
+      y="110">3.0</text>
+   <rect
+     style="fill:none;stroke:#000000;stroke-width:1px"
+     x="48"
+     y="80"
+     width="96"
+     height="48"/>
+
+<!-- Top: 128 -->
+<!-- CELL (label:[k], contents:[5], height:[1] -->
+    <text
+      style="font-size:12px;text-align:end;text-anchor:end;font-family:Sans"
+      x="43"
+      y="146">k:</text>
+    <text
+      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Sans"
+      x="96"
+      y="146">5</text>
+   <rect
+     style="fill:none;stroke:#000000;stroke-width:1px"
+     x="48"
+     y="128"
+     width="96"
+     height="24"/>
+
+<!-- Top: 152 -->
+<!-- EMPTY -->
+     <line x1="48" y1="152" 
+           x2="48" y2="176" 
+           style="stroke:#000000;stroke-width:1px" />
+     <line x1="144" y1="152" 
+           x2="144" y2="176" 
+           style="stroke:#000000;stroke-width:1px" />
+
+</svg>

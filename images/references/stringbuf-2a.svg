@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with mem2svg, one of SamR's hacks -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="152"
+   height="112"
+   id="svg2"
+   version="1.1">
+
+<!-- Top: 8 -->
+<!-- EMPTY -->
+     <line x1="48" y1="8" 
+           x2="48" y2="32" 
+           style="stroke:#000000;stroke-width:1px" />
+     <line x1="144" y1="8" 
+           x2="144" y2="32" 
+           style="stroke:#000000;stroke-width:1px" />
+
+<!-- Top: 32 -->
+<!-- CELL (label:[sb1], contents:[@68346762], height:[1] -->
+    <text
+      style="font-size:12px;text-align:end;text-anchor:end;font-family:Sans"
+      x="43"
+      y="50">sb1:</text>
+    <text
+      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Sans"
+      x="96"
+      y="50">@68346762</text>
+   <rect
+     style="fill:none;stroke:#000000;stroke-width:1px"
+     x="48"
+     y="32"
+     width="96"
+     height="24"/>
+
+<!-- Top: 56 -->
+<!-- CELL (label:[sb2], contents:[@68346762], height:[1] -->
+    <text
+      style="font-size:12px;text-align:end;text-anchor:end;font-family:Sans"
+      x="43"
+      y="74">sb2:</text>
+    <text
+      style="font-size:12px;text-align:center;text-anchor:middle;font-family:Sans"
+      x="96"
+      y="74">@68346762</text>
+   <rect
+     style="fill:none;stroke:#000000;stroke-width:1px"
+     x="48"
+     y="56"
+     width="96"
+     height="24"/>
+
+<!-- Top: 80 -->
+<!-- EMPTY -->
+     <line x1="48" y1="80" 
+           x2="48" y2="104" 
+           style="stroke:#000000;stroke-width:1px" />
+     <line x1="144" y1="80" 
+           x2="144" y2="104" 
+           style="stroke:#000000;stroke-width:1px" />
+
+</svg>
