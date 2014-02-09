@@ -1,0 +1,319 @@
+<section id="boxing"><title>Automatic Boxing and Unboxing in Java</title>
+
+<para>
+  <emphasis>Summary:</emphasis> We consider some of the ways in 
+  which Java converts from primitive values to object values (boxing)
+  and from object values back to primitive values (unboxing).
+</para>
+
+<para>
+  <emphasis>Prerequisites:</emphasis> Java basics.
+</para>
+
+<section id="boxing-introduction"><title>Introduction</title>
+
+<para>
+  As we note in <ulink url="../readings/references.html">the reading
+  on reference values</ulink>, Java has two <quote>kinds</quote> of
+  values, primitive values and object values.   You may have noted
+  that for each primitive type, we have a corresponding object type:
+  for <code>int</code> values, we have <code>Integer</code> objects,
+  for <code>double</code> values, we have <code>Double</code> objects,
+  and so on and so forth.
+</para>
+
+<para>
+  Early versions of Java required programmers to carefully distinguish
+  which kind of value you were using - <code>int</code>s were
+  <code>int</code>s and <code>Integer</code>s were <code>Integer</code>s.
+  The process of converting from primitive type to corresponding object
+  is called <emphasis>boxing</emphasis>.  The process of converting
+  from object to primitive type is called <emphasis>unboxing</emphasis>.
+  In Java, we typically call a constructor to box a value, and we call
+  an observer to unbox a value.
+</para>
+
+<para>
+  Starting in Java 1.5 (also called Java 5.0), the Java compiler started
+  doing automatic boxing (also called <quote>autoboxing</quote>) and
+  automatic unboxing (also called <quote>autounboxing</quote>).
+</para>
+
+<para>
+  Let's consider some of the implications of manual and automatic
+  boxing and unboxing.
+</para>
+
+</section> <!-- boxing-introduction -->
+
+<section id="boxing-manual"><title>Manual Boxing</title>
+
+<para>
+  What does it mean that a programmer has to manually box and unbox
+  values?  Let's consider a few simple examples.  First, if you wanted
+  to assign an <code>int</code> to an <code>Integer</code>, you'd have
+  to call a constructor.
+</para>
+
+<programlisting>
+  int prim = 5;
+  Integer obj = new Integer(prim);   
+</programlisting>
+
+<para>
+  Similarly, if you wanted to assign an <code>Integer</code> to an
+  <code>int</code>, you'd have to extract its value.
+</para>
+
+<programlisting>
+  prim = objj.intValue();
+</programlisting>
+
+<para>
+  The different treatment also meant that we had to extract the
+  <code>int</code> value from an <code>Integer</code> before doing
+  math on it, and then package it back up again.
+</para>
+
+<programlisting>
+  prim++;
+  obj = new Integer(obj.intValue() + 1);
+</programlisting>
+
+<para>
+  Note that we could not write the following.  Can you tell why not?
+</para>
+
+<programlisting>
+  obj = new Integer((obj.intValue())++);
+</programlisting>
+
+<para>
+  To recap: Early versions of Java asked programmers to think carefully
+  about when they were using a primitive value and when they were 
+  using an object value.  These versions also required programmers to
+  explicitly convert between the forms.
+</para>
+
+</section> <!-- boxing-manual -->
+
+<section id="boxing-automatic"><title>Automatic Boxing and Unboxing</title>
+
+<para>
+  What does it mean that both boxing and unboxing are 
+  <quote>automatic</quote>?  It means that we no longer need to
+  explicitly convert from primitive value to boxed object or
+  back again - the Java compiler does the conversion for us.
+</para>
+
+<para>
+  Hence, we can write all of the above (including that one postincrement
+  that seemed impossible before).
+</para>
+
+<programlisting>
+  int prim = 5;
+  Integer obj = prim;
+  prim = obj;
+  obj = obj * obj;
+  obj++;
+  prim++;
+ </programlisting>
+
+<para>
+  However, note that behind the scenes, the Java compiler is probably
+  generating code similar to that you had to manually write before.
+</para>
+
+</section> <!-- boxing-automatic -->
+
+<section id="boxed-types"><title>Boxed Types</title>
+
+<para>
+  What primitive types get automatically boxed and unboxed?  Here's the
+  basic list.  Note that all of the boxed classes are in the package
+  <code>java.lang</code>.
+</para>
+
+<table>
+  <thead>
+    <tr>
+      <th>Primitive Type</th>
+      <th>Boxed Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>boolean</code></td>
+      <td><code>Boolean</code></td>
+    </tr>
+    <tr>
+      <td><code>byte</code></td>
+      <td><code>Byte</code></td>
+    </tr>
+    <tr>
+      <td><code>char</code></td>
+      <td><code>Character</code></td>
+    </tr>
+    <tr>
+      <td><code>float</code></td>
+      <td><code>Float</code></td>
+    </tr>
+    <tr>
+      <td><code>int</code></td>
+      <td><code>Integer</code></td>
+    </tr>
+    <tr>
+      <td><code>long</code></td>
+      <td><code>Long</code></td>
+    </tr>
+    <tr>
+      <td><code>short</code></td>
+      <td><code>Short</code></td>
+    </tr>
+    <tr>
+      <td><code>double</code></td>
+      <td><code>Double</code></td>
+    </tr>
+  </tbody>
+</table>
+
+</section> <!-- boxed-types -->
+
+<section id="boxing-benefits"><title>Benefits and Drawbacks of Automatic Boxing</title>
+
+<para>
+  Why did the designers of Java add automatic boxing?  There are a few
+  reasons.  One obvious reason is that it makes things much easier for
+  the programmer.  No longer do you have to worry about whether you
+  have a primitive value or a boxed value - you can write identical
+  code for the two.
+</para>
+
+<para>  
+  Why did it take so long for automatic boxing and unboxing to appear
+  in Java?  Because many people were concerned that conversion between
+  types is costly, and programmers should know the cost of the 
+  operations they do.  For example, consider how much effort the
+  computer needs to do to compute the following assignment statement.
+</para>
+
+<programlisting>
+  i = i + j;
+</programlisting>
+
+<para>
+  The answer is now <quote>it depends</quote>.  If both <code>i</code>
+  and <code>j</code> hold primitive values, the assignment statement can
+  probably be translated into one machine-language instruction.  (Well,
+  it may need a few more for fetching and storing data, but it's still
+  pretty close to one.)
+</para>
+
+<para>
+  In contrast, if both <code>i</code> and <code>j</code> hold
+  boxed values, we probably need to to follow references to the
+  corresponding objects, extract the value from each object, do the
+  operation, and build a new object.  These operations are likely to
+  be <emphasis>much</emphasis> slower.  (On a pipelined architecture,
+  having to follow references is often particularly painful.)
+</para>
+
+<para>
+  By introducing autoboxing and unboxing, Java designers have made it
+  easier for programmers to write inefficient code without realizing
+  quite how inefficient the code is.
+</para>
+
+<para>
+  Given that significant drawback, why did the designers add this feature?
+  Because Java 1.5 introduced <emphasis>generics</emphasis> and a whole set 
+  of collections classes that can only hold objects.  For example, you
+  can make an <code>ArrayList</code> that contains <code>Integer</code>s,
+  but not <code>int</code>s.  In contrast, you really only use
+  <code>int</code>s in for loops.  Autoboxing allows us to more easily
+  write things like
+</para>
+
+<programlisting>
+  ArrayList&lt;Integer&gt; values = new ArrayList&lt;Integer&gt;();
+  for (int i = 0; i &lt; 100; i++)
+    {
+      values.add(i);
+    } // for
+</programlisting>
+
+<para>
+  and
+</para>
+
+<programlisting>
+  int sum = 0;
+  for (Integer val : values) 
+    {
+      sum += val;
+    } // for
+</programlisting>
+
+<para>
+  These patterns of programming are common enough that it must have
+  seemed worthwhile to allow programmers to type a bit less, even
+  if it means they may also think a bit less about the efficiency
+  of their code.
+</para>
+
+<para>
+  Are there other potential problems with automatic boxing and
+  unboxing?  Some programmers note that boxed types have one
+  additional value not representable as primitive types.  That is,
+  objects can be <code>null</code> and primitive values cannot.
+  What happens when you try to unbox <code>null</code>?  You'll
+  figure that out in the lab.
+</para>
+
+</section> <!-- boxing-benefits -->
+
+<section id="boxing-remember"><title>Things to Remember</title>
+
+<para>
+  What should you take away from this reading?  A few things.
+</para>
+
+<itemizedlist>
+  <listitem>
+    For the important primitive types, there's a corresponding class.
+  </listitem>
+
+  <listitem>
+    Java allows you to treat primitive and object values as the
+    same thing (more or less).
+  </listitem>
+
+  <listitem>
+    You should think carefully about what representation you use.   When 
+    you use object values, you may be incurring hidden performance penalty.  
+  </listitem>
+</itemizedlist>
+
+</section> <!-- boxing-remember -->
+
+<section id="references"><title>References</title>
+
+<para>
+  Oracle (1995,2014).  Autoboxing and Unboxing.  <emphasis>The Java
+  Tutorials</emphasis>.
+  Online document at <ulink
+  url="http://docs.oracle.com/javase/tutorial/java/data/autoboxing.html"/>.
+  Last visited 2014-02-09.
+</para>
+
+<para>
+  Keefer, Alan (2008).  Why I'm Not a Fan Of Java's Auto-Unboxing.
+  <emphasis>DZone Javalobby</emphasis>.  Online document at
+  <ulink url="http://java.dzone.com/articles/why-im-not-a-fan-of-javas-auto"/>.
+  Dated 07.09.2008.  Last visited 2014-02-09.
+</para>    
+
+</section> <!-- boxing-references -->
+
+</section> <!-- boxing -->
