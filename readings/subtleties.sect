@@ -1,0 +1,21 @@
+<section id="subtleties"><title>Some Subtleties: References and Automatic Boxing/Unboxing in Java</title>
+
+<para>
+  There are two readings for today.
+</para>
+
+<itemizedlist>
+  <listitem>
+    <ulink url="../readings/references.html">Reference Values in Java</ulink>
+    and
+  </listitem>
+  <listitem>
+    <ulink url="../readings/boxing.html">Automatic Boxing and Unboxing in Java</ulink>
+  </listitem>
+</itemizedlist>
+
+<para>
+  Read both.
+</para>
+
+</section>
