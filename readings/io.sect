@@ -138,36 +138,42 @@ pen.close ();
 </para>
 
 <itemizedlist>
+   <listitem>
+     <code>print (<emphasis>what-to-print</emphasis>)</code>: Queue for printing 
+     the given value to the appropriate destination.  Does not print a 
+     carriage return, so subsequent output will appear on the same line.
+   </listitem>
+ 
+   <listitem>
+     <code>println (<emphasis>what-to-print</emphasis>)</code>: Print the
+     given value to the appropriate destination followed by a carriage
+     return.  The <methodname>println</methodname> procedure 
+     <quote>flushes</quote> the output only if you've created the
+     <code>PrintWriter</code> with the autoflush flag set to true.
+   </listitem>
+ 
+   <listitem>
+     <code>println ()</code>: Print a carriage return.
+   </listitem>
+ 
+   <listitem>
+     <code>flush ()</code>: Finishes printing anything queued by
+    <code>print</code> (and by <methodname>println</methodname>
+    if autoflush is not set.
+  </listitem> 
+ 
   <listitem>
-    <code>print (<emphasis>what-to-print</emphasis>)</code>: Queue for printing 
-    the given value to the appropriate destination.  Does not print a 
-    carriage return, so subsequent output will appear on the same line.
+    <code><methodname>format</methodname>(<parameter>format-string</parameter>,
+      <parameter>value</parameter>, ..., <parameter>value</parameter>)</code>:
+      Print values using a <function>printf</function>-style
+      format string.
   </listitem>
-
+ 
   <listitem>
-    <code>println (<emphasis>what-to-print</emphasis>)</code>: Print the
-    given value to the appropriate destination followed by a carriage
-    return.  The <methodname>println</methodname> procedure 
-    <quote>flushes</quote> the output only if you've created the
-    <code>PrintWriter</code> with the autoflush flag set to true.
+    <code>close ()</code>: Closes a PrintWriter that we're done using.
+    By closing a PrintWriter, you also guarantee that you flush the
+    output.
   </listitem>
-
-  <listitem>
-    <code>println ()</code>: Print a carriage return.
-  </listitem>
-
-  <listitem>
-    <code>flush ()</code>: Finishes printing anything queued by
-   <code>print</code> (and by <methodname>println</methodname>
-   if autoflush is not set.
- </listitem> 
-
- <listitem>
-   <code><methodname>format</methodname>(<parameter>format-string</parameter>,
-     <parameter>value</parameter>, ..., <parameter>value</parameter>)</code>:
-     Print values using a <function>printf</function>-style
-     format string.
- </listitem>
 </itemizedlist> 
 
 </section> <!-- output -->
