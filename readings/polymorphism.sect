@@ -42,21 +42,18 @@
   we might write:
 </para>
 
-<programlisting> 
-To compute the square root of N, where N >= 1
+<literallayout>To compute the square root of N, where N >= 1
   Let lower = 1 // 1*1 &lt;= N when N &gt;= 1 
   Let upper = N // N*N &gt;= N when N &gt;= 1 
-  while (upper-lower is too large) {
+  while (upper-lower is too large) 
     Let mid = (lower + upper) / 2; 
     // If the new guess is too low, update lower 
     if (mid*mid &lt; N)
       lower = mid;
     // If the new guess is too high, update higher 
-   else
+    else
       upper = mid;
-  } // while 
-  return (upper+lower)/2;
-</programlisting>
+  return (upper+lower)/2;</literallayout>
 
 <para>
   (Note that is strategy is probably less efficient than one you
@@ -72,20 +69,23 @@ To compute the square root of N, where N >= 1
 </para>
 
 <programlisting>
-public class Helper {
-    public static double squareRoot(Integer i) {
-        double n = i.doubleValue();
-        double lower = 1.0;
-        double upper = n;
-        double mid;
-        while (upper-lower > 0.01) {
-            mid = (upper+lower)/2.0;
-            if (mid*mid &lt; n)
-                lower = mid;
-            else
-                upper = mid;
-        } // while
-        return (upper+lower)/2.0;
+public class Helper 
+{
+  public static double squareRoot(Integer i) 
+  {
+    double n = i.doubleValue();
+    double lower = 1.0;
+    double upper = n;
+    double mid;
+    while (upper-lower > 0.01) 
+      {
+        mid = (upper+lower)/2.0;
+        if (mid*mid &lt; n)
+          lower = mid;
+        else
+          upper = mid;
+      } // while
+      return (upper+lower)/2.0;
     } // squareRoot(Integer)
 
     // ...
@@ -99,56 +99,60 @@ public class Helper {
 </para>
 
 <programlisting>
-public double squareRoot(BigInteger bi) {
-    double n = bi.doubleValue();
-    double lower = 1.0;
-    double upper = n;
-    double mid;
-    while (upper-lower > 0.01) {
-        mid = (upper+lower)/2.0;
-        if (mid*mid &lt; n)
-            lower = mid;
-        else
-            upper = mid;
+public double squareRoot(BigInteger bi) 
+{
+  double n = bi.doubleValue();
+  double lower = 1.0;
+  double upper = n;
+  double mid;
+  while (upper-lower > 0.01) 
+    {
+      mid = (upper+lower)/2.0;
+      if (mid*mid &lt; n)
+        lower = mid;
+      else
+        upper = mid;
     } // while
-    return (upper+lower)/2.0;
+  return (upper+lower)/2.0;
 } // squareRoot(BigInteger)
 </programlisting>
 
 <para>
   Of course, if we made a mistake in the definition of
-  the first <programlisting>squareRoot</programlisting>
+  the first <code>squareRoot</code>
   (as I did while writing this essay), or later realized that
   there's a better implementation, we need to rewrite not just
-  <programlisting>squareRoot(Integer)</programlisting>, but also
-  <programlisting>squareRoot(BigInteger)</programlisting>.  As these
+  <code>squareRoot(Integer)</code>, but also
+  <code>squareRoot(BigInteger)</code>.  As these
   two short examples suggest, repetition of code is likely to lead to
   problems in maintaining and updating your program.
 </para>
 
 <para>
   Using polymorphism, we can write one method that serves both purposes.
-  In particular, since both <programlisting>Integer</programlisting>s
-  and <programlisting>BigIntegers</programlisting> are
-  <programlisting>Number</programlisting>s, and since
-  all <programlisting>Number</programlisting>s provide a
-  <programlisting>doubleValue</programlisting> method, we can write
+  In particular, since both <code>Integer</code>s
+  and <code>BigIntegers</code> are
+  <code>Number</code>s, and since
+  all <code>Number</code>s provide a
+  <code>doubleValue</code> method, we can write
 </para>
 
 <programlisting>
-public static double squareRoot(Number num) {
-    double n = num.doubleValue();
-    double lower = 1.0;
-    double upper = n;
-    double mid;
-    while (upper-lower > 0.01) {
-        mid = (upper+lower)/2.0;
-        if (mid*mid &lt; n)
-            lower = mid;
-        else
-            upper = mid;
+public static double squareRoot(Number num) 
+{
+  double n = num.doubleValue();
+  double lower = 1.0;
+  double upper = n;
+  double mid;
+  while (upper-lower > 0.01) 
+    {
+      mid = (upper+lower)/2.0;
+      if (mid*mid &lt; n)
+        lower = mid;
+      else
+          upper = mid;
     } // while
-    return (upper+lower)/2.0;
+  return (upper+lower)/2.0;
 } // squareRoot(Number)
 </programlisting>
 
@@ -228,17 +232,19 @@ public static double squareRoot(Number num) {
 /></programlisting>
 
 <para>
-Here's a method (that we can put in a utility class) that knows how to print
-TextBlocks.
+  Here's a method (that we can put in a utility class) that knows how to print
+  <code>TextBlock</code> objects.
 </para>
 
 <programlisting>
 /**
  * Print a textblock to the specified destination.
  */
-public static void print(PrintWriter pen, TextBlock block) {
-    for (int i = 0; i &amp; block.rows; i++) {
-        pen.println(block.row(i));
+public static void print(PrintWriter pen, TextBlock block) 
+{
+  for (int i = 0; i &amp; block.rows; i++) 
+    {
+      pen.println(block.row(i));
     } // for
 }  // print(PrintWriter, TextBlock)
 </programlisting> 
