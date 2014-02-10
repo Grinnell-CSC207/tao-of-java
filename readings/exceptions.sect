@@ -164,12 +164,15 @@ update.noteSuccessfulUpdate();
 
 <programlisting>
 if (file.isAvailable() 
-        &amp;&amp; file.containsMoreInput()
-        &amp;&amp; file.nextInputIsAnIPAddress()) {
+    &amp;&amp; file.containsMoreInput()
+    &amp;&amp; file.nextInputIsAnIPAddress()) 
+  {
     ip = file.getIPAddress();
-} else {
+  } // if everything is okay
+else 
+  {
     // Something to deal with the problem.
-}
+  } // if something is not okay
 connection = new FTPConnection(ip);
 update = connection.download();
 software.repair(update);
@@ -211,9 +214,10 @@ software.noteSuccessfulUpdate();
 
 <programlisting>
 ip = file.getIPAddress();
-if (ip == null) {
+if (ip == null) 
+  {
     // Something to deal with the problem.
-}
+  } // if (ip == null)
 ...
 </programlisting>
 
@@ -267,9 +271,10 @@ if (ip == null) {
 
 <programlisting>
 ip = file.getIPAddress();
-    handle failure in getIPAddress by {
+    handle failure in getIPAddress by 
+      {
         ip = new IPAddress("localhost");
-    }
+      } // handle failure
 connection = new FTPConnection(ip);
 update = connection.download();
 software.repair(update);
@@ -348,7 +353,9 @@ end block
 </para>
 
 <programlisting>
-public IPAddress getIPAddress() throws Exception {
+public IPAddress getIPAddress() 
+    throws Exception 
+{
     ...
 } // getIPAddress()
 </programlisting>
@@ -386,11 +393,14 @@ throw new Exception("<emphasis>description of problem</emphasis>");
 </para>
 
 <programlisting>
-  try {
-    // stuff that may have problems
-  } catch (Exception e) {
-   // Handle one type of exception
-  }
+  try 
+    {
+      // stuff that may have problems
+    } // try problematic code
+  catch (Exception e) 
+    {
+      // Handle one type of exception
+    } // catch (Exception)
 </programlisting>
 
 <para>
@@ -398,11 +408,14 @@ throw new Exception("<emphasis>description of problem</emphasis>");
 </para>
 
 <programlisting>
-try {
-  ip = file.getIPAddress();
-} catch (Exception e) {
+try 
+  {
+    ip = file.getIPAddress();
+  } // try getting the IP address
+catch (Exception e) 
+  {
     ip = new IPAddress("localhost");
-}
+  } // failed to get IP address
 </programlisting>
 
 <para>
@@ -412,11 +425,14 @@ try {
 </para>
 
 <programlisting>
-  try {
-    // stuff that may have problems
-  } catch (Exception e) {
-    throw new Exception("<emphasis>explanation</emphasis>");
-  }
+  try 
+    {
+      // stuff that may have problems
+    } // try clause
+  catch (Exception e) 
+    {
+      throw new Exception("<emphasis>explanation</emphasis>");
+    } // catch (Exception)
 </programlisting>
 
 <para>
@@ -429,7 +445,9 @@ try {
 </para>
 
 <programlisting>
-public void myProc() throws Exception {
+public void myProc() 
+    throws Exception 
+{
   // stuff that may have problems
 } // myProc()
 </programlisting>
@@ -457,12 +475,14 @@ public void myProc() throws Exception {
 
 <programlisting>
 public static int promptForInt(PrintWriter pw, BufferedReader br, String prompt)
-       throws Exception {
-    if (prompt != null) {
-        pw.print(prompt);
-        pw.flush();
-    }
-    return Integer.parseInt(br.readLine());
+    throws Exception 
+{
+  if (prompt != null) 
+    {
+      pw.print(prompt);
+      pw.flush();
+    } // if (prompt != null)
+  return Integer.parseInt(br.readLine());
 } // promptForInt(PrintWriter, BufferedReader, String)
 </programlisting>
 
@@ -491,15 +511,22 @@ public static int promptForInt(PrintWriter pw, BufferedReader br, String prompt)
 </para>
 
 <programlisting>
-try {
+try 
+  {
     // code that may fail in multiple ways
-} catch (<emphasis>FirstKindOfException</emphasis> e1) {
+  } // try
+catch (<emphasis>FirstKindOfException</emphasis> e1) 
+  {
     // recover from the first kind of exception
-} catch (<emphasis>SecondKindOfException</emphasis> e2) {
+  } // catch (FirstKindOfExeption)
+catch (<emphasis>SecondKindOfException</emphasis> e2) 
+  {
     // recover from the second kind of exception
-} catch (Exception e) {
+  } // catch (SecondKindOfException)
+catch (Exception e) 
+  {
     // recover from any remaining kinds of exceptions
-}
+  } // catch (Exception)
 </programlisting>
 
 <para>
@@ -510,24 +537,34 @@ try {
 
 <programlisting>
 public static int promptForInt(PrintWriter pw, BufferedReader br, String prompt)
-       throws NumberFormatException, IOException {
-    if (prompt != null) {
-        pw.print(prompt);
-        pw.flush();
-    }
-    try {
+    throws NumberFormatException, IOException 
+{
+  if (prompt != null) 
+    {
+      pw.print(prompt);
+      pw.flush();
+    } // if prompt is not null
+  try 
+    {
         return Integer.parseInt(br.readLine());
-    } catch (NumberFormatException nfe) {
-        if (prompt != null) {
-            br.println("Sorry, but that was not an integer.  Try again.");
-            return promptForInt(pw, br, prompt);
-        } else {
-            throw nfe;
-        }
-    } catch (IOException ioe) {
-        // No way to recover.
-        throw ioe;
-    }
+    } // try
+  catch (NumberFormatException nfe) 
+    {
+      if (prompt != null) 
+        {
+          br.println("Sorry, but that was not an integer.  Try again.");
+          return promptForInt(pw, br, prompt);
+        } // if prompt is not null
+      else 
+        {
+          throw nfe;
+        } // if prompt is null
+    } // catch (NumberFormatException)
+  catch (IOException ioe) 
+    {
+      // No way to recover.
+      throw ioe;
+    } // catch (IOException)
 } // readInt(PrintWriter, BufferedReader, String)
 </programlisting>
 
@@ -556,13 +593,15 @@ public static int promptForInt(PrintWriter pw, BufferedReader br, String prompt)
 <programlisting>
 public class YourException extends Exception
 {
-  public YourException() {
+  public YourException() 
+  {
     super();
-  }
+  } // YourException()
 
-  public YourException(String reason) {
+  public YourException(String reason) 
+  {
     super(reason);
-  }
+  } // YourException(String)
 } // class YourException
 </programlisting>
 
