@@ -66,19 +66,19 @@
 </para>
 
 <programlisting>
-public interface <emphasis>InterfaceName</emphasis> {
-    // +-----------+---------------------------------------------------------
-    // | Constants |
-    // +-----------+
+public interface <emphasis>InterfaceName</emphasis> 
+{
+  // +-----------+---------------------------------------------------------
+  // | Constants |
+  // +-----------+
 
-    // ...
-  
-    // +---------+-----------------------------------------------------------
-    // | Methods |
-    // +---------+
+  // ...
 
-    // ...
+  // +---------+-----------------------------------------------------------
+  // | Methods |
+  // +---------+
 
+  // ...
 } // interface <emphasis>InterfaceName</emphasis>
 </programlisting>
 
@@ -92,40 +92,41 @@ public interface <emphasis>InterfaceName</emphasis> {
  *  Vectors in two-space.
  *
  *  @author Samuel A. Rebelsky
- *  @version 1.1 of September 2013
+ *  @version 1.2 of February 2014
  */
-public interface Point2D {
-    // +---------+-----------------------------------------------------------
-    // | Methods |
-    // +---------+
+public interface Point2D 
+{
+  // +---------+-----------------------------------------------------------
+  // | Methods |
+  // +---------+
 
-    /**
-     * Get the X coordinate of the point.
-     */
-    public double getX();
-  
-    /**
-     * Get the Y coordinate of the point.
-     */
-    public double getY();
+  /**
+   * Get the X coordinate of the point.
+   */
+  public double getX();
 
-    /**
-     * Get the distance of this point from the origin.
-     */
-    public double getDistanceFromOrigin();
+  /**
+   * Get the Y coordinate of the point.
+   */
+  public double getY();
 
-    /**
-     * Translate this point by deltaX in the x direction and 
-     * deltaY in the y direction.  Note that this method
-     * mutates the underlying point.
-     */
-    public void translate(double deltaX, double deltaY);
+  /**
+   * Get the distance of this point from the origin.
+   */
+  public double getDistanceFromOrigin();
 
-    /**
-     * Make a copy of this point.
-     */
-    public Point2D clone();
-} // interface Point2D
+  /**
+   * Translate this point by deltaX in the x direction and 
+   * deltaY in the y direction.  Note that this method
+   * mutates the underlying point.
+   */
+  public void translate(double deltaX, double deltaY);
+
+  /**
+   * Make a copy of this point.
+   */
+  public Point2D clone();
+// interface Point2D
 </programlisting>
 
 </section>  <!-- java-interfaces -->
@@ -140,7 +141,9 @@ public interface Point2D {
 </para>
 
 <programlisting>
-public class <emphasis>ClassName</emphasis> implements <emphasis>InterfaceName</emphasis> {
+public class <emphasis>ClassName</emphasis> 
+    implements <emphasis>InterfaceName</emphasis> 
+{
   // ...
 } // class <emphasis>ClassName</emphasis>
 </programlisting>
@@ -157,76 +160,83 @@ public class <emphasis>ClassName</emphasis> implements <emphasis>InterfaceName</
  * and a Y coordinate.
  *
  * @author Samuel A. Rebelsky
- *  @version 1.1 of September 2013
+ * @version 1.2 of February 2014
  */
-public class Point2DPair implements Point2D {
-    // +--------+------------------------------------------------------------
-    // | Fields |
-    // +--------+
+public class Point2DPair 
+    implements Point2D 
+{
+  // +--------+------------------------------------------------------------
+  // | Fields |
+  // +--------+
 
-    /**
-     * The x coordinate of the point
-     */
-    double x;
+  /**
+   * The x coordinate of the point
+   */
+  double x;
 
-    /**
-     * The y coordinate of the point.
-     */
-    double y;
+  /**
+   * The y coordinate of the point.
+   */
+  double y;
 
-    // +--------------+------------------------------------------------------
-    // | Constructors |
-    // +--------------+
+  // +--------------+------------------------------------------------------
+  // | Constructors |
+  // +--------------+
 
-    /**
-     * Create the point (x,y).
-     */
-    public Point2DPair(double x, double y) {
-        this.x = x;
-        this.y = y;
-    } // Point2DPair(double,double)
+  /**
+   * Create the point (x,y).
+   */
+  public Point2DPair(double x, double y) 
+  {
+    this.x = x;
+    this.y = y;
+  } // Point2DPair(double,double)
 
-    // +---------+-----------------------------------------------------------
-    // | Methods |
-    // +---------+
+  // +---------+-----------------------------------------------------------
+  // | Methods |
+  // +---------+
 
-    /**
-     * Get the X coordinate of the point.
-     */
-    public double getX() {
-        return this.x;
-    } // getX() 
+  /**
+   * Get the X coordinate of the point.
+   */
+  public double getX() 
+  {
+    return this.x;
+  } // getX() 
   
-    /**
-     * Get the Y coordinate of the point.
-     */
-    public double getY() {
-        return this.y;
-    } // getY()
+  /**
+   * Get the Y coordinate of the point.
+   */
+  public double getY() 
+  {
+    return this.y;
+  } // getY()
 
-    /**
-     * Get the distance of this point from the origin.
-     */
-    public double getDistanceFromOrigin() {
-        return Math.sqrt(this.x*this.x + this.y*this.y);
-    } // getDistanceFromOrigin()
+  /**
+   * Get the distance of this point from the origin.
+   */
+  public double getDistanceFromOrigin() 
+  {
+    return Math.sqrt(this.x*this.x + this.y*this.y);
+  } // getDistanceFromOrigin()
 
-    /**
-     * Translate this point by deltaX in the x direction and
-     * deltaY in the y direction.  Note that this method
-     * mutates the underlying point.
-     */
-    public void translate(double deltaX, double deltaY) {
-        this.x = this.x + deltaX;
-        this.y = this.y + deltaY;
-    } // translate(double, double)
+  /**
+   * Translate this point by deltaX in the x direction and
+   * deltaY in the y direction.  Note that this method
+   * mutates the underlying point.
+   */
+  public void translate(double deltaX, double deltaY) 
+  {
+    this.x = this.x + deltaX;
+    this.y = this.y + deltaY;
+  } // translate(double, double)
 
-    /**
-     * Make a copy of this point.
-     */
-    public Point2D clone() {
-        return new Point2DPair(this.x, this.y);
-    } // clone()
+  /**
+   * Make a copy of this point.
+   */
+  public Point2D clone() {
+    return new Point2DPair(this.x, this.y);
+  } // clone()
 } // class Point2DPair
 </programlisting>
 
@@ -252,91 +262,97 @@ public class Point2DPair implements Point2D {
  *  the point.
  *
  *  @author Samuel A. Rebelsky
- *  @version 1.1 of September 2013
+ *  @version 1.2 of February 2014
  */
-public class Point2DPolar implements Point2D {
-    // +--------+------------------------------------------------------------
-    // | Fields |
-    // +--------+
+public class Point2DPolar implements Point2D 
+{
+  // +--------+------------------------------------------------------------
+  // | Fields |
+  // +--------+
   
-    /**
-     * The radius, which represents the distance of the point from 
-     * the origin.
-     */
-    double radius;
+  /**
+   * The radius, which represents the distance of the point from 
+   * the origin.
+   */
+  double radius;
   
-    /**
-     * Theta, which represents the angle between the positive X axis
-     * and a line from the origin to the point.
-     */
-    double theta;
+  /**
+   * Theta, which represents the angle between the positive X axis
+   * and a line from the origin to the point.
+   */
+  double theta;
   
-    // +--------------+------------------------------------------------------
-    // | Constructors |
-    // +--------------+
+  // +--------------+------------------------------------------------------
+  // | Constructors |
+  // +--------------+
   
-    /**
-     * Create the point (x,y)
-     */
-    public Point2DPolar(double x, double y) {
-        this.radius = Math.sqrt(x*x + y*y);
-        this.theta = Math.atan(y/x);
-    } // Point2DPolar(double,double)
+  /**
+   * Create the point (x,y)
+   */
+  public Point2DPolar(double x, double y) 
+  {
+    this.radius = Math.sqrt(x*x + y*y);
+    this.theta = Math.atan(y/x);
+  } // Point2DPolar(double,double)
   
-    /**
-     * Create a point radius 0 and angle 0 (with the expectation that
-     * we'll change it almost immediately).
-     */
-    private Point2DPolar() {
-        this.radius = 0.0;
-        this.theta = 0.0;
-    } // Point2DPolar()
+  /**
+   * Create a point radius 0 and angle 0 (with the expectation that
+   * we'll change it almost immediately).
+   */
+  private Point2DPolar() 
+  {
+    this.radius = 0.0;
+    this.theta = 0.0;
+  } // Point2DPolar()
   
-    // +---------+-----------------------------------------------------------
-    // | Methods |
-    // +---------+
+  // +---------+-----------------------------------------------------------
+  // | Methods |
+  // +---------+
   
-    /**
-     * Get the X coordinate of the point.
-     */
-    public double getX() {
-        return this.radius * Math.cos(this.theta);
-    } // getX() 
-    
-    /**
-     * Get the Y coordinate of the point.
-     */
-    public double getY() {
-        return this.radius * Math.sin(this.theta);
-    } // getY()
+  /**
+   * Get the X coordinate of the point.
+   */
+  public double getX() 
+  {
+    return this.radius * Math.cos(this.theta);
+  } // getX() 
   
-    /**
-     * Get the distance of this point from the origin.
-     */
-    public double getDistanceFromOrigin() 
-    {
-      return this.radius;
-    } // getDistanceFromOrigin()
+  /**
+   * Get the Y coordinate of the point.
+   */
+  public double getY() 
+  {
+    return this.radius * Math.sin(this.theta);
+  } // getY()
   
-    /**
-     * Translate this point by deltaX in the x direction and
-     * deltaY in the y direction.  Note that this method
-     * mutates the underlying point.
-     */
-    public void translate(double deltaX, double deltaY) {
-        // Left as an exercise to the reader.
-    } // translate(double, double)
+  /**
+   * Get the distance of this point from the origin.
+   */
+  public double getDistanceFromOrigin() 
+  {
+    return this.radius;
+  } // getDistanceFromOrigin()
   
-    /**
-     * Make a copy of this point.
-     */
-    public Point2D clone() {
-        Point2DPolar tmp = new Point2DPolar();
-        tmp.radius = this.radius;
-        tmp.theta = this.theta;
-        return tmp;
-    } // clone()
+  /**
+   * Translate this point by deltaX in the x direction and
+   * deltaY in the y direction.  Note that this method
+   * mutates the underlying point.
+   */
+  public void translate(double deltaX, double deltaY) 
+  {
+    // Left as an exercise to the reader.
+  } // translate(double, double)
   
+  /**
+   * Make a copy of this point.
+   */
+  public Point2D clone() 
+  {
+    Point2DPolar tmp = new Point2DPolar();
+    tmp.radius = this.radius;
+    tmp.theta = this.theta;
+    return tmp;
+  } // clone()
 } // class Point2DPolar
 </programlisting>
 
@@ -355,8 +371,9 @@ public class Point2DPolar implements Point2D {
  * the origin than p2, 0 if the two are the same distance from the
  * origin, and a positive number if p1 is further from the origin.
  */
-public int compare(Point2D p1, Point2D p2) {
-    return Double.compare(p1.distanceFromOrigin(), p2.distanceFromOrigin());
+public int compare(Point2D p1, Point2D p2) 
+{
+  return Double.compare(p1.distanceFromOrigin(), p2.distanceFromOrigin());
 } // compare(Point2D, Point2D)
 </programlisting>
 
