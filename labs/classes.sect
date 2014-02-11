@@ -1,15 +1,13 @@
 <section id="classes"><title>Laboratory: Designing Your Own Classes</title>
 
 <!-- 
-  1. Make a repo with 
-     Examples/username/fractions/Fraction.java  and
-       TestFraction.java
+  TO DO
 
-  2. Add a few examples in which they learn about static access to
+  1. Add a few examples in which they learn about static access to
      fields (or fail to access those fields).  Maybe something as
      simple as giving them a procedure.
 
-  3. Add links to the Java API.
+  2. Add links to the Java API.
 -->
 
 <para>
@@ -65,7 +63,7 @@
 </para>
 
 <para>
-  b. Test your code.
+  b. Write an experiment that allows you to explore the behavior of the new method.
 </para>
 
 </section>  <!-- classes-1 -->
@@ -87,15 +85,20 @@
 </para>
 
 <programlisting>
-public static void testFractional() {
-    Fraction f = new Fraction(11,3);
-    assertEquals("2/3", f.fractional().toString());
+@Test
+public void testFractional() 
+{
+  Fraction f = new Fraction(11,3);
+  assertEquals("2/3", f.fractional().toString());
 
-    f = new Fraction(1,2);
-    assertEquals("1/2",  f.fractional().toString());
+  f = new Fraction(1,2);
+  assertEquals("1/2",  f.fractional().toString());
 
-    f = new Fraction(4,2);
-    assertEquals("0", f.fractional().toString());
+  f = new Fraction (5,2);
+  assertEquals("1/2", f.fractional().toString());
+
+  f = new Fraction(4,2);
+  assertEquals("0/2", f.fractional().toString());
 } // testFractional()
 </programlisting>
 
@@ -115,13 +118,15 @@ public static void testFractional() {
 </para>
 
 <programlisting>
-public static void stringConstructorTest() {
+public static void 
+stringConstructorTest() 
+{
   Fraction f = new Fraction("1/4");
   assertEquals(1, f.numerator());
   assertEquals(4, f.denominator());
   f = new Fraction("11/5");
   assertEquals(11, f.numerator());
-  assertEquals(4, f.denominator());
+  assertEquals(5, f.denominator());
   f = new Fraction("120/3");
   assertEquals(40.0, f.toReal(), 0.0001);
 } // stringConstructorTest()
@@ -144,7 +149,8 @@ public static void stringConstructorTest() {
   objects that can count.  Objects in class <code>Counter</code>
   should provide two methods: <code>increment</code>, which adds 1
   to the counter, and <code>get</code>, which gets the current value
-  of the counter.
+  of the counter.  Your class needs one zeroary constructor which
+  initializes the counter to 0.
 </para>
 
 <para>
@@ -154,11 +160,49 @@ public static void stringConstructorTest() {
 
 </section>  <!-- classes-04 -->
 
-<section id="classes-05"><title>Exercise 5: Enhancing Counters</title>
+<section id="classes-05"><title>Exercise 5: Printing Counters</title>
 
 <para>
-  a. Update your <code>Counter</code> class to include a second constructor that
-  Allows the user to specify a starting value.
+  a. If you've included a <methodname>toString</methodname> method in
+  <code>Counter</code>, comment it out.
+</para>
+
+<para>
+  b. What do you expect to happen if we print out a <code>Counter</code> 
+  using instructions like the following?
+</para>
+
+<programlisting>
+  PrintWriter pen = new PrintWriter(System.out, true);
+  Counter c1 = new Counter();
+  Counter c2 = new Counter();
+  c1.increment();
+  c1.increment();
+  c2.increment();
+  pen.println("c1: " + c1);
+  pen.println("c2: " + c2);
+</programlisting>
+
+<para>
+  c. Check your answer experimentally.
+</para>
+
+<para>
+  d. As you should have discovered, when a class lacks a
+  <methodname>toString</methodname> method, Java chooses a fairly
+  naive representation for printing objects in that class.
+  Add an appropriate <methodname>toString</methodname> method
+  (e.g., one that returns the counter surrounded by angle brackets).
+  Then verify that the lines above work as you expect.
+</para>
+
+</section> <!-- classes-05 -->
+
+<section id="classes-06"><title>Exercise 6: Enhancing Counters</title>
+
+<para>
+  a. Update your <code>Counter</code> class to include a second
+  constructor that allows the user to specify a starting value.
 </para>
 
 <para>
@@ -168,10 +212,10 @@ public static void stringConstructorTest() {
 </para>
 
 <para>
-  c. Test both updates to ensure that they work as appropriate.
+  c. Test both updates to ensure that they work appropriately.
 </para>
 
-</section>  <!-- classes-05 -->
+</section>  <!-- classes-06 -->
 
 </section>  <!-- exercises -->
 
