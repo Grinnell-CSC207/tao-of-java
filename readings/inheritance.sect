@@ -12,7 +12,7 @@
 <section id="intro"> <title>Introduction: Reducing Coding Effort</title>
 
 <para>
-  As we saw in <ulink url="../Readings/polymorphism.html">the reading
+  As we saw in <ulink url="../readings/polymorphism.html">the reading
   on polymorphism</ulink>, one of the great benefits of polymorphism is
   that the programmer need only write a method once, and that method
   can naturally be used on a variety of kinds of data.  In fact,
@@ -74,29 +74,37 @@
 </para>
 
 <programlisting>
-public class Person {
-     ...
-     String classification;
-     Information additionalInfo;
-     ...
-     public String answer(String question) { 
-         ...;
-     } // answer(String)
-     ...
-     public void addAccess(RestrictedLocation loc) {
-         ...;
-     } // addAccess(RestrictedLocation)
-     ...
-     public void marry(Person mate) {
-       ...;
-     } // marry(Person)
+public class Person 
+{
+  ...
+  String classification;
+  Information additionalInfo;
+  ...
+  public String answer(String question) 
+  {
+    ...;
+  } // answer(String)
+  ...
+  public void addAccess(RestrictedLocation loc) 
+  {
+    ...;
+  } // addAccess(RestrictedLocation)
+  ...
+  public void marry(Person mate) 
+  {
+    ...;
+  } // marry(Person)
 } // class Person
 
-public interface Information {
-    ...
-} // interface Information
+public interface AdditionalInformation 
+{
+  ...
+} // interface AdditionalInformation
 
-public class StudentInfo implements Information {
+public class StudentInfo 
+  implements 
+    AdditionalInformation 
+{
   ...
   /** 
    * The student's debt to the college, in dollars.  Note that
@@ -107,7 +115,8 @@ public class StudentInfo implements Information {
   ...
 } // class StudentInfo
 
-public class FacultyInfo implements Information {
+public class FacultyInfo implements Information 
+{
   ...
   /** The year in which the faculty member was hired.  */
   int yearHired;
@@ -145,34 +154,41 @@ public class FacultyInfo implements Information {
 </para>
 
 <programlisting>
-public class Professor {
-    Person personData;
-    int yearHired;
-    ...
-    public String answer(String question) {
-        return "The solution is obvious if you simply consider the Church-Rosser theorem.";
-    } // answer(String)
+public class Professor 
+{
+  Person personData;
+  int yearHired;
+  ...
+  public String answer(String question) 
+  {
+    return "The solution is obvious if you simply consider the Church-Rosser theorem.";
+  } // answer(String)
 
-    public void marry(Person mate) {
-        personData.marry(mate);
-    } // marry(Person)
+  public void marry(Person mate) 
+  {
+    personData.marry(mate);
+  } // marry(Person)
 } // class Professor
 
-public class Student {
-    Person personData;
-    long debt;
-    ...
-    public String answer(String question) {
-        return "Ummm ... I'm not sure.";
-    } // answer(String)
+public class Student 
+{
+  Person personData;
+  long debt;
+  ...
+  public String answer(String question) 
+  {
+    return "Ummm ... I'm not sure.";
+  } // answer(String)
 
-    public void marry(Person mate) {
-        personData.marry(mate);
-    } // marry(Person)
+  public void marry(Person mate) 
+  {
+    personData.marry(mate);
+  } // marry(Person)
 
-    public void enroll(Course c) { 
-       ...;
-    } // enroll(Course)
+  public void enroll(Course c) 
+  {
+    ...;
+  } // enroll(Course)
 } // class Student
 </programlisting>
 
@@ -201,47 +217,55 @@ public class Student {
 </para>
 
 <programlisting>
-public interface Person {
-    ...
-    public void marry(Person other) throws Exception;
-    public String answer(String question);
+public interface Person 
+{
+  ...
+  public void marry(Person other) throws Exception;
+  public String answer(String question);
   ...
 } // interface Person
 
-public class GenericPerson implements Person {
+public class GenericPerson implements Person 
+{
+  ...
+  String lastName;
+  ...
+  public void marry(Person other)
+    throws Exception
+  {
     ...
-    String lastName;
-    ...
-    public void marry(Person other)
-        throws Exception
-    {
-        ...
-    } // marry
+  } // marry
     ...
 } // class GenericPerson
 
-public class Professor implements Person {
-    GenericPerson personData;
-    int yearHired;
-    ...
-    public void marry(Person mate) throws Exception {
-        if (mate instanceof Student) {
-            throw new Exception("Professors should not marry students.");
-        }
-        personData.marry(mate);
-    } // marry(Person)
+public class Professor 
+  implements Person 
+{
+  GenericPerson personData;
+  int yearHired;
+  ...
+  public void marry(Person mate) throws Exception 
+  {
+    if (mate instanceof Student) 
+      throw new Exception("Professors should not marry students.");
+    personData.marry(mate);
+  } // marry(Person)
 } // class Professor
 
-public class Student implements Person {
+public class Student 
+  implements Person 
+{
     Person personData;
     long debt;
     ...
-    public void marry(Person mate) throws Exception {
-        if (mate instanceof Professor) {
-            throw new Exception("Students should not marry professors.");
-            // Don't you love having morality enacted in code?
+    public void marry(Person mate) throws Exception 
+    {
+      if (mate instanceof Professor) 
+        {
+          throw new Exception("Students should not marry professors.");
+          // Don't you love having morality enacted in code?
         }
-        personData.marry(mate);
+      personData.marry(mate);
     } // marry(Person)
     ...
 } // class Student
@@ -272,8 +296,10 @@ public class Student implements Person {
 </para>
 
 <programlisting>
-public class <emphasis>NewClass</emphasis> extends <emphasis>OldClass</emphasis> {
-    ...
+public class <emphasis>NewClass</emphasis> 
+  extends <emphasis>OldClass</emphasis> 
+{
+  ...
 } // class <emphasis>NewClass</emphasis>
 </programlisting>
 
@@ -288,26 +314,36 @@ public class <emphasis>NewClass</emphasis> extends <emphasis>OldClass</emphasis>
 </para>
 
 <programlisting>
-public class Person {
-     ...
-     int age;
-     Gender gender;
-     ...
-     public int getAge() {
-         return this.age;
-     } // getAge()
-     public String answer(String question) { 
-         return "Maybe.";
-     } // answer(String)
-     public void marry(Person mate) {
-         ...;
-     } // marry(Person)
+public class Person 
+{
+  ...
+  int age;
+  Gender gender;
+  ...
+  public int getAge() 
+  {
+    return this.age;
+  } // getAge()
+ 
+  public String answer(String question) 
+  { 
+    return "Maybe.";
+  } // answer(String)
+ 
+  public void marry(Person mate) 
+  {
+    ...;
+  } // marry(Person)
 } // class Person
 
-public class Professor extends Person {
+public class Professor 
+  extends Person 
+{
 } // class Professor
 
-public class Student extends Person {
+public class Student 
+  extends Person 
+{
 } // class Student
 </programlisting>
 
@@ -343,11 +379,15 @@ public class Student extends Person {
 </para>
 
 <programlisting>
-public class Professor extends Person {
-    int yearHired;
+public class Professor 
+  extends Person 
+{
+  int yearHired;
 } // class Professor
 
-public class Student extends Person {
+public class Student 
+  extends Person 
+{
     long debt;
 } // class Student
 </programlisting>
@@ -362,16 +402,19 @@ public class Student extends Person {
 </para>
 
 <programlisting>
-public class Student extends Person {
+public class Student 
+  extends Person 
+{
     ...
-    public void enroll(Course c) {
-        this.debt = this.debt + c.getCost();
+    public void enroll(Course c) 
+    {
+      this.debt = this.debt + c.getCost();
     } // enroll(Course)
     ...
 } // class Student
 </programlisting>
 
-</section> <!-- net-methods -->
+</section> <!-- new-methods -->
 
 <section id="overriding-methods"> <title>Overriding: Changing the Behavior of Methods</title>
 
@@ -384,20 +427,25 @@ public class Student extends Person {
 </para>
 
 <programlisting>
-public class Professor extends Person {
-    ...
-    @Override
-    public String answer(String question) {
-       return "The solution is obvious if you simply consider the Church-Rosser theorem.";
-    } // answer(String)
+public class Professor 
+  extends Person 
+{
+  ...
+  @Override
+  public String answer(String question) 
+  {
+    return "The solution is obvious if you simply consider the Church-Rosser theorem.";
+  } // answer(String)
     ...
 } // class Professor
 
-public class Student extends Person {
-    ...
-    public String answer(String question) {
-        return "Ummm ... I'm not sure.";
-    } // answer(String)
+public class Student extends Person 
+{
+  ...
+  public String answer(String question) 
+  {
+    return "Ummm ... I'm not sure.";
+  } // answer(String)
     ...
 } // class Student
 </programlisting>
@@ -437,13 +485,16 @@ p.answer("Should we evalute the parameters to a function before or after we appl
 </para>
 
 <programlisting>
-public class Professor extends Person {
+public class Professor 
+  extends Person 
+{
     ...
-    public void marry(Person mate) throws Exception {
-        if (mate instanceof Professor) {
-            throw new Exception("Professors should not marry students.");
-        }
-        super.marry(mate);
+    public void marry(Person mate) 
+      throws Exception 
+    {
+      if (mate instanceof Professor) 
+        throw new Exception("Professors should not marry students.");
+      super.marry(mate);
     } // marry(Person)
     ...
 } // class Professor
@@ -464,20 +515,26 @@ public class Professor extends Person {
 </para>
 
 <programlisting>
-public class Person {
-    ...
-    public Person(Gender gender, int age) {
-        this.gender = gender;
-        this.age = age;
-    } // Person(Gender, int)
+public class Person 
+{
+  ...
+  public Person(Gender gender, int age) 
+  {
+    this.gender = gender;
+    this.age = age;
+  } // Person(Gender, int)
     ...
 } // class Person
-public class Professor extends Person {
-    ...
-    public Professor(String discipline, Gender gender, int age) {
-        super(gender, age);
-        this.discipline = discipline;
-    } // Professor(String, Gender, int)
+
+public class Professor 
+  extends Person 
+{
+  ...
+  public Professor(String discipline, Gender gender, int age) 
+  {
+    super(gender, age);
+    this.discipline = discipline;
+  } // Professor(String, Gender, int)
 } // class Professor
 </programlisting>
 
