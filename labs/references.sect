@@ -1,0 +1,83 @@
+<section id="references"><title>Reference Values</title>
+
+<para>
+  <emphasis>Summary:</emphasis>
+  We consider a few basic issues with reference values in Java.
+</para>
+
+<para>
+  <emphasis>Prerequisite Knowledge:</emphasis>
+  Java basics.  Objects in Java.  Memory layout.
+</para>
+
+<section id="references-preparation"><title>Preparation</title>
+
+<para>
+  Open <ulink url="../readings/references.html">the reading on
+  reference values in Java</ulink> in a new window or tab.
+</para>
+
+<para>
+  Create a new Eclipse project for this lab.  I'd suggest
+  a name like <code>lab-reference-values</code>.
+</para>
+
+</section> <!-- references-preparation -->
+
+<section id="references-exercises"><title>Exercises</title>
+
+<section id="references-01"><title>Exercise 1: Exploring the Reading</title>
+
+<para>
+  Create a new main class, <code>Experiments</code>, that replicates
+  the various examples from the <quote>Implications</quote> section
+  of the reading.  For example, you might start your <code>main</code>
+  method with the following code.
+</para>
+
+<programlisting>
+import java.io.PrintWriter;
+
+public class Experiments
+{
+
+  public static void main(String[] args)
+    throws Exception
+  {
+    PrintWriter pen = new PrintWriter(System.out, true);
+
+    // First example: int values.
+
+    int i = 2;
+    int j = i;
+
+    pen.println("Initial values");
+    pen.println("i = " + i);
+    pen.println("j = " + j);
+
+    i += 5;
+
+    pen.println("After incrementing i by 5");
+    pen.println("i = " + i);
+    pen.println("j = " + j);
+
+    // We're done.  Clean up.
+    pen.close();
+  } // main
+} // class Experiments
+</programlisting>
+
+</section> <!-- references-01 -->
+
+</section> <!-- references-exercises -->
+
+<section id="references-extra"><title>For Those With Extra Time</title>
+
+<para>
+  If you find that you have extra time (and you should), start working
+  on the next lab.
+</para>
+
+</section> <!-- references-extra -->
+
+</section> <!-- references -->
