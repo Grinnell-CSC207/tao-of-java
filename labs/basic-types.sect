@@ -1,5 +1,7 @@
 <section id="numbers"><title>Laboratory: Some Basic Types</title>
 
+<!-- Should probably add a substring problem. -->
+
 <para>
   <emphasis role="strong">Summary</emphasis>: In this laboratory, you 
   will extend your knowledge of some basic types in Java: Numbers ,
@@ -73,8 +75,8 @@
 </para>
 
 <programlisting>
-    pen.print ("Largest int: ");
-    pen.println (Integer.MAX_VALUE);
+    pen.print("Largest int: ");
+    pen.println(Integer.MAX_VALUE);
 </programlisting>
 
 <para>
@@ -134,7 +136,38 @@ Have DrScheme compute the square of the square root of 2 and subtract 2 from the
 
 </section>  <!-- basic-types-04 -->
 
-<section id="basic-types-05"><title>Exercise 5: Manipulating Strings</title>
+<section id="basic-types-05"><title>Exercise 5: Exceeding Limits with BigInteger</title>
+
+<para>
+  What happens when <code>int</code> or <code>long</code> is not big
+  enough, but you want exact numbers?  In C, you're stuck making your
+  own representation for arbitrary-precision integers.  In Java, there's
+  a wonderful utility class, <code>java.math.BigInteger</code>
+  Read the documentation for <ulink
+  url="&javaapi;/java/math/BigInteger.html"><code>java.math.BigInteger</code></ulink> and answer the following questions.
+</para>
+
+<para>
+  a. What is the largest possible <code>BigInteger</code>?
+</para>
+
+<para>
+  b. What constructors does <code>BigInteger</code> provide?  Why
+  do you think the designers decided to include all of them?
+</para>
+
+<para>
+  c. What standard arithmetic operations do you see and how are they
+  called?
+</para>
+
+<para>
+  d. Are there any methods you find surprising?  If so, which ones?
+</para>
+
+</section> <!-- basic-types-05 -->
+
+<section id="basic-types-06"><title>Exercise 6: Manipulating Strings</title>
 
 <para>
   a. Create a new main class, <code>Exercise5</code>, for this exercise.
@@ -147,10 +180,10 @@ Have DrScheme compute the square of the square root of 2 and subtract 2 from the
 </para>
 
 <programlisting>
-    PrintWriter pen = new PrintWriter (System.out, true);
+    PrintWriter pen = new PrintWriter(System.out, true);
     String greeting = "Hello ";
-    pen.println (greeting.concat ("World"));
-    pen.println (greeting);
+    pen.println(greeting.concat("World"));
+    pen.println(greeting);
 </programlisting>
 
 <para>
@@ -167,8 +200,8 @@ Have DrScheme compute the square of the square root of 2 and subtract 2 from the
 
 <programlisting>
    String word = "alphabet";
-   pen.println (word.replace ('a', 'A'));
-   pen.println (word);
+   pen.println(word.replace('a', 'A'));
+   pen.println(word);
 </programlisting>
 
 <para>
@@ -176,9 +209,9 @@ Have DrScheme compute the square of the square root of 2 and subtract 2 from the
   about strings in Java?
 </para>
 
-</section> <!-- basic-types-05 -->
+</section> <!-- basic-types-06 -->
 
-<section id="basic-types-06"><title>Exercise 6: String Buffers</title>
+<section id="basic-types-07"><title>Exercise 7: String Buffers</title>
 
 <para>
   In addition to <code>java.lang.String</code>, Java also provides
@@ -198,8 +231,8 @@ Have DrScheme compute the square of the square root of 2 and subtract 2 from the
 </para>
 
 <programlisting>
-    StringBuffer buffer = new StringBuffer ("This is a StringBuffer");
-    pen.println (buffer);
+    StringBuffer buffer = new StringBuffer("This is a StringBuffer");
+    pen.println(buffer);
 </programlisting>
 
 <para>
@@ -212,9 +245,9 @@ Have DrScheme compute the square of the square root of 2 and subtract 2 from the
 </para>
 
 <programlisting>
-    StringBuffer hello = new StringBuffer ("Hello ");
-    pen.println (hello.append ("World"));
-    pen.println (hello);
+    StringBuffer hello = new StringBuffer("Hello ");
+    pen.println(hello.append("World"));
+    pen.println(hello);
 </programlisting>
 
 <para>
@@ -229,12 +262,12 @@ Have DrScheme compute the square of the square root of 2 and subtract 2 from the
 
 <programlisting>
    StringBuffer text = "alphabet";
-   pen.println ((text.replace (0, 0, "A")));
-   pen.println (text);
-   pen.println ((text.replace (2, 3, "A")));
-   pen.println (text);
-   pen.println ((text.replace (8, 9, "A")));
-   pen.println (text);
+   pen.println(text.replace(0, 0, "A"));
+   pen.println(text);
+   pen.println((text.replace(2, 3, "A")));
+   pen.println(text);
+   pen.println(text.replace(8, 9, "A"));
+   pen.println(text);
 </programlisting>
 
 <para>
@@ -242,9 +275,9 @@ Have DrScheme compute the square of the square root of 2 and subtract 2 from the
   about string buffers in Java?
 </para>
 
-</section> <!-- basic-types-06 -->
+</section> <!-- basic-types-07 -->
 
-<section id="basic-types-07"><title>Exercise 7: Assigning Strings</title>
+<section id="basic-types-08"><title>Exercise 8: Assigning Strings</title>
 
 <para>
   You can either create a new main class for this exercise, or reuse
@@ -256,44 +289,44 @@ Have DrScheme compute the square of the square root of 2 and subtract 2 from the
 </para>
 
 <programlisting>
-    PrintWriter pen = new PrintWriter (System.out, true);
+    PrintWriter pen = new PrintWriter(System.out, true);
     String str = "Hello ";
-    StringBuffer buf = new StringBuffer ("Hello ");
+    StringBuffer buf = new StringBuffer("Hello ");
 
     // Create another name for str
     String alt = str;
-    pen.println ("alt: " + alt);
+    pen.println("alt: " + alt);
 
     // Update str
     str = str + "world";
-    pen.println ("str: " + str);
-    pen.println ("alt: " + alt);
+    pen.println("str: " + str);
+    pen.println("alt: " + alt);
 
     // Create another name for buf
     StringBuffer stf = buf;
-    pen.println ("stf: " + stf);
+    pen.println("stf: " + stf);
 
     // Update the buffer.
-    buf.append ("world");
-    pen.println ("buf: " + stf);
-    pen.println ("stf: " + stf);
+    buf.append("world");
+    pen.println("buf: " + buf);
+    pen.println("stf: " + stf);
 
     // Extract info from the buffer
-    alt = buf.toString ();
+    alt = buf.toString();
 
     // Update the buffer.
-    buf.append (".  Are we done yet?");
-    pen.println ("buf: " + stf);
-    pen.println ("alt: " + stf);
+    buf.append(".  Are we done yet?");
+    pen.println("buf: " + buf);
+    pen.println("alt: " + alt);
 </programlisting>
 
 <para>
   b. Check your answer experimentally.
 </para>
 
-</section> <!-- basic-types-07 -->
+</section> <!-- basic-types-09 -->
 
-<section id="basic-types-08"><title>Exercise 8: String Methods</title>
+<section id="basic-types-09"><title>Exercise 9: String Methods</title>
 
 <para>
   Read through the documentation for <code>java.lang.String</code> and
@@ -302,9 +335,9 @@ Have DrScheme compute the square of the square root of 2 and subtract 2 from the
   lab.
 </para>
 
-</section> <!-- basic-types-08 -->
+</section> <!-- basic-types-09 -->
 
-<section id="basic-types-09"><title>Exercise 9: Segmenting Strings</title>
+<section id="basic-types-10"><title>Exercise 10: Segmenting Strings</title>
 
 <para>
   Programmers often find it convenient to store compound data in a text
@@ -347,7 +380,7 @@ Rebelsky:Samuel:Bedazzled:6:5
   colon and then <code>substring</code> to extract the appropriate portion.
 </para>
 
-</section>  <!-- basic-types-09 -->
+</section>  <!-- basic-types-10 -->
 
 </section> <!-- basic-types-exercises -->
 
