@@ -33,8 +33,8 @@
 
 <para>
   For example, suppose we don't trust the built-in method
-  <programlisting>Math.sqrt</programlisting> and want to write a method,
-  <programlisting>squareRoot</programlisting>, that approximates the
+  <code>Math.sqrt</code> and want to write a method,
+  <code>squareRoot</code>, that approximates the
   square root of an Integer greater than or equal to one.  We can use
   a fairly straightforward technique: Guess a value no greater than the
   square root and a value no smaller than the square root and repeatedly
