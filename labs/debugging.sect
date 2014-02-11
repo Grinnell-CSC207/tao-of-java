@@ -1,5 +1,7 @@
 <section id="debugging-lab"><title>Laboratory: Debugging with Eclipse</title>
 
+<!-- Rewrite so that tests are from experiments, not unit tests. -->
+
 <para>
   <emphasis>Summary</emphasis>: We begin to explore the ways in which
   we can use a debugger to better understand flaws in our code.
@@ -10,18 +12,9 @@
 <para>
   In the <ulink url="../labs/unit-testing.html">the laboratory on
   unit testing</ulink>, you forked and cloned the repository
-  <code>github.com/Grinnell-CSC207/lab-unit-testing</code>.
-  I've now made some changes to that code, so update your repository.
-</para>
-
-<screen>
-<prompt>$</prompt> <userinput>git remote add upstream https://github.com/Grinnell-CSC207/lab-unit-testing</userinput>
-<prompt>$</prompt> <userinput>git pull upstream master</userinput>
-</screen>
-
-<para>
-  The pull may cause some conflicts, so resolve the conflicts, add the
-  files with conflicts, and then commit.
+  <code><ulink url="https://github.com/Grinnell-CSC207/lab-unit-testing"/></code>.
+  You'll work with that same repository.  (So return to the directory if
+  you have it, and make a new copy if you don't.)
 </para>
 
 </section> <!-- debugging-preparation -->
@@ -43,7 +36,8 @@
 </para>
 
 <programlisting>
-public void testRemoveAs() {
+public void testRemoveAs() 
+{
   assertEquals("empty string", "", "");
   assertEquals("no as", "hello", "hello");
   assertEquals("eliminate one a", "", SampleMethods.removeAs("a"));
@@ -71,9 +65,10 @@ public void testRemoveAs() {
 </para>
 
 <para>
-  Switch to the code for your unit test.  Select
-  <guimenu>Run</guimenu> &gt; <guimenuitem>Debug As</guimenuitem>
-  &gt; <guimenuitem>JUnit Test</guimenuitem>.
+  Create a new main class that duplicates the failed calls to
+  <methodname>removeAs</methodname> from your unit tests.
+  Select <guimenu>Run</guimenu> &gt; <guimenuitem>Debug As</guimenuitem>
+  &gt; <guimenuitem>Java Application</guimenuitem>.
 </para>
 
 <para>
@@ -99,14 +94,14 @@ public void testRemoveAs() {
 
 <para>
   As you may have noted, Eclipse resumed computation and ran until
-  the completion of this test.  (Presumably, failure.)  To see the 
-  results, you may need to switch back to the Java perspective.  
-  You can get that perspective by clicking on the downward arrow
-  in the upper-right-corner of the screen.
+  the completion of this program.  (Presumably, with incorrect output.)
+  To see the results, you may need to switch back to the Java perspective.
+  You can get that perspective by clicking on the downward arrow in the
+  upper-right-corner of the screen.
 </para>
 
 <para>
-  c. Start the unit test again.  This time, let's single step through
+  c. Start the program again.  This time, let's single step through
   the procedure, using the <guibutton>Step Over</guibutton> (also
   <keycap>F6</keycap>).  See if you can identify where the code goes wrong.
 </para>
@@ -202,6 +197,32 @@ assertEquals("1K", 1024, expt(2, 10));
 <para>
   b. Run the test.  It will likely fail.
 </para>
+
+<para>
+  c. Since the test failed, it will be useful to write a short
+  experiment to just do that one call.  
+</para>
+
+<programlisting>
+/**
+ * A quick experiment with the expt method.
+ */
+import java.io.PrintWriter;
+
+public class ExptExpt
+{
+  static final int base = 2;
+  static final int expt = 10;
+
+  public static void main(String[] args)
+      throws Exception
+  {
+    PrintWriter pen = new PrintWriter(System.out, true);
+    pen.println(base + "^" + expt + " = " + SampleMethods.expt(base, expt));
+    pen.close();
+  } // main(String[])
+} // class ExptExpt
+</programlisting>
 
 <para>
   c. Set a breakpoint at the start of the <methodname>expt</methodname>
