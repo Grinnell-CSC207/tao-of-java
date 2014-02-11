@@ -1,0 +1,386 @@
+<section id="boxing"><title>Lab: Automatic Boxing and Unboxing</title>
+
+<para>
+  <emphasis>Summary:</emphasis> We conduct a series of experiments
+  to help ourselves understand the basics of autoboxing and autounboxing,
+  as well as a few related issues in type conversion.
+</para>
+
+<para>
+  <emphasis>Prerequisite Knowledge:</emphasis>  Java basics.
+  Primitive types.  Objects.
+</para>
+
+<section id="boxing-preparation"><title>Preparation</title>
+
+<para>
+  a. Fork and clone the repository at 
+  <ulink url="https://github.com/Grinnell-CSC207/lab-boxing"/>.
+</para>
+
+<para>
+  b. Skim the class named <code>Experiments</code> and make note
+  of what types each procedure expects.
+</para>
+
+<para>
+  c. Skim the <code>main</code> method and make note of the type of
+  each variable.
+</para>
+
+<para>
+  d. Compile and run <code>Experiments</code> and make note of the
+  value of each variable.
+</para>
+
+</section> <!-- boxing-preparation -->
+
+<section id="boxing-exercises"><title>Exercises</title>
+
+<section id="boxing-01"><title>Exercise 1: Normal Calling Mechanisms</title>
+
+<para>
+  Consider the following instructions.
+</para>
+
+<programlisting>
+    pen.println("square(bigi): " + square(bigi));
+    pen.println("sqr(littlei): " + sqr(littlei));
+    pen.println("bracket(str): " + bracket(str));
+    pen.println("bigSum(bigvals): " + bigSum(bigvals));
+    pen.println("littleSum(littlevals): " + littleSum(littlevals));
+    pen.println();
+</programlisting>
+
+<para>
+  a. Do you expect the Java compiler to accept these instructions? 
+  Why or why not?
+</para>
+
+<para>
+  b. If the Java compiler accepts these instructions, what output
+  would you expect to see when you run the program?
+</para>
+
+<para>
+  c. Check your answers to a and b experimentally.
+</para>
+
+<para>
+  d. What, if anything, does this exercise suggest about autoboxing/unboxing
+  or related issues?
+</para>
+
+</section> <!-- boxing-01 -->
+
+<section id="boxing-02"><title>Exercise 2: Integers and Strings</title>
+
+<para>
+  Consider the following instructions.
+</para>
+
+<programlisting>
+    pen.println("bracket(bigi): " + bracket(bigi));
+    pen.println("bracket(littlei): " + bracket(littlei));
+    pen.println();
+</programlisting>
+
+<para>
+  a. Do you expect the Java compiler to accept these instructions? 
+  Why or why not?
+</para>
+
+<para>
+  b. If the Java compiler accepts these instructions, what output
+  would you expect to see when you run the program?
+</para>
+
+<para>
+  c. Check your answers to a and b experimentally.
+</para>
+
+<para>
+  d. What, if anything, does this exercise suggest about autoboxing/unboxing
+  or related issues?
+</para>
+
+</section> <!-- boxing-02 -->
+
+<section id="boxing-03"><title>Exercise 3: Basic Autoboxing/Unboxing</title>
+
+<para>
+  Consider the following instructions.
+</para>
+
+<programlisting>
+    pen.println("square(littlei): " + square(littlei));
+    pen.println("sqr(bigi): " + sqr(bigi));
+    pen.println();
+</programlisting>
+
+<para>
+  a. Do you expect the Java compiler to accept these instructions? 
+  Why or why not?
+</para>
+
+<para>
+  b. If the Java compiler accepts these instructions, what output
+  would you expect to see when you run the program?
+</para>
+
+<para>
+  c. Check your answers to a and b experimentally.
+</para>
+
+<para>
+  d. What, if anything, does this exercise suggest about autoboxing/unboxing
+  or related issues?
+</para>
+
+</section> <!-- boxing-03 -->
+
+<section id="boxing-04"><title>Exercise 4: Yet Another Square Procedure</title>
+
+<para>
+  Consider the following procedure.
+</para>
+
+<programlisting>
+  /**
+   * Square an Integer, using boxing/unboxing.
+   */
+  public static Integer
+  sq(Integer x)
+  {
+    return x * x;
+  } // sq(Integer)
+</programlisting>
+
+<para>
+  Consider also the following instructions, which will get added
+  to <code>main</code>.
+</para>
+
+<programlisting>
+     pen.println("sq(bigi): " + sq(bigi));
+     pen.println("sq(littlei): " + sq(littlei));
+     pen.println();
+</programlisting>
+
+<para>
+  a. Do you expect the Java compiler to accept this new procedure and
+  the corresponding instructions?  Why or why not?
+</para>
+
+<para>
+  b. If the Java compiler accepts these instructions, what output
+  would you expect to see when you run the program?
+</para>
+
+<para>
+  c. Check your answers to a and b experimentally.
+</para>
+
+<para>
+  d. What, if anything, does this exercise suggest about autoboxing/unboxing
+  or related issues?
+</para>
+
+</section> <!-- boxing-04 -->
+
+<section id="boxing-05"><title>Exercise 5: More Fun with Strings</title>
+
+<para>
+  Consider the following instructions.
+</para>
+
+<programlisting>
+    pen.println("parenthesize(str): " + parenthesize(str));
+    pen.println("parenthesize(bigi): " + parenthesize(bigi));
+    pen.println("parenthesize(littlei): " + parenthesize(littlei));
+    pen.println();
+</programlisting>
+
+<para>
+  a. Do you expect the Java compiler to accept these instructions? 
+  Why or why not?
+</para>
+
+<para>
+  b. If the Java compiler accepts these instructions, what output
+  would you expect to see when you run the program?
+</para>
+
+<para>
+  c. Check your answers to a and b experimentally.
+</para>
+
+<para>
+  d. What, if anything, does this exercise suggest about autoboxing/unboxing
+  or related issues?
+</para>
+
+</section> <!-- boxing-05 -->
+
+<section id="boxing-03"><title>Exercise 6: Boxing and Arrays</title>
+
+<para>
+  Consider the following instructions.
+</para>
+
+<programlisting>
+    pen.println("littleSum(bigvals): " + littleSum(bigvals));
+    pen.println("bigSum(littlevals): " + bigSum(littlevals));
+    pen.println();
+</programlisting>
+
+<para>
+  a. Do you expect the Java compiler to accept these instructions? 
+  Why or why not?
+</para>
+
+<para>
+  b. If the Java compiler accepts these instructions, what output
+  would you expect to see when you run the program?
+</para>
+
+<para>
+  c. Check your answers to a and b experimentally.
+</para>
+
+<para>
+  d. What, if anything, does this exercise suggest about autoboxing/unboxing
+  or related issues?
+</para>
+
+</section> <!-- boxing-06 -->
+
+<section id="boxing-07"><title>Exercise 7: What about <code>null</code>?</title>
+
+<para>
+  The reading notes that one potential issue with autounboxing
+  is that we have to deal with <code>null</code> as a special
+  case.
+</para>
+
+<para>
+  Consider the following instructions.
+</para>
+
+<programlisting>
+    Integer ex7 = null;
+    pen.println("square(ex7): " + square(ex7));
+    pen.println();
+</programlisting>
+
+<para>
+  a. Do you expect the Java compiler to accept these instructions? 
+  Why or why not?
+</para>
+
+<para>
+  b. If the Java compiler accepts these instructions, what output
+  would you expect to see when you run the program?
+</para>
+
+<para>
+  c. Check your answers to a and b experimentally.
+</para>
+
+<para>
+  d. What, if anything, does this exercise suggest about autoboxing/unboxing
+  or related issues?
+</para>
+
+</section> <!-- boxing-07 -->
+
+<section id="boxing-08"><title>Exercise 8: What about <code>null</code>? Revisited</title>
+
+<para>
+  The reading notes that one potential issue with autounboxing
+  is that we have to deal with <code>null</code> as a special
+  case.
+</para>
+
+<para>
+  Consider the following instructions.
+</para>
+
+<programlisting>
+    String ex8 = null;
+    pen.println("bracket(ex8): " + bracket(ex8));
+    pen.println();
+</programlisting>
+
+<para>
+  a. Do you expect the Java compiler to accept these instructions? 
+  Why or why not?
+</para>
+
+<para>
+  b. If the Java compiler accepts these instructions, what output
+  would you expect to see when you run the program?
+</para>
+
+<para>
+  c. Check your answers to a and b experimentally.
+</para>
+
+<para>
+  d. What, if anything, does this exercise suggest about autoboxing/unboxing
+  or related issues?
+</para>
+
+</section> <!-- boxing-08 -->
+
+<section id="boxing-09"><title>Exercise 9: What about <code>null</code>? Re-revisited</title>
+
+<para>
+  The reading notes that one potential issue with autounboxing
+  is that we have to deal with <code>null</code> as a special
+  case.
+</para>
+
+<para>
+  Consider the following instructions.
+</para>
+
+<programlisting>
+    String ex9 = null;
+    pen.println("parenthesize(ex9): " + parenthesize(ex9));
+    pen.println();
+</programlisting>
+
+<para>
+  a. Do you expect the Java compiler to accept these instructions? 
+  Why or why not?
+</para>
+
+<para>
+  b. If the Java compiler accepts these instructions, what output
+  would you expect to see when you run the program?
+</para>
+
+<para>
+  c. Check your answers to a and b experimentally.
+</para>
+
+<para>
+  d. What, if anything, does this exercise suggest about autoboxing/unboxing
+  or related issues?
+</para>
+
+</section> <!-- boxing-09 -->
+
+</section> <!-- boxing-exercises -->
+
+<section id="boxing-extra"><title>For Those With Extra Time</title>
+
+<para>
+  If you find that you have extra time, read the Java tutorial on
+  boxing/unboxing.
+</para>
+
+</section> <!-- boxing-extra -->
+
+</section> <!-- boxing -->
