@@ -102,12 +102,15 @@ return Integer.parseInt(response);
 </para>
 
 <programlisting>
-  try {
+  try 
+    {
       String response = br.readLine();
       return Integer.parseInt(response);
-  } catch (Exception e) {
+    } // try to read and parse a string
+  catch (Exception e) 
+    {
       return 0;
-  }
+    } // Reading/parsing fails.
 </programlisting>
 
 <para>
@@ -228,7 +231,7 @@ return Integer.parseInt(response);
 
 <programlisting>
 public static double smallerQuadraticRoot(double a, double b, double c)
-         throws Exception
+    throws Exception
 </programlisting>
 
 <para>
@@ -256,9 +259,10 @@ public static double smallerQuadraticRoot(double a, double b, double c)
 </para>
 
 <programlisting>
-if (a == 0) {
+if (a == 0) 
+  {
     throw new Exception("Cannot compute quadratic roots of linear functions.");
-} // if (a == 0)
+  } // if (a == 0)
 </programlisting>
 
 <para>
@@ -298,15 +302,18 @@ if (a == 0) {
 </para>
 
 <programlisting>
-try {
+try 
+  {
     double root = f.smallerQuadraticRoot(a,b,c);
     pen.println("The smaller root of the polynomial is: " + root);
     pen.println("Experimentally, " + a + "*" + root + "*" + root
             + "+" + b + "*" + root + "+" + c + " = " 
             + (a*root*root + b*root + c));
-} catch (Exception e) {
+  } // try to compute and print a root
+catch (Exception e) 
+  {
     pen.println("Sorry, I could not compute a root.");
-} // try/catch
+  } // catch (Exception)
 </programlisting>
 
 <para>
@@ -364,13 +371,18 @@ try {
 </para>
 
 <programlisting>
-try {
+try 
+  {
     ...
-} catch (DivideByZeroException dbze) {
+  } // try
+catch (DivideByZeroException dbze) 
+  {
     pen.println("Cannot compute a result because the coefficient of the quadratic term is 0.");
-} catch (Exception e) {
+  } // catch (DivideByZeroException)
+catch (Exception e) 
+  {
     ...
-} // try/catch
+  } // catch (Exception)
 </programlisting>
 
 <para>
@@ -386,5 +398,4 @@ try {
 </section>  <!-- exceptions-exercises -->
 
 </section>  <!-- exceptions-lab -->
-
 
