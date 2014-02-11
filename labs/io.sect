@@ -55,7 +55,7 @@
 </para>
 
 <programlisting>
-  What is your name? Sam
+  What is your name? <userinput>Sam</userinput>
   Have a nice day Sam!
 </programlisting>
 
@@ -130,7 +130,8 @@ Fave Color: plaid
 </programlisting>
 
 <para>
-  b. Modify <code>info</code> using gedit and verify that
+  b. Modify <code>info</code> using your favorite editor (Vi, Emacs,
+  gedit, etc.) and verify that
   <code>ShowInfo</code> continues to work correctly.
 </para>
 
@@ -180,9 +181,10 @@ Fave Color: plaid
 <section id="io-06"> <title>Exercise 6: Copying Parts of a File, Revisited</title>
 
 <para>
-  Write a test a main class, <code>NewCopier</code>, that prompts the
+  Write a main class, <code>NewCopier</code>, that prompts the
   user for the name of two files and copies the first two lines from the
-  first file to the second file.
+  first file to the second file.  Then conduct an experiment or two with
+  that class.
 </para>
 
 </section> <!-- io-06 -->
