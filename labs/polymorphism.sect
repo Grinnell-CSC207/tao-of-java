@@ -50,7 +50,7 @@ issues of polymorphism in Java.
 
 <para>
   As a first step in understanding the layout methods, extend the
-  <code>main</code> method of <code>LayoutExpt</code> so that it 
+  <code>main</code> method of <code>TBExpt.java</code> so that it 
   uses <code>TBUtils.print</code> to print a simple block.   I
   would suggest something like the following.
 </para>
@@ -66,7 +66,7 @@ issues of polymorphism in Java.
 
 <para>
   The <ulink url="../readings/polymorphism.html">reading</ulink>, 
-  cliams that it is possible to combine text blocks together by
+  claims that it is possible to combine text blocks together by
   using one as a parameter to the constructor of another.  (In fact,
   that seems to be the only way to create a <code>BoxedBlock</code>.
   Try creating and printing out each of the following:
@@ -248,6 +248,14 @@ a. Sketch how you might write
 </section> <!-- polymorphism-extra-01 -->
 
 </section> <!-- polymorphism-extra -->
+
+<section id="polymorphism-citations"><title>Acknowledgments</title>
+
+<para>
+  Thanks to LBB and TD for pointing out typos.
+</para>
+
+</section>
 
 </section> <!-- Polymorphism -->
 
