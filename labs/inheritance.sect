@@ -69,33 +69,35 @@
 </itemizedlist>
 
 <para>
-  Here is a simple test for that class.
+  Here is a simple, not so systematic, test for that class.
 </para>
 
 <programlisting>
-    @Test
-    public void test() throws Exception {
-        Counter alpha = new Counter(0);
-        Counter beta = new Counter(123);
-        Counter gamma = new Counter(-5);
-        assertEquals("original alpha", 0, alpha.value());
-        assertEquals("original beta", 123, beta.value());
-        assertEquals("original gamma", -5, gamma.value());
-        for (int i = 0; i &lt; 10; i++) {
-            alpha.increment();
-            beta.increment();
-            gamma.increment();
-        } // for
-        assertEquals("updated alpha", 10, alpha.value());
-        assertEquals("updated beta", 133, beta.value());
-        assertEquals("updated gamma", 5, gamma.value());
-        alpha.reset();
-        beta.reset();
-        gamma.reset();
-        assertEquals("reset alpha", 0, alpha.value());
-        assertEquals("reset beta", 123, beta.value());
-        assertEquals("reset gamma", -5, gamma.value());
-    } // test()
+  @Test
+  public void test() throws Exception 
+  {
+    Counter alpha = new Counter(0);
+    Counter beta = new Counter(123);
+    Counter gamma = new Counter(-5);
+    assertEquals("original alpha", 0, alpha.value());
+    assertEquals("original beta", 123, beta.value());
+    assertEquals("original gamma", -5, gamma.value());
+    for (int i = 0; i &lt; 10; i++) 
+      {
+        alpha.increment();
+        beta.increment();
+        gamma.increment();
+      } // for
+    assertEquals("updated alpha", 10, alpha.value());
+    assertEquals("updated beta", 133, beta.value());
+    assertEquals("updated gamma", 5, gamma.value());
+    alpha.reset();
+    beta.reset();
+    gamma.reset();
+    assertEquals("reset alpha", 0, alpha.value());
+    assertEquals("reset beta", 123, beta.value());
+    assertEquals("reset gamma", -5, gamma.value());
+  } // test()
 </programlisting>
 
 <para>
@@ -103,32 +105,39 @@
 </para>
 
 <programlisting>
-public class CounterExpt {
-    public static void main(String[] args) {
-        // Set up output
-        PrintWriter pen = new PrintWriter(System.out, true);
+import java.io.PrintWriter
 
-        // Set up some counters
-        Counter alpha = new Counter(0);
-        Counter beta = new Counter(123);
-        Counter gamma = new Counter(-5);
+/**
+ * A simple experiment to allow us to explore our counter class.
+ */
+public class CounterExpt 
+{
+  public static void main(String[] args) 
+  {
+    // Set up output
+    PrintWriter pen = new PrintWriter(System.out, true);
 
-        // Print original values
-        pen.println("Original alpha = " + alpha);
-        pen.println("Original beta = " + beta);
-        pen.println("Original gamma = " + gamma);
+    // Set up some counters
+    Counter alpha = new Counter(0);
+    Counter beta = new Counter(123);
+    Counter gamma = new Counter(-5);
 
-        // Print incremented values
-        alpha.increment();
-        beta.increment();
-        gamma.increment();
-        pen.println("Updated alpha = " + alpha);
-        pen.println("Updated beta = " + beta);
-        pen.println("Updated gamma = " + gamma);
+    // Print original values
+    pen.println("Original alpha = " + alpha);
+    pen.println("Original beta = " + beta);
+    pen.println("Original gamma = " + gamma);
 
-        // And we're done
-        pen.close();
-    } // main(String[])
+    // Print incremented values
+    alpha.increment();
+    beta.increment();
+    gamma.increment();
+    pen.println("Updated alpha = " + alpha);
+    pen.println("Updated beta = " + beta);
+    pen.println("Updated gamma = " + gamma);
+
+    // And we're done
+    pen.close();
+  } // main(String[])
 } // class CounterExpt
 </programlisting>
 
@@ -142,10 +151,13 @@ public class CounterExpt {
 </para>
 
 <programlisting>
-public class DecrementableCounter extends Counter {
-    public DecrementableCounter(int start) {
-        super(start);
-    } // DecrementableCounter(int)
+public class DecrementableCounter 
+  extends Counter 
+{
+  public DecrementableCounter(int start) 
+  {
+    super(start);
+  } // DecrementableCounter(int)
 } // class DecrementableCounter
 </programlisting>
 
@@ -154,11 +166,12 @@ public class DecrementableCounter extends Counter {
 </para>
 
 <programlisting>
-        Counter gamma = new DecrementableCounter(-5);
+    Counter gamma = new DecrementableCounter(-5);
 </programlisting>
 
 <para>
-  c. What effect to you expect this change to have on the tests.
+  c. What effect to you expect this change to have on the tests or
+  experiments?
 </para>
 
 <para>
@@ -177,10 +190,10 @@ public class DecrementableCounter extends Counter {
 </para>
 
 <programlisting>
-        gamma.reset();
-        assertEquals("reset gamma", -5, gamma.value());
-        gamma.decrement();
-        assertEquals("decremented gamma", -6, gamma.value());
+    gamma.reset();
+    assertEquals("reset gamma", -5, gamma.value());
+    gamma.decrement();
+    assertEquals("decremented gamma", -6, gamma.value());
 </programlisting>
 
 <para>
@@ -188,11 +201,11 @@ public class DecrementableCounter extends Counter {
 </para>
 
 <para>
-  h. Change the declaration to
+  h. Change the declaration of <code>gamma</code> to
 </para>
 
 <programlisting>
-        DecrementableCounter gamma = new DecrementableCounter(-5);
+    DecrementableCounter gamma = new DecrementableCounter(-5);
 </programlisting>
  
 <para>
@@ -208,21 +221,28 @@ public class DecrementableCounter extends Counter {
 </para>
 
 <programlisting>
-        DecrementableCounter gamma = new Counter(-5);
+    DecrementableCounter gamma = new Counter(-5);
 </programlisting>
 
 <para>
-  k. What effect to you expect this change to have?  Check
-  your answer experimentally.
+  k. What effect to you expect this change to have?  
 </para>
 
 <para>
-  i. Restore the initialization of <code>gamma</code> to
+  l. Check your answer experimentally.
+</para>
+
+<para>
+  m. Restore the initialization of <code>gamma</code> to
 </para>
 
 <programlisting>
     DecrementableCounter gamma = new DecrementableCounter(-5);
 </programlisting>
+
+<para>
+  n. Summarize what you learned in this exercise.
+</para>
 
 </section> <!-- inheritance-02 -->
 
@@ -234,12 +254,15 @@ public class DecrementableCounter extends Counter {
 </para>
 
 <programlisting>
-public class NamedCounter extends Counter {
-    String name;
-    public NamedCounter(String name, int start) {
-        super(start);
-        this.name = name;
-    } // NamedCounter(String, int)
+public class NamedCounter 
+  extends Counter 
+{
+  String name;
+  public NamedCounter(String name, int start) 
+  {
+    super(start);
+    this.name = name;
+  } // NamedCounter(String, int)
 } // class NamedCounter 
 </programlisting>
 
@@ -262,7 +285,7 @@ public class NamedCounter extends Counter {
 
 <para>
   e. Override the <code>toString</code> method by inserting the following
-  code into <code>NamedCounter</code>
+  code into <code>NamedCounter</code>.
 </para>
 
 <programlisting>
@@ -290,9 +313,62 @@ public class NamedCounter extends Counter {
   i. Restore the constructor.
 </para>
 
+<para>
+  j. Summarize what you've learned from this exercise.
+</para>
+
 </section> <!-- inheritance-03 -->
 
-<section id="inheritance-04"> <title>Exercise 4: Double Counters</title>
+<section id="inheritance-04"><title>Exercise 4: Named Counters, Revisited</title>
+
+<para>
+  a. What effect do you expect if we have <code>NamedCounter</code>
+  extend <code>DecrementableCounter</code> instead of 
+  <code>Counter</code>?  For example, will we still be able to write
+  the following declaration?
+</para>
+
+<programlisting>
+    Counter alpha = new NamedCounter("alfa", 0);
+</programlisting>
+
+<para>
+  b. Check your answer experimentally.
+</para>
+
+<para>
+  c. Add a call to <code>System.err.println</code> to each of the
+  constructors so that you can observe their effect.  For
+  example, you might change the <code>NamedCounter</code>
+  constructor to read as follows.
+</para>
+
+<programlisting>
+  public NamedCounter(String name, int start) 
+  {
+    super(start);
+    System.err.println("NamedCounter(\"" + name + "\", " + start + ")");
+    this.name = name;
+  } // NamedCounter(String, int)
+} // class NamedCounter 
+</programlisting>
+
+
+<para>
+  What do you expect to see as output when your create <code>alpha</code>?
+</para>
+
+<para>
+  d. Check your answer experimentally.
+</para>
+
+<para>
+  e. Summarize what you learned from this exercise.
+</para>
+
+</section> <!-- inheritance-04 -->
+
+<section id="inheritance-05"> <title>Exercise 5: Double Counters</title>
 
 <para>
   a. Create a new class, <code>DoubleCounter</code>, that has the
@@ -300,7 +376,9 @@ public class NamedCounter extends Counter {
 </para>
 
 <programlisting>
-public class DoubleCounter extends Counter {
+public class DoubleCounter 
+  extends Counter 
+{
 } // class DoubleCounter 
 </programlisting>
 
@@ -318,9 +396,10 @@ public class DoubleCounter extends Counter {
 </para>
 
 <programlisting>
-    public DoubleCounter(int start) {
-        super(start);
-    } // DoubleCounter(int)
+  public DoubleCounter(int start) 
+  {
+    super(start);
+  } // DoubleCounter(int)
 </programlisting>
 
 <para>
@@ -329,7 +408,7 @@ public class DoubleCounter extends Counter {
 </para>
 
 <programlisting>
-        Counter beta = new DoubleCounter(123);
+  Counter beta = new DoubleCounter(123);
 </programlisting>
 
 <para>
@@ -346,11 +425,12 @@ public class DoubleCounter extends Counter {
 </para>
 
 <programlisting>
-    @Override
-    public void increment() { 
-        super.increment();
-        super.increment();
-    } // increment()
+  @Override
+  public void increment() 
+  { 
+    super.increment();
+    super.increment();
+  } // increment()
 </programlisting>
 
 <para>
@@ -361,9 +441,13 @@ public class DoubleCounter extends Counter {
   j. Check your prediction experimentally.
 </para>
 
-</section> <!-- inheritance-04 -->
+<para>
+  k. Summarize what you've learned from this experiment.
+</para>
 
-<section id="inheritance-05"> <title>Exercise 5: Limited Counters</title>
+</section> <!-- inheritance-05 -->
+
+<section id="inheritance-06"> <title>Exercise 6: Limited Counters</title>
 
 <para>
   a. Create a subclass of <code>Counter</code> called
@@ -396,27 +480,12 @@ public class DoubleCounter extends Counter {
   Counter gamma = new LimitedCounter(-5,3);
 </programlisting>
 
-</section> <!-- inheritance-05 -->
-
-<section id="inheritance-06"><title>Exercise 6: Limited Counters, Revisited</title>
-
 <para>
-  a. Make <code>LimitedCounter</code> a subclass of <code>DoubleCounter</code>
-  rather than a subclass of <code>Counter</code>.  (That is, change the
-  line that reads <code>extends Counter</code> to read
-  <code>extends DoubleCounter</code>.)
-</para>
-
-<para>
-  b. What effect, if any, do you expect that change to have?  
-</para>
-
-<para>
-  c. Check your answer experimentally.
+  c. Summarize what you've learned from this experiment.
 </para>
 
 </section> <!-- inheritance-06 -->
 
 </section> <!-- inheritance-exercises -->
 
-</section> <!-- Inheritance Lab -->
+</section> <!-- inheritance-lab -->
