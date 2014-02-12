@@ -486,6 +486,108 @@ public class DoubleCounter
 
 </section> <!-- inheritance-06 -->
 
+<section id="inheritance-07"><title>Exercise 7: Double Counters, Revisited</title>
+
+<para>
+  <emphasis>Note that for this exercise, you probably just want to use the
+  experiment, rather than the test.</emphasis>
+</para>
+
+<para>.
+  a. Add the following class to your project.
+</para>
+
+<programlisting>
+public class DblCtr
+  extends Counter;
+{
+  /**
+   * The underlying counter.
+   */
+  Counter base;
+
+  /**
+   * Build a new counter that counts twice as fast as counter.
+   */
+  public DblCtr(Counter counter)
+  {
+    super();
+    this.base = counter;
+  } // DblCtr(Counter)
+
+  /**
+   * Increment the counter, twice.
+   */
+  @Override
+  public void increment() 
+  { 
+    this.base.increment();
+    this.base.increment();
+  } // increment()
+} // class DblCtr
+</programlisting>
+
+<para>
+  b. Update your experiment so that the initialization of
+  <code>beta</code> reads
+</para>
+
+<programlisting>
+  Counter beta = new DblCtr(new Counter());
+</programlisting>
+
+<para>
+  c. What effect do you expect this change to have on the output?
+</para>
+
+<para>
+  d. Check your prediction experimentally.
+</para>
+
+<para>
+  e. Add this <methodname>toString</methodname> method to 
+  <code>DblCtr</code>
+</para>
+
+<programlisting>
+  @Override
+  public String toString()
+  {
+    return this.base.toString();
+  } // toString()
+</programlisting>
+
+<para>
+  f. What effect do you expect this change to have on the output?
+</para>
+
+<para>
+  g. Check your prediction experimentally.
+</para>
+
+<para>
+  h. Update your experiment so that the initialization of
+  <code>beta</code> reads
+</para>
+
+<programlisting>
+  Counter beta = new DblCtr(new DblCtr(new Counter()));
+</programlisting>
+
+<para>
+  i. What effect do you expect this change to have on the output?
+</para>
+
+<para>
+  j. Check your prediction experimentally.
+</para>
+
+<para>
+  k. Summarize what you learned from this experiment.
+</para>
+
+</section> <!-- inheritance-07 -->
+
 </section> <!-- inheritance-exercises -->
 
 </section> <!-- inheritance-lab -->
