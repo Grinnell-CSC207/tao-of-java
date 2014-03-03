@@ -1,0 +1,232 @@
+<section id="quadratic-sorts"><title>A Sorting System and Some Quadratic Sorting Routines</title>
+
+<para>
+  <emphasis>Summary:</emphasis> We explore the set of classes one might
+  create when building and testing a suite of sorting algorithms.  We
+  then complete an implementation of the famous selection sort algorithm.
+</para>
+
+<para>
+  <emphasis>Prerequisite Knowledge:</emphasis>
+  Java basics.
+  Interfaces, objects, and object-oriented design.
+  Comparators.
+  Loop invariants.
+  Anonymous inner classes.
+</para>
+
+<section id="quadratic-sorts-preparation"><title>Preparation</title>
+
+<para>
+  Fork and clone the repository at
+  <ulink url="https://github.com/Grinnell-CSC207/sorting"/>.
+</para>
+
+</section> <!-- quadratic-sorts-preparation -->
+
+<section id="quadratic-sorts-exercises"><title>Exercises</title>
+
+<section id="quadratic-sorts-01"><title>Exercise 1: Code Reading 1: Getting Started</title>
+
+<para>
+  As <ulink url="../readings/quadratic-sorts.html">the corresponding 
+  reading suggests</ulink>, our sorting package includes a wide 
+  variety of kinds of files.
+</para>
+
+<para>
+  a. Read through <ulink url="https://github.com/Grinnell-CSC207/sorting/blob/master/src/taojava/labs/sorting/Sorter.java">Sorter.java</ulink> and determine why there seem to be two sorting routines.
+</para>
+
+<para>
+  b. Read through <ulink url="https://github.com/Grinnell-CSC207/sorting/blob/master/src/taojava/labs/sorting/SorterBridge.java">SorterBridge.java</ulink> and determine what purpose that code seems to serve.
+</para>
+
+<para>
+  c. Read through <ulink url=
+  "https://github.com/Grinnell-CSC207/sorting/blob/master/src/taojava/labs/sorting/Utils.java">Utils.java</ulink>
+  and determine what purpose <methodname>permute</methodname>,
+  <methodname>randomSortedInts</methodname>,
+  <methodname>sorted</methodname>, and <methodname>swap</methodname>
+  seem to have.  You should also read the bodies of the methods to better
+  understand how they are implemented.
+</para>
+
+</section> <!-- quadratic-sorts-01 -->
+
+<section id="quadratic-sorts-02"><title>Exercise 2: Using the Built-In Sorter</title>
+
+<para>
+  We will be implementing our own sorting algorithms.  In part, implementing
+  sorting algorithms as an important exercise in developing skills in 
+  algorithm design and analysis.  In part, implementing key sorting algorithms
+  is an exercise in literacy - computer scientists are expected to know
+  <quote>the literature</quote> of algorithms.  In part, knowing about
+  various algorithms helps you choose the best sorting algorithm for a
+  particular set of data.
+</para>
+
+<para>
+  However, in practice, most programmers use the sorting routines that
+  come with the language.  Java provides a <methodname>sort</methodname>
+  algorithm as part of <ulink url="http://docs.oracle.com/javase/7/docs/api/java/util/Arrays.html">java.util.Arrays</ulink>.
+</para>
+
+<para>
+  A common problem in object-oriented design is taking an existing
+  method or object and <quote>wrapping</quote> it so that it can be
+  used to meet a specified interface.
+</para>
+
+<para>
+  a. Sketch a class that implements the <code>Sorter</code> interface
+  or extends the <code>SorterBridge</code> class and that implements
+  sorting by a call to <code>java.util.Arrays.sort</code>.
+</para>
+
+<para>
+  b. Compare your answer to
+  <ulink url="https://github.com/Grinnell-CSC207/sorting/blob/master/src/taojava/labs/sorting/BuiltinSorter.java">BuiltinSorter.java</ulink>.
+</para>
+
+<para>
+  c. Summarize for yourself what you've learned in this exercise.
+</para>
+
+</section> <!-- quadratic-sorts-02 -->
+
+<section id="quadratic-sorts-03"><title>Exercise 3: Designing an Experiment</title>
+
+<para>
+  One of the first ways we explore the implementation of an algorithm is
+  to design a series of <quote>experiments</quote> in which we can watch
+  the algorithm in action.  The file <ulink url="https://github.com/Grinnell-CSC207/sorting/blob/master/src/taojava/labs/sorting/ExptUtils.java">ExptUtils.java</ulink> contains some generic utilities for conducting experiments
+  with sorting algorithms.
+</para>
+
+<para>
+  a. Read through the code for <ulink url="https://github.com/Grinnell-CSC207/sorting/blob/master/src/taojava/labs/sorting/ExptUtils.java">ExptUtils.java</ulink> and identify the available methods and their purposes.
+</para>
+
+<para>
+  b. Sketch a simple main class that runs the two sets of experiments using
+  <ulink url="https://github.com/Grinnell-CSC207/sorting/blob/master/src/taojava/labs/sorting/BuiltinSorter.java">BuiltinSorter.java</ulink>.
+</para>
+
+<para>
+  c. Compare your answer to <ulink url="https://github.com/Grinnell-CSC207/sorting/blob/master/src/taojava/labs/sorting/BuiltinSortExpt.java">BuiltinSortExpt.java</ulink>.
+</para>
+
+<para>
+  d. Predict a bit of the output you'll see if you run the experiment.
+</para>
+
+<para>
+  e. Run the experiment.
+</para>
+
+<para>
+  f. Summarize for yourself what you've learned in this exercise.
+</para>
+
+</section> <!-- quadratic-sorts-03 -->
+
+<section id="quadratic-sorts-04"><title>Exercise 4: Testing Sorting Algorithms</title>
+
+<para>
+  Of course, experiments take a lot of human cognitive power to process.
+  Hence, we traditionally write unit tests for our algorithms.  When we
+  write a generic algorithm, as we've done in this case, it's equally 
+  helpful to write generic tests.
+</para>
+
+<para>
+  a. Read through
+  <ulink url="https://github.com/Grinnell-CSC207/sorting/blob/master/src/taojava/labs/sorting/TestUtils.java">TestUtils.java</ulink> to identify some of the utilities available to help you test sorting algorithms.
+</para>
+
+<para>
+  b. Sketch a test for 
+  <ulink
+  url="https://github.com/Grinnell-CSC207/sorting/blob/master/src/taojava/labs/sorting/BuiltinSorter.java">BuiltinSorter.java</ulink>.
+  You may assume that you only want to run the two basic tests
+  (<methodname>test1</methodname> and <methodname>test2</methodname>).
+</para>
+
+<para>
+  c. Compare your answer to 
+  <ulink url="https://github.com/Grinnell-CSC207/sorting/blob/master/src/taojava/labs/sorting/BuiltinSorterTest.java">BuiltinSorterTest.java</ulink>.
+</para>
+
+<para>
+  d. Run the test.
+</para>
+
+<para>
+  e. Summarize for yourself what you've learned in this exercise.  (You
+  probably didn't learn anything from running the test, but you might have
+  learned something from the earlier steps.)
+</para>
+
+</section> <!-- quadratic-sorts-04 -->
+
+<section id="quadratic-sorts-05"><title>Exercise 5: Selection Sort</title>
+
+<para>
+  You are now ready to implement your own sorting algorithm.  As you may
+  recall, <emphasis>selection sort</emphasis> works by partitioning an
+  array into sorted and unsorted values and repeatedly swapping the
+  smallest unsorted value into the front of that section.
+</para>
+
+<para>
+  a. Sketch the invariant for the main loop of selection sort.
+</para>
+
+<para>
+  b. Compare your answer to the comments in <ulink url="https://github.com/Grinnell-CSC207/sorting/blob/master/src/taojava/labs/sorting/SelectionSorter.java">SelectionSorter.java</ulink>.
+</para>
+
+<para>
+  c. You'll note that we've put a set of experiments in
+  <ulink url="https://github.com/Grinnell-CSC207/sorting/blob/master/src/taojava/labs/sorting/SelectionSortExpt.java">SelectionSortExpt.java</ulink>.
+  Do you expect experiments to give correct results?  Why or why not?
+</para>
+
+<para>
+  d. Check your answer experimentally.
+</para>
+
+<para>
+  e. As you likely noted, the experiments fail.  Why?  Because
+  <methodname>indexOfSmallest</methodname> is not implemented.  
+  Implement it.
+</para>
+
+<para>
+  f. Write a simple set of unit tests for <methodname>SelectionSorter.sort</methodname>.
+</para>
+
+</section> <!-- quadratic-sorts-05 -->
+
+</section> <!-- quadratic-sorts-exercises -->
+
+<section id="quadratic-sorts-extra"><title>For Those With Extra Time</title>
+
+<para>
+  a. Create an experiment in which you sort an array of integers into
+  reverse numeric order.  You will need to create another comparator to
+  do so.  You might create that comparator by writing a new class, or
+  you might create an anonymous inner class.
+</para>
+
+<para>
+  b. Create an experiment in which you sort an array of integers by
+  their distance from zero.  You will need to create another comparator
+  to do so.  Once again, you might create that comparator by writing a
+  new class, or you might create an anonymous inner class.
+</para>
+
+</section> <!-- quadratic-sorts-extra -->
+
+</section> <!-- quadratic-sorts -->
