@@ -1,0 +1,152 @@
+<section id="mergesort"><title>Merge Sort</title>
+
+<para>
+  <emphasis>Summary:</emphasis>
+  We continue our exploration of sorting algorithms by considering the
+  famous merge sort algorithm.
+</para>
+
+<para>
+  <emphasis>Prerequisite Knowledge:</emphasis>
+  The sorting infrastructure, covered in <ulink url="../labs/quadratic-sorts.html">the lab on quadratic sorts</ulink>.
+</para>
+
+<section id="mergesort-preparation"><title>Preparation</title>
+
+
+<para>
+  If you have not done so already, fork and clone the repository
+  at  <ulink url="https://github.com/Grinnell-CSC207/sorting"/>.
+</para>
+
+</section> <!-- mergesort-preparation -->
+
+<section id="mergesort-exercises"><title>Exercises</title>
+
+<section id="mergesort-01"><title>Exercise 1: Code Reading</title>
+
+<para>
+  The file <ulink url="https://github.com/Grinnell-CSC207/sorting/blob/master/src/taojava/labs/sorting/MergeSorter.java">MergeSorter.java</ulink> has a partial implementation of the standard recursive merge sort algorithm.  
+</para>
+
+<para>
+  a. Why do you think we call <methodname>Arrays.copyOfRange</methodname>
+  before doing the recursive calls to <methodname>sort</methodname>?
+</para>
+
+<para>
+  b. Why is the program so short?
+</para>
+
+<para>
+  c. Create a short experiment for MergeSorter.java.
+</para>
+
+<para>
+  d. Do you expect the algorithm to work correctly?  Why or why not?
+</para>
+
+<para>
+  e. Check your answer experimentally.
+</para>
+
+</section> <!-- mergesort-01 -->
+
+<section id="mergesort-02"><title>Exercise 2: Implementing <methodname>merge</methodname></title>
+
+<para>
+  As you have probably discovered, the merge sort algorithm doesn't
+  work as currently implemented.  Why?  Because the
+  <methodname>Utils.merge</methodname> method is not implemented.
+</para>
+
+<para>
+  a. Sketch invariants for the merge method.  You will likely want to draw
+  pictures of the three arrays that you'll be working with.  You'll also
+  likely have an index into each array that you'll want to keep in the
+  sketch.
+</para>
+
+<para>
+  b. Based on your invariants, implement that method.  
+</para>
+
+<para>
+  c. You can choose to write experiments and tests for
+  <methodname>Utils.merge</methodname> or you can hope that the
+  experiment and tests for <methodname>MergeSorter.sort</methodname>
+  will help you identify any errors you might have.
+</para>
+
+</section> <!-- mergesort-02 -->
+
+</section> <!-- mergesort-exercises -->
+
+<section id="mergesort-extra"><title>For Those With Extra Time</title>
+
+<para>
+  If you find that you have extra time, attempt one or both of the 
+  following.
+</para>
+
+<section id="extra-01"><title>Extra 1: Counting the Steps in Merge Sort</title>
+
+<para>
+  Merge sort is supposedly an O(nlog<subscript>2</subscript>n) algorithm.
+  But it's sometimes useful to gather data to see if the actual performance
+  matches the expected performance.
+</para>
+
+<para>
+  a. Augment <code>Utils.java</code> to add a step counter.  Each time you
+  do an assignment to the array in <code>merge</code>, increment that
+  counter.
+</para>
+
+<para>
+  b. Write an experiment in which you build random arrays of size 100, 200,
+  400, 800, and 1600 and have the program count the number of assignments
+  required for each size.  (Don't forget to reset the counter between arrays!)
+</para>
+
+<para>
+  c. Sketch a graph of your data to see if you get the expected behavior.
+  (For an O(nlog<subscript>2</subscript>n) algorithm, we'd expect that
+  the running time of the algorithm would slightly more than double each
+  time we double the input size.
+</para>
+
+<para>
+  d. Do you think counting the number of times we assign to the result array
+  is a reasonable proxy for the number of steps?  Why or why not?
+</para>
+
+</section> <!-- extra-01 -->
+
+<section id="extra-02"><title>Extra 2: Iterative Merge Sort</title>
+
+<para>
+  Iterative merge sort is an algorithm that works bottom up, rather
+  than top-down.  First you merge neighboring elements into sorted
+  pairs.  (You may have one element left at the end.)  Then you merge
+  all neighboring sorted pairs into sorted 4-tuples.  (You may have
+  a singleton, pair, or triple left over.)  Then you merge all neighboring
+  sorted 4-tuples into sorted 8-tuples.  (You may have a tuple of size 
+  less than eight left over.)  And so on and so forth.
+</para>
+
+<para>
+  <ulink url="https://github.com/Grinnell-CSC207/sorting/blob/master/src/taojava/labs/sorting/IterativeMergeSorter.java">IterativeMergeSorter.java</ulink> has a sketch of this algorithm.  Finish implementing the algorithm.
+</para>
+
+<para>
+  Note that you may find it helpful to draw a picture of the expected 
+  state of the system before and after one round.  And yes, such a picture
+  serves as a form of loop invariant.
+</para>
+
+</section> <!-- extra-02 -->
+
+</section> <!-- mergesort-extra -->
+
+</section> <!-- mergesort -->
