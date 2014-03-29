@@ -30,7 +30,6 @@
   simultaneous edits by people spread around the Web, but also distributes
   the repository to multiple machines.  These days, there are lots of
   other options too, such as Mercurial (which I will admit to not knowing).
-  options too
 </para>
 
 </section> <!-- source-code-management -->
