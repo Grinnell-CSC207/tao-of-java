@@ -94,12 +94,14 @@ If the value was never found, signal that problem
  *   If no equal value appears.
  */
 public static int search(Object value, Object values[]) 
-        throws NotFound, Exception {
-    for (int i = 0; i &lt; values.length; i++) {
-        if (value.equals(values[i]))  
-            return i;
+  throws NotFound, Exception 
+{
+  for (int i = 0; i &lt; values.length; i++) 
+    {
+      if (value.equals(values[i]))  
+        return i;
     } // for
-    throw new NotFound(value + " does not appear");
+  throw new NotFound(value + " does not appear");
 } // search
 </programlisting>
 
@@ -120,11 +122,13 @@ public static int search(Object value, Object values[])
 </para>
 
 <programlisting>
-public interface EqualityComparator {
-   /**
-    * Determine if x and y are equal using some comparison metric.
-    */
-   public boolean equals(Object x, Object y) throws IncomparableException;
+public interface EqualityComparator 
+{
+  /**
+   * Determine if x and y are equal using some comparison metric.
+   */
+  public boolean equals(Object x, Object y) 
+    throws IncomparableException;
 } // interface EqualityComparator
 </programlisting>
 
@@ -154,13 +158,15 @@ public interface EqualityComparator {
  * @throws NotFound
  *   If no equal value appears.
  */
-public static int search(Object value, Object values[], 
-        EqualityComparator eq) throws NotFound, IncomparableException {
-    for (int i = 0; i &lt; values.length; i++) {
-        if (eq.equals(value,values[i])) 
-            return i;
+public static int search(Object value, Object values[], EqualityComparator eq) 
+  throws NotFound, IncomparableException 
+{
+  for (int i = 0; i &lt; values.length; i++) 
+    {
+      if (eq.equals(value,values[i])) 
+        return i;
     } // for
-    throw new NotFound(value + " does not appear");
+  throw new NotFound(value + " does not appear");
 } // search
 </programlisting>
 
@@ -170,10 +176,14 @@ public static int search(Object value, Object values[],
 </para>
 
 <programlisting>
-public class ComparePersonByLastName implements EqualityComparator {
-    public boolean equals(Object x, Object y) {
-       return (x instanceof Person) &amp;&amp; (y instanceof Person) &amp;&amp;
-               ((Person) x).getLastName.equals((Person) y).getLastname();
+public class ComparePersonByLastName 
+  implements EqualityComparator 
+{
+  public boolean equals(Object x, Object y) 
+  {
+    return (x instanceof Person) &amp;&amp; (y instanceof Person) &amp;&amp;
+           ((Person) x).getLastName.equals((Person) y).getLastname();
+  } // equals(Object, Object)
 } // ComparePersonByLastName
 </programlisting>
 
@@ -182,7 +192,7 @@ public class ComparePersonByLastName implements EqualityComparator {
 </para>
 
 <programlisting>
-    Utils.search(new Person("Smith", ""), people, new ComparePersonByLastName());
+  Utils.search(new Person("Smith", ""), people, new ComparePersonByLastName());
 </programlisting>
 
 <para>
@@ -205,11 +215,12 @@ public class ComparePersonByLastName implements EqualityComparator {
 </para>
 
 <programlisting>
-public interface Predicate {
-    /**
-     * Test if val meets this predicate.
-     */
-    public boolean test(Object val);
+public interface Predicate 
+{
+  /**
+   * Test if val meets this predicate.
+   */
+  public boolean test(Object val);
 } // interface Predicate
 </programlisting>
 
@@ -223,12 +234,14 @@ public interface Predicate {
  * Search values for a value for which pred holds.
  */
 public static int search(Predicate pred, Object values[])  
-        throws NotFound, Exception {
-    for (int i = 0; i &lt; values.length; i++) {
-        if (pred.test(values[i])) 
-            return i;
+  throws NotFound, Exception 
+{
+  for (int i = 0; i &lt; values.length; i++) 
+    {
+      if (pred.test(values[i])) 
+        return i;
     } // for
-    throw new NotFound(value + " does not appear");
+  throw new NotFound(value + " does not appear");
 } // search
 </programlisting>
 
@@ -238,12 +251,15 @@ public static int search(Predicate pred, Object values[])
 </para>
 
 <programlisting>
-public class IsSmith implements Predicate {
-    public boolean test(Object o) {
-        return (o instanceof Person) &amp;&amp; 
-                ((Person) o).getLastName().equals("Smith");
-    } // test(Object)
-} // IsSmith
+public class IsSmith 
+  implements Predicate 
+{
+  public boolean test(Object o) 
+  {
+    return (o instanceof Person) &amp;&amp; 
+           ((Person) o).getLastName().equals("Smith");
+  } // test(Object)
+} // class IsSmith
 </programlisting>
 
 <para>
@@ -271,11 +287,12 @@ public class IsSmith implements Predicate {
 </para>
 
 <programlisting>
-public interface Predicate&lt;T&gt; {
-    /**
-     * Test if val meets this predicate.
-     */
-    public boolean test(T val);
+public interface Predicate&lt;T&gt; 
+{
+  /**
+   * Test if val meets this predicate.
+   */
+  public boolean test(T val);
 } // interface Predicate&lt;T&gt;
 </programlisting>
 
@@ -292,7 +309,7 @@ public interface Predicate&lt;T&gt; {
 </para>
 
 <programlisting>
-    public boolean test(Person val);
+  public boolean test(Person val);
 </programlisting>
 
 <para>
@@ -300,11 +317,14 @@ public interface Predicate&lt;T&gt; {
 </para>
 
 <programlisting>
-public class IsSmith implements Predicate&lt;Person&gt; {
-    public boolean test(Person val) {
-        return val.getLastName().equals("Smith");
-    } // test(Person)
-} // IsSmith
+public class IsSmith 
+  implements Predicate&lt;Person&gt; 
+{
+  public boolean test(Person val) 
+  {
+    return val.getLastName().equals("Smith");
+  } // test(Person)
+} // class IsSmith
 </programlisting>
 
 <para>
@@ -322,12 +342,14 @@ public class IsSmith implements Predicate&lt;Person&gt; {
  * Search values for a value for which pred holds.
  */
 public static &lt;T&gt; int search(Predicate&lt;T&gt; pred, T values[])  
-        throws NotFound, Exception {
-    for (int i = 0; i &lt; values.length; i++) {
-        if (pred.test(values[i])) 
-            return i;
+  throws NotFound, Exception 
+{
+  for (int i = 0; i &lt; values.length; i++) 
+    {
+      if (pred.test(values[i])) 
+        return i;
     } // for
-    throw new NotFound(value + " does not appear");
+  throw new NotFound(value + " does not appear");
 } // search
 </programlisting>
 
@@ -501,13 +523,14 @@ Report Failure
 </para>
 
 <programlisting>
-public interface Comparator&lt;T&gt; {
-   /**
-    * Compare o1 and and o2 for order.  Return a negative number of o1
-    * comes before o2, zero if the two are equal, and a postive number
-    * if o1 comes after o2.
-    */
-   public int compare(T o1, To2);
+public interface Comparator&lt;T&gt; 
+{
+  /**
+   * Compare o1 and and o2 for order.  Return a negative number of o1
+   * comes before o2, zero if the two are equal, and a postive number
+   * if o1 comes after o2.
+   */
+  public int compare(T o1, To2);
 } // Comparator&lt;T&gt;
 </programlisting>
 
