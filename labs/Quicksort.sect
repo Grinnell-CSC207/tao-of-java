@@ -13,7 +13,7 @@
 <section id="Quicksort-preparation"><title>Preparation</title>
 
 <para>
-  Fork and clone the repository at
+  If you have not already done so, fork and clone the repository at
   <ulink url="https://github.com/Grinnell-CSC207/sorting"/>
 </para>
 
@@ -91,12 +91,28 @@
 <section id="Quicksort-extra-01"><title>Extra 1: Choosing a Pivot, Revisited</title>
 
 <para>
-  We can significantly improve Quicksort by randomly picking three 
-  candidates for the pivot, and using the median of the three.
-  Rewrite your procedure to pick a Pivot to use that strategy.
+  I've been told that we can significantly improve the behavior of
+  Quicksort by randomly picking three candidates for the pivot, and using
+  the median of the three.  Rewrite your procedure to pick a Pivot to
+  use that strategy.
 </para>
 
 </section> <!-- Quicksort-extra-01 -->
+
+<section id="Quicksort-extra-02"><title>Extra 2: Does the Pivot Matter</title>
+
+<para>
+  I've also been told that the middle value in a subarray is an ideal
+  pivot, since it works well for arrays that are already sorted and
+  already backwards sorted, and is no more or less good than a random
+  element for other arrays.
+</para>
+
+<para>
+  Design and conduct an experiment that lets you check that assertion.
+</para>
+
+</section> <!-- Quicksort-extra-02 -->
 
 </section> <!-- Quicksort-extra -->
 
