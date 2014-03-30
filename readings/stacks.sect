@@ -106,7 +106,7 @@
 </para>
 
 <para>
-  Given that strategy, here's the basic code for <code>put</code>
+  Given that strategy, here's the basic code for <code>put</code>.
 </para>
 
 <programlisting>
@@ -115,7 +115,7 @@ this.top++
 </programlisting>
 
 <para>
-  Most programmers would express this more concisely as
+  Most programmers would express this more concisely as follows.
 </para>
 
 <programlisting>
@@ -134,14 +134,17 @@ return this.contents[this.top];
 
 <para>
   Again, we can combine these two lines into a single instruction. 
-  Note that when we combine the operations, we use the prefix version
-  of the decrement operation so that <code>this.top</code> is decremented
-  before we use it as an index.
 </para>
 
 <programlisting>
 return this.contents[--this.top];
 </programlisting>
+
+<para>
+  Note that when we combine the operations, we use the prefix version
+  of the decrement operation so that <code>this.top</code> is decremented
+  before we use it as an index.
+</para>
 
 <para>
   To avoid accidental access to removed data, many programmers
@@ -160,6 +163,10 @@ return returnme;
   Determining whether or not the stack is empty is also easy: The stack
   is empty only when <code>top</code> is 0.
 </para>
+
+<programlisting>
+return (top == 0);
+</programlisting>
 
 <para>
   The only hard part is what to do when the stack <quote>fills</quote>.  The
@@ -205,29 +212,44 @@ return result;
 </programlisting>
 
 <para>
-  Ideally, the stack never fills.  (If it does, we're in pretty big
-  trouble, because we can't even create a small object.
+  Ideally, the stack never fills.  If it does, we're in pretty big
+  trouble, because we can't even create a small object, which means
+  that we'll also have trouble creating an exception object.
 </para>
 
+<programlisting>
+public boolean isFull()
+{
+  return false;
+} // isFull()
+</programlisting>
+
 <para>
-  We can check if the stack is empty by initializing <code>front</code>
+  We can check if the stack is empty by comparing <code>front</code>
   to <code>null</code>.
 </para>
+
+<programlisting>
+public boolean isEmpty()
+{
+  return this.front == null;
+} // isEmpty()
+</programlisting>
 
 </section> <!-- linked-implementation -->
 
 <section id="terminology"><title>Terminology</title>
 
 <para>
-  Unfortunately, some bright computer scientist designed the stack 
-  before some other bright computer scientist designed the more general
-  linear structure.  Hence, the terms that many folks use for the
+  Unfortunately, some bright computer scientists designed the stack ADT
+  before some other bright computer scientists designed the more general
+  linear structure ADT.  Hence, the terms that many folks use for the
   basic stack operations are not <code>put</code> and <code>get</code>,
   but rather <code>push</code> and <code>pop</code>.
 </para>
 
 <para>
-  To make our code more usable, we will stick with the linear structure
+  To make our code more general, we will stick with the linear structure
   terms.
 </para>
 
