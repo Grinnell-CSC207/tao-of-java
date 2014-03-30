@@ -1,11 +1,134 @@
 <section id="loop-invariants-lab"><title>Loop Invariants</title>
 
 <para>
-  Do Henry Walker's <ulink url="http://www.cs.grinnell.edu/~walker/courses/207.sp13/labs/lab-loop-invariants.shtml">Introduction to Loop Invariants</ulink> laboratory.  
+  <emphasis>Summary</emphasis>: We ground our understanding of loop invariants
+  by writing some of our own and using them to develop algorithms.
+</para>
+
+<section id="loop-invariants-preparation"><title>Preparation</title>
+
+<para>
+  Review <ulink url="../readings/loop-invariants.html">the reading</ulink>
+  to remind yourself of the structure of loop invariants, particularly
+  loop invariants over arrays.
+</para>
+
+</section> <!-- preparation -->
+
+<section id="loop-invariants-exercises"><title>Exercises</title>
+
+<section id="loop-invariants-01"><title>Exercise 1: The Dutch National Flag</title>
+
+<para>
+  <emphasis>This exercise only asks you to analyze a problem.  You 
+  need not write code, although you should write pseudocode.</emphasis>
 </para>
 
 <para>
-  Don't worry about turning anything in.
+  The Dutch National Flag problem is a problem that traditionally benefits
+  from the close analysis you get from using loop invariants.  Here's
+  the problem: You have an array of values in no particular order.  Each value 
+  can be classifed as <quote>red</quote>, <quote>white</quote>, or 
+  <quote>blue</quote>.  Your goal is to rearrange the array so that
+  the blue elements appear first, then the white elements, and then the
+  red elements.  (Believe it or not, but we'll find some interesting uses 
+  of this algorithm in the near future.)
 </para>
+
+<para>
+  How do we know what <quote>color</quote> a value is?  You can assume that
+  we have three functions, <code>isBlue</code>, <code>isWhite</code> and
+  <code>isRed</code> and that exactly one of these functions holds for
+  each value.
+</para>
+
+<para>
+  As you should recall from the reading, our first step is to design a
+  loop invariant.  Here's one that I've found useful.
+</para>
+
+<programlisting>
++---------+---------+---------+---------+
+|   red   |  white  | unknown |   blue  |
++---------+---------+---------+---------+
+|         |         |         |         |
+0         r         i         b         length
+</programlisting>
+
+<para>
+  As you might guess, our goal is to shrink the unknown portion of the
+  array until there's nothing left.
+</para>
+
+<para>
+  a. How might we represent the pictoral loop invariant more formally?
+</para>
+
+<para>
+  b. How should we initialize <code>r</code>, <code>i</code>, and
+  <code>b</code> to ensure that the invariant holds at the beginning
+  of the program?
+</para>
+
+<para>
+  c. How do we represent the rule <quote>continue as long as there are
+  are unknown elements</quote>?
+</para>
+
+<para>
+  d. How can we update the array so that we simultaneously decrease the
+  unknown area and maintain the loop invariant?  (Yes, you will probably
+  need a conditional to do so.)  
+</para>
+
+<para>
+  Hint: You should look at one more element in the unknown section and
+  decide what to do with it.
+</para>
+
+<para>
+  e. Put everything together into psuedocode for a solution to the Dutch
+  National Flag algorithm.
+</para>
+
+</section> <!-- loop-invariants-01 -->
+
+<section id="loop-invariants-02"><title>Exercise 2: Binary Search, Revisited</title>
+
+<para>
+  The version of binary search in the reading has two tests for the
+  middle value: we first test if it's less than the midpoint and then
+  test if it's equal to the midpoint.  Some programmers find that
+  approach inelegant, or perhaps inefficient.
+</para>
+
+<para>
+  Rewrite binary search so that it only does one test.  Your revised
+  binary search will likely continue until there is only one element
+  left in the array.  At that point, you can check whether it's the
+  desired element and either return the index or throw an exception.
+</para>
+
+</section> <!-- loop-invariants-02 -->
+
+<section id="loop-invariants-03"><title>Exercise 3: Exponentiation, Revisited</title>
+
+<para>
+  The reading provides an implementation of exponentiation that has a
+  running time of O(n).  Earlier this semester, you've seen a recursive
+  implementation of exponentiation that is O(log2(n)).  Using appropriate
+  invariants, write an iterative O(log2(n)) exponentiation algorithm.
+</para>
+
+<para>
+  Hint: You may find it useful to keep track of two
+  intermediate values, one of which only takes on values of
+  x<superscript>2<superscript>k</superscript></superscript> and one of
+  which holds the product of any other x's you need in the result.
+</para>
+
+</section> <!-- loop-invariants-03 -->
+
+</section> <!-- loop-invariants-problems -->
 
 </section> <!-- loop-invariants-lab -->
