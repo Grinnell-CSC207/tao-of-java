@@ -1,0 +1,274 @@
+<section id="generics"><title>Java Generics</title>
+
+<!--
+
+  Make a box.
+
+  Use some Java generics.
+
+  -->
+
+<para>
+  <emphasis>Summary:</emphasis>
+  We explore some basic use of generic values in Java.
+</para>
+
+<para>
+  <emphasis>Prerequisite Knowledge:</emphasis> Classes and interfaces
+
+</para>
+
+<section id="generics-preparation"><title>Preparation</title>
+
+<para>
+  Fork and clone the repository at
+  <ulink url="https://github.com/Grinnell-CSC207/lab-generics"/>.
+</para>
+
+</section> <!-- generics-preparation -->
+
+<section id="generics-exercises"><title>Exercises</title>
+
+<section id="generics-01"><title>Exercise 1: Simple Expandable Arrays</title>
+
+<para>
+  The <ulink url="../readings/generics.html">reading on generics</ulink>
+  shows how we build a generic <quote>expandable array</quote> class.
+  You'll find that generic class in the repository for this lab.
+</para>
+
+<para>
+  a. Read through <code>SEAExpt.java</code> and predict what the output
+  will be.
+</para>
+
+<para>
+  b. Compile and run <code>SEAExpt.java</code> to see what the output is.
+</para>
+
+<para>
+  c. Create an expandable array of strings, assign some values to it,
+  and print them out.  Here's a start.
+</para>
+
+<programlisting>
+  ExpandableArray&lt;String&gt; strings =
+      new SimpleExpandableArray&lt;String&gt;();
+  ...
+  for (int i = 0; i &lt; 10; i++)
+    {
+      pen.println("strings[" + i + "] = " + strings.get(i));
+    } // for
+</programlisting>
+
+<para>
+  d. What do you expect to happen if you assign a string to an element
+  of <code>numbers</code> or a number to an element of strings??
+</para>
+
+<para>
+  e. Check your answer experimentally.
+</para>
+
+<para>
+  f. What do you expect to happen if we leave out the type when we
+  construct <code>numbers</code>, as in the following?
+</para>
+
+<programlisting>
+  ExpandableArray&lt;BigInteger&gt; numbers =
+      new SimpleExpandableArray();
+</programlisting>
+
+<para>
+  g. Check your answer experimentally.
+</para>
+
+<para>
+  h. What do you expect to happen if we leave out the type when we
+  declare <code>strings</code>, as in the following?
+</para>
+
+<programlisting>
+  ExpandableArray strings =
+      new SimpleExpandableArray();
+</programlisting>
+
+<para>
+  i. Check your answer experimentally.
+</para>
+
+<para>
+  j. Summarize what you've learned in these exercises.
+</para>
+  
+</section> <!-- generics-01 -->
+
+<section id="generics-02"><title>Exercise 2: Searching, Revisited</title>
+
+<para>
+  The <ulink url="../readings/generics.html">reading on generics</ulink>
+  shows how we build a generic search method.  You'll find that code in
+  the repository.
+</para>
+
+<para>
+  a. Read through <code>SearchExpt.java</code> and predict what the output
+  will be.
+</para>
+
+<para>
+  b. Compile and run <code>SearchExpt.java</code> to see what the output is.
+</para>
+
+<para>
+  d. What do you expect to happen if you try to search <code>strings</code>
+  with <code>odd</code> or <code>numbers</code> with <code>small</code>?
+</para>
+
+<para>
+  e. Check your answer experimentally.
+</para>
+
+<para>
+  f. What do you expect to happen if we try to generalize the
+  declaration of <code>strings</code>, as in the following?
+</para>
+
+<programlisting>
+    Object[] strings = new Object[] { ... };
+</programlisting>
+
+<para>
+  g. Check your answer experimentally.
+</para>
+
+<para>
+  h. Revise the <code>short</code> predicate so that it takes an
+  object as a parameter, converts it to a string, and sees if it
+  has fewer than five characters.  Do you expect that new predicate
+  to work with the updated <code>strings</code>?
+</para>
+
+<para>
+  i. Check your answer experimentally.
+</para>
+
+<para>
+  j. Summarize what you've learned in these exercises.
+</para>
+  
+</section> <!-- generics-02 -->
+
+<section id="generics-03"><title>Exercise 3: Predicates, Continued</title>
+
+<para>
+  a. What do you expect to happen if we restore the original
+  declaration of <code>strings</code> and use the new version of
+  <code>small</code>?
+</para>
+
+<programlisting>
+    String[] strings = new String[] { ... };
+    ...
+    Predicate&lt;Object&gt; small = 
+      new Predicate&lt;Object&gt;()
+        {
+          @Override
+          public boolean holds(Object val)
+          {
+            return (val.toString().length() &lt; 5);
+          } // holds(Object)
+        }; // new Predicate&lt;Object&gt;
+    ...
+    pen.println("A small string: " + SearchUtils.search(strings, small));
+</programlisting>
+
+<para>
+  b. Check your answer experimentally.
+</para>
+
+<para>
+  c. What do you expect to happen if we use the new <code>small</code>
+  predicate to search <code>numbers</code>?
+</para>
+
+<programlisting>
+    pen.println("A small integer: " + SearchUtils.search(numbers, small));
+</programlisting>
+
+<para>
+  d. Check your answer experimentally.
+</para>
+
+<para>
+  e. Summarize what you've learned in this exercise.
+</para>
+
+</section> <!-- generics-03 -->
+
+<section id="generics-04"><title>Exercise 4: A Box</title>
+
+<para>
+  As you've noted, when two variables refer to the same mutable object,
+  we can change the object through one variable and see the effect 
+  through the other variable.  At times, that effect is undesirable, but
+  at others it is desirable.
+</para>
+
+<para>
+  Unfortunately, if the two variables refer to the same immutable object,
+  such as a string, we can't propagate the change to one variable to the
+  other variable.  The typical solution to this problem is to have
+  what is typically called a <quote>box</quote>.  You can set the value
+  in a box or get the value in a box.
+</para>
+
+<programlisting>
+  Box&lt;String&gt; s1 = new Box&lt;String&gt;("Hello");
+  Box&lt;String&gt; s2 = s1;
+  pen.println(s1.get());        // Prints "Hello"
+  pen.println(s2.get());        // Prints "Hello"
+  s1.set("Goodbye");
+  pen.println(s1.get());        // Prints "Goodbye"
+  pen.println(s2.get());        // Prints "Goodbye"
+  s2.set("Whatever");
+  pen.println(s1.get());        // Prints "Whatever"
+  pen.println(s2.get());        // Prints "Whatever"
+
+  Box&lt;Integer&gt; i1 = new Box&lt;Integer&gt;(42);
+  Box&lt;Integer&gt; i2 = i1;
+  pen.println(i2.get() + 3);          // Prints 45
+  i2.set(21);
+  pen.println(i1.get() * 2);          // Prints 42
+</programlisting>
+
+<para>
+  Implement <code>Box</code> using generics.  You should include a
+  constructor that sets the initial value; a mutator, <code>set</code>,
+  that changes the value; and an observer, <code>get</code>, that extracts
+  the value.
+</para>
+
+</section> <!-- generics-04 -->
+
+</section> <!-- generics-exercises -->
+
+<section id="generics-extra"><title>For Those With Extra Time</title>
+
+<para>
+  Finish the following alternate implementation of
+  <code>ExpandableArray</code>
+</para>
+
+<programlisting>
+public class VectorBasedExpandableArray
+{
+  Vector&lt;T&gt; values;
+  ...
+} // class VectorBasedExpandableArray
+</programlisting>
+
+</section> <!-- generics-extra -->
+
+</section> <!-- generics -->
