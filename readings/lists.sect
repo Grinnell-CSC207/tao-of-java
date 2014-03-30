@@ -789,7 +789,7 @@ public interface Iterator&lt;T&gt;
  * Very simple lists.
  */
 public interface SimpleList&lt;T&gt;
-  implements Iterable&lt;T&gt;
+  extends Iterable&lt;T&gt;
 {
   public Iterator&lt;T&gt; iterator();
   public ListIterator&lt;T&gt; listIterator();
