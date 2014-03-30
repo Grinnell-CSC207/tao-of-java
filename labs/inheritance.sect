@@ -56,7 +56,7 @@
 
       <listitem>
         <code>toString()</code>, which returns a string of the
-        form <code>[<emphasis>nnn</emphasis>]</code>];
+        form <code>"[" + this.count + "]"</code>.
       </listitem>
   
       <listitem>
