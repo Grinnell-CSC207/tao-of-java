@@ -1,5 +1,7 @@
 <section id="loop-invariants-reading"><title>Loop Invariants</title>
 
+<!-- Add another example on finding the smallest value in an array. -->
+
 <para>
   Loop invariants provide an invaluable tool not only for helping ensure
   the correctness of your code, but also for thinking about the structure
