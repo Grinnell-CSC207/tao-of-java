@@ -60,9 +60,8 @@
  * @post
  *   values[index] == val
  */
-public static int 
-binarySearch (int i, int[] vals) 
-    throws Exception 
+public static int binarySearch (int i, int[] vals) 
+  throws Exception 
 {
   return 0;   // STUB
 } // binarySearch
@@ -134,7 +133,7 @@ binarySearch (int i, int[] vals)
 
 </section> <!-- search-04 -->
 
-<section id="search-05"><title>Exercise 5: Timing Search</title>
+<section id="search-05"><title>Exercise 5: <quote>Timing</quote> Search</title>
 
 <para>
   In theory, binary search should take O(log<subscript>2</subscript>n)
@@ -161,7 +160,8 @@ binarySearch (int i, int[] vals)
 /**
  * Find the "smallest" integer in an array of integers
  */
-public static Integer smallest(Integer[] values, Comparator&lt;Integer&gt; compare) {
+public static Integer smallest(Integer[] values, Comparator&lt;Integer&gt; compare) 
+{
    return null; // STUB
 } // smallest(Integer[])
 </programlisting>
@@ -194,7 +194,9 @@ public static Integer smallest(Integer[] values, Comparator&lt;Integer&gt; compa
 </para>
 
 <programlisting>
-public static &lt;T&gt; int binarySearch(T value, T[] values, Comparator&lt;T&gt; compare) throws Exception {
+public static &lt;T&gt; int binarySearch(T value, T[] values, Comparator&lt;T&gt; compare) 
+  throws Exception 
+{
 } // binarySearch
 </programlisting>
 
