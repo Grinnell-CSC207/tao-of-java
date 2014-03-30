@@ -1,0 +1,291 @@
+<section id="array-lists"><title>Laboratory: Implementing Lists with Arrays</title>
+
+<para>
+  <emphasis>Summary:</emphasis> We extend our understanding of a list ADT
+  by considering an implementation of lists in which the values are 
+  stored in an array.
+</para>
+
+<para>
+  <emphasis>Prerequisite Knowledge:</emphasis> Arrays. Interfaces.
+  Generics.  Anonymous inner classes.
+</para>
+
+<section id="array-lists-preparation"><title>Preparation</title>
+
+<para>
+  Fork and clone the repository at 
+  <ulink url="https://github.com/Grinnell-CSC207/lab-array-based-lists"/>.
+</para>
+
+<para>
+  In a separate window or tab, open the documentation for
+  <ulink url="http://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html"><code>Iterator</code></ulink> and
+  <ulink url="http://docs.oracle.com/javase/7/docs/api/java/util/ListIterator.html"><code>ListIterator</code></ulink>.
+</para>
+
+</section> <!-- array-lists-preparation -->
+
+<section id="array-lists-exercises"><title>Exercises</title>
+
+<section id="array-lists-01"><title>Exercise 1: Understanding Iterators</title>
+
+<para>
+  Skim through the documentation for
+  <ulink url="http://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html"><code>Iterator</code></ulink> and
+  <ulink url="http://docs.oracle.com/javase/7/docs/api/java/util/ListIterator.html"><code>ListIterator</code></ulink>.  You should identify the primary
+  methods and their meanings and any other subtleties.  Make sure that
+  you can answer the following questions.
+</para>
+
+<para>
+  a. Where, conceptually, is an iterator relative to the elements
+  of a list?
+</para>
+
+<para>
+  b. What element does <methodname>remove</methodname> remove?
+</para>
+
+<para>
+  c. Suppose we have a list iterator, <code>lit</code>, and call
+  <code>lit.add(x)</code> and then immediately after call
+  <code>lit.add(y)</code>.  In what order will <code>x</code>
+  and <code>y</code> appear in the list?
+</para>
+
+<para>
+  d. Suppose we have a list iterator, <code>lit</code>, between the
+  a and b in the list [a,b,c].  Suppose we then call
+  <code>lit.remove()</code> and then immediately after call
+  <code>lit.remove()</code> again.  What can or should happen?
+</para>
+
+<para>
+  e. Can we add an element immediately after creating a new list
+  iterator?
+</para>
+
+<para>
+  f. Can we remove an element immediately after creating a new list
+  iterator?
+</para>
+
+<para>
+  g. Can we set an element immediately after creating a new list
+  iterator?
+</para>
+
+<para>
+  h. Suppose we've created two list iterators, <code>lit1</code> and
+  <code>lit2</code> for the list [a,b,c], and both are between the a and
+  the b in the list.  
+  If we call <code>lit1.add(d)</code>, what should
+  <code>lit2.next()</code> return?
+</para>
+
+<para>
+  i. Suppose we've created two list iterators, <code>lit1</code> and
+  <code>lit2</code> for the list [a,b,c], and both are between the a and
+  the b in the list.  
+  If we call <code>lit1.remove()</code>, what should
+  <code>lit2.next()</code> return?
+</para>
+
+<para>
+  j. Are there any other subtleties that you noticed about these
+  two kinds of iterators?
+</para>
+
+</section> <!-- array-lists-01 -->
+
+<section id="array-lists-02"><title>Exercise 2: A Simple Experiment</title>
+
+<para>
+  Read through the code of <code>SimpleListExpt.java</code> and
+  <code>SALExpt.java</code>.
+</para>
+
+<para>
+  a. Sketch the output you expect to see from <code>SALExpt</code>.
+</para>
+
+<para>
+  b. Check your sketch experimentally.
+</para>
+
+</section> <!-- array-lists-02 -->
+
+<section id="array-lists-03"><title>Exercise 3: Implementation Details</title>
+
+<para>
+  How are array-based-lists implemented?  It's time to look.  In the file
+  <code>SimpleArrayList.java</code>, you'll see that we have a field,
+  <code>values</code>, that stores the values in a list and a field,
+  <code>size</code>, that stores the size of the list.
+</para>
+
+<para>
+  You may also note that because iterators will need to access fields of 
+  the list, iterators are implemented as an anonymous inner class.  
+  Each iterator for the list has a field, <code>pos</code>,
+  that stores the position of the value to be returned by the next call
+  to <methodname>next()</methodname>.
+</para>
+
+<para>
+  a. Sketch how you would implement the <code><methodname>next</methodname></code>
+  method.
+</para>
+
+<para>
+  b. Compare your answer to that in the code.  You can ignore the
+  call to <methodname>failFast</methodname>.  We'll come back to that
+  in another exercise.
+</para>
+
+<para>
+  c. Sketch how you would implement the <code><methodname>hasNext</methodname>()</code>
+  method.
+</para>
+
+<para>
+  d. Compare your answer to the answer in the code.
+</para>
+
+<para>
+  e. Sketch how you would implement the <code><methodname>add</methodname>(T val)</code> method.
+</para>
+
+<para>
+  f. Compare your answer to the answer in the code.
+</para>
+
+</section> <!-- array-lists-03 -->
+
+<section id="array-lists-04"><title>Exercise 4: Implement <methodname>set</methodname></title>
+
+<para>
+  You'll note that the <methodname>set</methodname> method is not yet
+  implemented.  
+</para>
+
+<para>
+  a. Write a small experiment that will let you check if 
+  <methodname>set</methodname> works.  For example, you might create
+  a list of five values and set values 0, 2, and 4 to other values.
+  Don't bother checking the extreme edge cases, such as what happens
+  when there has not been a prior call to <methodname>next</methodname>
+  or <methodname>prev</methodname>.  
+</para>
+
+<para>
+  b. Here's a simple strategy for implementing <methodname>set</methodname>.
+  Since <code>pos</code> represents the location of the value to be
+  returned by <code>next</code>, <code>pos-1</code> represents the location 
+  of the value that was last returned.  Hence, all <methodname>set</methodname>
+  needs to do is set the value in the array at that location.
+</para>
+
+<para>
+  What flaws, if any, do you see in this strategy?
+</para>
+
+<para>
+  c. Implement <methodname>set</methodname> using this strategy and,
+  through your experiment, determine whether or not it seems to work.
+</para>
+
+<para>
+  d. If we use this strategy, one time that <methodname>set</methodname>
+  will fail is when <code>pos</code> is 0.  Update your program so that
+  it throws an exception in such cases.
+</para>
+
+<para>
+  e. As you may have noted, a possible flaw in this implementation is that,
+  while it works when we move forward with <methodname>next</methodname>,
+  it will likely fail when we use <methodname>prev</methodname>.  Sketch
+  a strateguy for dealing with this problem.
+</para>
+
+</section> <!-- array-lists-04 -->
+
+<section id="array-lists-05"><title>Exercise 5: Failing Fast</title>
+
+<para>
+  You may recall that in exercise 1, we asked what happens when we
+  mutate a list using one iterator and then try to access it using another
+  iterator for the same list.  You probably found that the documentation
+  for iterators is vague on this issue.  You should have also noted that
+  the vagueness is problematic.  So, what should we do?
+</para>
+
+<para>
+  Let's see what the designers of Java did by looking at the standard
+  <ulink url="http://docs.oracle.com/javase/7/docs/api/java/util/ListIterator.html"><code>java.util.ArrayList</code></ulink> class.
+</para>
+
+<blockquote>
+  The iterators returned by this class's iterator and listIterator
+  methods are fail-fast: if the list is structurally modified at
+  any time after the iterator is created, in any way except through
+  the iterator's own <methodname>remove</methodname> or
+  <methodname>add</methodname> methods, the iterator will throw a
+  <methodname>ConcurrentModificationException</methodname>. Thus,
+  in the face of concurrent modification, the iterator fails quickly
+  and cleanly, rather than risking arbitrary, non-deterministic
+  behavior at an undetermined time in the future.
+</blockquote>
+
+<para>
+  a. If you look at <code>SimpleListExpt.java</code>, you'll see a 
+  method called <methodname>failFastExpt</methodname>.  Explain to
+  your partner how this allows us to understand fast failure.
+</para>
+
+<para>
+  b. Add the following line to the <methodname>main</methodname> method
+  of <code>SALExpt.java</code> so that we can see if our simple array-based
+  lists fail fast, at least in a simple situation.  (After adding the line,
+  you should recompile and run <code>SALExpt</code>.
+</para>
+
+<programlisting>
+    SimpleListExpt.failFastExpt(pen, new SimpleArrayList&lt;String&gt;());
+</programlisting>
+
+<para>
+  c. Suppose you were called upon to implement the <quote>fail-fast</quote>
+  policy.  How would you achieve that goal?
+</para>
+
+<para>
+  d. Read through the code for <code>SimpleArrayList.java</code> to see
+  how it achieves the <quote>fail-fast</quote> policy.
+</para>
+
+</section> <!-- array-lists-05 -->
+
+<section id="array-lists-06"><title>Exercise 6: Moving Backwards</title>
+
+<para>
+  You'll note that the <methodname>previous</methodname> method is not
+  implemented.  Implement it.
+</para>
+
+</section> <!-- array-lists-06 -->
+
+</section> <!-- array-lists-exercises -->
+
+<section id="array-lists-extra"><title>For Those With Extra Time</title>
+
+<para>
+  Once we implement <methodname>previous</methodname>, we are likely to
+  break the <methodname>set</methodname> method we defined earlier.  Fix
+  that method.
+</para>
+
+</section> <!-- array-lists-extra -->
+
+</section> <!-- array-lists -->
