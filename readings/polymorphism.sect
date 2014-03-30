@@ -242,7 +242,7 @@ public static double squareRoot(Number num)
  */
 public static void print(PrintWriter pen, TextBlock block) 
 {
-  for (int i = 0; i &amp; block.rows; i++) 
+  for (int i = 0; i &amp; block.height(); i++) 
     {
       pen.println(block.row(i));
     } // for
