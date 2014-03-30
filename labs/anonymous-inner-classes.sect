@@ -122,7 +122,7 @@ Greeting 2 from greeter 3 of 5.
 
 <para>
   a. Read through the code of <code>PredicateExample.java</code>.  Predict
-  what it's output will be.
+  what its output will be.
 </para>
 
 <para>
@@ -150,7 +150,34 @@ Greeting 2 from greeter 3 of 5.
 
 <section id="anonymous-inner-classes-extra"><title>For Those With Extra Time</title>
 
-<section id="anonymous-inner-classes-extra-01"><title>Extra 1: Iterating Stacks</title>
+<section id="anonymous-inner-classes-extra-01"><title>Extra 1: Negating Predicates</title>
+
+<para>
+  Create a new class, <code>PredUtils</code>, that contains a static
+  <methodname>negate</methodname> method with the following signature.
+</para>
+
+<programlisting>
+  /**
+   * Create a new predicate that returns the opposite value of pred.
+   */
+  public static Predicate&lt;T&gt; negate(final Predicate&lt;T&gt; pred)
+  {
+    return null; // STUB
+  } // negate(Predicate&lt;T&gt;)
+</programlisting>
+
+</section> <!-- anonymous-inner-classes-extra-01 -->
+
+<section id="anonymous-inner-classes-extra-02"><title>Extra 2: Combining Predicates</title>
+
+<para>
+  Write methods that combine predicates using and and or.
+</para>
+
+</section> <!-- anonyous-inner-classes-extra-02 -->
+
+<section id="anonymous-inner-classes-extra-03"><title>Extra 3: Iterating Stacks</title>
 
 <para>
   Find your stack code and rewrite the <code>iterator</code> method to use 
@@ -159,16 +186,16 @@ Greeting 2 from greeter 3 of 5.
   reading</ulink>.
 </para>
 
-</section> <!-- anonymous-inner-classes-extra-01 -->
+</section> <!-- anonymous-inner-classes-extra-03 -->
 
-<section id="anonymous-inner-classes-extra-02"><title>Extra 2: Iterating Queues</title>
+<section id="anonymous-inner-classes-extra-04"><title>Extra 4: Iterating Queues</title>
 
 <para>
   Find your queue code and rewrite the <code>iterator</code> method to use 
   an anonymous inner class.
 </para>
 
-</section> <!-- anonymous-inner-classes-extra-02 -->
+</section> <!-- anonymous-inner-classes-extra-04 -->
 
 </section> <!-- anonymous-inner-classes-extra -->
 
