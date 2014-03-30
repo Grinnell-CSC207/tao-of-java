@@ -1,0 +1,259 @@
+<section id="linked-lists"><title>Laboratory: Implementing Lists with Linked Nodes</title>
+
+<para>
+  <emphasis>Summary:</emphasis> We extend our understanding of a list ADT
+  by considering an implementation of lists in which the values are stored
+  in nodes that are linked together.
+</para>
+
+<para>
+  <emphasis>Prerequisite Knowledge:</emphasis> References. Interfaces.
+  Generics.  Anonymous inner classes.
+</para>
+
+<section id="linked-lists-preparation"><title>Preparation</title>
+
+<para>
+  Fork and clone the repository at 
+  <ulink url="https://github.com/Grinnell-CSC207/lab-linked-lists"/>.
+</para>
+
+<para>
+  In a separate window or tab, open the documentation for
+  <ulink url="http://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html"><code>Iterator</code></ulink> and
+  <ulink url="http://docs.oracle.com/javase/7/docs/api/java/util/ListIterator.html"><code>ListIterator</code></ulink>.
+</para>
+
+<para>
+  Review your notes on iterators and list iterators.
+</para>
+
+</section> <!-- linked-lists-preparation -->
+
+<section id="linked-lists-exercises"><title>Exercises</title>
+
+<section id="linked-lists-01"><title>Exercise 1: A Simple Experiment</title>
+
+<para>
+  Read through the code of <code>SimpleListExpt.java</code> and
+  <code>SLLExpt.java</code>.
+</para>
+
+<para>
+  a. Sketch the output you expect to see from <code>SLLExpt</code>.
+</para>
+
+<para>
+  b. Check your sketch experimentally.
+</para>
+
+</section> <!-- linked-lists-01 -->
+
+<section id="linked-lists-02"><title>Exercise 2: Implementation Details</title>
+
+<para>
+  How are linked lists implemented?  It's time to look.  In the file
+  <code>SimpleLinkedList.java</code>, you'll see that we have a field,
+  <code>front</code>, that stores a dummy node that precedes the front
+  of the list.  Each node contains two fields, <code>data</code>, which
+  refers to the value in the node, and <code>next</code>, which refers
+  to the next node (or to <code>null</code> at the end of the list).
+  Nodes are implemented as named inner classes.  
+</para>
+
+<para>
+  You may also note that because iterators will need to access fields of 
+  the list, iterators are implemented as an anonymous inner class.  
+  Each iterator for the list has a field, <code>cursor</code>, that
+  refers to the node that precedes the node containing the value to
+  be returned by <code>next</code>, and a field <code>pos</code>,
+  that stores the index that value would have in an array-based implementation.
+  (No, I don't think it's sensible to have such a field.  But the
+  list iterator interface expects us to be able to return integer indices.)
+</para>
+
+<para>
+  a. Sketch how you would implement the <code><methodname>next</methodname></code>
+  method.
+</para>
+
+<para>
+  b. Compare your answer to that in the code.  
+</para>
+
+<para>
+  c. Sketch how you would implement the <code><methodname>hasNext</methodname>()</code>
+  method.
+</para>
+
+<para>
+  d. Compare your answer to the answer in the code.
+</para>
+
+<para>
+  e. Sketch how you would implement the <code><methodname>add</methodname>(T val)</code> method.
+</para>
+
+<para>
+  f. Compare your answer to the answer in the code.
+</para>
+
+</section> <!-- linked-lists-02 -->
+
+<section id="linked-lists-03"><title>Exercise 3: Implement <methodname>set</methodname></title>
+
+
+<para>
+  Here's a simple experiment to test the set method while iterating
+  forward through a list.
+</para>
+
+<programlisting>
+    SimpleLinkedList&lt;String&gt; vm = new SimpleLinkedList&lt;String&gt;();
+    SimpleListExpt.add(pen, vm, 
+            new String[] { "Hey", "Where", "Did", "We", "Go?" });
+    SimpleListExpt.setForwardExpt(pen, vm);
+</programlisting>
+
+<para>
+  a. Suppose the <methodname>set</methodname> method is correctly
+  implemented.  What should the output of the experiment be?
+</para>
+
+<para>
+  b. Look at the current implementation of <methodname>set</methodname>.
+  What do you expect the output to be?
+</para>
+
+<para>
+  c. Check your answer experimentally.
+</para>
+
+<para>
+  d. You've probably noted that <methodname>set</methodname> is
+  not yet implemented.  Assume that we're only going to iterate
+  the list from front to back.  Sketch how you might implement
+  <methodname>set</methodname>.
+</para>
+
+<para>
+  e. Here's a simple strategy for implementing <methodname>set</methodname>,
+  assuming that we only iterate lists forward.  Since <code>cursor</code>
+  refers to the node that immediately precedes the next value, it must
+  refer to the node last returned by <methodname>next</methodname>.  Hence,
+  we can implement <methodname>set</methodname> by setting the
+  <methodname>data</methodname> field of <code>cursor</code>.
+</para>
+
+<para>
+  Implement <methodname>set</methodname>, using your approach
+  or this approach (or both, if they are the same).
+</para>
+
+<para>
+  f. Rerun the experiment to see if the approach works.
+</para>
+
+</section> <!-- linked-lists-03 -->
+
+<section id="linked-lists-04"><title>Exercise 4: Moving Backwards</title>
+
+<para>
+  You'll note that the <methodname>previous</methodname> method and the
+  <methodname>hasPrevious</methodname> method are not implemented.
+</para>
+
+<para>
+  a. Add the following line to your experiments.
+</para>
+
+<programlisting>
+    SimpleListExpt.prevExpt(pen, new SimpleLinkedList&lt;String&gt;());
+</programlisting>
+
+<para>
+  b. Read through <code>SimpleListExpt.java</code>
+  to see how <methodname>prevExpt</methodname>
+  exercises the <methodname>previous</methodname> and
+  <methodname>hasPrevious</methodname>.
+</para>
+
+<para>
+  c. Sketch a strategy for implementing <methodname>previous</methodname>
+  and <methodname>hasPrevious</methodname>.
+</para>
+
+<para>
+  d. Here's one strategy: To find the previous element, start at the front
+  of the list and move forward until you're immediately before the cursor.
+  You have a previous element if you're not the front of the list.
+</para>
+
+<para>
+  What do you think about this strategy?
+</para>
+
+<para>
+  e. Implement <methodname>previous</methodname> and
+  <methodname>hasPrevious</methodname> using one those strategies.
+</para>
+
+<para>
+  f. Check whether the methods work by using the experiment from the
+  beginning of this problem.
+</para>
+
+</section> <!-- linked-lists-04 -->
+
+<section id="linked-lists-05"><title>Exercise 5: Setting Elements, Revisited</title>
+
+<para>
+  When we first implemented <methodname>set</methodname>, we assumed that
+  it only had to work if we iterated the list from front to back.  Now
+  we can iterate the list in both directions.
+</para>
+
+<para>
+  a. Look at <methodname>SimpleListExpt.setBackwardsExpt</methodname>
+  to see one way to exercise <methodname>set</methodname> while iterating
+  the list from back to front.
+</para>
+
+<para>
+  b. What do you expect the results of the following experiment to be?
+</para>
+
+<para>
+  c. Check your answer experimentally.
+</para>
+
+<programlisting>
+    SimpleListExpt.addToEnd(pen, vm, 
+            new String[] { "Days", "When", "The", "Rain", "Came" });
+    SimpleListExpt.setBackwardExpt(pen, vm);
+</programlisting>
+
+<para>
+  d. If the experiment suggests that <methodname>set</methodname> is no
+  longer implemented correctly, find a way to make it work correctly.
+</para>
+
+<para>
+  One strategy is to add a field to the iterator that refers to the last
+  node visited.
+</para>
+
+</section> <!-- linked-lists-05 -->
+
+</section> <!-- linked-lists-exercises -->
+
+<section id="linked-lists-extra"><title>For Those With Extra Time</title>
+
+<para>
+  Consider how our lists might change if we included a previous link in
+  addition to a next link.
+</para>
+
+</section> <!-- linked-lists-extra -->
+
+</section> <!-- linked-lists -->
