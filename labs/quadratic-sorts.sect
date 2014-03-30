@@ -29,9 +29,11 @@
 <section id="quadratic-sorts-01"><title>Exercise 1: Code Reading 1: Getting Started</title>
 
 <para>
-  As <ulink url="../readings/quadratic-sorts.html">the corresponding 
-  reading suggests</ulink>, our sorting package includes a wide 
-  variety of kinds of files.
+  As <ulink url="../readings/sorting.html">the corresponding 
+  reading</ulink> implies, in developing a sorting library, you
+  may want to create a variety of files: interfaces, tests, utilities,
+  multiple implementations, and so and so forth.  Let's explore the
+  elements of this library.
 </para>
 
 <para>
