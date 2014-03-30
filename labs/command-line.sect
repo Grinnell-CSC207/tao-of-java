@@ -84,8 +84,10 @@
   structure.  In particular, if the pacakge is 
   <code><emphasis>username</emphasis>.sorting</code>, the code is
   supposed to be in the directory 
-  <filename><emphasis>username</emphasis>/sorting</filename>.  Move
-  you <filename>.java</filename> files to that directory.
+  <filename><emphasis>username</emphasis>/sorting</filename>.  
+  Make that directory.  Then, move
+  your <filename>.java</filename> files to that directory.
+  But that's not all!
 </para>
 
 <para>
@@ -111,7 +113,7 @@
 <para>
   f. The full name of <code>ISort</code> is now
   <code><emphasis>username</emphasis>.sorting.ISort</code>.
-  See if you can run it with that filename.
+  See if you can run it with that name.
 </para>
 
 </section> <!-- command-line-02 -->
@@ -131,9 +133,9 @@
 
 <para>
   a. Create a jar file named <filename>Sorting.jar</filename>
-  with the utility filename (<filename>Sorter.class</filename>,
+  with the utility files <filename>Sorter.class</filename>,
   <filename>StandardIntegerComparator.class</filename>, and
-  <filename>BuiltinSorter.class</filename>).
+  <filename>BuiltinSorter.class</filename>.
 </para>
 
 <para>
@@ -194,7 +196,7 @@ Main-Class: ISort
 </para>
 
 <screen>
-<prompt>$</prompt> <userinput>jar cvfm ISort.jar ISort.class Sorter.class BuiltinSorter.class StandardIntegerComparator.class</userinput>
+<prompt>$</prompt> <userinput>jar cvfm ISort.jar ISort.class manifest.txt Sorter.class BuiltinSorter.class StandardIntegerComparator.class</userinput>
 </screen>
 
 <para>
@@ -221,10 +223,10 @@ Main-Class: ISort
 
 <para>
   c. As you probably discovered, the Java compiler is upset that it
-  doesn't know where the JUnit code is.  But you can tell it.
-  The JUnit code is in <filename>/usr/share/java/junit.jar</filename>.
-  Add that to your <code>CLASSPATH</code> and see if you can get
-  the test to compile.
+  doesn't know where the JUnit code is.  But you can tell
+  the compiler where to find JUnit.  The JUnit code is in
+  <filename>/usr/share/java/junit.jar</filename>.  Add that directory to
+  your <code>CLASSPATH</code> and see if you can get the test to compile.
 </para>
 
 <para>
@@ -260,9 +262,16 @@ Main-Class: ISort
 <prompt>$</prompt> <userinput>javadoc *.java</userinput>
 </screen>
 
+<para>
+  What files are created?  Try to open the natural files in 
+  your browser.
+</para>
+
 </section> <!-- command-line-06 -->
 
-<section id="command-line-07"><title>Exercise 7: An Improved Structure</title>
+</section> <!-- command-line-exercises -->
+
+<section id="command-line-extra"><title>For Those With Extra Time: An Improved Structure</title>
 
 <para>
   Right now, we're doing everything in the same directory.  But that
@@ -272,13 +281,12 @@ Main-Class: ISort
 </para>
 
 <para>
-  As you've discovered, Ant provides a way to organize all of those files.
+  Ant provides a way to organize all of those files.  Read the Ant
+  documentation.
   Set up an appropriate directory structure and write an Ant build file
   to put things in the appropriate place.
 </para>
 
-</section> <!-- command-line-07 -->
-
-</section> <!-- command-line-exercises -->
+</section> <!-- command-line-extra -->
 
 </section> <!-- command-line -->
