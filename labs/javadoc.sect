@@ -4,11 +4,65 @@
 <emphasis>Summary</emphasis>: In this laboratory, you will have the chance to improve your skills regarding code documentation and testing.
 </para>
 
-<section id="javadoc-exercises"> <title>Exercises</title>
+<section id="javadoc-preparation"><title>Preparation</title>
 
 <para>
-<emphasis>Javadoc</emphasis>
+  Open your project from the inheritance lab in Eclipse.
 </para>
+
+<para>
+  You need not add comments to those classes.  (At least not yet.)
+</para>
+
+</section> <!-- javadoc-preparation -->
+
+<section id="javadoc-exercises"> <title>Exercises</title>
+
+<section id="javadoc-01"><title>Exercise 1: Generate Documentation</title>
+
+<para>
+  a. Use Eclipse's Javadoc tool to generate Javadoc for these classes.
+</para>
+
+<para>
+  You can generate Javadoc by selecting <guimenuitem>Generate
+  Javadoc</guimenuitem> from the <guimenu>Project</guimenu> menu.
+</para>
+
+<para>
+  That tool will ask you where to put the documentation.  You can
+  put it within your project, but you may find it useful to put
+  it elsewhere, such as in your <code>public_html</code> directory
+  (presuming you have such a directory).
+</para>
+
+<para>
+  b. Preview the Javadoc documentation in Eclipse.
+</para>
+
+<para>
+  c. Preview the Javadoc documentation in your Web browser.  You will
+     use a URL like
+     <code>file:///home/username/path/to/project/doc/index.html</code>.
+</para>
+
+</section> <!-- javadoc-01 -->
+
+<section id="javadoc-02"><title>Exercise 2: Adding Real Comments</title>
+
+<para>
+  a. As you may recall, a Javadoc-style comment begins with a slash and
+  two stars and ends with a star and a slash.  Add some Javadoc-style
+  comments to variour portions of your classes, rebuild the documentation,
+  and determine the effects.
+</para>
+
+                * Add some Javadoc-style comments and see their effects.
+                * Figure out how to get different levels of protection revealed (or not
+                  revealed)
+                  * Add preconditions and postconditions.
+                      * `-tag pre:cm:"Preconditions"`
+                          * `-tag post:cm:"Postconditions:"`
 
 <section id="javadoc-0"> <title>Exercise 0: Preparation</title>
 
