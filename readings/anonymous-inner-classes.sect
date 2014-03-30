@@ -157,12 +157,15 @@
 <programlisting>
 PrintWriter pen = new PrintWriter(System.out, true);
 Greetable g = new SampleGreetable3();
-Greeter[] greeters = new Greeter[] {
-        g.greeter(), g.greeter(), g.greeter(), g.greeter(), g.greeter() };
-for (int i = 0; i &lt; greeters.length; i++) {
+Greeter[] greeters = new Greeter[] 
+  {
+    g.greeter(), g.greeter(), g.greeter(), g.greeter(), g.greeter() 
+  };
+for (int i = 0; i &lt; greeters.length; i++) 
+  {
     pen.print(i + ": ");
     greeters[i].greet(pen);
-} // for
+  } // for
 </programlisting>
 
 <para>
@@ -220,12 +223,15 @@ for (int i = 0; i &lt; greeters.length; i++) {
 </para> 
 
 <programlisting>
-Greeter makeGreeter(int n) {
-    return new Greeter() {
-        @Override
-        public void greet(PrintWriter pen) {
-            pen.println(n);
-        } // greet(PrintWriter)
+Greeter makeGreeter(int n) 
+{
+  return new Greeter() 
+    {
+      @Override
+      public void greet(PrintWriter pen) 
+      {
+        pen.println(n);
+      } // greet(PrintWriter)
     }; // new Greeter
 } // makeGreeter
 </programlisting>
@@ -272,8 +278,9 @@ SampleGreetable5.java:19: error: local variable n is accessed from within inner 
 </para>
 
 <programlisting>
-public void greet(PrintWriter pen) {
-    pen.println(this.num + " of " + this.i);
+public void greet(PrintWriter pen) 
+{
+  pen.println(this.num + " of " + this.i);
 } // greet(PrintWriter)
 </programlisting>
 
@@ -325,13 +332,16 @@ SampleGreetable6.java:17: error: cannot find symbol
  * Print all the elements of the array for which pred holds.
  */
 public static &lt;T&gt; void printMatching(PrintWriter pen, T[] vals,
-        Predicate&lt;T&gt; pred) {
-    for (T val: vals) {
-        if (pred.test(val)) {
+        Predicate&lt;T&gt; pred) 
+{
+  for (T val: vals) 
+    {
+      if (pred.test(val)) 
+        {
             pen.println(val + " ");
         } // if
     } // for
-    pen.println();
+  pen.println();
 } // printMatching(PrintWriter, T[], Predicate&lt;T&gt;)
 </programlisting>
 
@@ -342,11 +352,13 @@ public static &lt;T&gt; void printMatching(PrintWriter pen, T[] vals,
 </para>
 
 <programlisting>
-Predicate&lt;String&gt; small = new Predicate&lt;String&gt;() {
-    @Override
-    public boolean test(String str) {
-        return str.length() &lt;= 4;
-    } // test(String)
+Predicate&lt;String&gt; small = new Predicate&lt;String&gt;() 
+{
+  @Override
+  public boolean test(String str) 
+  {
+    return str.length() &lt;= 4;
+  } // test(String)
 }; // new Predicate&lt;String&gt;
 </programlisting>
 
@@ -355,12 +367,17 @@ Predicate&lt;String&gt; small = new Predicate&lt;String&gt;() {
 </para>
 
 <programlisting>
-    printMatching(pen, essay, small);
+  printMatching(pen, essay, small);
 </programlisting>
 
 </section> <!-- predicates -->
 
 <section id="iterators"><title>Anonymous Inner Classes and Iterators</title>
+
+<para>
+  <emphasis>Students who have not yet learned about iterators can
+  ignore this section.  Sorry.</emphasis>
+</para>
 
 <para>
   You may recall that way back at the start of this reading, we considered
@@ -375,31 +392,41 @@ Predicate&lt;String&gt; small = new Predicate&lt;String&gt;() {
 </para>
 
 <programlisting>
-public class Stack&lt;T&gt; implements Iterable {
-    T[] values;
-    int size;
+public class Stack&lt;T&gt; implements Iterable 
+{
+  T[] values;
+  int size;
 
 // ...
 
-    public Iterator&lt;T&gt; iterator() {
-        return new Iterator&lt;T&gt;() {
-            int i = size-1;
-            @Override 
-            public T next() throws NoSuchElementException {
-                if (hasNext()) {
-                    throw new NoSuchElementException();
-                } // if (hasNext())
-                return Stack.this.values[this.i--];
-            } // next()
-            @Override
-            public boolean hasNext() {
-                return this.i >= 0;
-            } // hasNext()
-            @Override
-            public void remove() {
-                throw new UnsupportedOperationException();
-            } // remove()
-        }; // new Iterator&lt;T&gt;
+  public Iterator&lt;T&gt; iterator() 
+  {
+    return new Iterator&lt;T&gt;() 
+      {
+        int i = size-1;
+
+        @Override 
+        public T next() throws NoSuchElementException 
+        {
+          if (hasNext()) 
+            {
+              throw new NoSuchElementException();
+            } // if (hasNext())
+          return Stack.this.values[this.i--];
+        } // next()
+
+        @Override
+        public boolean hasNext() 
+        {
+          return this.i >= 0;
+        } // hasNext()
+
+        @Override
+        public void remove() 
+        {
+          throw new UnsupportedOperationException();
+        } // remove()
+      }; // new Iterator&lt;T&gt;
     } // iterator()
 } // class Stack&lt;T&gt;
 </programlisting>
