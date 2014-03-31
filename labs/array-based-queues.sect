@@ -62,7 +62,7 @@ $ git pull upstream master
 
 </section> <!-- queues-01 -->
 
-<section id="queues-02"><title>Exercise 2: Correcting a Bug</title>
+<section id="queues-02"><title>Exercise 3: Correcting a Bug</title>
 
 <para>
   You've probably determined that there seem to be some significant
@@ -84,7 +84,7 @@ $ git pull upstream master
 
 </section> <!-- queues-02 -->
 
-<section id="queues-03"><title>Exercise 3: Wrapping the Queue</title>
+<section id="queues-03"><title>Exercise 4: Wrapping the Queue</title>
 
 <para>
   If you uncomment the second section of code and reduce the size of
@@ -108,9 +108,9 @@ $ git pull upstream master
   code for <code>isEmpty</code> and <code>isFull</code>.
 </para>
 
-</section>  <!-- queues-03 -->
+</section>  <!-- queues-04 -->
 
-<section id="queues-4"><title>Exercise 4: An Iterator</title>
+<section id="queues-5"><title>Exercise 5: An Iterator</title>
 
 <para>
   Right now, <code>ArrayBasedQueue</code> has only a stub iterator.
@@ -118,7 +118,7 @@ $ git pull upstream master
   third set of experiments to see if the iterator works.
 </para>
 
-</section>  <!-- queues-04 -->
+</section>  <!-- queues-05 -->
 
 </section> <!-- queues-exercises -->
 

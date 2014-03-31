@@ -180,7 +180,9 @@ return tmp;
   before some other bright computer scientist designed the more general
   linear structure.  Hence, the terms that many folks use for the
   basic queue operations are not <code>put</code> and <code>get</code>,
-  but rather <code>enqueue</code> and <code>dequeue</code>.
+  but rather <code>enqueue</code> and <code>dequeue</code>.  To make
+  life even more fun, there's an ADT called a
+  <quote>Dequeue</quote> (for <quote>doubly-ended queue</quote>).
 </para>
 
 <para>

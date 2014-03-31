@@ -3,7 +3,9 @@
 <para>
   <emphasis>Summary:</emphasis> In this laboratory, you will have an
   opportunity to ground your understanding of priority queues, particularly 
-  of the array-based implementation of queues.
+  of the array-based implementation of queues.  Along the way, you may
+  think more about object-oriented design, such as the design of
+  adapter classes.
 </para>
 
 <emphasis role="strong">Required Code Files:</emphasis>
@@ -16,17 +18,18 @@
 
 <para>
   a. Add up the number of vowels in the first names of all of your group
-  members.  Remember if that number is even or odd.
+  members.  Make a note as to whether that number is even or odd.
 </para>
 
 <para>
-  b. Review the <ulink url="../Readings/linear.html">reading on linear structures</ulink>.
+  b. Review the <ulink url="../readings/linear-structures.html">reading on linear structures</ulink>.
 </para>
 
 <para>
-  c. Review the <ulink url="../Readings/priority-queues.html">reading on priority queues</ulink>.  
+  c. Review the <ulink url="../readings/priority-queues.html">reading on priority queues</ulink>.  
 </para>
 
+<!--
 <para>
   d. If you haven't already done so, fork and clone the repo at <ulink url="https://github.com/Grinnell-CSC207/linear"/>  If you have forked and cloned that repository, pull changes from the upstream repository using commands something like the following.
 </para>
@@ -48,6 +51,7 @@ $ git add <emphasis>merged-file-1.java</emphasis>
 $ git add <emphasis>merged-file-2.java</emphasis>
 $ git commit
 </screen>
+-->
 
 </section> <!-- queues-prep -->
 
@@ -112,13 +116,13 @@ $ git commit
 <section id="priority-queues-04"><title>Exercise 4: Code Reading, Revised</title>
 
 <para>
-  Read through <code>ArrayBasedPriorityQueue.java</code>.  You will note 
+  a. Read through <code>ArrayBasedPriorityQueue.java</code>.  You will note 
   that the iterator is not yet implemented and that prioritization is not
   yet implemented.
 </para>
 
 <para>
-   Make some notes to yourself as to how you might finish implementing
+   b. Make some notes to yourself as to how you might finish implementing
    the <code>put</code> and <code>get</code> methods.
 </para>
 
