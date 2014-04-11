@@ -146,15 +146,15 @@ $ git commit
   <listitem>
     You can keep the values in arbitrary order and search for the
     highest-priorty element whenever we call <code>get</code> or
-    <code>peek</code>.  (You can probalby use a variant of the
+    <code>peek</code>.  (You can probably use a variant of the
     <code>indexOfSmallest</code> method from selection sort to
     achieve that goal.)
   </listitem>
 </itemizedlist>
 
 <para>
-  If you came up with an even number in the preparation, use the first
-  of the two approaches.  If you came up with an odd number, use the
+  If you came up with an odd number in the preparation, use the first
+  of the two approaches.  If you came up with an even number, use the
   second of the two approaches.
 </para>
 
