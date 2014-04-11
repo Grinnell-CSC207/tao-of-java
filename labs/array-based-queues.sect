@@ -1,4 +1,4 @@
-<section id="queues-lab"><title>Laboratory: Queues</title>
+<section id="queues-lab"><title>Laboratory: Implement Queues with Arrays</title>
 
 <para>
   <emphasis>Summary:</emphasis> In this laboratory, you will have an
@@ -23,13 +23,21 @@
 </para>
 
 <para>
-  c. If you haven't already done so, fork and clone the repo at <ulink url="https://github.com/Grinnell-CSC207/linear"/>  If you have forked and cloned that repository, pull changes from the upstream repository.
+  c. If you haven't already done so, fork and clone the repo at <ulink url="https://github.com/Grinnell-CSC207/linear"/>.
+</para>
+
+<!-- 
+
+<para>
+  If you have forked and cloned that repository, pull changes from the upstream repository.
 </para>
 
 <screen>
 $ git remote add upstream https://github.com/Grinnell-CSC207/linear
 $ git pull upstream master
 </screen>
+
+-->
 
 </section> <!-- queues-prep -->
 
