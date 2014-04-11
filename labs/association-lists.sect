@@ -1,0 +1,122 @@
+<section id="association-lists"><title>Laboratory: Implementing Dictionaries with Association Lists</title>
+
+<para>
+  <emphasis>Summary:</emphasis> We extend our understanding of Dictionaries
+  by considering one simple approach to implementing dictionaries: Association
+  Lists.  Association lists are simply lists of key/value pairs.
+</para>
+
+<para>
+  <emphasis>Prerequisite Knowledge:</emphasis> Linked lists.  Dictionaries.
+</para>
+
+<section id="association-lists-preparation"><title>Preparation</title>
+
+<para>
+  Fork and clone the repository at 
+  <ulink url="https://github.com/Grinnell-CSC207/association-lists"/>.
+</para>
+
+</section> <!-- association-lists-preparation -->
+
+<section id="association-lists-exercises"><title>Exercises</title>
+
+<section id="association-lists-01"><title>Exercise 1: Thinking About Testing</title>
+
+<para>
+  We should, of course, begin our exploration of code by designing unit 
+  tests for that code.  Suppose we are focusing primarly on the primary
+  operations of <methodname>put</methodname>, <methodname>get</methodname>,
+  and <methodname>remove</methodname>.  
+</para>
+
+<para>
+  Read through the tests that are there.  Then note what aspects of the
+  three methods we are failing to test.  (You don't need to add these
+  tests; just think about how the tests are incomplete.)
+</para>
+
+</section> <!-- association-lists-01 -->
+
+<section id="association-lists-02"><title>Exercise 2: Reading Code</title>
+
+<para>
+  It's sometimes nice to read other people's code before we are biased
+  by test results.  So let's look at the underlying code.
+</para>
+
+<para>
+  a. Prepare to describe to someone else how the code is designed.
+  What are the big-picture design decisions?  How are different
+  methods implemented?  What are tricks that the designers have
+  attempted?
+</para>
+
+<para>
+  b. Identify likely trouble spots in the code.  What potential issues
+  do you see?
+</para>
+
+</section> <!-- association-lists-02 -->
+
+<section id="association-lists-03"><title>Exercise 3: Checking and Correcting Errors</title>
+
+<para>
+  a. Given your reading of the code and the tests, which tests do you
+  expect to succeed and which tests do you expect to fail?
+</para>
+
+<para>
+  b. Check your answer by running the tests.
+</para>
+
+<para>
+  c. Correct any bugs in the code the tests have identified.
+</para>
+
+</section> <!-- association-lists-03 -->
+
+<section id="association-lists-04"><title>Exercise 4: More Black-Box Testing</title>
+
+<para>
+  In an earlier exercise, you identified missing black-box tests.  Write
+  a few of those tests. 
+</para>
+
+<para>
+  If the tests identify errors, correct the code.
+</para>
+
+</section> <!-- association-lists-04 -->
+
+<section id="association-lists-05"><title>Exercise 5: White-Box Testing</title>
+
+<para>
+  Traditionally, when designing unit tests we focus primarily on the
+  client's perspective of the code.  But when we know the underlying
+  implementation, we also have the opportunity to think about particular
+  areas in which the implementation may be more fragile.  Hence, we can
+  design tests that focus on the implementation and not just interface.
+  This approach is often called <quote>white-box</quote> or 
+  <quote>clear-box</quote> testing.
+</para>
+
+<para>
+  When you looked at the underlying implementation, you identified some
+  potential trouble spots.  Write a few white-box tests that explore
+  those potential issues.
+</para>
+
+</section> <!-- association-lists-05 -->
+
+</section> <!-- association-lists-exercises -->
+
+<section id="association-lists-extra"><title>For Those With Extra Time</title>
+
+<para>
+  Implement iterators.
+</para>
+
+</section> <!-- association-lists-extra -->
+
+</section> <!-- association-lists -->
