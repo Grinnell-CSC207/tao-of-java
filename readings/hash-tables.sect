@@ -1,0 +1,329 @@
+<section id="hashtables"><title>Hash Tables</title>
+
+<para>
+  <emphasis>Summary:</emphasis> We consider hash tables, one of the most
+  popular (and perhaps most interesting) implementations of dictionaries.
+  Hash tables have <emphasis>expected</emphasis> O(1) <code>set</code>
+  and <code>get</code> methods.
+</para>
+
+<para>
+  <emphasis>Prerequisites:</emphasis> Dictionaries.  Arrays.
+</para>
+
+<section id="hashtables-introduction"><title>Introduction</title>
+
+<para>
+  As we've seen, dictionaries are powerful and useful abstractions that
+  support a wide range of use cases, from simple databases to representing
+  objects.  In fact, dictionaries are such a powerful tools that many
+  languages now include something like a dictionary as a built-in type.
+  Hence, most programmers don't think much about the implementation of
+  dictionaries, or even about their efficiency.
+</para>
+
+<para>
+  In terms of programmer efficiency, that failure to consider the implementation
+  isn't so bad.  But in terms of program efficiency, and perhaps even depth
+  of knowledge, it's important to find really good ways to implement
+  dictionaries.  And, so far, the best we've seen are structures that
+  have likely O(logn) running times for <methodname>get</methodname> and 
+  <methodname>put</methodname>.  For binary trees, that means we either
+  have to hope that the trees stay balanced or learn how to keep the
+  trees balanced.  If we've learned skip lists, we need to trust that
+  the random number generator works well.
+</para>
+
+<para>
+  But can we do better?  When we use arrays, we get constant time
+  <methodname>get</methodname> and <methodname>put</methodname>
+  operations.  Wouldn't we hope for the same for dictionaries?
+</para>
+
+<para>
+  It turns out that if you're willing to allow some overhead, rely
+  on some luck, and deal with an occasional slowdown to rebuild the
+  data structure, there is a way to get dictionaries that are nearly
+  as fast as arrays.  The data structures that embody this technique
+  are called <emphasis>hash tables</emphasis>
+</para>
+
+</section> <!-- hashtables-introduction -->
+
+<section id="hashtables-basics"><title>Hashtables: The Basics</title>
+
+<para>
+  There are very few useful algorithms we know that require only
+  a constant time and perhaps only one data structure that gives us
+  constant-time access to elements.  That one data structure is the
+  array.  So, if we want to get constant-time <methodname>get</methodname>
+  and <methodname>put</methodname>, perhaps we need to focus on using
+  arrays.
+</para>
+
+<para>
+  Here's a strategy: Store key/value pairs in an array.  Where does the
+  key/value pair go?  We'll compute an index into the array based only
+  on they key.  In effect, we hope to number the keys in such a way that
+  (1) all keys have numbers between 0 and the length of the array - 1,
+  and (2) no two keys have the same number.  Compute those numbers is
+  called <emphasis>hashing</emphasis> a key.
+</para>
+
+<para>
+  Using that strategy, it's fairly easy to build <methodname>put</methodname>
+  and <methodname>get</methodname>.  In approximate Java.
+</para>
+
+<programlisting>
+public void put(K key, V value)
+{
+  this.values[hash(key)] = new KeyValuePair&lt;K,V&gt;(key, value);
+} // put(K,V)
+
+public V get(K key)
+  throws Exception
+{
+  KeyValuePair&lt;K,V&gt; pair = this.values[hash(key)];
+  if (key.equals(pair.key))
+    return pair.value;
+  else
+    return throw new Exception("Invalid key " + key);
+} / get(K)
+</programlisting>
+
+<para>
+  Isn't that nice?  Unfortunately, it's also a bit of a fiction.  
+  Without knowing the keys in advance, it is not possible to number
+  the keys in such a way to meet the two criteria above and find the
+  number for a key in constant time.
+</para>
+
+</section> <!-- hashtable-basics -->
+
+<section id="hashtable-collisions"><title>Handling Collisions</title>
+
+<para>
+  In general, we make the hash function return some integer, and make
+  the computation of that integer fast and context independent - that is,
+  we want the same return value each time we hash the same key, no matter
+  what size table we're using and what other keys we have used or will
+  use.  (Taking those other pieces of information into account means
+  that it's unlikely that the function will be constant.)  How do we then
+  decide where in the array the key/value pair goes?  We use the result
+  of taking the hash value of the key modulo the size of the array.
+</para>
+
+<para>
+  For example, a hash function on strings might sum the ASCII values
+  of the letters in the string.  (That's not a good hash function, but
+  we're going to use it anyway.)  The string <code>cat</code> would give
+  us 99 + 97 + 116, or 312.
+  The string <code>sat</code> would give us
+  115 + 97 + 116, or 328.  If our array is sized 25, an element with a
+  key of <code>cat</code> would go at position 12 (312 % 25 is 12), and
+  an element with a key of <code>sat</code> would go in position 1
+  (328 % 25 is 3).
+</para>
+
+<para>
+  Since the number of valid integers is much smaller than the number
+  of possible values in other data types (e.g., strings, doubles),
+  we're pretty much guaranteed that it's possible that two keys will
+  have the same value.   And once we've reduced by the size of the
+  array, we're even more likely to have two keys ending up in the
+  same location.  For example, using the hash function above, the
+  string <code>pro</code> would give us 337 (112 + 114 + 111), which is
+  different than the 312 for <code>cat</code> or the <code>328</code>
+  for <code>sat</code>.  But when we mod by a table size of 25, we end up
+  at 12, the same as the location for <code>cat</code>.  When two keys
+  have the same location, we call that a <emphasis>collision</emphasis>.
+</para>
+
+<para>
+  So, what do we do when we have a collision?  There are two approaches:
+  One is called <emphasis>chaining</emphasis> and one is called
+  <emphasis>probing</emphasis>.  In chaining, instead of storing
+  key/value pairs in the array, we store linked lists of key/value
+  pairs.  (That is, we store simple association lists.)  Now, when
+  we put a key/value pair into the array, we find the right cell and just
+  use the <code>put</code> method of association lists for the
+  association list in that cell.  Similarly, to get an element we just
+  call the <methodname>get</methodname> element of the underlying
+  association list.  
+</para>
+
+<programlisting>
+public void put(K key, V value)
+{
+  AssociationList&lt;K,V&gt; lst = values[hash(key)];
+  lst.put(key, value)
+} // put(K, V)
+
+public V get(K key)
+  throws Exception
+{
+  AssociationList&lt;K,V&gt; lst = values[hash(key)];
+  return lst.get(key);
+} // get(K, V)
+</programlisting>
+
+<para>
+  Since we're throwing a bunch of values into one location in the array,
+  some programmers refer to the elements of the array in chained hash
+  tables as <emphasis>buckets</emphasis>.
+</para>
+
+<para>
+  Of course, there's a bit of overhead involved in putting an association
+  list in each cell.  Hence, many programmers prefer a different approach:
+  If there's a collision in one cell, you just go on to another cell.
+  What cell?  There are a variety of options.  The simplest option is
+  <emphasis>linear probing</emphasis> - you add some specified value to
+  the computed index for the next place to look.  If that place also
+  collides, you add the value again.  (And again and again until you
+  find an open space.)  For example, suppose we had 25 slots in the
+  hash table and an offset of 7.  If we have a collision in position
+  5, we look in 12.  If we have a collision in 12, we look in 19.
+  If we have a collision in 19, we look in 1 (19+7 = 26, 26 % 25 = 1).
+  And so on and so forth.
+</para>
+
+<para>
+  If you're not careful, there's a significant danger in using linear
+  probing: The indices can cycle before you've looked at every possible
+  position.  For example, suppose we used an offset of 10 rather than
+  7.  If we have a collision in position 7, we look in 17.  If we have a
+  collision in 17, we look in 2 (27 % 25).  If we have a collision in
+  2, we look in 12.  If we have a collision in 12, we look in 22.  If
+  we have a collision in 22, we look in 7 (32 % 25).  And we're back
+  to where we started, missing about 4/5 of the possible indices.
+  The solution to the problem is easy: We just make sure that the 
+  offset and the table size are relatively prime.  Ask a friendly
+  mathematician to explain why.
+</para>
+
+<para>
+  One can also try variants of linear probing.  Some programmers use
+  <emphasis>quadratic probing</emphasis>: first try an offset of 1,
+  then an offset of 4 (from the previous location), then an offset of 9,
+  and so on and so forth.  Others use a different computed offset for
+  different values.
+</para>
+
+<para>
+  Computer science professors often like probing not only because it
+  provides all these interesting design options in the probing technique,
+  but also because it leads to some interesting design questions for
+  the <methodname>remove</methodname> operation.
+</para>
+
+</section> <!-- hashtable-collisions -->
+
+<section id="hashtable-analysis"><title>Analyzing Hash Tables</title>
+
+<para>
+  So, how fast are hash tables?  Well, if we have no collisions, the
+  cost of putting an element in the table is the cost of computing the
+  hash function and the cost of putting something into an array.  We've
+  said the cost of computing the hash function should be O(1).  The
+  cost of putting something into an array is O(1).  So, putting something
+  into a collision-free hash table is O(1).  Similarly, getting something
+  from a collision-free hash table is also O(1).
+</para>
+
+<para>
+  But some collisions are likely to happen because of the pigeonhole
+  principle.  So, what do we do?  Here's the traditional hand-waving
+  argument: If we have a good hash function and reasonably more space
+  in the array than key/value pairs we expect to store, then collisions
+  are unlikely and repeated collisions are even less likely.
+</para>
+
+</section> <!-- hashtable-analysis -->
+
+<section id="hashtable-expanding"><title>Expanding Hash Table</title>
+
+<para>
+  You'll note that our analysis suggests that we need <quote>reasonably
+  more space in the array than key/value pairs we expect to store</quote>.
+  How do we guarantee that?  One strategy is to stop allowing clients to
+  add elements once the hash table is relatively full.  Another is to
+  accept that hash tables slow down as they fill up.  But the most typical
+  strategy is to <emphasis>expand</emphasis> the hash table once it is
+  more than N% full.  To expand the table, you build a new array and move
+  each element from the original to the new array.
+</para>
+
+<para>
+  Note that after expanding the table elements are likely to be in
+  new locations, which might reduce collisions.  For example, if we expand
+  our old table from 25 to 30 elements, <code>cat</code> will now be at
+  position 9 (129 % 30) and <code>pro</code> will now be at position 25
+  (145 % 30).
+</para>
+
+<para>
+  How much should you expand the hash table?  Expansion is likely to
+  be an expensive operation (it's clearly O(n)), so you want to make
+  it rare.  I make it a practice to approximately double the size of
+  the table each time.
+</para>
+
+</section> <!-- hashtable-expanding -->
+
+<section id="hashtable-hashfuns"><title>Designing Hash Functions</title>
+
+<para>
+  In order for your hash tables to work well, your hash functions have
+  to distribute keys well.  Hence, it's worth a lot of effort to do
+  analysis on your likely input data and the efficacy of your hash
+  function with those data.
+</para>
+
+<para>
+  Consider, for example, the <quote>sum the ASCII values</quote>
+  approach for hashing strings.  Suppose our input strings are 
+  three-letter sequences.  There are 17,576 (26x26x26) such 
+  sequences.  Our hash function, on the other hand, returns only
+  values from 291 (for <code>aaa</code>) to 366 (for <code>zzz</code>),
+  a range of just 76 different values.  Even if we made our hash
+  table size 1000, collisions are incredibly likely.
+</para>
+
+<para>
+  So, when possible, think about how well your hash function 
+  <quote>spreads out</quote> values and deals with similar values.
+  You may even want to run some experiments to see just how well you
+  do (or don't do).
+</para>
+
+</section> <!-- hashtable-hashfuns -->
+
+<section id="hashtable-java"><title>Hashing in Java</title>
+
+<para>
+  In Java, we use an object-oriented model for hashing.  That is,
+  each class is responsible for providing its own hash function,
+  called <methodname>hashCode</methodname>.  If you don't provide a
+  <methodname>hashCode</methodname> method, you get a very strange one
+  (the one associated with generic objects, and remember that two objects
+  are equal only if they occupy the same area of memory).
+</para>
+
+<para>
+  Java programs generally assume that <methodname>hashCode</methodname>
+  returns the same value when given two equal objects (even if they
+  are not the same object).  If you think about it for a moment, you'll
+  see that the requirement is essential.
+</para>
+
+<para>
+  Java provides two basic implementations of Hash tables, the older
+  <ulink url="http://docs.oracle.com/javase/7/docs/api/java/util/Hashtable.html">java.util.Hashtable</ulink> and the newer
+  <ulink url="http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html">java.util.HashMap</ulink>.
+</para>
+
+</section> <!-- hashtable-java -->
+
+</section> <!-- hashtables -->
