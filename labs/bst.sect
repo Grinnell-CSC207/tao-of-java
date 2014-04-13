@@ -45,7 +45,7 @@
 
 <para>
   Sketch the tree that you expect to create by adding the following 
-  key/value pairs (in order).
+  key/value pairs (in that order).
 </para>
 
 <itemizedlist>
@@ -68,11 +68,28 @@
 <para>
   Our <filename>BST.java</filename> class includes a method,
   <methodname>dump</methodname>, that prints a tree using a simple format.
+  In particular, given a node, we print
+</para>
+
+<itemizedlist>
+  <listitem>
+    the key/value pair for the node,
+  </listitem>
+  <listitem>
+    the left subtree, indented by four spaces, and
+  </listitem>
+  <listitem>
+    the right subtree, indented by four spaces.
+  </listitem>
+</itemizedlist>
+
+<para>
+  Null subtrees are represented as <code>&lt;&gt;</code>.
 </para>
 
 <para>
-  a. Read through the code of <filename>BSTExpt.java</filename>.  You will note that
-  it uses the same sequence of operations as given above.  
+  a. Read through the code of <filename>BSTExpt.java</filename>.  You will 
+  note that it uses the same sequence of operations as given above.  
 </para>
 
 <para>
@@ -210,15 +227,16 @@
 </para>
 
 <programlisting>
-for (String key : dict.keys()) {
+for (String key : dict.keys()) 
+  {
     pen.print(key + " ");
-} // for each key
+  } // for each key
 pen.println();
 </programlisting>
 
 </section> <!-- bst-06 -->
 
-</section> <!-- bst-exericses -->
+</section> <!-- bst-exercises -->
 
 <section id="bst-extra"><title>For Those with Extra Time</title>
 
