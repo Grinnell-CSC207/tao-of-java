@@ -11,7 +11,6 @@
 <para>
   If you have not done so, fork and clone the repository at
   <ulink url="https://github.com/Grinnell-CSC207/bst"/>.
-  (We have not updated that repository, so you need not pull changes.)
 </para>
 
 </section> <!-- tree-traversal-prep -->
@@ -29,14 +28,17 @@ String[] values = new String[] { "monkey", "gibbon", "snake", "dingo",
         "koala", "python", "viper", "baboon", "frog", "hippo", "lemur",
         "orangutan", "rabbit", "tiger", "wombat", "aardvark", "chinchilla",
         "emu", "gnu" };
-BST&lt;Character,String&gt; dict = new BST&lt;Character,String&gt;(new Comparator&lt;Character&gt;() {
-    public int compare(Character left, Character right) {
+BST&lt;Character,String&gt; dict = new BST&lt;Character,String&gt;(new Comparator&lt;Character&gt;() 
+    {
+      public int compare(Character left, Character right) 
+      {
         return left.compareTo(right);
-    } // compare(Character, Character)
-});
-for (String value : values) {
-   dict.set(value.charAt(0), value);
-} // for
+      } // compare(Character, Character)
+    });
+for (String value : values) 
+  {
+    dict.set(value.charAt(0), value);
+  } // for
 </programlisting>
 
 <para>
@@ -88,32 +90,39 @@ monkey gibbon dingo baboon ....
  * 
  * Note: We are trying to avoid recursion.
  */
-public void print(PrintWriter pen) {
-    // A collection of the remaining things to print
-    Stack&lt;Object&gt; remaining = new Stack&lt;Object&gt;();
-    remaining.push(this.root);
-    // Invariants: 
-    //   remaining only contains Strings or BSTNodes
-    //   All key/value pairs in the tree are either
-    //     (a) already printed
-    //     (b) in remaining
-    //     (c) in or below a node in remaining
-    while (!remaining.isEmpty()) {
-        Object next = remaining.pop();
-        if (next instanceof String) {
-            pen.print(next);
-            pen.print(" ");
-        } else {
-            // next must be a BSTNode
-            @SuppressWarnings("unchecked")
-            BSTNode node = (BSTNode) next;
-            if (node.larger != null) {
-                remaining.push(node.larger);
+public void print(PrintWriter pen) 
+{
+  // A collection of the remaining things to print
+  Stack&lt;Object&gt; remaining = new Stack&lt;Object&gt;();
+  remaining.push(this.root);
+  // Invariants: 
+  //   remaining only contains Strings or BSTNodes
+  //   All key/value pairs in the tree are either
+  //     (a) already printed
+  //     (b) in remaining
+  //     (c) in or below a node in remaining
+  while (!remaining.isEmpty()) 
+    {
+      Object next = remaining.pop();
+      if (next instanceof String) 
+        {
+          pen.print(next);
+          pen.print(" ");
+        }  // if it's a string
+      else 
+        {
+          // next must be a BSTNode
+          @SuppressWarnings("unchecked")
+          BSTNode node = (BSTNode) next;
+          if (node.larger != null) 
+            {
+              remaining.push(node.larger);
             } // if (node.larger != null)
-            if (node.smaller != null) {
-                remaining.push(node.smaller);
+          if (node.smaller != null) 
+            {
+              remaining.push(node.smaller);
             } // if (node.smaller != null)
-            remaining.push(node.value);
+          remaining.push(node.value);
         } // if it's a node
     } // while
     pen.println();
@@ -190,7 +199,7 @@ public void print(PrintWriter pen) {
 
 <para>
   a. Sketch what changes you would make to <methodname>print</methodname>
-  to get it to print the values in a top-down, left-to-right,
+  to get it to print the values in a top-down, inorder, left-to-right,
   breadth-first traversal.  (Hint: You probably don't want to use a
   stack any more.)
 </para>
