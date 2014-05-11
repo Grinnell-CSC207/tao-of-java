@@ -626,4 +626,29 @@ throw new YourException("some extra notes");
 
 </section> <!-- new-exceptions -->
 
+<section id="runtime-exceptions"><title>Java's optionally-catchable <code>RuntimeException</code>s</title>
+
+<para>
+  While Java encourages programmers to use standard exceptions (and
+  subclasses thereof) and therefore to require handlers for those
+  exceptions, there are also situations in which requiring handlers
+  seems excessive.  For example, every array index is potentially
+  out of bounds, and we may not want to require that programmers catch
+  all of those exceptions.
+</para>
+
+<para>
+  For situations in which handlers should be optional, Java provides
+  a class, <code>RuntimeException</code>, much like <code>Exception</code>.
+  You can throw objects in class <code>RuntimeException</code>.  You can
+  catch objects in class <code>RuntimeException</code>.  However, you 
+  need not declare that you throw such objects (no <code>throws</code>
+  clause is necessary) and you need not catch such objects (no
+  <code>try/catch</code> block is necessary).  However, if one of
+  these exceptions is issued and not caught, your program is likely to
+  crash.
+</para>
+
+</section> <!-- runtime-exceptions -->
+
 </section> <!-- exceptions -->
