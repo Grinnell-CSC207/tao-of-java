@@ -82,7 +82,7 @@ In this laboratory you will practice adding and using resources, and giving your
 <section id="exercise5"><title>Exercise 5: Dealing with sound files</title>
 
 <para>
-a) As you did with the button, add an attribute to your ImageView that defines what happens when it's clicked 		
+  a. As you did with the button, add an attribute to your ImageView that defines what happens when it's clicked 		
 </para>
 
 <para>
