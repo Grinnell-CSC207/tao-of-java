@@ -199,7 +199,7 @@ public void print(PrintWriter pen)
 
 <para>
   a. Sketch what changes you would make to <methodname>print</methodname>
-  to get it to print the values in a top-down, inorder, left-to-right,
+  to get it to print the values in a top-down, postorder, left-to-right,
   breadth-first traversal.  (Hint: You probably don't want to use a
   stack any more.)
 </para>
