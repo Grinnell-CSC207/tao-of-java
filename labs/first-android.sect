@@ -10,150 +10,214 @@
 <section id="first-android-prep"><title>Preparation</title>
 
 <para>
-  Make sure you've completed and understood the reading, Introduction
-  To Android.
+  Make sure you've completed and understood the reading, 
+  <ulink url="../readings/intro-android.html">Introduction
+  To Android</ulink>.
+</para>
+
+<para>
+  Start the Android-enabled Eclipse from 
+  <code>/glimmer/android/adt/eclipse/eclipse</code>.
 </para>
 
 </section> <!-- first-android-prep -->
 
 <section id="first-android-exercises"><title>Exercises</title>
 
-<section id="exercise1"><title>Exercise 1: Create your first application</title>
+<section id="first-android1"><title>Exercise 1: Create Your First Application</title>
 
 <para>
-a) In Eclipse, create a new Android Application Project
+  a. In Eclipse, create a new Android Application Project
 </para>
 
 <para>
-b) Give it an application name, like First Project, and a project name
+  b. Give it an application name, like First Project, and a project name
 </para>
 
 <para>
-c) Name the package "edu.grinnell.CSC207.F2013.your_username.project_name"
+  c. Name the package "edu.grinnell.CSC207.F2013.your_username.project_name"
 </para>
 
 <para>
-d) Give your activity a descriptive name, and finish creating the project
+  d. Give your activity a descriptive name, and finish creating the project
 </para>
 
-</section> <!-- exercise1 -->
-<section id="exercise2"><title>Exercise 2: Exploring objects and layouts</title>
+</section> <!-- first-android1 -->
+
+<section id="first-android2"><title>Exercise 2: Exploring Objects and Layouts</title>
 
 <para>
-a) Add another TextView to the layout xml for your only activity. Save the file and look at the Graphical Layout file. Did anything change?
-</para>
-
-<para>
-b) Why is the TextView you've just created positioned on top of the auto-generated one?
+  a. Open the layout xml file.  (Look in <guimenuitem>res</guimenuitem> &gt;
+  <guimenuitem>layout</guimenuitem> for that file.)
 </para>
 
 <para>
-c) Can you figure out how to move it (either programatically or visually)?
+  b. Switch to the Graphical Layout by clicking the tab at the bottom of
+  the pane.  Then switch back to the normal layout.
 </para>
 
 <para>
-d) Depending on if you changed your TextView's position via the raw xml or the Graphical Layout, explain what happens in its counterpart?
+  c. Add another TextView to the layout xml for your only activity.   For
+  the text attribute, use the following.
+</para>
+
+<programlisting>
+android:text="New Text"
+</programlisting>
+
+<para>
+  Save the file and look at the Graphical Layout file. Did anything change?
 </para>
 
 <para>
-e) What are some other attributes you can use for a TextView?
-* Hint: You can see those, by typing "android:" on another line inside the TextView and waiting for Eclipse to give you an options menu of how to continue.
+  d. As you may have noted, the TextView you've just created is positioned 
+  on top of the auto-generated one.  Why?
 </para>
 
 <para>
-f) In the Graphical Layout drag out some objects from the Palette on your app's screen and see how they're programatically added in the xml file. 
+  e. Figure out how to move it (either programatically or visually).
 </para>
 
 <para>
-g) Go into the raw xml file and replicate some of the objects with a different value for the attributes. 
+  f. Depending on how you changed your TextView's position (via the raw xml
+  or the Graphical Layout), explain what happens in its counterpart.
 </para>
 
 <para>
-h) The project creates a relative layout for you to place your objects on by default. What are some other layouts you can use, and what are their strengths and weaknesses?
-* Hint: You might want to do a google search for this one
-</para>
-
-</section> <!-- exercise2 -->
-<section id="exercise3"><title>Exercise 3: Playing with strings</title>
-
-<para>
-a) Add a new String via the Resources tab in the strings.xml file
+  g. What are some other attributes you can use for a TextView?
 </para>
 
 <para>
-b) Does the main activity xml file in the layout folder change? Why or why not?
+  <emphasis>Hint:</emphasis> You can see those, by typing "android:"
+  on another line inside the TextView and waiting for Eclipse to give
+  you an options menu of how to continue.
 </para>
 
 <para>
-c) In the raw xml tab in the layout's main activity xml file, change the android:text attribute by replacing hello_world with your new string's name. 
+  h. In the Graphical Layout drag out some objects from the Palette on
+  your app's screen and see how they're programatically added in the
+  xml file.
 </para>
 
 <para>
-d) Save the file. How does this affect the graphical layout.
+  i. Go into the raw xml file and replicate some of the objects with a
+  different value for the attributes.
 </para>
 
 <para>
-e) Add more TextViews or other textual objects to your layout and assign them different strings.
+  j. The project creates a relative layout for you to place your objects
+  on by default. What are some other layouts you can use, and what are
+  their strengths and weaknesses?
 </para>
 
 <para>
-f) Repeat a-e, this time adding strings via the raw xml in the strings.xml file
+  <emphasis>Hint:</emphasis>
+  You might want to do a google search for this one.
 </para>
 
-</section> <!-- exercise3 -->
-<section id="exercise4"><title>Compile and run your app</title>
+</section> <!-- first-android2 -->
+
+<section id="first-android3"><title>Exercise 3: Playing with Strings</title>
 
 <para>
-a) Use the AVD Manager to create an emulator
-</para>
-
-<para>
-b) Compile and run your app on the emulator you just created 	
+  a. Add a new String via the Resources tab in the strings.xml file
 </para>
 
 <para>
-c) Was the run successful? Why or why not?
+  b. Does the main activity xml file in the layout folder change? Why
+  or why not?
 </para>
 
 <para>
-d) If the run was successful, plug in your Android device and run the app on the device.
+  c. In the raw xml tab in the layout's main activity xml file,
+  change the <code>android:text</code> attribute by replacing
+  <code>hello_world</code> with your new string's name.
 </para>
 
 <para>
-e) In your opinion, is it better to use the emulator or the actual device and why? 
-</para>
-
-</section> <!-- exercise4 -->
-<section id="exercise5"><title>Exercise 5: Other important files</title>
-
-<para>
-a) Go into the AndroidManifest.xml file and change the target version from 17 to 12.
+  d. Save the file. How does this affect the graphical layout?
 </para>
 
 <para>
-b) Save, compile and run your app. 
+  e. Add more TextViews or other textual objects to your layout and
+  assign them different strings.
 </para>
 
 <para>
-c) Does it run fine? Why or why not?
+  f. Repeat a-e, this time adding strings via the raw xml in the strings.xml 
+  file
 </para>
 
 <para>
-d) How would you change the name of your app that appears on the top black bar?
+  g. Why might we have these two different ways or representing strings?
+</para>
+
+</section> <!-- first-android3 -->
+
+<section id="first-android4"><title>Exercise 4: Compile and Run your App</title>
+
+<para>
+  a. Use the AVD Manager to create an emulator.  Recall that you can
+  access AVD Manager with <guimenu>Window</guimenu> > <guimenuitem>Android
+  Virtual Device Manager</guimenuitem>
 </para>
 
 <para>
-e) Looking at the names of the attributes for objects in the manifest file, can you tell what they do? Remove some attributes, or change them and see what happens when you try to compile.
+  b. Compile and run your app on the emulator you just created.  (If the
+  emulator takes more than two minutes to start, you can give up.)
 </para>
 
 <para>
-f) Change the manifest file back to its original state, to make sure the app compiled correctly.
+  c. Was the run successful? Why or why not?
 </para>
 
 <para>
-g) Add a new item to the main menu xml. What happens when you compile and run the app?
+  d. If the run was successful, plug in your Android device and run the
+  app on the device.
 </para>
-</section> <!-- exercise5 -->
+
+<para>
+  e. In your opinion, is it better to use the emulator or the actual
+  device and why?
+</para>
+
+</section> <!-- first-android4 -->
+
+<section id="first-android5"><title>Exercise 5: Other Important Files</title>
+
+<para>
+  a. Go into the AndroidManifest.xml file and change the target version
+  from 17 to 12.
+</para>
+
+<para>
+  b. Save, compile and run your app. 
+</para>
+
+<para>
+  c. Does it run fine? Why or why not?
+</para>
+
+<para>
+  d. How would you change the name of your app that appears on the top black bar?
+</para>
+
+<para>
+  e. Looking at the names of the attributes for objects in the manifest
+  file, can you tell what they do? Remove some attributes, or change
+  them and see what happens when you try to compile.
+</para>
+
+<para>
+  f. Change the manifest file back to its original state, to make sure
+  the app compiled correctly.
+</para>
+
+<para>
+  g. Add a new item to the main menu xml. What happens when you compile and run the app?
+</para>
+
+</section> <!-- first-android5 -->
 
 </section> <!-- first-android-exercises -->
 
