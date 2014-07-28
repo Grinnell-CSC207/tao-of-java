@@ -48,7 +48,7 @@
 <para>
   We don't need to worry about that now, since this app won't actually
   be released in the Play Store. It's mostly for class use, and the
-  machines you'll be using are all Nexus 7 tables.
+  machines you'll be using are all Nexus 7 tablets.
 </para>
 
 <para>
@@ -315,7 +315,8 @@ Of course we could have done this another way, by simply declaring our XML objec
 </para>
 
 <programlisting>
-public void onClick(View v) {
+public void onClick(View v) 
+{
 	
 }
 </programlisting>
@@ -368,7 +369,7 @@ button.setOnClickListener(this);
 
 <para>
   We declared the button outside a method, but we set it up in
-  the onCreate() method. Why? Because it's the method that's called
+  the <code>onCreate()</code> method. Why? Because it's the method that's called
   automatically, and it's the method that's called first. If we had set
   it up in a new method, the button's set up and it's activity would
   have to be called simultaniously, ultimately causing our application
@@ -408,7 +409,7 @@ button.setOnClickListener(this);
 </para>
 
 <programlisting>
-Toast chameleonGreeting
+Toast chameleonGreeting;
 </programlisting>
 
 <para>
@@ -450,10 +451,11 @@ Our full method should then look like this:
 </para>
 
 <programlisting>
-public void onClick(View v) {	
-    Toast chameleonGreeting = Toast.makeText(getApplicationContext(), 
-            "Hey, I am a chameleon", Toast.LENGTH_SHORT);
-    chameleonGreeting.show();
+public void onClick(View v) 
+{	
+  Toast chameleonGreeting = Toast.makeText(getApplicationContext(), 
+      "Hey, I am a chameleon", Toast.LENGTH_SHORT);
+  chameleonGreeting.show();
 } // onClick(View)
 </programlisting>
 
@@ -510,10 +512,11 @@ android:onClick="clickThis"
 </para>
 
 <programlisting>
-public void clickThis(View v) {
-    Toast chameleonGreeting = Toast.makeText(getApplicationContext(), 
-            "Hey, I'm a chameleon", Toast.LENGTH_LONG);
-    chameleonGreeting.show();
+public void clickThis(View v) 
+{
+  Toast chameleonGreeting = Toast.makeText(getApplicationContext(), 
+          "Hey, I'm a chameleon", Toast.LENGTH_LONG);
+  chameleonGreeting.show();
 } // clickThis
 </programlisting>
 
