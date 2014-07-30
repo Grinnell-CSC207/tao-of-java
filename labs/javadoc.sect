@@ -51,70 +51,64 @@
 <section id="javadoc-02"><title>Exercise 2: Adding Real Comments</title>
 
 <para>
-  a. As you may recall, a Javadoc-style comment begins with a slash and
+  As you may recall, a Javadoc-style comment begins with a slash and
   two stars and ends with a star and a slash.  Add some Javadoc-style
-  comments to variour portions of your classes, rebuild the documentation,
+  comments to various portions of your classes, rebuild the documentation,
   and determine the effects.
 </para>
 
-                * Add some Javadoc-style comments and see their effects.
-                * Figure out how to get different levels of protection revealed (or not
-                  revealed)
-                  * Add preconditions and postconditions.
-                      * `-tag pre:cm:"Preconditions"`
-                          * `-tag post:cm:"Postconditions:"`
+</section> <!-- javadoc-02 -->
 
-<section id="javadoc-0"> <title>Exercise 0: Preparation</title>
+<section id="javadoc-03"><title>Exercise 3: Protection Levels</title>
 
 <para>
-Make sure you’ve read the related reading. It might be useful to refer to it by opening it up in a separate tab.
-</para>
-</section> <!-- Exercise 0 -->
-
-<section id="javadoc-1"> <title>Exercise 1: Make your own</title>
-
-<para>
-Now it’s time for you to write some comments and generate Javadocs. In the previous lab you had to fix some broken code. Hopefully you’re done fixing it by now and you know how everything works. Your task for today is to thoroughly document every method and generate the Javadoc HTML. Attach those HTML files to the project and push it to your repository.
+  You may have noted that the Javadoc documentation does not list 
+  package methods and fields.  Figure out how to get the Javadoc
+  documentation to reveal more or fewer components.
 </para>
 
-<para>
-* Hint: When you generate Javadoc, the HTML files will automatically be added to your project under the <emphasis>doc</emphasis> (documentation) folder.
-</para>
-</section> <!-- Exercise 1 -->
+</section> <!-- javadoc-03 -->
+
+<section id="javadoc-04"><title>Exercise 4: Preconditions and Postconditions</title>
 
 <para>
-<emphasis>Unit Testing</emphasis>
-</para>
-
-<section id="javadoc-2"> <title>Exercise 2: Setting up</title>
-
-<para>
-Create a JUnit Test Case for your FixedCode class, by right clicking it going to <emphasis>New > JUnit Test Case</emphasis>. Remember that Eclipse will automatically name the class for you so all you have to do is hit next so that you can move onto the Test Methods screen. When you choose the methods you want to test select <code>sumUp()</code>, <code>removeAs()</code>, <code>convertToFahrenheit()</code>, and <code>powerOf()</code>.
-</para>
-
-</section> <!-- Exercise 2 -->
-
-<section id="javadoc-3"> <title>Exercise 3: Creating Test Cases</title>
-
-<para>
-For each test method you must use at least two of the tests provided in the reading, however you must:
-
-<itemizedlist>
-<listitem>Utilize an <code>assertEquals</code> test for the methods <code>sumUp()</code>, <code>convertToFahrenheit()</code>, and <code>powerOf()</code>.</listitem>
-<listitem>Utilize an <code>assertNotSame</code> test for <code>removeAs()</code></listitem>
-</itemizedlist>
+  Although the Javadoc designers did not acknowledge the need for
+  preconditions and postconditions, we know that they are quite
+  useful.
 </para>
 
 <para>
-After you have written your test cases hit run and check to see if all of your methods pass.
-If any methods fail, make note of which ones and rewrite the test so that they pass. 
-* Hint: This may include utilizing tests like <code>assertTrue</code> or <code>assertFalse</code>.
+  a. Add a precondition to the Javadoc documentation for a method
+    using the <code>@pre</code> tag.
 </para>
 
-</section> <!-- Exercise 3 -->
+<para>
+  b. Add a postcondition to the Javadoc documentation for a method
+  using the <code>@post</code> tag.
+</para>
 
-</section> <!-- Exercises -->
+<para>
+  c. What do you expect to happen when you generate the documentation?
+</para>
 
-</section> <!-- Lab Javadoc & Unit Testing -->
+<para>
+  d. Check your answer experimentally.
+</para>
+
+<para>
+  e. As you probably discovered, Eclipse doesn't yet know about these
+  tags.  Configure the Javadoc tool to add the following flags.
+</para>
+
+<programlisting>
+-tag pre:cm:"Preconditions:"
+tag post:cm:"Postconditions:"
+</programlisting>
+
+</section> <!-- javadoc-04 -->
+
+</section> <!-- javadoc-exercises -->
+
+</section> <!-- javadoc-lab -->
 
 
