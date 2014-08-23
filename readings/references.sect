@@ -292,8 +292,8 @@ public class Tally
 <para>
   We get the old value of <code>i</code> (2), add five, and then
   store it back in the same memory location.  Since the two variables
-  are independent, the instruction <code>i</code>, but does update
-  <code>j</code>.
+  are independent, the instruction updates <code>i</code>, but does not
+  update <code>j</code>.
 </para>
 
 <table>
