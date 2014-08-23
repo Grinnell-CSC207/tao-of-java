@@ -17,7 +17,7 @@
       y="26">StringBuffer@68346762</text>
 
 <!-- Top: 32 -->
-<!-- CELL (label:[data], contents:[string], height:[1] -->
+<!-- CELL (label:[data], contents:[hello], height:[1] -->
     <text
       style="font-size:12px;text-align:end;text-anchor:end;font-family:Sans"
       x="43"
@@ -25,7 +25,7 @@
     <text
       style="font-size:12px;text-align:center;text-anchor:middle;font-family:Sans"
       x="96"
-      y="50">string</text>
+      y="50">hello</text>
    <rect
      style="fill:none;stroke:#000000;stroke-width:1px"
      x="48"
