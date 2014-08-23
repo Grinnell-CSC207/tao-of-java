@@ -1,0 +1,45 @@
+<section id="design-adt"><title>Designing Abstract Data Types</title>
+
+<para>
+  <emphasis>Summary:</emphasis>
+  We consider a technique for designing abstract data types.
+</para>
+
+<para>
+  <emphasis>Prerequisites:</emphasis>
+  None.
+</para>
+
+<section id="design-adt-introduction"><title>Introduction</title>
+
+</section> <!-- design-adt-introduction -->
+
+<section id="design-adt-wrapup"><title>Wrapping Up</title>
+
+<section id="design-adt-terms"><title>Important Terms</title>
+
+<itemizedlist>
+  <listitem>...</listitem>
+</itemizedlist>
+
+</section>  <!-- design-adt-terms -->
+
+<section id="design-adt-review"><title>Review Questions</title>
+
+<orderedlist>
+  <listitem>...</listitem>
+</orderedlist>
+
+</section><!-- design-adt-review -->
+
+<section id="design-adt-explore"><title>Exploratory Questions</title>
+
+<orderedlist>
+  <listitem>...</listitem>
+</orderedlist>
+
+</section> <!-- design-adt-explore -->
+
+</section> <!-- design-adt-wrapup -->
+
+</section> <!-- design-adt -->
