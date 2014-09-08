@@ -75,9 +75,8 @@
 <programlisting>
 public class <emphasis>NameOfClass</emphasis> 
 {
-  public static void 
-    main (String[] args) 
-      throws Exception 
+  public static void main (String[] args) 
+    throws Exception 
   {
     <emphasis>instructions</emphasis>;
   } // main(String[])
@@ -229,7 +228,7 @@ public class <emphasis>NameOfClass</emphasis>
 </para>
 
 <programlisting>
-new <emphasis>NameOfClass</emphasis> (<emphasis>parameters</emphasis>)
+new <emphasis>NameOfClass</emphasis>(<emphasis>parameters</emphasis>)
 </programlisting>
 
 <para>
@@ -257,7 +256,7 @@ new <emphasis>NameOfClass</emphasis> (<emphasis>parameters</emphasis>)
 </para>
 
 <programlisting>
-    <emphasis>name</emphasis>.<emphasis>method</emphasis> (<emphasis>parameters</emphasis>);
+    <emphasis>name</emphasis>.<emphasis>method</emphasis>(<emphasis>parameters</emphasis>);
 </programlisting>
 
 </section>
@@ -318,19 +317,18 @@ package edu.grinnell.csc207.username.intro;
 
 public class First
 {
-  public static void 
-    main (String[] args)
-      throws Exception
+  public static void main (String[] args)
+    throws Exception
   {
     // Describe the two names of objects used in the program.
     java.io.PrintWriter pen;
     java.lang.String greeting;
     // Create objects and associate the names with those objects.
-    pen = new java.io.PrintWriter (System.out, true);
+    pen = new java.io.PrintWriter(System.out, true);
     greeting = "Hello";
     // Tell one object to do something.
-    pen.println (greeting);
-  } // main (String[])
+    pen.println(greeting);
+  } // main(String[])
 } // class First
 </programlisting>
 
