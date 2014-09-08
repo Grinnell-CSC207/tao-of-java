@@ -362,27 +362,25 @@ public Object car(ImmutableList list);
 
 <para>
   But there are some significant dangers in taking a maximalist
-  approach.  One is that an implementation of an ADT that tries to
-  do too many things may not be particularly good at the ones be
-  particularly good at the ones you want to use.  That is, the
-  methods you choose are likely to affect the implementation you
-  choose, and implementation decisions that make some methods quick
-  often make other methods slow.  Think about the difference between
-  the sorted arrays that you may be accustomed to using with binary
-  search and an unordered array.  Sorted arrays make searching
-  really fast.  However, changing a value in a sorted array typically
-  means that you have to move the value elsewhere in the array and
-  shift everything, which will be very slow.  In contrast, if we
-  don't care about the order of elements in an array, we can change
-  any element in place.  Of course, unordered arrays are much slower
-  to search.  If we limit ourselves to the most important operations
-  (e.g., searching in one case, changing values in another), we are
-  more likely to be able to choose an implementation that supports those
-  operations well.  Over time, you'll find that you will sometimes
-  design and implement an ADT yourself, even though it may be included
-  in the standard libraries of language, simply because you want to make
-  sure that you have the best possible implementation of the particular
-  set of methods you use in your program.
+  approach.  One is that an implementation of an ADT that tries to do too
+  many things may not be particularly good at the ones be you want to use.
+  That is, the methods you choose are likely to affect the implementation
+  you choose, and implementation decisions that make some methods quick
+  often make other methods slow.  Think about the difference between the
+  sorted arrays that you may be accustomed to using with binary search
+  and an unordered array.  Sorted arrays make searching really fast.
+  However, changing a value in a sorted array typically means that you
+  have to move the value elsewhere in the array and shift everything,
+  which will be very slow.  In contrast, if we don't care about the
+  order of elements in an array, we can change any element in place.
+  Of course, unordered arrays are much slower to search.  If we limit
+  ourselves to the most important operations (e.g., searching in one case,
+  changing values in another), we are more likely to be able to choose an
+  implementation that supports those operations well.  Over time, you'll
+  find that you will sometimes design and implement an ADT yourself,
+  even though it may be included in the standard libraries of language,
+  simply because you want to make sure that you have the best possible
+  implementation of the particular set of methods you use in your program.
 </para>
 
 <para>
