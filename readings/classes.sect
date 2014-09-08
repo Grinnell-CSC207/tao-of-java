@@ -106,7 +106,8 @@ import <emphasis>otherpackagename.NeededClass</emphasis>;
 /**
  * <emphasis>A helpful introductory comment that describes the class.</emphasis>
  */
-public class <emphasis>ClassName</emphasis> {
+public class <emphasis>ClassName</emphasis> 
+{
   // +--------+---------------------------------------------------------
   // | Fields |
   // +--------+
@@ -236,10 +237,10 @@ String title;
 </para>
 
 <programlisting>
-    /** The length of the vector. */
-    double radius;
-    /** The angle of the vector from the positive X axis in radians. */
-    double theta;
+  /** The length of the vector. */
+  double radius;
+  /** The angle of the vector from the positive X axis in radians. */
+  double theta;
 </programlisting>
 
 </section>  <!-- vector-fields -->
@@ -259,7 +260,9 @@ String title;
 </para>
 
 <programlisting>
-<emphasis>protection</emphasis> <emphasis>NameOfClass</emphasis>(<emphasis>parameters</emphasis>) <emphasis>OptionalThrowsClause</emphasis> {
+<emphasis>protection</emphasis> <emphasis>NameOfClass</emphasis>(<emphasis>parameters</emphasis>) 
+  <emphasis>OptionalThrowsClause</emphasis> 
+{
   <emphasis>body</emphasis>;
 } // <emphasis>NameOfClass</emphasis>(<emphasis>ParameterTypes</emphasis>)
 </programlisting>
@@ -303,9 +306,10 @@ Vec2D alpha = new Vec2D(Math.PI/2, 1.0);
 /**
  * Create a new vector with angle _theta and radius _radius.
  */
-public Vec2D(double _theta, double _radius) {
-    this.theta = _theta;
-    this.radius = _radius;
+public Vec2D(double _theta, double _radius) 
+{
+  this.theta = _theta;
+  this.radius = _radius;
 } // Vec2D(double, double)
 </programlisting>
 
@@ -317,7 +321,7 @@ public Vec2D(double _theta, double _radius) {
   to choose similar names.  Note that Java is very lenient about naming,
   so you could also have named these parameters <code>theta</code> and
   <code>radius</code> and it would have distinguished those parameters
-  from the field.  But I find programmers get confused more more easily
+  from the field.  But I find programmers get confused much more easily
   than Java.
 </para>
 
@@ -326,7 +330,7 @@ public Vec2D(double _theta, double _radius) {
 </para>
 
 <programlisting>
-    Vec2D alpha = new Vec2D(Math.PI/2, 1.0);
+  Vec2D alpha = new Vec2D(Math.PI/2, 1.0);
 </programlisting>
 
 <para>
@@ -339,7 +343,8 @@ public Vec2D(double _theta, double _radius) {
 /**
  * Create a unit vector with angle _theta.
  */
-public Vec2D(double _theta) {
+public Vec2D(double _theta) 
+{
   this.theta = _theta;
   this.radius = 1.0;
 } // Vec2D(double)
@@ -363,9 +368,10 @@ public Vec2D(double _theta) {
 /**
  * Create a new vector from (0,0) to (x,y).
  */
-public Vec2D(double x, double y) {
-    this.theta = Math.atan(y/x);
-    this.radius = Math.sqrt(x*x + y*y);
+public Vec2D(double x, double y) 
+{
+  this.theta = Math.atan(y/x);
+  this.radius = Math.sqrt(x*x + y*y);
 } // Vec2D(double, double)
 </programlisting>
 
@@ -382,7 +388,8 @@ public Vec2D(double x, double y) {
 /**
  * Create a new vector from (0,0) to (x,y).
  */
-public Vec2D(int x, int y) {
+public Vec2D(int x, int y) 
+{
   this.theta = Math.atan(((double) y)/((double) x));
   this.radius = Math.sqrt(x*x + y*y);
 } // Vec2D(int, int)
@@ -407,7 +414,9 @@ public Vec2D(int x, int y) {
 /**
  * <emphasis>Helpful introductory comment.</emphasis>
  */
-<emphasis>protection</emphasis> <emphasis>Type</emphasis> <emphasis>methodName</emphasis>(<emphasis>parameters</emphasis>) <emphasis>optionalThrowsClause</emphasis> {
+<emphasis>protection</emphasis> <emphasis>Type</emphasis> <emphasis>methodName</emphasis>(<emphasis>parameters</emphasis>) 
+  <emphasis>optionalThrowsClause</emphasis> 
+{
   <emphasis>body</emphasis>;
 } // <emphasis>methodName</emphasis>(<emphasis>parameterTypes</emphasis>)
 </programlisting>
@@ -442,8 +451,9 @@ Vec2D newvec = alpha.add(northeast);
 /**
  * Determine the radius of this vector.
  */
-public double getRadius() {
-    return this.radius;
+public double getRadius() 
+{
+  return this.radius;
 } // getRadius()
 </programlisting>
 
@@ -456,8 +466,9 @@ public double getRadius() {
 /**
  * Determine the angle of this vector from the positive x axis.
  */
-public double getTheta() {
-    return this.theta;
+public double getTheta() 
+{
+  return this.theta;
 } // getTheta()
 </programlisting>
 
@@ -484,8 +495,9 @@ pen.println("  The angle between the X-axis and the line to that point is "
 /**
  * Compute the x position of the head of this vector.
  */
-public double getX() {
-    return this.radius * Math.cos(this.theta);
+public double getX() 
+{
+  return this.radius * Math.cos(this.theta);
 } // getX()
 </programlisting>
 
@@ -497,8 +509,9 @@ public double getX() {
 /**
  * Create a new vector that is twice as long as this vector.
  */
-public Vec2D double() {
-    return new Vec2D(this.getTheta(), this.getRadius()*2);
+public Vec2D double() 
+{
+  return new Vec2D(this.getTheta(), this.getRadius()*2);
 } // double
 </programlisting>
 
@@ -515,8 +528,9 @@ public Vec2D double() {
  * @pre
  *   x != 0
  */
-public static Vec2D vectorTo(double x, double y) {
-    return new Vec2D(Math.atan(y/x), Math.sqrt(x*x + y*y));
+public static Vec2D vectorTo(double x, double y) 
+{
+  return new Vec2D(Math.atan(y/x), Math.sqrt(x*x + y*y));
 } // vectorTo(double,double)
 </programlisting>
 
@@ -530,7 +544,8 @@ public static Vec2D vectorTo(double x, double y) {
 /**
  * Add another vector to this vector.  
  */
-public Vec2D add(Vec2D addend) {
+public Vec2D add(Vec2D addend) 
+{
   return Vec2D.vectorTo((this.getX() + addend.getX()),
                         (this.getY() + addend.getY()));
 } // add(Vec2D)
