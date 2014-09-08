@@ -17,7 +17,7 @@
 </para>
 
 <screen>
-<prompt>$</prompt> <userinput>eclipse &amp;</userinput> </screen>
+<prompt>$</prompt> <userinput>/glimmer/bin/eclipse &amp;</userinput> </screen>
 
 <para>
   You may recall that the ampersand means that the program will
@@ -26,9 +26,12 @@
 </para>
 
 <para>
-  Alternately, you can start Eclipse by finding the appropriate
-  menu item in the <guimenu>Applications</guimenu> menu, which
-  looks like a little creature over a blue X under Xfce4.
+  We are using the version of Eclipse in /glimmer/bin because it is much newer
+  than the version of Eclipse shipped with Debian.
+</para>
+
+<para>
+  You may also find it usful  to create a startup item for Eclipse.
 </para>
 
 </section> <!-- eclipse-preparation -->
@@ -38,9 +41,9 @@
 <section id="eclipse-01"> <title>Exercise 1: Your First Program</title>
 
 <para>
-  a. Make a new project in Eclipse and call it <code>HelloEclipse</code>.
+  a. Make a new Java project in Eclipse and call it <code>HelloEclipse</code>.
   From the <guimenu>File</guimenu> menu, select <guimenuitem>New</guimenuitem>,
-  and then <guimenuitem>Java Project</guimenuitem>.
+  and then <guimenuitem>Java Project</guimenuitem>.  
 </para>
 
 <para>
@@ -50,6 +53,8 @@
   <guimenu>File</guimenu> 
   &gt; <guimenuitem>New</guimenuitem> 
   &gt; <guimenuitem>Package</guimenuitem>.
+  (You may also find it useful to right click on the project and use 
+  <guimenuitem>New</guimenuitem> &gt; <guimenuitem>Package</guimenuitem>.)
 </para>
 
 <para>
@@ -58,6 +63,8 @@
   <guimenu>File</guimenu> 
   &gt; <guimenuitem>New</guimenuitem> 
   &gt; <guimenuitem>Class</guimenuitem>.
+  (You may also find it useful to right click on the package and choose the
+  obvious menu items.)
 </para>
 
 <para>
@@ -76,9 +83,8 @@ public class HelloJava
   /**
    * Print a silly message.
    */
-  public static void 
-    main (String[] args) 
-      throws Exception
+  public static void main (String[] args) 
+    throws Exception
   {
     System.out.print ("I am the 1337 h4x0r. Phear me!");
   } // main (String[])
@@ -142,7 +148,7 @@ public class HelloJava
 </para>
 
 <programlisting>
-    System.out.println (System.out);
+    System.out.println(System.out);
 </programlisting>
 
 </section> <!-- eclipse-03 -->
@@ -150,7 +156,8 @@ public class HelloJava
 <section id="eclipse-04"> <title>Exercise 4: Your Second Program</title>
 
 <para>
-  a. Make another class in your package and call it <code>SimpleMath</code>
+  a. Make another class in your fully qualified package and call it 
+  <code>SimpleMath</code>
 </para>
 
 <para>
@@ -168,11 +175,11 @@ Adding 3 and 4 gives us 7.</screen>
 <programlisting>
     int x = 3;
     int y = 4;
-    System.out.print ("Adding ");
-    System.out.print (x);
+    System.out.print("Adding ");
+    System.out.print(x);
     ...
-    System.out.print (x+y);
-    System.out.println ();
+    System.out.print(x+y);
+    System.out.println();
 </programlisting>
 
 <para>   
@@ -188,13 +195,14 @@ Adding 3 and 4 gives us 7.</screen>
 </para>
 
 <programlisting>
-    System.out.println ("Hello" + "World");
+    System.out.println("Hello" + "World");
 </programlisting>
 
 <para>
   d. We saw earlier that <code>System.out.println</code> accepts things other
-  than strings, such as integers and reals (and even <code>System.out</code>).
-  What about <code>+</code>?  Determine what happens if you combine a string
+  than strings, such as integers and reals (and even
+  <code>System.out</code>).  Can <code>+</code> also take different
+  types of parameters?  Determine what happens if you combine a string
   and an integer with <code>+</code>.  What about combining an integer
   and a string?
 </para>
