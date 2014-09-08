@@ -48,9 +48,8 @@
 <programlisting>
 public class MyClass 
 {
-  public static void 
-    main (String[] args) 
-      throws Exception 
+  public static void main(String[] args) 
+    throws Exception 
   {
     <emphasis>...</emphasis>
   } // main(String[])
@@ -208,9 +207,8 @@ public class MyClass
      * @exception Exception 
      *   when the square is larger than the largest int.
      */
-    public static int 
-      square (int x
-        ) throws Exception
+    public static int square (int x) 
+      throws Exception
 </programlisting>
 
 </section> <!-- declaring-functions -->
@@ -287,7 +285,7 @@ public class MyClass
 </para>
 
 <programlisting>
-    for (s : args) ...
+  for (s : args) ...
 </programlisting>
 
 <para>
@@ -318,15 +316,14 @@ public class MyClass
 <programlisting>
 package edu.grinnell.csc207.utils;
 
-public class Util 
+public class MathUtils
 {
-  public static int 
-    square (int x) 
-      throws Exception 
+  public static int square(int x) 
+    throws Exception 
   {
    ...
-  } // square (int)
-} // class Util
+  } // square(int)
+} // class MathUtils
 </programlisting>
 
 <para>
@@ -334,7 +331,7 @@ public class Util
 </para>
 
 <programlisting>
-  edu.grinnell.csc.207.utils.Util.square (...)
+  edu.grinnell.csc207.utils.MathUtils.square(...)
 </programlisting>
 
 <para>
@@ -344,7 +341,22 @@ public class Util
 </para>
 
 <programlisting>
-  java.io.PrintWriter pen = new java.io.PrintWriter (System.out,true);
+  java.io.PrintWriter pen = new java.io.PrintWriter(System.out,true);
+</programlisting>
+
+<para>
+  But that's a lot of extra work.  Hence, Java also lets you 
+  <quote>import</quote> classes using the <code>import</code> keyword.
+  If you've imported classes, you need only provide their base name,
+  and not the full qualification.
+</para>
+
+<programlisting>
+import edu.grinnell.csc207.utils.MathUtils;
+import java.io.PrintWriter;
+
+  MathUtils.square(...)
+  PrintWriter pen = new PrintWriter(System.out, true);
 </programlisting>
 
 </section> <!-- library -->
@@ -362,7 +374,7 @@ public class Util
 </para>
 
 <programlisting>
-    java.io.PrintWriter pen = new java.io.PrintWriter (System.out,true);
+    java.io.PrintWriter pen = new java.io.PrintWriter(System.out,true);
 </programlisting>
 
 <para>
@@ -374,7 +386,7 @@ public class Util
 </para>
 
 <programlisting>
-    pen.println ("Hello");
+    pen.println("Hello");
 </programlisting>
 
 <para>
@@ -384,7 +396,7 @@ public class Util
 
 <programlisting>
      java.io.BufferedReader eyes =
-         new java.io.BufferedReader (new java.io.InputStreamReader (System.in));
+         new java.io.BufferedReader(new java.io.InputStreamReader (System.in));
 </programlisting>
 
 <para>
@@ -401,33 +413,5 @@ public class Util
 </para>
 
 </section> <!-- arrays -->
-
-<section id="wrapup"><title>Wrapping Up</title>
-
-<section id="terms"><title>Important Terms</title>
-
-<itemizedlist>
-  <listitem>Protection levels - <code>package</code>, <code>private</code>, <code>protected</code></listitem>
-</itemizedlist>
-
-</section> <!-- terms -->
-
-<section id="review-questions"><title>Review Questions</title>
-
-<para>
-  <emphasis>Forthcoming.</emphasis>
-</para>
-
-</section> <!-- review-questions -->
-
-<section id="exploratory-questions"><title>Exploratory Questions</title>
-
-<para>
-  <emphasis>Forthcoming.</emphasis>
-</para>
-
-</section> <!-- exploratory-questions -->
-
-</section> <!-- wrapup -->
 
 </section> <!-- simple-java-c -->
