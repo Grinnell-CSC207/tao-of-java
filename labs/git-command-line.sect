@@ -71,8 +71,7 @@
 
 <screen>
 <prompt>$</prompt> <userinput>git config --global user.name "<emphasis>YourName</emphasis>"</userinput>
-<prompt>$</prompt> <userinput>git config --global user.email <emphasis>username@
-grinnell.edu</emphasis></userinput></screen> 
+<prompt>$</prompt> <userinput>git config --global user.email <emphasis>username@grinnell.edu</emphasis></userinput></screen> 
 <para>
   Finally, set your editor.
 </para>
