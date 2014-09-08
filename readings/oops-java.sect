@@ -1,7 +1,7 @@
 <section id="oops-java"><title>Introducing OOD and Java</title>
 
 <para>
-  There are two readings for today.
+  There are three readings for today.
 </para>
 
 <itemizedlist>
@@ -14,10 +14,15 @@
     <ulink url="../readings/intro-java.html">An Introduction to
     Java</ulink>
   </listitem>
+
+  <listitem>
+    <ulink url="../readings/simple-java-c.html">Simple Java for C
+    Programmers</ulink>
+  </listitem>
 </itemizedlist>
 
 <para>
-  Read them both.
+  Read them all.
 </para>
 
 </section> <!-- oops-java -->
