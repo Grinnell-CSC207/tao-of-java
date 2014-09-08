@@ -27,9 +27,9 @@
 
 <para>
   Import the clone into Eclipse.  Note: This clone is already configured
-  as an Eclipse project, so you can select <guibutton>Import Existing
-  Projects</guibutton> rather than <guibutton>Use the New Project
-  Wizard</guibutton>.  
+  as an Eclipse project, so you should be able to select <guibutton>Import
+  Existing Projects</guibutton> rather than <guibutton>Use the New
+  Project Wizard</guibutton>.
 </para>
 
 </section> <!-- reading-java-preparation -->
@@ -72,8 +72,7 @@
 <section id="reading-java-04"><title>Exercise 4: Correcting Errors</title>
 
 <para>
-  There's a small error in <methodname>square</methodname><code>
-  (double)</code>.  Correct that error.
+  There's a small error in <code><methodname>square</methodname>(double)</code>.  Correct that error.
 </para>
 
 </section> <!-- reading-java-04 -->
