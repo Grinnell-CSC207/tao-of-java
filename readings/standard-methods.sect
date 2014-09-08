@@ -7,7 +7,7 @@
 
 <para>
   <emphasis role="strong">Prerequisites:</emphasis> Basics of Java,
-  Classes and Object.
+  Classes and Objects.
 </para>
 
 <section id="standard-methods-intro"><title>Introduction</title>
@@ -122,19 +122,24 @@
  * equal if they are both fractions and have the same numerator
  * and denominator.
  */
-public boolean equals(Object other) {
-    if (other instanceof Fraction) {
-        return this.equals((Fraction) other);
-    } else {
-        return false;
-    } 
+public boolean equals(Object other) 
+{
+  if (other instanceof Fraction) 
+    {
+      return this.equals((Fraction) other);
+    } // if (other is a Fraction)
+  else 
+    {
+      return false;
+    } // if (other is not a Fraction)
 } // equals(Object)
 
 /**
  * Compare this fraction to another fraction.  They are the same
  * if they have the same numerator and denominator.
  */
-public boolean equals(Fraction other) {
+public boolean equals(Fraction other) 
+{
   return this.numerator.equals(other.numerator)
          &amp;&amp; this.denominator.equals(other.denominator);
 } // equals(Fraction)
@@ -145,7 +150,8 @@ public boolean equals(Fraction other) {
 </para>
 
 <programlisting>
-public booleans equals(Object other) {
+public booleans equals(Object other) 
+{
   return (other instanceof Fraction) 
          &amp;&amp; this.equals((Fraction) other);
 } // equals(Object)
@@ -188,7 +194,8 @@ public booleans equals(Object other) {
 </para>
 
 <programlisting>
-public int compareTo(Fraction other) {
+public int compareTo(Fraction other) 
+{
     ...
 } / /compareTo(Fraction)
 </programlisting>
@@ -259,7 +266,9 @@ public int compareTo(Fraction other) {
 <programlisting>
 import java.util.Comparable;
 
-public class Fraction implements Comparable&lt;Fraction&gt; {
+public class Fraction 
+  implements Comparable&lt;Fraction&gt; 
+{
     ...
 } // class Fraction
 </programlisting>
@@ -319,8 +328,10 @@ Fraction frac2 = (Fraction) frac1.clone();
 </para>
 
 <programlisting>
-public class Fraction implements Cloneable, Comparable&lt;Fraction&gt; {
-    ...
+public class Fraction implements 
+  Cloneable, Comparable&lt;Fraction&gt; 
+{
+  ...
 } // class Fraction
 </programlisting>
 
@@ -387,8 +398,9 @@ public class Fraction implements Cloneable, Comparable&lt;Fraction&gt; {
 </para>
 
 <programlisting>
-public int hashCode() {
-    return this.numerator() * this.denominator();
+public int hashCode() 
+{
+  return this.numerator() * this.denominator();
 } // hashCode()
 </programlisting>
 
