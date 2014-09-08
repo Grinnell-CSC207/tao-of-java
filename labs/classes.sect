@@ -59,7 +59,8 @@
 
 <para>
   a. Extend the <code>Fraction</code> class so that it permits
-  multiplication of two fractions.
+  multiplication of two fractions.  That is, you should add an
+  appropriate <code>multiply</code> method to the class.
 </para>
 
 <para>
@@ -145,17 +146,17 @@ stringConstructorTest()
 <section id="classes-04"><title>Exercise 4: A Counter Class</title> 
 
 <para>
-  Write and test a class, <code>Counter</code>, that generates
-  objects that can count.  Objects in class <code>Counter</code>
-  should provide two methods: <code>increment</code>, which adds 1
-  to the counter, and <code>get</code>, which gets the current value
-  of the counter.  Your class needs one zeroary constructor which
-  initializes the counter to 0.
+  Write and test (or experiment with) a class, <code>Counter</code>, that
+  generates objects that can count.  Objects in class <code>Counter</code>
+  should provide two methods: <code>increment</code>, which adds 1 to
+  the counter, and <code>get</code>, which gets the current value of the
+  counter.  Your class needs one zeroary constructor which initializes
+  the counter to 0.
 </para>
 
 <para>
-  Make sure to verify that if you create two separate objects in
-  class <code>Counter</code>, you can change the two objects separately.
+  Make sure to verify that if you create two separate 
+  <code>Counter</code> objects, you can change the two objects separately.
 </para>
 
 </section>  <!-- classes-04 -->
@@ -212,7 +213,8 @@ stringConstructorTest()
 </para>
 
 <para>
-  c. Test both updates to ensure that they work appropriately.
+  c. Test (or experiment with) both updates to ensure that they work 
+  appropriately.
 </para>
 
 </section>  <!-- classes-06 -->
