@@ -1,0 +1,627 @@
+<section id="algorithm-analysis"><title>Analyzing Algorithms</title>
+
+<!-- Need to do more of the notation in the formal section -->
+
+<para>
+  <emphasis>Summary:</emphasis> We consider techniques for assessing
+  algorithms, focusing primarily on ways to describe the relationship
+  between expected running time and input size.
+</para>
+
+
+<para>
+  <emphasis>Prerequisites:</emphasis> Functions, Loops, Conditionals,
+  Recursion, Math.
+</para>
+
+<section id="algorithm-analysis-introduction"><title>Introduction</title>
+
+<para>
+  As computer scientists develop algorithms, they may find that they
+  come up with different algorithms that solve the same problem.  How
+  do you choose which algorithm is best?  Once the obvious issues are
+  resolved (e.g., are all the algorithms correct?), the most appropriate
+  criterion to choose is which algorithm makes the best use of system
+  resources (e.g., is fastest or uses the last memory).
+</para>
+
+<para>
+  In this reading, we consider notations for expressing the efficiency 
+  of an algorithm and techniques for using those notations.  We primarily
+  focus on a technique called "Big O" analysis, which is a form of
+  asymptotic analysis.
+</para>
+
+<para>
+  In addition to expressing the efficiency of algorithms for comparative
+  purposes, these approaches can also spur us to come up with more 
+  efficient algorithms, even after we've already designed some algorithms.
+</para>
+
+</section> <!-- algorithm-analysis-introduction -->
+
+<section id="algorithm-analysis-exponentiation"><title>A Motivating Problem: Exponentiation</title>
+
+<para>
+  Let's start by looking at different solutions we might come up with for
+  computing <emphasis>x<superscript>n</superscript></emphasis> for double
+  value <emphasis>x</emphasis> and non-negative integer <code>n</code>.
+  You've likely seen a variety of solutions.
+</para>
+
+<para>
+  Here's one typical solution, using a for loop.
+</para>
+
+<programlisting>
+    public static double pow01(double x, int n)
+    {
+      int result = 1;
+      for (int i = 0; i &lt; n; i++)
+        {
+          result = result * x;
+        } // for
+      return result;
+    } // pow01 (double, int)
+</programlisting>
+
+<para>
+  Here's a similar solution, using recursion.
+</para>
+
+<programlisting>
+    public static double pow02(double x, int n)
+    {
+      if (n == 0)
+        {
+          return 1;
+        } // if n is 0
+      else
+        {
+          return x * pow02(x, n-1);
+        } // if n is nonzero
+    } // pow02(double, int)
+</programlisting>
+
+<para>
+  Of course, many of us are taught that when we use recursion, we should
+  also think about using tail recursion, which smart compilers implement 
+  with fewer system resources.  And, as long as we're using the husk and
+  kernel that are often required for tail recursion, we might as well add
+  a little error checking, too.
+</para>
+
+<programlisting>
+    public static double pow03(double x, int n)
+    {
+      if (n &lt; 0)
+        {
+          throw new RuntimeException("Exponent must be non-negative");
+        } // inappropriate exponent
+      return pow03kernel(1, x, n);
+    } // pow03(double, int)
+
+    private static double pow03kernel(double tmp, double x, int n)
+    {
+      if (n == 0)
+        {
+          return tmp;
+        } // if (n == 0)
+      else
+        {
+          return pow03kernel(tmp*x, x, n-1);
+        } // if (n > 0)
+    } // pow03kernel(double, double, int)
+</programlisting>
+
+<para>
+  Are there other things we might think about as we write this code?
+  Well, we often use recursion for divide and conquer strategies.  So
+  we might see if we can come up with such a strategy.  It doesn't really
+  make sense to divide <code>x</code> by 2, so what happens if we divide
+  <code>n</code> by 2 (at least if <code>n</code> is even)?  In particular,
+  how does computing <emphasis>x<superscript>(n/2)</superscript></emphasis>
+  help us compute <emphasis>x<superscript>n</superscript></emphasis>?  Well,
+  the latter is the square of the former.  So, we can now write yet another
+  version.
+</para>
+
+<programlisting>
+     public static double pow04(double x, int n)
+     {
+       // x^0 = 1
+       if (n == 0)
+         {
+           return 1;
+         } // if (n == 0)
+       // Even exponent: x^(2k) = (x^k)^2
+       else if ((n % 2) == 0)
+         { 
+           double tmp = pow04(x, n/2);
+           return tmp*tmp;
+         } // even exponent
+       // Odd exponent: x^n = x * x^(n-1)
+       else
+         { 
+           return x * pow04(x-1); 
+         } // odd exponent
+     } // pow04(double, int)
+</programlisting>
+
+<para>
+  We could also write a similar iterative algorithm, but we'll leave that
+  as a topic for the future.
+</para>
+
+<para>
+  Are there other approaches?  Well, before there were computers,
+  people used tables to do this kind of computation.  How did you keep
+  the number of tables down, given that there are a huge number of 
+  possible exponents?  You take advantage of other rules you know.
+  For example, we know that log(<emphasis>x<superscript>n</superscript></emphasis>) = <emphasis>n</emphasis>log<emphasis>x</emphasis> and that
+  if <emphasis>a</emphasis> = <emphasis>b</emphasis>, then 
+  <emphasis>e<superscript>a</superscript></emphasis> = <emphasis>e<superscript>/b</superscript></emphasis>.  Hence, we can write
+</para>
+
+<programlisting>
+  public static double pow05(double x, int n)
+  {
+    return Math.exp(n * Math.log(x));
+  } // pow05(double, int)
+</programlisting>
+
+<para>
+  If we didn't have a computer, we could still compute this relatively
+  accurately by looking up the log (or marking it on a slide rule),
+  doing the multiplication, and then looking up the exponent in a table
+  (or using the slide rule backwards).
+</para>
+
+<para>
+  Which of these is best?  It depends on which criteria you want to
+  use to evaluate what it means to be <quote>better</quote>.  And
+  there are certainly many criteria to use.  Obviously, the first
+  criterion we should use is <emphasis>correctness</emphasis>, as
+  there is little point in using an incorrect algorithm.  But there
+  are also others.
+</para>
+
+<itemizedlist>
+  <listitem>
+    We could ask which is <emphasis>most tolerant to failure</emphasis>
+    (<code>pow03</code> is the only one that explicitly throws an error
+    for a negative exponent; <code>pow01</code> and <code>pow05</code>
+    will give you some value - 1, in the first case, the correct answer,
+    in the second; <code>pow02</code> and <code>pow04</code> will likely
+    recurse forever (or close to forever), although that issue can be
+    resolved in either
+  </listitem>
+
+  <listitem>
+    We could ask which algorithm is <emphasis>easiest to 
+    understand</emphasis>.  From one perspective, ease of understanding
+    should be secondary to some other issues, since programmers should
+    be able to figure out what your code is doing.  However, maintenance
+    is a huge issue in long-lived software, and code that is easier 
+    to understand is easier to correct and update.  By this criteria,
+    <code>pow01</code> is probably best, but some people might find the
+    other versions equally clear.
+  </listitem>
+
+  <listitem>
+    We could ask which is <emphasis>easiest to prove correct</emphasis>.
+    While testing provides informal assurances of correctness, a program
+    that we can analyze formally gives us additional assurance.  All
+    of these seem relatively easy to prove correct.
+  </listitem>
+
+  <listitem>
+    We could ask which is <emphasis>the shortest</emphasis>.  Short code
+    is often easier to understand and to compile.  But that seems less
+    important than most other criteria.
+  </listitem>
+
+  <listitem>
+    If we write our algorithms in pseudocode, we could ask which is
+    <emphasis>easiest to implement correctly</emphasis>.  Some algorithms 
+    have some subtleties that might get in the way of a correct or
+    complete implementation.  All of the exponentiation algorithms seem
+    pretty straightforward, and each seems to have similar capability for
+    an off-by-one error r something similar.
+  </listitem>
+
+  <listitem>
+    We could ask which <emphasis>makes the best use of system 
+    resources</emphasis>.  The two most common resources to analyze
+    are CPU time (so we want the algorithm which is 
+    <emphasis>fastest</emphasis>) and additional use of memory (so
+    we want the algorithm that <emphasis>uses the least memory</emphasis>).
+  </listitem>
+</itemizedlist>
+
+<para>
+  In most instances, the most important criterion for programmers is
+  the speed of the algorithm.  (There have, however, been some recent
+  papers that we should increasingly pay attention to tolerance to
+  system errors; e.g., what sorting algorithm does best when the comparator
+  fails one out of five times?)  So, we need a way to measure running
+  time.
+</para>
+
+</section> <!-- algorithm-analysis-exponentiation -->
+
+<section id="algorithm-analysis-measuring"><title>Complexities of Measuring Running Time</title>
+ 
+<para>
+  So, how do we measure the running time of an algorithm?  One
+  experimental approach is to implement the algorithm run the same
+  algorithm on a variety of sizes of inputs and find a function that
+  best models the experimental data.  A problem with that approach is
+  that the same algorithm may take a very different amount of time
+  depending on characteristics of the input other than the size.  For
+  example, bubble sort is really fast on an already-sorted list, but
+  really slow on a randomized list.  This approach also means that we have
+  to spend time implementing the algorithm.  To handle the first concern,
+  we often do a <emphasis>worst-case analysis</emphasis>.  We identify
+  inputs that are likely to make the algorithm run slowly, and use those
+  for our measures.  (It is also possible to do average-case analysis
+  or expected-case analysis.)
+</para>
+
+<para>
+  Interestingly, even if we implement the algorithm and give it worst
+  case inputs, the information we get in one set of runs may not provide
+  us with reliable information for other sets of runs.  Why?  Because
+  different architectures may implement the same operation differently,
+  because different architectures may treat sequences of operations
+  differently, and because other factors often affect the <quote>wall
+  clock</quote> running time, such as other programs running simultaneously.
+  Hence, we often provide an <emphasis>abstract count</emphasis> of the
+  number of operations.  Doing such a count also means that we can
+  work directly with pseudocode, rather than having to implement our
+  program.
+</para>
+
+<para>
+  If we don't know how long an operation takes on a particular machine,
+  and the same operation may take different times on different machines,
+  we might as well treat all <quote>constant time</quote> operations as
+  taking the same amount of time.  That is, we will treat multiplying, 
+  comparing, and adding two integers as taking the same amount of time,
+  since each is likely to be a single computer operation.  However, we
+  will not assume that finding the length of a string in C is also only
+  one step, since we know that you have to traverse a string to find its
+  length, which means that length is not a constant time operation.
+</para>
+
+</section> <!-- algorithm-analysis-measuring -->
+
+<section id="algorithm-analysis-asymptotic"><title>Asymptotic Analysis</title>
+
+<para>
+  Our discussion of measuring running time has led us down a path toward
+  an approach that most computer scientists use to assess the efficiency
+  of an algorithm, a technique that is typically called <emphasis>asymptotic
+  analysis</emphasis>.  In the asymptotic analysis of the running time
+  of algorithms, one identifies appropriate models of the curves that
+  relate input size to running time.  In the asymptotic analysis of the
+  memory use of algorithms, one identifies similar curves for running time.
+  The curve is <quote>asymptotic</quote> in that it models the actual
+  curve well for large enough inputs and for the majority of inputs.
+</para>
+
+<para>
+  There are many models of asymptotic behavior.  The one we use most frequently
+  is <emphasis>Big-O analysis</emphasis>, and it usually measures 
+  upper bounds on the running time of an algorithm.
+</para>
+
+<para>
+  In thinking about the shape of the curve, I find it most helpful to think
+  about what happens when you double the size of the input.
+</para>
+
+<itemizedlist>
+  <listitem>
+    If the expected running time does not change when you double the
+    size of the input, we say that the algorithm is <emphasis>constant
+    time</emphasis>, and describe the algorithm as <emphasis
+    role="strong">O(1)</emphasis>, which is pronounced <quote>big O of
+    1</quote>.  For example, in Java, getting the
+    length of a vector should be an O(1) operation.  Similarly,
+    <code>pow05</code> is an O(1) algorithm.
+  </listitem>
+
+  <listitem>
+    If the running time goes up by a constant number of steps when
+    you double the size of an input, we say that the algorithm is
+    <emphasis>logarithmic</emphasis>, and describe the algorithm as
+    <emphasis role="strong">O(log<emphasis>n</emphasis>)</emphasis>,
+    which is pronounced <quote>big O of the log of
+    <emphasis>n</emphasis></quote>.  Binary search is a famous
+    O(log<emphasis>n</emphasis>) algorithm.  In the examples above,
+    <code>pow04</code> is an O(log<emphasis>n</emphasis>) algorithm -
+    if we double the size of <emphasis>n</emphasis>, we have to divide
+    it by 2 (one step) to reduce the problem to the previous problem,
+    and the square the result of that problem (one step) to produce the
+    new result.  So doubling the size required two additional steps.
+  </listitem>
+
+  <listitem>
+    If the running time doubles when the input size doubles, then we
+    say that the algorithm is <emphasis>linear</emphasis>, and describe
+    the algorithm as 
+    <emphasis role="strong">O(<emphasis>n</emphasis>)</emphasis>, which
+    we pronounce as <quote>big O of <emphasis>n</emphasis></quote>.
+    Finding the length of a string in C is O(<emphasis>n</emphasis>)
+    as is <code>pow01</code> above.
+  </listitem>
+
+  <listitem>
+    If the running time quadruples when the input
+    size doubles, then we say that the algorithm is
+    <emphasis>quadratic</emphasis> and describe the algorithm as <emphasis
+    role="strong">O(<emphasis>n</emphasis><superscript>2</superscript>)</emphasis>,
+    which we pronounce as <quote>big O of <emphasis>n</emphasis>
+    squared</quote>.
+  </listitem>
+
+  <listitem>
+    If the running time squares when the input size doubles, then we 
+    typically say that the algorithm is <emphasis>exponential</emphasis>
+    and describe the algorithm as <emphasis role="strong">O(2<superscript><emphasis>n</emphasis></superscript>)</emphasis>.
+  </listitem>
+</itemizedlist>
+
+<para>
+  As you might expect, we prefer constant-time algorithms to logarithmic, 
+  logarithmic algorithms to linear, linear to quadratic, and quadratic
+  to exponential.  And, as you might expect, there are also a wide
+  variety of other functions.
+</para>
+
+</section> <!-- algorithm-analysis-asymptotic -->
+
+<section id="algorithm-analysis-formal"><title>Big-O Notation, Formalized</title>
+
+<para>
+  We've given an informal definition of Big-O notation.  There is also
+  a more formal definition in terms of the relationships between functions.
+</para>
+
+<blockquote>
+  f(n) is in O(g(n)) if and only iff there exists numbers
+  n<subscript>0</subscript> and d such that for all but finitely
+  many n &gt; n<subscript>0</subscript>, |f(n)| &lt;= |d*g(n)|.
+</blockquote>
+
+<para>
+  Note that O(g(n)) is a <emphasis>set</emphasis>.  It represents the
+  set of all functions which are bounded above by a curve with the
+  shape of g(n).
+</para>
+
+<para>
+  What do all of these parts mean?  The n<subscript>0</subscript>
+  is a way to say <quote>for all sufficiently large values of
+  n</quote>.  For example, g(n) and f(n) might behave differently
+  for small values of n; we care only about the behavior after both
+  settle down.
+</para>
+
+<para>
+  The d is there to let us focus on the shape of the curve, rather than
+  on the exact curve.  As you may recall from above, we've chosen to
+  avoid thinking about the precise differences between constant-time
+  operations.  So, we'd like to treat an algorithm that requires
+  f(n) = 2*n multiplications as being equivalent to an algorithm
+  that requires g(n) = 10*n additions.
+</para>
+
+<para>
+  We rarely identify the n<subscript>0</subscript> and 
+  d precisely.  Rather, they exist to help us to prove different
+  characteristics of the notation.  (You will probably prove these
+  in an upper-level algorithms course.  For now, we'll just assume
+  they are true unless you want formal proofs.)
+</para>
+
+<itemizedlist>
+  <listitem>
+    Big O is transitive.  If f(n) is in O(g(n)), and g(n) is in 
+    O(h(n)), then f(n) is also in O(h(n)).
+  </listitem>
+
+  <listitem>
+    You need not write constant multipliers in giving the Big-O
+    bound.  O(3n) is the same as O(n) is the same as O(n/100).
+  </listitem>
+
+  <listitem>
+    You need not write lower-order terms in giving the Big-O bound.
+    Informally, O(n<superscript>2</superscript> + n) is the same
+    as O(n).  More formally, if f(n) is in O(g(n) + h(n)) and
+    h(n) is in O(g(n)), then f(n) is in O(g(n)).
+ </listitem>
+</itemizedlist>
+
+</section> <!-- algorithm-analysis-formal -->
+
+<section id="algorithm-analysis-iterative"><title>Doing Informal Asymptotic Analysis of Iterative Algorithms</title>
+
+<para>
+  Now that we've provided a formal grounding for Big-O analysis, how do we
+  actually do it in practice?  Do we have to do formal proofs?  No.  We
+  tend to informally <quote>count</quote> the steps in an algorithm and
+  add them up.
+</para>
+
+<itemizedlist>
+  <listitem>
+    If you do a sequence of operations, add the steps each operation
+    takes.
+  </listitem>
+
+  <listitem>
+    Assume that basic operations (comparison, assignment, math, etc.)
+    take only one step.
+  </listitem>
+
+  <listitem>
+    If the algorithm calls a function or procedure, analyze the running 
+    time of that function and use that number of steps.  If you do not
+    have access to the source code of the function or procedure, do your
+    best to make a reasonable guess as to the running time of the 
+    function or procedure, which may include sketching your own algorithm.
+  </listitem>
+
+  <listitem>
+    If the algorithm uses a loop, find the worse case number of
+    repetitions of the loop and the worse case number of steps in the
+    body of the loop, and multiply the two.  For example, if the
+    loop repeats n times and the body of the loop requires n steps,
+    the loop takes n*n steps.
+  </listitem>
+
+  <listitem> 
+    If the algorithm includes a conditional, analyze each possible
+    consequent or alternate in the conditional and take whichever
+    is largest.  (This is worst case analysis, after all.)
+  </listitem>
+</itemizedlist>
+
+<para>
+  Those are the main techniques for analyzing iterative algorithms.
+  We may find a few more for a few exceptional cases, but these should
+  get you by.
+</para>
+
+</section> <!-- algorithm-analysis-iterative -->
+
+<section id="algorithm-analysis-iterative"><title>Doing Informal Asymptotic Analysis of Recursive Algorithms</title>
+
+<para>
+  While we can use many of the strategies above when analyzing recursive
+  algorithms, we do encounter one significant problem: Part of the analysis
+  requires that when we call an algorithm, we determine the running time
+  of that algorithm.  If that call is recursive, the strategy doesn't
+  work.
+</para>
+
+<para>
+  So, what do we do?  We model everything other than the recursive call
+  and then write a <quote>recurrence</quote> relation which describes
+  the running time of an algorithm in terms of itself.  We also tend to
+  use conditionals as different parts of the relation, rather than using
+  the worst case scenario above.
+</para>
+
+<para>
+  For example, suppose that our algorithm does a constant amount of
+  work (which we will call a) in the base case (an input of size 1)
+  and in the recursive case it decreases the size of the parameter by
+  1 and does a constant amount of other work (which we will call b).
+  We would model that as
+</para>
+
+<itemizedlist>
+  <listitem> f(1) = a </listitem>
+  <listitem> f(n) = b + f(n-1)</listitem>
+</itemizedlist>
+
+<para>
+  Similarly, if the algorithm does a constant amount of work in the
+  base case and in the recursive case it halves the size of the input
+  by doing a linear number of steps, we might model that as
+</para>
+
+<itemizedlist>
+  <listitem> g(1) = a </listitem>
+  <listitem> g(n) = n + g(n/2)</listitem>
+</itemizedlist>
+
+<para>
+  You can learn formal techniques for solving such sets of equations
+  in mid-level courses in mathematics.  In this course, we will instead 
+  do some informal analysis, looking for patterns.
+</para>
+
+<para>
+  There are two approaches that are often successful for identifying
+  patterns in the relations.  You can start with the base case and work
+  your way up, figuring out the value of f(n) for every increasing
+  values of n.  You can also start with the recursive case and work
+  your way down, looking for patterns there.  Let's try that for
+  each of our pairs of equations.
+</para>
+
+<para>
+  Let's try the first one bottom up.
+</para>
+
+<itemizedlist>
+  <listitem> f(1) = a </listitem>
+  <listitem> f(2) = b + f(1) = b + a </listitem>
+  <listitem> f(3) = b + f(2) = b + (b + a) = 2b + a </listitem>
+  <listitem> f(4) = b + f(3) = b + (2b + a) = 3b + a </listitem>
+  <listitem> f(5) = b + f(4) = b + (3b + a) = 4b + a </listitem>
+</itemizedlist>
+
+<para>
+  At this point, you've probably identified a pattern.  We see that
+  f(n) = (n-1)*b + a.
+</para>
+
+<para>
+  What happens if we try to work our way top down?
+</para>
+
+<itemizedlist>
+  <listitem> f(n) = b + f(n-1) // by definition </listitem>
+  <listitem> f(n) = b + b + f(n-2) = 2b + f(n-2) // expand f(n-1) </listitem>
+  <listitem> f(n) = b + 2b + f(n-3) = 3b + f(n-3) // expand f(n-2) </listitem>
+  <listitem> f(n) = b + 3b + f(n-4) = 4b + f(n-4) // expand f(n-3) </listitem>
+</itemizedlist>
+
+<para>
+  At this point, you may have also identified a pattern.  We see that
+  f(n) = k*b + f(n-k).  We're not quite done, since this is still
+  recursive.  However, if we allow k to be n-1, we get 
+</para>
+  
+<itemizedlist>
+  <listitem>f(n) = (n-1)*b + f(n-(n-1))</listitem>
+  <listitem>f(n) = (n-1)*b + f(1)</listitem>
+  <listitem>f(n) = (n-1)*b + a</listitem>
+</itemizedlist>
+
+<para>
+  Fortunately, we've come up with the same conclusion.
+</para>
+
+</section> <!-- algorithm-analysis-recursive -->
+
+<section id="algorithm-analysis-experimental"><title>Experimental Analysis</title>
+
+<para>
+  Now that we've completed our asymptotic analysis, we might then try an
+  experimental analysis.  That is, we might run the algorithm on a variety
+  of inputs and graph the results to see if the curves match.  We can
+  measure the algorithm using wall-clock time (less good), or we can augment
+  our program to count the number of steps (better, but more work).
+</para>
+
+<para>
+  If the experimental and abstract results match, we can be fairly confident
+  in our analysis.  If they don't, we'll need to reflect as to why there
+  is a difference and try again.  It may be that we've analyzed the
+  algorithm incorrectly.  It may be that we've implemented the algorithm
+  incorrectly.  It may be that our data are outliers of some sort.  It
+  may be that our data are <quote>average cases</quote> and we will need
+  to figure out what the bad cases will be.  But in any case, experimental
+  analysis helps us think more carefully about our more abstract analysis.
+</para>
+
+</section> <!-- algorithm-analysis-experimental -->
+
+</section> <!-- algorithm-analysis -->
